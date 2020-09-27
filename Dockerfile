@@ -14,12 +14,11 @@ RUN pip install -r /server/requirements.txt
 
 ADD /server /server
 
-ADD /nginx.conf /nginx.conf
-
 WORKDIR /server
+
 RUN python manage.py collectstatic
+ADD nginx.conf /etc/nginx/conf.d/default.conf
 
 CMD gunicorn -b 0.0.0.0:5000 app.wsgi:application --log-level debug --daemon \
-    && cp /nginx.conf etc/nginx/conf.d/default.conf \
     && sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/conf.d/default.conf \
     && nginx -g 'daemon off;'

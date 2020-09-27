@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <title>{% block title %}Take On Transplant{% endblock %}</title>
+</head>
+
+<body>
+    <header>
+        <a href="/">Take on Transplant</a>
+    </header>
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>{{patient.name}}</h2>
+{% for story in stories %}
+<article>
+    <h3>{{story.title}}</h3>
+    {% autoescape off %}
+    {{story.content}}
+    {% endautoescape %}
+</article>
+{% endfor %}
+{% endblock %}

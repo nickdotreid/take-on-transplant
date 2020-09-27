@@ -16,4 +16,4 @@ ADD /server /server
 
 WORKDIR /server
 
-CMD gunicorn -b 0.0.0.0:$PORT app.wsgi:application --log-level debug
+CMD honcho run prod

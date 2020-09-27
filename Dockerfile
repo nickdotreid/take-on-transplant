@@ -14,7 +14,7 @@ RUN pip install -r /server/requirements.txt
 
 ADD /server /server
 
-ADD nginx.conf /nginx.conf
+ADD /nginx.conf /nginx.conf
 
 WORKDIR /server
 RUN python manage.py collectstatic

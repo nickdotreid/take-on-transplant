@@ -2,16 +2,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="front-end/index.scss">
     <title>{% block title %}Take On Transplant{% endblock %}</title>
 </head>
 
 <body>
-    <header>
+    <header class="container">
         <a href="/">Take on Transplant</a>
     </header>
-    <div id="content">
+    <div id="content" class="container">
         {% block content %}{% endblock %}
     </div>
+    <script type="text/javascript" src="front-end/index.js"></script>
+    {% block script %}
+
+    {% endblock %}
 </body>
 </html>

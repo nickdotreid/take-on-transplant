@@ -1,5 +1,6 @@
 from django.db import models
 
+from ckeditor.fields import RichTextField
 from slugify import slugify
 
 class Patient(models.Model):
@@ -14,4 +15,21 @@ class Patient(models.Model):
             return '{} (published)'.format(self.name)
         else:
             return '{} (unpublished)'.format(self.name)
+
+class PatientStory(models.Model):
+    patient = models.ForeignKey(
+        Patient,
+        on_delete = models.CASCADE,
+        related_name = '+'
+    )
+
+    title = models.CharField(max_length=250)
+    published = models.BooleanField(default = True)
+    order = models.PositiveIntegerField()
+
+    content = RichTextField(
+        null=True
+    )
+
+    
 

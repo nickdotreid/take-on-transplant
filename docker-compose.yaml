@@ -1,0 +1,28 @@
+version: '2'
+services:
+    db:
+        environment: 
+            - POSTGRES_HOST_AUTH_METHOD=trust
+        image: postgres:12.2
+        volumes:
+            - db-pgdata:/var/lib/postgresql/data
+    server:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        command: honcho start dev
+        depends_on:
+            - db
+        environment:
+            - ALLOWED_HOSTS=localhost,server,192.168.99.100
+            - DATABASE_URL=psql://postgres@db:5432/postgres
+            - DEBUG=True
+            - MEDIA_URL=http://localhost:8080/media/
+            - PORT=8080
+        image: take-on-transplant-server
+        ports:
+            - 8080:8080
+        volumes:
+            - ./server:/server
+volumes:
+  db-pgdata:

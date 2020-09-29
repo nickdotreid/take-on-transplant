@@ -1,11 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<ul>
-    {% for patient in patients %}
-    <li>
-        <a href="{% url 'patient-story' patient.id %}">{{patient.name}}</a>
-    </li>
-    {% endfor %}
-</ul>
+<h2>Patient Stories</h2>
+<p>This is a list of all published patient stories.</p>
+{% for patient in patients %}
+<section>
+    <h3>{{patient.name}}</h3>
+    <dl>
+        {% for property in patient.properties %}
+        <dt>{{property.name}}</dt>
+        <dd>{{property.value}}</dd>
+        {% endfor %}
+    </dl>
+    <a href="{% url 'patient-story' patient.id %}">View {{patient.name}}'s story</a>
+</section>
+    
+{% endfor %}
 {% endblock %}

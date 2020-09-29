@@ -16,6 +16,27 @@ class Patient(models.Model):
         else:
             return '{} (unpublished)'.format(self.name)
 
+class Property(models.Model):
+    name = models.CharField(max_length=250)
+
+    def __str__(self):
+        return self.name
+
+
+class PatientProperty(models.Model):
+    patient = models.ForeignKey(
+        Patient,
+        on_delete = models.CASCADE,
+        related_name = '+'
+    )
+    property = models.ForeignKey(
+        Property,
+        on_delete = models.CASCADE,
+        related_name = '+'
+    )
+    order = models.PositiveIntegerField()
+    value = models.CharField(max_length=250)
+
 class PatientStory(models.Model):
     patient = models.ForeignKey(
         Patient,

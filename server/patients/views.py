@@ -2,6 +2,7 @@ from django.http import Http404
 from django.views.generic.base import TemplateView
 
 from .models import Patient
+from .models import PatientProperty
 from .models import PatientStory
 
 class PatientStoryList(TemplateView):
@@ -11,15 +12,38 @@ class PatientStoryList(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        patients = []
-        patients_query = Patient.objects.order_by('name') \
-        .filter(published = True)
-        for patient in patients_query.all():
-            patients.append({
-                'id': patient.id,
-                'name': patient.name
+        patients = Patient.objects.order_by('name') \
+        .filter(published = True) \
+        .all()
+
+        patient_properties = PatientProperty.objects.filter(
+            patient_id__in = [patient.id for patient in patients]
+        ) \
+        .order_by('order') \
+        .prefetch_related('property') \
+        .all()
+
+        properties_by_patient_id = {}
+        for patient_property in patient_properties:
+            patient_id = patient_property.patient_id
+            if patient_id not in properties_by_patient_id:
+                properties_by_patient_id[patient_id] = []
+            properties_by_patient_id[patient_id].append({
+                'name': patient_property.property.name,
+                'value': patient_property.value
             })
-        context['patients'] = patients
+
+        serialized_patients = []
+        for patient in patients:
+            properties = []
+            if patient.id in properties_by_patient_id:
+                properties = properties_by_patient_id[patient.id]
+            serialized_patients.append({
+                'id': patient.id,
+                'name': patient.name,
+                'properties': properties
+            })
+        context['patients'] = serialized_patients
         return context
 
 class PatientStoryView(TemplateView):

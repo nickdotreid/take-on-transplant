@@ -3,6 +3,8 @@ from django.contrib import admin
 from admin_ordering.admin import OrderableAdmin
 
 from .models import Patient
+from .models import Property
+from .models import PatientProperty
 from .models import PatientStory
 
 class PatientStoryAdminInline(OrderableAdmin, admin.StackedInline):
@@ -16,6 +18,16 @@ class PatientStoryAdminInline(OrderableAdmin, admin.StackedInline):
         'published'
     ]
 
+class PatientPropertyAdminInline(OrderableAdmin, admin.StackedInline):
+    model = PatientProperty
+    ordering_field = 'order'
+
+    fields = [
+        'property',
+        'order',
+        'value'
+    ]
+
 @admin.register(Patient)
 class PatientAdmin(admin.ModelAdmin):
 
@@ -27,6 +39,7 @@ class PatientAdmin(admin.ModelAdmin):
     ]
 
     inlines = [
+        PatientPropertyAdminInline,
         PatientStoryAdminInline
     ]
 
@@ -48,4 +61,10 @@ class PatientStoryAdmin(admin.ModelAdmin):
         'published',
         'content'
     ]
+
+@admin.register(Property)
+class PropertyAdmin(admin.ModelAdmin):
+    order = ['name']
+
+    fields = ['name']
 

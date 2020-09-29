@@ -18,7 +18,8 @@ class PatientStoryList(TemplateView):
         .all()
 
         patient_properties = PatientProperty.objects.filter(
-            patient_id__in = [patient.id for patient in patients]
+            patient_id__in = [patient.id for patient in patients],
+            published = True
         ) \
         .order_by('order') \
         .prefetch_related('property') \
@@ -35,7 +36,8 @@ class PatientStoryList(TemplateView):
             })
 
         story_excerpts = PatientStoryExcerpt.objects.filter(
-            patient_id__in = [_p.id for _p in patients]
+            patient_id__in = [_p.id for _p in patients],
+            published = True
         ) \
         .order_by('order') \
         .all()

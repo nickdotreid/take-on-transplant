@@ -24,6 +24,7 @@ class PatientStoryExcerptAdminInline(OrderableAdmin, admin.StackedInline):
     ordering_field = 'order'
 
     fields = [
+        'published',
         'content',
         'order'
     ]
@@ -35,7 +36,8 @@ class PatientPropertyAdminInline(OrderableAdmin, admin.StackedInline):
     fields = [
         'property',
         'order',
-        'value'
+        'value',
+        'published'
     ]
 
 @admin.register(Patient)

@@ -35,6 +35,7 @@ class PatientProperty(models.Model):
         related_name = '+'
     )
     order = models.PositiveIntegerField()
+    published = models.BooleanField(default=True)
     value = models.CharField(max_length=250)
 
 class PatientStory(models.Model):
@@ -69,6 +70,6 @@ class PatientStoryExcerpt(models.Model):
         max_length = 250
     )
     order = models.PositiveIntegerField()
-
+    published = models.BooleanField(default=True)
     
 

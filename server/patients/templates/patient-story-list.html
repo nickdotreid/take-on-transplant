@@ -12,8 +12,10 @@
         <dd>{{property.value}}</dd>
         {% endfor %}
     </dl>
+    {% for excerpt in patient.story_excerpts %}
+    <p>{{excerpt}}</p>
+    {% endfor %}
     <a href="{% url 'patient-story' patient.id %}">View {{patient.name}}'s story</a>
 </section>
-    
 {% endfor %}
 {% endblock %}

@@ -52,5 +52,23 @@ class PatientStory(models.Model):
         null=True
     )
 
+class PatientStoryExcerpt(models.Model):
+    patient = models.ForeignKey(
+        Patient,
+        on_delete = models.CASCADE,
+        related_name = '+'
+    )
+    story = models.ForeignKey(
+        PatientStory,
+        null = True,
+        on_delete = models.CASCADE,
+        related_name = '+'
+    )
+
+    content = models.CharField(
+        max_length = 250
+    )
+    order = models.PositiveIntegerField()
+
     
 

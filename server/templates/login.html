@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Login</h2>
+{% if user.is_authenticated %}
+    {% if user.email %}
+    <p>Your are logged in with the email address {{user.email}}</p>
+    {% endif %}
+    {% url 'logout' as logout_url %}
+    <a href="{{logout_url}}">Logout</a>
+{% else %}
+    {% if form.errors %}
+    <p class="error">Your username and password didn't match. Please try again.</p>
+    {% endif %}
+    {% url 'login' as login_url %}
+    <form method="post" action="{{login_url}}">
+        {% csrf_token %}
+        <div>
+            {{form.email.label_tag}}
+            {{form.email}}
+        </div>
+        <div>
+            {{ form.password.label_tag }}
+            {{ form.password }}
+        </div>
+        <input type="submit" value="login">
+        <input type="hidden" name="next" value="{{ next }}">
+    </form>
+    {% url 'password_reset' as password_reset_url %}
+    <a href="{{password_reset_url}}">Reset Password</a>
+{% endif %}
+{% endblock %}

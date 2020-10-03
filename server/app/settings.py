@@ -136,3 +136,5 @@ if 'SENDGRID_API_KEY' in os.environ:
     EMAIL_HOST_PASSWORD = os.environ['SENDGRID_API_KEY']
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
+
+LOGIN_REDIRECT_URL = '/login/'

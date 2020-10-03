@@ -47,6 +47,7 @@ class PatientAdmin(admin.ModelAdmin):
 
     fields = [
         'name',
+        'photo',
         'published'
     ]
 

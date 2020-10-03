@@ -58,10 +58,14 @@ class PatientStoryList(TemplateView):
             story_excerpts = []
             if patient.id in story_excerpts_by_patient_id:
                 story_excerpts = story_excerpts_by_patient_id[patient.id]
+            photo_url = None
+            if patient.thumbnail:
+                photo_url = patient.thumbnail.url
             serialized_patients.append({
                 'id': patient.id,
-                'name': patient.name,
+                'photo_url': photo_url,
                 'properties': properties,
+                'name': patient.name,
                 'story_excerpts': story_excerpts
             })
         context['patients'] = serialized_patients

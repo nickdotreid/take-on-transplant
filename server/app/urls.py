@@ -1,10 +1,11 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
-
 from django.contrib.auth.views import PasswordResetView
 from django.contrib.auth.views import PasswordResetDoneView
 from django.contrib.auth.views import PasswordResetConfirmView
 from django.contrib.auth.views import PasswordResetCompleteView
+from django.urls import path
 
 from patients.views import PatientStoryView
 from patients.views import PatientStoryList
@@ -17,4 +18,4 @@ urlpatterns = [
     path('reset-password/', PasswordResetView.as_view()),
     path('story/<patient_id>', PatientStoryView.as_view(), name='patient-story'),
     path('', PatientStoryList.as_view(), name='patient-story-list')
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -23,7 +23,7 @@ services:
         ports:
             - 8080:8080
         volumes:
-            - ./front-end:/front-end
+            - ./ui:/ui
             - ./server:/server
 volumes:
   db-pgdata:

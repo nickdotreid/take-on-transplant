@@ -18,17 +18,23 @@ RUN apt-get update && \
     curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
     apt-get install -y nodejs
 
-RUN npm install -g parcel-bundler sass
-COPY ./package*.json /
-RUN npm install
+# popper.js wants a git depenency...
+RUN apt-get update && \
+    apt-get install -y git
 
-ADD /front-end /front-end
+COPY ui/package*.json /ui/
+RUN cd /ui && \
+    npm install && \
+    cd /
+
+ADD /ui /ui
 ADD /server /server
 
-RUN cp server/templates/base.html /base.html && \
-    parcel build base.html -d /build --public-url /static && \
-    mkdir /compiled-templates && \
-    mv build/base.html compiled-templates/base.html
+# RUN cp server/templates/base.html /base.html && \
+#     parcel build base.html -d /build --public-url /static && \
+#     mkdir /compiled-templates && \
+#     mv build/base.html compiled-templates/base.html
+RUN mkdir build compiled-templates
 
 ADD nginx.conf /etc/nginx/conf.d/default.conf
 

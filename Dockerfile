@@ -22,12 +22,12 @@ RUN apt-get update && \
 RUN apt-get update && \
     apt-get install -y git
 
-COPY ui/package*.json /ui/
+ADD /ui /ui
+# COPY ui/package*.json /ui/
 RUN cd /ui && \
     npm install && \
     cd /
 
-ADD /ui /ui
 ADD /server /server
 
 # RUN cp server/templates/base.html /base.html && \

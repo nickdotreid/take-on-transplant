@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "parcel run index.html",
+    "dev": "parcel ui/index.html --host 0.0.0.0 --port 8000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

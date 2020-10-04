@@ -1,6 +1,9 @@
 FROM nginx:1.19.0
 ENV PYTHONBUFFERED 1
 
+# enables live reload for windows
+ENV CHOKIDAR_USEPOLLING 1
+
 RUN apt-get update && \
     apt-get install -y python3.7 python3-pip && \
     update-alternatives --install /usr/bin/python python /usr/bin/python3.7 1 && \
@@ -9,8 +12,8 @@ RUN apt-get update && \
 RUN apt-get update && \
     apt-get install -y build-essential openssl libssl-dev libpq-dev
 
-ADD server/requirements.txt /server/requirements.txt
-RUN pip install -r /server/requirements.txt
+ADD ./requirements.txt /requirements.txt
+RUN pip install -r /requirements.txt
 RUN pip install django-ckeditor
 
 RUN apt-get update && \
@@ -22,19 +25,19 @@ RUN apt-get update && \
 RUN apt-get update && \
     apt-get install -y git
 
-ADD /ui /ui
-# COPY ui/package*.json /ui/
-RUN cd /ui && \
-    npm install && \
-    cd /
+RUN npm install -g parcel-bundler@1.12
 
+COPY ./package.json /package.json
+COPY ./package-lock.json /package-lock.json
+RUN npm install
+
+ADD /ui /ui
 ADD /server /server
 
-# RUN cp server/templates/base.html /base.html && \
-#     parcel build base.html -d /build --public-url /static && \
-#     mkdir /compiled-templates && \
-#     mv build/base.html compiled-templates/base.html
-RUN mkdir build compiled-templates
+RUN cp /server/templates/base.html /base.html && \
+    parcel build /base.html -d /build --public-url /static && \
+    mkdir /compiled-templates && \
+    mv build/base.html compiled-templates/base.html
 
 ADD nginx.conf /etc/nginx/conf.d/default.conf
 

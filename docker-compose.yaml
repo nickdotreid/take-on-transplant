@@ -6,6 +6,17 @@ services:
         image: postgres:12.2
         volumes:
             - db-pgdata:/var/lib/postgresql/data
+    ui:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        command: npm run dev
+        image: take-on-transplant-ui
+        ports:
+            - 8000:8000
+        volumes:
+            - ./ui:/ui
+        working_dir: /
     server:
         build:
             context: .

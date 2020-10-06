@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Resources</h2>
+{% for resource in resources %}
+<div class="card">
+    <div class="card-body">
+        <h3>{{resource.name}}</h3>
+        <p>{{resource.description}}</p>
+        <a href="{% url 'resource-detail' resource.slug %}">Read more</a>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

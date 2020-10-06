@@ -16,6 +16,8 @@ from django.urls import path
 
 from patients.views import PatientStoryView
 from patients.views import PatientStoryList
+from resources.views import ResourceListView
+from resources.views import ResourceDetailView
 
 class EmailAuthenticationForm(AuthenticationForm):
     
@@ -62,6 +64,8 @@ urlpatterns = [
     path('reset-password/complete/', PasswordResetConfirmView.as_view(), name='password_reset_complete'),
     path('reset-password/sent/', PasswordResetDoneView.as_view(), name='password_reset_done'),
     path('reset-password/', PasswordResetView.as_view(), name='password_reset'),
-    path('story/<patient_id>', PatientStoryView.as_view(), name='patient-story'),
+    path('resources/<resource_slug>', ResourceDetailView.as_view(), name='resource-detail'),
+    path('resources/', ResourceListView.as_view(), name='resource-list'),
+    path('stories/<patient_id>', PatientStoryView.as_view(), name='patient-story'),
     path('', PatientStoryList.as_view(), name='patient-story-list')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

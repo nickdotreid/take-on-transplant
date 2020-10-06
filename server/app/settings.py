@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'admin_ordering',
     'ckeditor',
+    'resources',
     'patients'
 ]
 
@@ -42,9 +43,7 @@ template_directories = [
     'templates'
 ]
 if os.path.isdir('/take-on-transplant/compiled-templates'):
-    print('add to template dirs')
     template_directories.insert(0,'/take-on-transplant/compiled-templates')
-print(template_directories)
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

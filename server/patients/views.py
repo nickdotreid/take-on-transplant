@@ -56,7 +56,8 @@ class PatientStoryList(TemplateView):
             if _story.excerpt:
                 story_excerpts_by_patient_id[_story.patient_id].append({
                     'id': _story.id,
-                    'excerpt': _story.excerpt
+                    'excerpt': _story.excerpt,
+                    'title': _story.title
                 })
 
         serialized_patients = []

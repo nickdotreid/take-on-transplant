@@ -8,21 +8,42 @@
   </header>
   <div class="container">
     <p>Hello!</p>
-    <p>SOmething <a href="/" class="popover" tab-index="0">Popover here<span>Here is your content.</span></a></p>
-    <div class="accordion">
-      <section id="target">
-        <a href="#target">Some target to show</a>
-        <div>
-          <p>Content goes here</p>
+    <p>This is <a href="#" data-toggle="popover" data-content="Here is your content.">an example popover.</a></p>
+    <p>There was a table set out under a tree in front of the house, and the March Hare and the Hatter were having tea at it: a Dormouse was sitting between them, fast asleep, and the other two were using it as a cushion, resting their elbows on it, and talking over its head. “Very uncomfortable for the Dormouse,” thought Alice; “only, as it’s asleep, I suppose it doesn’t mind.”</p>
+    <p>The table was a large one, but the three were all crowded together at one corner of it: “No room! No room!” they cried out when they saw Alice coming. <a href="#" data-toggle="popover" data-content="There really wasn't room">“There’s plenty of room!”</a> said Alice indignantly, and she sat down in a large arm-chair at one end of the table.</p>
+    
+    <div id="accordion" class="accordion">
+      <div class="card">
+        <div class="card-header">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordionOne">First Accordion Row</button>
         </div>
-      </section>
-      <section id="other">
-        <a href="#other">Another section</a>
-        <div>
-          <p>More content!</p>
+        <div id="accordionOne" class="collapse" data-parent="#accordion">
+          <div class="card-body">
+            <ul>
+              <li>“Have some wine,” the March Hare said in an encouraging tone.</li>
+              <li>Alice looked all round the table, but there was nothing on it but tea. “I don’t see any wine,” she remarked.</li>
+              <li>“There isn’t any,” said the March Hare.</li>
+              <li>“Then it wasn’t very civil of you to offer it,” said Alice angrily.</li>
+              <li>“It wasn’t very civil of you to sit down without being invited,” said the March Hare.</li>
+              <li>“I didn’t know it was your table,” said Alice; “it’s laid for a great many more than three.”</li>
+              <li>“Your hair wants cutting,” said the Hatter. He had been looking at Alice for some time with great curiosity, and this was his first speech.</li>
+            </ul>
+          </div>
         </div>
-      </section>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordionTwo">Second Accordion Row</button>
+        </div>
+        <div id="accordionTwo" class="collapse" data-parent="#accordion">
+          <div class="card-body">
+            <p>There was a table set out under a tree in front of the house, and the March Hare and the Hatter were having tea at it: a Dormouse was sitting between them, fast asleep, and the other two were using it as a cushion, resting their elbows on it, and talking over its head. “Very uncomfortable for the Dormouse,” thought Alice; “only, as it’s asleep, I suppose it doesn’t mind.”</p>
+            <p>The table was a large one, but the three were all crowded together at one corner of it: “No room! No room!” they cried out when they saw Alice coming. <a href="#" data-toggle="popover" data-content="There really wasn't room">“There’s plenty of room!”</a> said Alice indignantly, and she sat down in a large arm-chair at one end of the table.</p>
+          </div>
+        </div>
+      </div>
     </div>
+
   </div>
 <script src="./index.js"></script>
 </body>

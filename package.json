@@ -16,6 +16,8 @@
     "sass": "^1.26.11"
   },
   "dependencies": {
-    "tippy.js": "^6.2.6"
+    "bootstrap": "^4.5.2",
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1"
   }
 }

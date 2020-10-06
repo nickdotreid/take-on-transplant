@@ -1,26 +1,9 @@
-import tippy from 'tippy.js';
 
+import $ from 'jquery';
+import 'bootstrap/js/src/collapse';
+import 'bootstrap/js/src/popover';
 
-var popovers = document.querySelectorAll('a.popover');
-popovers.forEach((element) => {
-    console.log(element.children);
-    var popoverContent;
-    var i = 0;
-    while (i < element.children.length && !popoverContent) {
-        var childElement = element.children.item(i);
-        if(childElement.tagName.toLowerCase() == 'span') {
-            popoverContent = childElement.innerHTML;
-        }
-        i++
-    }
-    if(popoverContent) {
-        tippy(element, {
-            content: popoverContent,
-            allowHTML: true
-        });
-    }
-});
-
-tippy('.example',{
-    content: 'example'
+$('[data-toggle="popover"]').popover({
+    position: 'top',
+    trigger: 'click hover'
 });

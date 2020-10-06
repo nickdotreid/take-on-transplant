@@ -6,7 +6,6 @@ from .models import Patient
 from .models import Property
 from .models import PatientProperty
 from .models import PatientStory
-from .models import PatientStoryExcerpt
 
 class PatientStoryAdminInline(OrderableAdmin, admin.StackedInline):
     model = PatientStory
@@ -16,17 +15,8 @@ class PatientStoryAdminInline(OrderableAdmin, admin.StackedInline):
     fields = [
         'title',
         'order',
-        'published'
-    ]
-
-class PatientStoryExcerptAdminInline(OrderableAdmin, admin.StackedInline):
-    model = PatientStoryExcerpt
-    ordering_field = 'order'
-
-    fields = [
         'published',
-        'content',
-        'order'
+        'excerpt'
     ]
 
 class PatientPropertyAdminInline(OrderableAdmin, admin.StackedInline):
@@ -53,8 +43,7 @@ class PatientAdmin(admin.ModelAdmin):
 
     inlines = [
         PatientPropertyAdminInline,
-        PatientStoryAdminInline,
-        PatientStoryExcerptAdminInline
+        PatientStoryAdminInline
     ]
 
 @admin.register(PatientStory)
@@ -73,12 +62,11 @@ class PatientStoryAdmin(admin.ModelAdmin):
         'title',
         'order',
         'published',
+        'excerpt',
         'content'
     ]
 
 @admin.register(Property)
 class PropertyAdmin(admin.ModelAdmin):
     order = ['name']
-
     fields = ['name']
-

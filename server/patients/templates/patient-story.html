@@ -2,12 +2,23 @@
 
 {% block content %}
 <h2>{{patient.name}}</h2>
-{% for story in stories %}
-<article>
-    <h3>{{story.title}}</h3>
-    {% autoescape off %}
-    {{story.content}}
-    {% endautoescape %}
-</article>
-{% endfor %}
+
+<div id="story-accordion" class="accordion">
+    {% for story in stories %}
+    <div class="card">
+        <div class="card-header">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#story-{{story.id}}">
+                {{story.title}}
+            </button>
+        </div>
+        <div id="story-{{story.id}}" class="collapse" data-parent="#story-accordion">
+            <div class="card-body">
+                {% autoescape off %}
+                {{story.content}}
+                {% endautoescape %}
+            </div>
+          </div>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}

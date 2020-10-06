@@ -4,7 +4,6 @@ from django.views.generic.base import TemplateView
 from .models import Patient
 from .models import PatientProperty
 from .models import PatientStory
-from .models import PatientStoryExcerpt
 
 class PatientStoryList(TemplateView):
 
@@ -35,7 +34,7 @@ class PatientStoryList(TemplateView):
                 'value': patient_property.value
             })
 
-        story_excerpts = PatientStoryExcerpt.objects.filter(
+        patient_stories = PatientStory.objects.filter(
             patient_id__in = [_p.id for _p in patients],
             published = True
         ) \
@@ -43,12 +42,14 @@ class PatientStoryList(TemplateView):
         .all()
 
         story_excerpts_by_patient_id = {}
-        for _excerpt in story_excerpts:
-            if _excerpt.patient_id not in story_excerpts_by_patient_id:
-                story_excerpts_by_patient_id[_excerpt.patient_id] = []
-            story_excerpts_by_patient_id[_excerpt.patient_id].append(
-                _excerpt.content
-            )
+        for _story in patient_stories:
+            if _story.patient_id not in story_excerpts_by_patient_id:
+                story_excerpts_by_patient_id[_story.patient_id] = []
+            if _story.excerpt:
+                story_excerpts_by_patient_id[_story.patient_id].append({
+                    'id': _story.id,
+                    'excerpt': _story.excerpt
+                })
 
         serialized_patients = []
         for patient in patients:

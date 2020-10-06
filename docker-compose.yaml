@@ -15,7 +15,7 @@ services:
         ports:
             - 8000:8000
         volumes:
-            - ./ui:/ui
+            - ./ui:/take-on-transplant/ui
         working_dir: /
     server:
         build:
@@ -35,6 +35,6 @@ services:
             - 8080:8080
         volumes:
             - ./ui:/ui
-            - ./server:/server
+            - ./server:/take-on-transplant/server
 volumes:
   db-pgdata:

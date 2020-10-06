@@ -12,10 +12,6 @@ RUN apt-get update && \
 RUN apt-get update && \
     apt-get install -y build-essential openssl libssl-dev libpq-dev
 
-ADD ./requirements.txt /requirements.txt
-RUN pip install -r /requirements.txt
-RUN pip install django-ckeditor
-
 RUN apt-get update && \
     apt-get install -y curl && \
     curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
@@ -25,23 +21,29 @@ RUN apt-get update && \
 RUN apt-get update && \
     apt-get install -y git
 
+WORKDIR /take-on-transplant
+
 RUN npm install -g parcel-bundler@1.12
 
-COPY ./package.json /package.json
-COPY ./package-lock.json /package-lock.json
+ADD ./package.json ./package.json
+ADD ./package-lock.json ./package-lock.json
+ADD ./.sassrc ./.sassrc
 RUN npm install
 
-ADD /ui /ui
-ADD /server /server
+ADD ./requirements.txt ./requirements.txt
+RUN pip install -r requirements.txt
+RUN pip install django-ckeditor
 
-RUN cp /server/templates/base.html /base.html && \
-    parcel build /base.html -d /build --public-url /static && \
-    mkdir /compiled-templates && \
-    mv build/base.html compiled-templates/base.html
+ADD /ui /take-on-transplant/ui
+ADD /server /take-on-transplant/server
+
+RUN parcel build server/templates/base.html -d dist --public-url /static && \
+    mkdir compiled-templates && \
+    mv dist/base.html compiled-templates/base.html
 
 ADD nginx.conf /etc/nginx/conf.d/default.conf
 
-WORKDIR /server
+WORKDIR /take-on-transplant/server
 RUN python manage.py collectstatic
 
 CMD gunicorn -b 0.0.0.0:5000 app.wsgi:application --log-level debug --daemon \

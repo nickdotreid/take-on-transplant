@@ -38,13 +38,17 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'app.urls'
 
+template_directories = [
+    'templates'
+]
+if os.path.isdir('/take-on-transplant/compiled-templates'):
+    print('add to template dirs')
+    template_directories.insert(0,'/take-on-transplant/compiled-templates')
+print(template_directories)
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            '/compiled-templates',
-            'templates'
-        ],
+        'DIRS': template_directories,
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -125,9 +129,10 @@ MEDIA_ROOT = '/media/'
 STATIC_URL = '/static/'
 STATIC_ROOT = '/static'
 
-STATICFILES_DIRS = [
-    '/build'
-]
+if os.path.isdir('/take-on-transplant/dist'):
+    STATICFILES_DIRS = [
+        '/take-on-transplant/dist'
+    ]
 
 # Email Settings
 if 'SENDGRID_API_KEY' in os.environ:

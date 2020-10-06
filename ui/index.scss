@@ -22,3 +22,40 @@ a.popover {
     }
 }
 
+.accordion {
+    section {
+        background-color: #efefef;
+        padding: 0.5em 0.5em;
+        border-top: 1px solid #333333;
+    }
+    section:first-child {
+        border-top-width: 0px;
+    }
+
+    section > a {
+        display: block;
+        text-decoration: none;
+        color: #333333;
+        padding: 0.25em 1em;
+    }
+    section > a:visited {
+
+    }
+
+    section > div {
+        background-color: #FFFFFF;
+        padding: 0.5em 1em;
+    }
+
+    section > div {
+        display: none;
+    }
+    section:target > div {
+        display: block;
+    }
+    section:target > a {
+        background-color: #FFFFFF;
+        border-bottom: 1px solid #333333;
+    }
+}
+

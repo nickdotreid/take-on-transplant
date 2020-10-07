@@ -76,7 +76,8 @@ class PatientStoryList(TemplateView):
                 'photo_url': photo_url,
                 'properties': properties,
                 'name': patient.name,
-                'story_excerpts': story_excerpts
+                'story_excerpts': story_excerpts,
+                'tags': patient.tags.filter(published=True)
             })
         context['patients'] = serialized_patients
         return context

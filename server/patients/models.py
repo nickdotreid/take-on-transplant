@@ -6,6 +6,8 @@ from PIL import Image
 from ckeditor.fields import RichTextField
 from slugify import slugify
 
+from tags.models import Tag
+
 class Patient(models.Model):
     name = models.CharField(max_length=50)
     published = models.BooleanField(default=False)
@@ -17,6 +19,8 @@ class Patient(models.Model):
         null = True,
         upload_to = 'thumbnails'
     )
+
+    tags = models.ManyToManyField(Tag)
 
     def save(self, *args, **kwargs):
         if self.photo:
@@ -83,3 +87,5 @@ class PatientStory(models.Model):
     content = RichTextField(
         null=True
     )
+
+    tags = models.ManyToManyField(Tag)

@@ -32,13 +32,14 @@ class PatientPropertyAdminInline(OrderableAdmin, admin.StackedInline):
 
 @admin.register(Patient)
 class PatientAdmin(admin.ModelAdmin):
-
+    filter_horizontal = ['tags']
     order = ['name']
 
     fields = [
         'name',
         'photo',
-        'published'
+        'published',
+        'tags'
     ]
 
     inlines = [
@@ -48,7 +49,7 @@ class PatientAdmin(admin.ModelAdmin):
 
 @admin.register(PatientStory)
 class PatientStoryAdmin(admin.ModelAdmin):
-
+    
     order = ['patient_id','title','order']
 
     list_display = [

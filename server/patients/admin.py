@@ -3,8 +3,8 @@ from django.contrib import admin
 from admin_ordering.admin import OrderableAdmin
 
 from .models import Patient
-from .models import Property
-from .models import PatientProperty
+from .models import Attribute
+from .models import PatientAttribute
 from .models import PatientStory
 from .models import PatientStoryHighlight
 
@@ -30,15 +30,13 @@ class PatientStoryAdminInline(OrderableAdmin, admin.StackedInline):
         'published'
     ]
 
-class PatientPropertyAdminInline(OrderableAdmin, admin.StackedInline):
-    model = PatientProperty
+class PatientAttributeAdminInline(OrderableAdmin, admin.TabularInline):
+    model = PatientAttribute
     ordering_field = 'order'
 
     fields = [
-        'property',
-        'order',
-        'value',
-        'published'
+        'attribute',
+        'value'
     ]
 
 @admin.register(Patient)
@@ -54,7 +52,7 @@ class PatientAdmin(admin.ModelAdmin):
     ]
 
     inlines = [
-        PatientPropertyAdminInline,
+        PatientAttributeAdminInline,
         PatientStoryHighlightAdminInline,
         PatientStoryAdminInline
     ]
@@ -79,7 +77,11 @@ class PatientStoryAdmin(admin.ModelAdmin):
         'content'
     ]
 
-@admin.register(Property)
-class PropertyAdmin(admin.ModelAdmin):
-    order = ['name']
-    fields = ['name']
+@admin.register(Attribute)
+class AttributeAdmin(OrderableAdmin, admin.ModelAdmin):
+    ordering_field = "order"
+    # ordering_field_hide_input = True
+
+    list_display = ['name', 'order', 'published']
+    list_editable = ['order', 'published']
+    fields = ['name', 'order', 'published']

@@ -8,7 +8,7 @@ from django.views.generic.base import TemplateView
 from resources.models import Resource
 
 from .models import Patient
-from .models import PatientProperty
+from .models import PatientAttribute
 from .models import PatientStory
 from .models import PatientStoryHighlight
 
@@ -21,65 +21,10 @@ class PatientStoryList(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        patients = Patient.objects.order_by('name') \
+        context['patients'] = Patient.objects.order_by('name') \
         .filter(published = True) \
         .all()
-
-        patient_properties = PatientProperty.objects.filter(
-            patient_id__in = [patient.id for patient in patients],
-            published = True
-        ) \
-        .order_by('order') \
-        .prefetch_related('property') \
-        .all()
-
-        properties_by_patient_id = {}
-        for patient_property in patient_properties:
-            patient_id = patient_property.patient_id
-            if patient_id not in properties_by_patient_id:
-                properties_by_patient_id[patient_id] = []
-            properties_by_patient_id[patient_id].append({
-                'name': patient_property.property.name,
-                'value': patient_property.value
-            })
-
-        patient_stories = PatientStoryHighlight.objects.filter(
-            patient_id__in = [_p.id for _p in patients],
-            published = True
-        ) \
-        .order_by('order') \
-        .all()
-
-        story_excerpts_by_patient_id = {}
-        for _story in patient_stories:
-            if _story.patient_id not in story_excerpts_by_patient_id:
-                story_excerpts_by_patient_id[_story.patient_id] = []
-            story_excerpts_by_patient_id[_story.patient_id].append({
-                'id': _story.id,
-                'title': _story.title,
-                'content': _story.content
-            })
-
-        serialized_patients = []
-        for patient in patients:
-            properties = []
-            if patient.id in properties_by_patient_id:
-                properties = properties_by_patient_id[patient.id]
-            story_excerpts = []
-            if patient.id in story_excerpts_by_patient_id:
-                story_excerpts = story_excerpts_by_patient_id[patient.id]
-            photo_url = None
-            if patient.thumbnail:
-                photo_url = patient.thumbnail.url
-            serialized_patients.append({
-                'id': patient.id,
-                'photo_url': photo_url,
-                'properties': properties,
-                'name': patient.name,
-                'story_excerpts': story_excerpts,
-                'tags': patient.tags.filter(published=True)
-            })
-        context['patients'] = serialized_patients
+        
         return context
 
 class PatientStoryView(TemplateView):
@@ -112,10 +57,7 @@ class PatientStoryView(TemplateView):
     def get_context_data(self, patient_id, **kwargs):
         context = super().get_context_data(**kwargs)
         patient = self.get_patient(patient_id)
-        context['patient'] = {
-            'id': patient.id,
-            'name': patient.name
-        }
+        context['patient'] = patient
         stories = []
         story_query = PatientStory.objects.filter(patient = patient)
         for story in story_query.all():

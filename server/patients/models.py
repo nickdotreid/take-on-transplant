@@ -27,6 +27,12 @@ class Patient(models.Model):
         blank = True
     )
 
+    @property
+    def attributes(self):
+        if not hasattr(self, '_attributes'):
+            self._attributes = self.get_patient_attributes()
+        return self._attributes
+
     def save(self, *args, **kwargs):
         if self.photo and not self.thumbnail:
             image = Image.open(self.photo)
@@ -49,27 +55,47 @@ class Patient(models.Model):
         else:
             return '{} (unpublished)'.format(self.name)
 
-class Property(models.Model):
+    def get_patient_attributes(self):
+        return PatientAttribute.objects.filter(
+            patient = self
+        ).all()
+
+class Attribute(models.Model):
     name = models.CharField(max_length=250)
+    order = models.PositiveIntegerField()
+    published = models.BooleanField(default = True)
 
     def __str__(self):
         return self.name
 
+class PatientAttributeManager(models.Manager):
 
-class PatientProperty(models.Model):
+    def get_queryset(self):
+        return super().get_queryset() \
+        .prefetch_related('attribute') \
+        .order_by('attribute__order') \
+        .filter(
+            attribute__published = True
+        )
+
+class PatientAttribute(models.Model):
     patient = models.ForeignKey(
         Patient,
         on_delete = models.CASCADE,
         related_name = '+'
     )
-    property = models.ForeignKey(
-        Property,
+    attribute = models.ForeignKey(
+        Attribute,
         on_delete = models.CASCADE,
         related_name = '+'
     )
-    order = models.PositiveIntegerField()
-    published = models.BooleanField(default=True)
     value = models.CharField(max_length=250)
+
+    objects = PatientAttributeManager()
+
+    @property
+    def name(self):
+        return self.attribute.name
 
 class PatientStory(models.Model):
     patient = models.ForeignKey(

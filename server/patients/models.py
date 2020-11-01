@@ -12,18 +12,23 @@ class Patient(models.Model):
     name = models.CharField(max_length=50)
     published = models.BooleanField(default=False)
     photo = models.ImageField(
+        blank = True,
         null = True,
         upload_to = 'photos'
     )
     thumbnail = models.ImageField(
+        blank = True,
         null = True,
         upload_to = 'thumbnails'
     )
 
-    tags = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField(
+        Tag,
+        blank = True
+    )
 
     def save(self, *args, **kwargs):
-        if self.photo:
+        if self.photo and not self.thumbnail:
             image = Image.open(self.photo)
             image.convert('RGB')
             image.thumbnail((100,100))
@@ -33,8 +38,6 @@ class Patient(models.Model):
                 image_io,
                 name = self.photo.name
             )
-        else:
-            self.thumbnail = None
         super().save(*args, **kwargs)
 
     def slug(self):
@@ -79,13 +82,35 @@ class PatientStory(models.Model):
     published = models.BooleanField(default = True)
     order = models.PositiveIntegerField()
 
-    excerpt = models.CharField(
-        null = True,
-        max_length = 500
+    content = RichTextField(
+        blank = True,
+        null=True
     )
 
-    content = RichTextField(
-        null=True
+    tags = models.ManyToManyField(
+        Tag,
+        blank = True
+    )
+
+class PatientStoryHighlight(models.Model):
+    patient = models.ForeignKey(
+        Patient,
+        on_delete = models.CASCADE,
+        related_name = '+'
+    )
+
+    order = models.PositiveIntegerField()
+    published = models.BooleanField(default=True)
+
+    title = models.CharField(
+        blank = True,
+        max_length = 250,
+        null = True
+    )
+    content = models.CharField(
+        blank = True,
+        null = True,
+        max_length = 500
     )
 
     tags = models.ManyToManyField(Tag)

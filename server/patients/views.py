@@ -10,6 +10,7 @@ from resources.models import Resource
 from .models import Patient
 from .models import PatientProperty
 from .models import PatientStory
+from .models import PatientStoryHighlight
 
 logger = logging.getLogger(__name__)
 
@@ -42,7 +43,7 @@ class PatientStoryList(TemplateView):
                 'value': patient_property.value
             })
 
-        patient_stories = PatientStory.objects.filter(
+        patient_stories = PatientStoryHighlight.objects.filter(
             patient_id__in = [_p.id for _p in patients],
             published = True
         ) \
@@ -53,12 +54,11 @@ class PatientStoryList(TemplateView):
         for _story in patient_stories:
             if _story.patient_id not in story_excerpts_by_patient_id:
                 story_excerpts_by_patient_id[_story.patient_id] = []
-            if _story.excerpt:
-                story_excerpts_by_patient_id[_story.patient_id].append({
-                    'id': _story.id,
-                    'excerpt': _story.excerpt,
-                    'title': _story.title
-                })
+            story_excerpts_by_patient_id[_story.patient_id].append({
+                'id': _story.id,
+                'title': _story.title,
+                'content': _story.content
+            })
 
         serialized_patients = []
         for patient in patients:

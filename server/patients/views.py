@@ -27,8 +27,7 @@ class PatientStoryList(TemplateView):
         
         return context
 
-class PatientStoryView(TemplateView):
-
+class PatientView(TemplateView):
     template_name = 'patient-story.html'
 
     def get_patient(self, patient_id):
@@ -53,6 +52,11 @@ class PatientStoryView(TemplateView):
             return str(soup)
         else:
             return content
+
+
+class PatientStoryView(PatientView):
+
+    template_name = 'patient-story.html'
     
     def get_context_data(self, patient_id, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -67,4 +71,30 @@ class PatientStoryView(TemplateView):
                 'content': self.add_resource_popovers(story.content)
             })
         context['stories'] = stories
+        return context
+
+class PatientStoryTableOfContentsView(PatientView):
+
+    template_name = 'patient-story-table-of-contents.html'
+
+    def get_story(self, patient_id, story_id):
+        try:
+            return PatientStory.objects.get(
+                patient_id = patient_id,
+                id = story_id                
+            )
+        except PatientStory.DoesNotExist:
+            raise Http404('No story found')
+
+    def get_context_data(self, patient_id, story_id, **kwargs):
+        context = super().get_context_data(**kwargs)
+        patient = self.get_patient(patient_id)
+        context['patient'] = patient        
+        story = self.get_story(patient_id, story_id)
+        context['stories'] = patient.stories
+        context['story'] = {
+            'id': story.id,
+            'title': story.title,
+            'content': self.add_resource_popovers(story.content)
+        }
         return context

@@ -15,6 +15,7 @@ from django.forms import EmailField
 from django.urls import path
 
 from patients.views import PatientStoryView
+from patients.views import PatientStoryTableOfContentsView
 from patients.views import PatientStoryList
 from resources.views import ResourceListView
 from resources.views import ResourceDetailView
@@ -66,6 +67,7 @@ urlpatterns = [
     path('reset-password/', PasswordResetView.as_view(), name='password_reset'),
     path('resources/<resource_slug>', ResourceDetailView.as_view(), name='resource-detail'),
     path('resources/', ResourceListView.as_view(), name='resource-list'),
+    path('stories/<patient_id>/story/<story_id>/', PatientStoryTableOfContentsView.as_view(), name='patient-story-toc'),
     path('stories/<patient_id>', PatientStoryView.as_view(), name='patient-story'),
     path('', PatientStoryList.as_view(), name='patient-story-list')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -39,6 +39,12 @@ class Patient(models.Model):
             self._story_highlights = self.get_story_highlights()
         return self._story_highlights
 
+    @property
+    def stories(self):
+        if not hasattr(self, '_stories'):
+            self._stories = self.get_stories()
+        return self._stories
+
     def save(self, *args, **kwargs):
         if self.photo and not self.thumbnail:
             image = Image.open(self.photo)
@@ -65,6 +71,9 @@ class Patient(models.Model):
         return PatientAttribute.objects.filter(
             patient = self
         ).all()
+
+    def get_stories(self):
+        return PatientStory.objects.filter(published=True).all()
 
     def get_story_highlights(self):
         return PatientStoryHighlight.objects.filter(

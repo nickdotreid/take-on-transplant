@@ -27,12 +27,14 @@
             </div>
         </div>
     </div>
-    {% if patient.story_excerpts%}
+    {% if patient.story_highlights%}
     <ul class="list-group list-group-flush">
-        {% for story in patient.story_excerpts %}
+        {% for highlight in patient.story_highlights %}
         <li class="list-group-item">
-            <strong>{{story.title}}</strong>
-            <p>{{story.excerpt}}</p>
+            {% if highlight.title %}
+            <strong>{{highlight.title}}</strong>
+            {% endif %}
+            <p>{{highlight.content}}</p>
         </li>
         {% endfor %}
     </ul>

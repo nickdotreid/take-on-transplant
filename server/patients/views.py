@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 from django.http import Http404
 from django.views.generic.base import TemplateView
 
+from resources.models import Definition
 from resources.models import Resource
 
 from .models import Patient
@@ -44,11 +45,16 @@ class PatientView(TemplateView):
                 if href:
                     resource = None
                     for resource_slug in re.findall('.*resources\/(.*)$', href):
-                        link['data-tobble'] = resource_slug
                         resource = Resource.objects.filter(slug = resource_slug).first()
                     if resource:
                         link['data-toggle'] = "popover"
                         link['data-content'] = resource.description
+                    definition = None
+                    for slug in re.findall('.*definitions\/(.*)$', href):
+                        definition = Definition.objects.filter(slug = slug).first()
+                    if definition:
+                        link['data-toggle'] = "popover"
+                        link['data-content'] = definition.description
             return str(soup)
         else:
             return content

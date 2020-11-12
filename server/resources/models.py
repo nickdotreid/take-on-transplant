@@ -2,7 +2,7 @@ from django.db import models
 from ckeditor.fields import RichTextField
 from slugify import slugify
 
-class Resource(models.Model):
+class AbstractResource(models.Model):
     name = models.CharField(max_length = 70)
     slug = models.CharField(null=True, max_length=70)
     published = models.BooleanField(default=True)
@@ -10,11 +10,9 @@ class Resource(models.Model):
         null = True,
         max_length = 250
     )
-    content = RichTextField(
-        null = True
-    )
 
     class Meta:
+        abstract = True
         ordering = ['name']
 
     def save(self, *args, **kwargs):
@@ -27,3 +25,11 @@ class Resource(models.Model):
         if self.published:
             status = 'published'
         return '{} ({})'.format(self.name, status)
+
+class Definition(AbstractResource):
+    pass
+
+class Resource(AbstractResource):
+    content = RichTextField(
+        null = True
+    )

@@ -73,7 +73,6 @@ class PatientStoryAdmin(admin.ModelAdmin):
         'title',
         'order',
         'published',
-        'excerpt',
         'content'
     ]
 

@@ -39,6 +39,7 @@ services:
         volumes:
             - ./ui:/take-on-transplant/ui
             - ./server:/take-on-transplant/server
+            - ./templates:/take-on-transplant/templates
             - ./templates-compiled:/take-on-transplant/templates-compiled
 volumes:
     db-pgdata:

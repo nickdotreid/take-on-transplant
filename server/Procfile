@@ -1,3 +1,4 @@
 dev: python manage.py runserver 0.0.0.0:$PORT
-prod: gunicorn -b 0.0.0.0:5000 app.wsgi:application --log-level debug
 nginx: nginx -g 'daemon off;'
+prod: gunicorn -b 0.0.0.0:5000 app.wsgi:application --log-level debug
+templates: npm run templates-dev

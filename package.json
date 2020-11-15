@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "parcel ui/index.html --host 0.0.0.0 --port 8000",
+    "templates-build": "parcel build templates/base.html -d templates-compiled --public-url /static",
+    "templates-dev": "parcel templates/base.html -d templates-compiled --public-url /static --host 0.0.0.0 --port 8000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

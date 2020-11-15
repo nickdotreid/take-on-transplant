@@ -43,8 +43,8 @@ ROOT_URLCONF = 'app.urls'
 template_directories = [
     'templates'
 ]
-if os.path.isdir('/take-on-transplant/compiled-templates'):
-    template_directories.insert(0,'/take-on-transplant/compiled-templates')
+if os.path.isdir('/take-on-transplant/templates-compiled'):
+    template_directories.insert(0,'/take-on-transplant/templates-compiled')
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -129,9 +129,9 @@ MEDIA_ROOT = '/media/'
 STATIC_URL = '/static/'
 STATIC_ROOT = '/static'
 
-if os.path.isdir('/take-on-transplant/dist'):
+if os.path.isdir('/take-on-transplant/templates-compiled'):
     STATICFILES_DIRS = [
-        '/take-on-transplant/dist'
+        '/take-on-transplant/templates-compiled'
     ]
 
 # Email Settings

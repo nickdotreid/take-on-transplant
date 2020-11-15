@@ -34,18 +34,15 @@ ADD ./requirements.txt ./requirements.txt
 RUN pip install -r requirements.txt
 RUN pip install django-ckeditor
 
-ADD /ui /take-on-transplant/ui
-ADD /server /take-on-transplant/server
-
-RUN parcel build server/templates/base.html -d dist --public-url /static && \
-    mkdir compiled-templates && \
-    mv dist/base.html compiled-templates/base.html
+ADD ./ui /take-on-transplant/ui
+ADD ./server /take-on-transplant/server
+ADD ./templates /take-on-transplant/templates
 
 ADD nginx.conf /etc/nginx/conf.d/default.conf
 
 WORKDIR /take-on-transplant/server
+RUN npm run templates-build
 RUN python manage.py collectstatic
 
-CMD gunicorn -b 0.0.0.0:5000 app.wsgi:application --log-level debug --daemon \
-    && sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/conf.d/default.conf \
-    && nginx -g 'daemon off;'
+CMD sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/conf.d/default.conf \
+    && honcho start prod nginx

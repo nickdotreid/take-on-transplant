@@ -1,5 +1,7 @@
 .vscode
 node_modules
+templates-compiled/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

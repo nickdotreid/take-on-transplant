@@ -73,10 +73,14 @@ class Patient(models.Model):
         ).all()
 
     def get_stories(self):
-        return PatientStory.objects.filter(published=True).all()
+        return PatientStory.objects.filter(
+            patient = self,
+            published = True
+        ).all()
 
     def get_story_highlights(self):
         return PatientStoryHighlight.objects.filter(
+            patient = self,
             published = True
         ).all()
 

@@ -43,6 +43,8 @@ ROOT_URLCONF = 'app.urls'
 template_directories = [
     'templates'
 ]
+if os.path.isdir('/take-on-transplant/templates'):
+    template_directories.insert(0,'/take-on-transplant/templates')
 if os.path.isdir('/take-on-transplant/templates-compiled'):
     template_directories.insert(0,'/take-on-transplant/templates-compiled')
 TEMPLATES = [

@@ -37,9 +37,11 @@ services:
         ports:
             - 8080:8080
         volumes:
-            - ./ui:/take-on-transplant/ui
             - ./server:/take-on-transplant/server
+            - server-media:/media/
+            - ./ui:/take-on-transplant/ui
             - ./templates:/take-on-transplant/templates
             - ./templates-compiled:/take-on-transplant/templates-compiled
 volumes:
     db-pgdata:
+    server-media:

@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib import messages
 
 from admin_ordering.admin import OrderableAdmin
 
@@ -44,6 +45,10 @@ class PatientAdmin(admin.ModelAdmin):
     filter_horizontal = ['tags']
     order = ['name']
 
+    actions = [
+        'update_thumbnails'
+    ]
+
     fields = [
         'name',
         'photo',
@@ -56,6 +61,13 @@ class PatientAdmin(admin.ModelAdmin):
         PatientStoryHighlightAdminInline,
         PatientStoryAdminInline
     ]
+
+    def update_thumbnails(self, request, queryset):
+        count = 0
+        for patient in queryset.all():
+            patient.update_thumbnail()
+            count += 1
+        self.message_user(request, 'Updated %d thumbnails' % (count), messages.SUCCESS)
 
 @admin.register(PatientStory)
 class PatientStoryAdmin(admin.ModelAdmin):

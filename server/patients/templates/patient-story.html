@@ -1,32 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>{{patient.name}}</h2>
-{% if patient.photo_url %}
-<img src="{{patient.photo_url}}" />
-{% endif %}
-<dl>
-    {% for attribute in patient.attributes %}
-    <dt>{{attribute.name}}</dt>
-    <dd>{{attribute.value}}</dd>
-    {% endfor %}
-</dl>
-<div id="story-accordion" class="accordion">
-    {% for story in stories %}
-    <div class="card">
-        <div class="card-header">
-            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#story-{{story.id}}">
-                {{story.title}}
-            </button>
-        </div>
-        <div id="story-{{story.id}}" class="collapse" data-parent="#story-accordion">
-            <div class="card-body">
-                {% autoescape off %}
-                {{story.content}}
-                {% endautoescape %}
-            </div>
-          </div>
-    </div>
-    {% endfor %}
+<div class="patient-profile">
+    <h2>{{patient.name}}</h2>
+    {% if patient.photo_url %}
+    <img src="{{patient.photo_url}}" />
+    {% else %}
+    <span class="patient-photo-placeholder"></span>
+    {% endif %}
 </div>
+
+{% for story in stories %}
+<div class="collapsible-content">
+    <h3 class="title">{{story.title}}</h3>
+    <div class="content">
+        {% autoescape off %}
+        {{story.content}}
+        {% endautoescape %}
+    </div>
+</div>
+{% endfor %}
 {% endblock %}

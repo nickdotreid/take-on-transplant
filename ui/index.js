@@ -12,9 +12,19 @@ function registerPopovers() {
     });
 }
 
+function registerCollapsibleContent() {
+    document.querySelectorAll('.collapsible-content').forEach((element) => {
+        const title = element.querySelector('.title');
+        if (title) {
+            title.addEventListener('click', () => {
+                element.classList.toggle('open');
+            });
+        }
+    });
+}
 
 window.addEventListener('DOMContentLoaded', () => {
-
+    registerCollapsibleContent();
     registerPopovers();
 
 });

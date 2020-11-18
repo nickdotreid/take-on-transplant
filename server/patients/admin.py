@@ -8,6 +8,9 @@ from .models import Attribute
 from .models import PatientAttribute
 from .models import PatientStory
 from .models import PatientStoryHighlight
+from .models import PretransplantIssue
+from .models import PostTransplantIssue
+from .models import Issue
 
 class PatientStoryHighlightAdminInline(OrderableAdmin, admin.StackedInline):
     model = PatientStoryHighlight
@@ -40,6 +43,15 @@ class PatientAttributeAdminInline(OrderableAdmin, admin.TabularInline):
         'value'
     ]
 
+class PatientPretransplantIssueAdminInline(OrderableAdmin, admin.TabularInline):
+    model = PretransplantIssue
+    fields = [
+        'issue'
+    ]
+
+class PatientPostTransplantIssueAdminInline(PatientPretransplantIssueAdminInline):
+    model = PostTransplantIssue
+
 @admin.register(Patient)
 class PatientAdmin(admin.ModelAdmin):
     filter_horizontal = ['tags']
@@ -58,6 +70,8 @@ class PatientAdmin(admin.ModelAdmin):
 
     inlines = [
         PatientAttributeAdminInline,
+        PatientPretransplantIssueAdminInline,
+        PatientPostTransplantIssueAdminInline,
         PatientStoryHighlightAdminInline,
         PatientStoryAdminInline
     ]
@@ -96,3 +110,13 @@ class AttributeAdmin(OrderableAdmin, admin.ModelAdmin):
     list_display = ['name', 'order', 'published']
     list_editable = ['order', 'published']
     fields = ['name', 'order', 'published']
+
+@admin.register(Issue)
+class IssueAdmin(OrderableAdmin, admin.ModelAdmin):
+    ordering_field = "order"
+    # ordering_field_hide_input = True
+
+    list_display = ['name', 'order', 'published']
+    list_editable = ['order', 'published']
+    fields = ['name', 'published']
+

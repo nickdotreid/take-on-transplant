@@ -46,6 +46,18 @@ class Patient(models.Model):
             self._stories = self.get_stories()
         return self._stories
 
+    @property
+    def pre_transplant_issues(self):
+        if not hasattr(self, '_pre_transplant_issues'):
+            self._pre_transplant_issues = self.get_pre_transplant_issues()
+        return self._pre_transplant_issues
+
+    @property
+    def post_transplant_issues(self):
+        if not hasattr(self, '_post_transplant_issues'):
+            self._post_transplant_issues = self.get_post_transplant_issues()
+        return self._post_transplant_issues
+
     def save(self, *args, **kwargs):
         self.update_thumbnail()
         super().save(*args, **kwargs)
@@ -89,10 +101,35 @@ class Patient(models.Model):
             published = True
         ).all()
 
+    def get_pre_transplant_issues(self):
+        patient_issues = PretransplantIssue.objects.filter(
+            patient = self,
+            issue__published = True
+        ) \
+        .prefetch_related('issue') \
+        .order_by('issue__order') \
+        .all()
+        return [pi.issue for pi in patient_issues]
+
+    def get_post_transplant_issues(self):
+        patient_issues = PostTransplantIssue.objects.filter(
+            patient = self,
+            issue__published = True
+        ) \
+        .prefetch_related('issue') \
+        .order_by('issue__order') \
+        .all()
+        return [pi.issue for pi in patient_issues]
+
 class Attribute(models.Model):
     name = models.CharField(max_length=250)
     order = models.PositiveIntegerField()
     published = models.BooleanField(default = True)
+
+    def save(self, *args, **kwargs):
+        if not self.order:
+            self.order = (Issue.objects.count() + 1) * 10
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.name
@@ -169,3 +206,37 @@ class PatientStoryHighlight(models.Model):
     )
 
     tags = models.ManyToManyField(Tag)
+
+class Issue(models.Model):
+    name = models.CharField(max_length=250)
+    order = models.PositiveIntegerField()
+    published = models.BooleanField(default = True)
+
+    def save(self, *args, **kwargs):
+        if not self.order:
+            self.order = (Issue.objects.count() + 1) * 10
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
+
+class AbstractPatientIssue(models.Model):
+    patient = models.ForeignKey(
+        Patient,
+        on_delete = models.CASCADE,
+        related_name = '+'
+    )
+    issue = models.ForeignKey(
+        Issue,
+        on_delete = models.CASCADE,
+        related_name = '+'
+    )
+
+    class Meta:
+        abstract = True
+    
+class PretransplantIssue(AbstractPatientIssue):
+    pass
+
+class PostTransplantIssue(AbstractPatientIssue):
+    pass

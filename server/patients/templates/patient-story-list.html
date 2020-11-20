@@ -1,54 +1,54 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{% for patient in patients %}
-<div class="patient-profile">
-    <h2>{{patient.name}}</h2>
-    {% if patient.thumbnail %}
-    <img src="{{patient.thumbnail.url}}" />
-    {% else %}
-    <span class="patient-photo-placeholder"></span>
-    {% endif %}
-    <dl>
-        {% for attribute in patient.attributes %}
-        <dt>{{attribute.name}}</dt>
-        <dd>{{attribute.value}}</dd>
-        {% endfor %}
-    </dl>
-</div>
-{% if patient.pre_transplant_issues or patient.post_transplant_issues %}
-<div class="patient-issues">
-    <div>
-        <h3>Pre-Transplant Issues</h3>
-        <ul>
-            {% for issue in patient.pre_transplant_issues %}
-            <li>{{issue.name}}</li>
-            {% endfor %}
-        </ul>
-    </div>
-    <div>
-        <h3>Post-Transplant Issues</h3>
-        <ul>
-            {% for issue in patient.post_transplant_issues %}
-            <li>{{issue.name}}</li>
-            {% endfor %}
-        </ul>
-    </div>
-</div>
-{% endif %}
-{% if patient.story_highlights %}
-<div class="collapsible-content">
-    <h3 class="title">Story Hightlights</h3>
-    <div class="content">
-        {% for highlight in patient.story_highlights %}
-        {% if highlight.title %}
-        <strong>{{highlight.title}}</strong>
+<div class="container content">
+    {% for patient in patients %}
+    <div class="patient-profile">
+        <h2>{{patient.name}}</h2>
+        {% if patient.thumbnail %}
+        <img src="{{patient.thumbnail.url}}" />
+        {% else %}
+        <span class="patient-photo-placeholder"></span>
         {% endif %}
-        <p>{{highlight.content}}</p>
+        <dl>
+            {% for attribute in patient.attributes %}
+            <dt>{{attribute.name}}</dt>
+            <dd>{{attribute.value}}</dd>
+            {% endfor %}
+        </dl>
+        {% if patient.pre_transplant_issues or patient.post_transplant_issues %}
+        <div>
+            <h3>Pre-Transplant Issues</h3>
+            <ul>
+                {% for issue in patient.pre_transplant_issues %}
+                <li>{{issue.name}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div>
+            <h3>Post-Transplant Issues</h3>
+            <ul>
+                {% for issue in patient.post_transplant_issues %}
+                <li>{{issue.name}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        {% if patient.story_highlights %}
+        <div class="collapsible-content">
+            <h3 class="title">Story Hightlights</h3>
+            <div class="content">
+                {% for highlight in patient.story_highlights %}
+                {% if highlight.title %}
+                <strong>{{highlight.title}}</strong>
+                {% endif %}
+                <p>{{highlight.content}}</p>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        <a href="{% url 'patient-story' patient.id %}">View {{patient.name}}'s story</a>
         {% endfor %}
     </div>
 </div>
-{% endif %}
-<a href="{% url 'patient-story' patient.id %}">View {{patient.name}}'s story</a>
-{% endfor %}
 {% endblock %}

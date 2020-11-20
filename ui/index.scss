@@ -71,16 +71,19 @@ header {
 
 .patient-profile {
     display: flex;
-    flex-direction: column;
-    justify-content: end;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: start;
     position: relative;
     min-height: 230px;
+    margin-bottom: 15px;
+
+    background-color: #c8f2f7;
 
     > * {
-        background-color: #c8f2f7;
         margin: 0em;
         padding: 1em;
-        padding-left: 300px;
+        width: 200px;
     }
 
     > h1, > h2, > h3 {
@@ -90,14 +93,18 @@ header {
         padding-bottom: 0px;
         line-height: 1em;
         border-bottom: 1em solid #c8f2f7;
+        width: 100%;
+        flex-basis: 100%;
+    }
+
+    > .collapsible-content {
+        width: 100%;
+        flex-basis: 100%;
     }
 
     > img,
     > .patient-photo-placeholder {
         display: block;
-        position: absolute;
-        top: 0px;
-        left: 35px;
         width: 200px;
         height: 200px;
         padding: 0px;

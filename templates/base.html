@@ -18,9 +18,7 @@
         <a href="{{logout_url}}">Logout</a>
         {% endif %}
     </header>
-    <div class="container content">
-        {% block content %}{% endblock %}
-    </div>
+    {% block content %}{% endblock %}
     <script type="text/javascript" src="../ui/index.js"></script>
     {% block script %}
 

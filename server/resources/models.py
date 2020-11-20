@@ -3,12 +3,12 @@ from ckeditor.fields import RichTextField
 from slugify import slugify
 
 class AbstractResource(models.Model):
-    name = models.CharField(max_length = 70)
-    slug = models.CharField(null=True, max_length=70)
+    name = models.CharField(max_length = 140)
+    slug = models.CharField(null=True, max_length=160)
     published = models.BooleanField(default=True)
     description = models.CharField(
         null = True,
-        max_length = 250
+        max_length = 500
     )
 
     class Meta:

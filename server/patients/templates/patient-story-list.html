@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container content">
+<div class="container">
     {% for patient in patients %}
     <div class="patient-profile">
         <h2>{{patient.name}}</h2>
@@ -16,24 +16,6 @@
             <dd>{{attribute.value}}</dd>
             {% endfor %}
         </dl>
-        {% if patient.pre_transplant_issues or patient.post_transplant_issues %}
-        <div>
-            <h3>Pre-Transplant Issues</h3>
-            <ul>
-                {% for issue in patient.pre_transplant_issues %}
-                <li>{{issue.name}}</li>
-                {% endfor %}
-            </ul>
-        </div>
-        <div>
-            <h3>Post-Transplant Issues</h3>
-            <ul>
-                {% for issue in patient.post_transplant_issues %}
-                <li>{{issue.name}}</li>
-                {% endfor %}
-            </ul>
-        </div>
-        {% endif %}
         {% if patient.story_highlights %}
         <div class="collapsible-content">
             <h3 class="title">Story Hightlights</h3>
@@ -47,8 +29,9 @@
             </div>
         </div>
         {% endif %}
+
         <a href="{% url 'patient-story' patient.id %}">View {{patient.name}}'s story</a>
-        {% endfor %}
     </div>
+    {% endfor %}
 </div>
 {% endblock %}

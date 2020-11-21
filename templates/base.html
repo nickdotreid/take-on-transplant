@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../ui/index.scss">
     <title>{% block title %}Take On Transplant{% endblock %}</title>
 </head>
@@ -14,6 +15,8 @@
         <a href="{{admin_url}}">Admin</a>
         {% endif %}
         {% if user.is_authenticated %}
+        {% url 'resources' as resources_url %}
+        <a href="{{resources_url}}">Resources Library</a>
         {% url 'logout' as logout_url %}
         <a href="{{logout_url}}">Logout</a>
         {% endif %}

@@ -1,26 +1,35 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>{{patient.name}}</h2>
-{% if patient.photo_url %}
-<img src="{{patient.photo_url}}" />
-{% endif %}
-<dl>
-    {% for attribute in patient.attributes %}
-    <dt>{{attribute.name}}</dt>
-    <dd>{{attribute.value}}</dd>
-    {% endfor %}
-</dl>
-<nav>
-    {% for a_story in stories %}
-    <a href="{% url 'patient-story-toc' patient_id=patient.id story_id=a_story.id %}"
-        >
-        {{a_story.title}}
-    </a>
-    {% endfor %}
-</nav>
-{% autoescape off %}
-{{story.content}}
-{% endautoescape %}
-
+<div class="container-with-patient-profile">
+    <div class="patient-profile">
+        <span class="title">{{patient.name}}</span>
+        {% if patient.thumbnail %}
+        <img src="{{patient.thumbnail.url}}" />
+        {% endif %}
+        <dl>
+            {% for attribute in patient.attributes %}
+            <dt>{{attribute.name}}</dt>
+            <dd>{{attribute.value}}</dd>
+            {% endfor %}
+        </dl>
+        <nav>
+            {% for a_story in stories %}
+            {% url 'patient-story' patient_id=patient.id story_id=a_story.id as story_url %}
+            {% if story.id == a_story.id %}
+            <a class="active" href="{{story_url}}">{{a_story.title}}</a>
+            {% else %}
+            <a href="{{story_url}}">{{a_story.title}}</a>
+            {% endif %}
+            {% endfor %}
+        </nav>
+    </div>
+    <div class="content">
+        <h1>{{story.title}}</h1>
+    
+        {% autoescape off %}
+        {{story.content}}
+        {% endautoescape %}
+    </div>
+</div>
 {% endblock %}

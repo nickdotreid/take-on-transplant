@@ -92,11 +92,23 @@ class PatientStoryTableOfContentsView(PatientView):
         except PatientStory.DoesNotExist:
             raise Http404('No story found')
 
-    def get_context_data(self, patient_id, story_id, **kwargs):
+    def get_first_story(self, patient_id):
+        story = PatientStory.objects.filter(
+            patient_id = patient_id
+        ).first()
+        if story:
+            return story
+        else:
+            raise Http404('No story found')
+
+    def get_context_data(self, patient_id, story_id=None, **kwargs):
         context = super().get_context_data(**kwargs)
         patient = self.get_patient(patient_id)
-        context['patient'] = patient        
-        story = self.get_story(patient_id, story_id)
+        context['patient'] = patient
+        if story_id:
+            story = self.get_story(patient_id, story_id)
+        else:
+            story = self.get_first_story(patient_id)
         context['stories'] = patient.stories
         context['story'] = {
             'id': story.id,

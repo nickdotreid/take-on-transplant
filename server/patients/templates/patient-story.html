@@ -1,23 +1,27 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="patient-profile">
-    <h2>{{patient.name}}</h2>
-    {% if patient.thumbnail %}
-    <img src="{{patient.thumbnail.url}}" />
-    {% else %}
-    <span class="patient-photo-placeholder"></span>
-    {% endif %}
-</div>
-
-{% for story in stories %}
-<div class="collapsible-content">
-    <h3 class="title">{{story.title}}</h3>
-    <div class="content">
-        {% autoescape off %}
-        {{story.content}}
-        {% endautoescape %}
+<div class="container">
+    <div class="patient-profile">
+        <h2>{{patient.name}}</h2>
+        {% if patient.thumbnail %}
+        <img src="{{patient.thumbnail.url}}" />
+        {% else %}
+        <span class="patient-photo-placeholder"></span>
+        {% endif %}
+        <dl>
+            {% for attribute in patient.attributes %}
+            <dt>{{attribute.name}}</dt>
+            <dd>{{attribute.value}}</dd>
+            {% endfor %}
+        </dl>
+        <nav>
+            {% for story in stories %}
+            {% url 'patient-story-toc' patient.id story.id as story_url %}
+            <a href="{{story_url}}">{{story.title}}</a>
+            {% endfor %}
+        </nav>
     </div>
 </div>
-{% endfor %}
+
 {% endblock %}

@@ -4,12 +4,12 @@
 <div class="container">
     {% for patient in patients %}
     <div class="patient-profile">
-        <h2>{{patient.name}}</h2>
         {% if patient.thumbnail %}
         <img src="{{patient.thumbnail.url}}" />
         {% else %}
         <span class="patient-photo-placeholder"></span>
         {% endif %}
+        <h2>{{patient.name}}</h2>
         <dl>
             {% for attribute in patient.attributes %}
             {% if attribute.description %}

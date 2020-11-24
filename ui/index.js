@@ -10,6 +10,16 @@ function registerPopovers() {
             });
         }
     });
+
+    document.querySelectorAll('.popover-links a').forEach((element) => {
+        const content = element.text;
+        if (content) {
+            tippy(element, {
+                content: content,
+                placement: 'right'
+            });
+        }
+    });
 }
 
 function registerCollapsibleContent() {

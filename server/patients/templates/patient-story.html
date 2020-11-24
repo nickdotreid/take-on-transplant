@@ -3,12 +3,12 @@
 {% block content %}
 <div class="container">
     <div class="patient-profile">
-        <h2>{{patient.name}}</h2>
         {% if patient.thumbnail %}
         <img src="{{patient.thumbnail.url}}" />
         {% else %}
         <span class="patient-photo-placeholder"></span>
         {% endif %}
+        <h2>{{patient.name}}</h2>
         <dl>
             {% for attribute in patient.attributes %}
             <dt>{{attribute.name}}</dt>

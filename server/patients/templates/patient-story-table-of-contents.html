@@ -1,19 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container-with-patient-profile">
+<div class="container-with-sidebar">
     <div class="patient-profile">
-        <span class="title">{{patient.name}}</span>
         {% if patient.thumbnail %}
         <img src="{{patient.thumbnail.url}}" />
+        {% else %}
+        <span class="patient-photo-placeholder"></span>
         {% endif %}
+        <span class="title">{{patient.name}}</span>
         <dl>
             {% for attribute in patient.attributes %}
             <dt>{{attribute.name}}</dt>
             <dd>{{attribute.value}}</dd>
             {% endfor %}
         </dl>
-        <nav>
+    </div>
+    <div class="sidebar">
+        <nav class="popover-links">
             {% for a_story in stories %}
             {% url 'patient-story' patient_id=patient.id story_id=a_story.id as story_url %}
             {% if story.id == a_story.id %}

@@ -51,46 +51,56 @@ dl {
 }
 
 
-.container-with-patient-profile {
+.container-with-sidebar {
     @extend .container;  
 }
 
 @media(min-width: 800px) {
-    .container-with-patient-profile {
+    .container-with-sidebar {
         width: 760px;
         margin: 0px auto;
         position: relative;
 
         display: flex;
         flex-direction: row;
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
+
+        > * {
+            flex: 1 1 auto;
+        }
 
         > .patient-profile {
             display: block;
+            flex-basis: 100%;
+            margin-bottom: 0em;
+            padding-bottom: 0em;
+        }
+
+        > .content {
+            display: block;
+            width: 300px;
+        }
+
+        > .sidebar {
             position: sticky;
             top: 20px;
-            width: 260px;
-            height: 100%;
+            width: 100px;
+            height: 30px;
+            flex: 0 1 100px;
 
-            margin-right: 1em;
-
-            > .title {
+            > nav > * {
                 display: block;
-                width: 100%;
-                padding: 0px;
-            }
+                width: 50px;
+                height: 50px;
+                overflow: hidden;
+                text-indent: -10000px;
+                background-color: #71d0da;
+                border: #71d0da 3px solid;
+                border-radius: 50%;
+                margin: 10px auto;
 
-            > img,
-            > .patient-photo-placeholder {
-                width: 200px;
-                height: 200px;
-                border-width: 4px;
-                transform: translate(0px, 0px);
-            }
-
-            > nav {
-                & > * {
-                    display: block;
+                &.active {
+                    background-color: #c8f2f7;
                 }
             }
         }
@@ -127,7 +137,7 @@ header {
     margin-top: 1em;
     margin-bottom: 3em;
     padding-bottom: 2em;
-    background-color: #c8f2f7;
+    align-items: center;
 
     > * {
         margin: 0em;
@@ -135,23 +145,34 @@ header {
         width: 200px;
     }
 
+    > *:nth-child(2),
+    > *:nth-child(3) {
+        padding-left: 250px;
+        width: auto;
+        flex-basis: 100%;
+    }
+
+    > *:nth-child(2) {
+        padding-top: 35px;
+    }
+
+    > *:nth-child(3) {
+        background-color: #c8f2f7;
+        min-height: 150px;
+    }
+
     > h1, > h2, > h3,
     > .title {
-        background-color: #fff;
         margin: 0px;
         padding-top: 0px;
         padding-bottom: 0px;
-        padding-left: 250px;
         line-height: 1em;
-        width: 100%;
-        flex-basis: 100%;
         font-size: 24px;
         font-weight: bold;
     }
 
     > a:last-child {
         display: block;
-        position: absolute;
         z-index: 2;
         bottom: 0em;
         right: 1em;
@@ -159,7 +180,6 @@ header {
         font-weight: bold;
         padding: 0.5em 1em;
         width: auto;
-        transform: translate(0em, 1em);
         box-shadow: 0px 0px 10px #000;
         background-color: rgb(39, 56, 120);
         border-radius: 5px;
@@ -169,20 +189,22 @@ header {
     > img,
     > .patient-photo-placeholder {
         display: block;
+        position: absolute;
+        top: 0px;
+        left: 15px;
         width: 200px;
         height: 200px;
         padding: 0px;
-        margin: 0px 15px;
         border-radius: 50%;
         border: 8px #FFF solid;
         box-shadow: 0px 5px 10px #333;
         background-color: #eeeeee;
-        transform: translate(0em, -2em);
     }
 
     > .collapsible-content {
         width: 100%;
         flex-basis: 100%;
+        padding: 0px;
     }
 
     > nav {
@@ -206,7 +228,7 @@ header {
     }
 
     > .tags {
-        width: 100%;
+        flex-grow: 1;
     }
 }
 
@@ -231,9 +253,6 @@ header {
 }
 
 .collapsible-content {
-
-    background-color: #c8f2f7;
-    padding: 0.25em;
 
     > .title {
         display: block;

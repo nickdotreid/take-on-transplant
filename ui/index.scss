@@ -204,8 +204,31 @@ header {
             box-shadow: 0px 0px 0px #333;
         }
     }
+
+    > .tags {
+        width: 100%;
+    }
 }
 
+.tags {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style-type: none;
+    margin: 0.25em;
+    padding: 0em;
+
+    > * {
+        margin: 0.25em;
+        padding:0.5em 1em;
+        background-color: #ccc;
+        border-radius: 15px;
+    }
+
+    > .warning {
+        background-color: #ffbaba;
+    }
+}
 
 .collapsible-content {
 

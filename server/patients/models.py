@@ -30,6 +30,12 @@ class Patient(models.Model):
     )
 
     @property
+    def published_tags(self):
+        return self.tags.filter(
+            published = True
+        ).all()
+
+    @property
     def attributes(self):
         if not hasattr(self, '_attributes'):
             self._attributes = self.get_patient_attributes()

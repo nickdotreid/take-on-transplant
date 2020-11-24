@@ -33,7 +33,15 @@
             </div>
         </div>
         {% endif %}
-
+        <ul class="tags">
+        {% for tag in patient.published_tags %}
+            {% if tag.warning %}
+            <li class="warning">{{tag.name}}</li>
+            {% else %}
+            <li>{{tag.name}}</li>
+            {% endif %}
+        {% endfor %}
+        </ul>
         <a href="{% url 'patient-story' patient.id %}">View {{patient.name}}'s story</a>
     </div>
     {% endfor %}

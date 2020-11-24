@@ -7,6 +7,7 @@ from PIL import ImageOps
 from ckeditor.fields import RichTextField
 from slugify import slugify
 
+from resources.models import Resource
 from tags.models import Tag
 
 class Patient(models.Model):
@@ -126,6 +127,13 @@ class Attribute(models.Model):
     order = models.PositiveIntegerField()
     published = models.BooleanField(default = True)
 
+    resource = models.ForeignKey(
+        Resource,
+        on_delete = models.SET_NULL,
+        null = True,
+        related_name = '+'
+    )
+
     def save(self, *args, **kwargs):
         if not self.order:
             self.order = (Issue.objects.count() + 1) * 10
@@ -139,6 +147,7 @@ class PatientAttributeManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset() \
         .prefetch_related('attribute') \
+        .prefetch_related('attribute__resource') \
         .order_by('attribute__order') \
         .filter(
             attribute__published = True
@@ -162,6 +171,13 @@ class PatientAttribute(models.Model):
     @property
     def name(self):
         return self.attribute.name
+
+    @property
+    def description(self):
+        if self.attribute.resource:
+            return self.attribute.resource.description
+        else:
+            return None
 
 class PatientStory(models.Model):
     patient = models.ForeignKey(

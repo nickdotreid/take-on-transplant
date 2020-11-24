@@ -109,7 +109,7 @@ class AttributeAdmin(OrderableAdmin, admin.ModelAdmin):
 
     list_display = ['name', 'order', 'published']
     list_editable = ['order', 'published']
-    fields = ['name', 'order', 'published']
+    fields = ['name', 'order', 'published', 'resource']
 
 @admin.register(Issue)
 class IssueAdmin(OrderableAdmin, admin.ModelAdmin):

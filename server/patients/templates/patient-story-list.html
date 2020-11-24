@@ -12,7 +12,11 @@
         {% endif %}
         <dl>
             {% for attribute in patient.attributes %}
+            {% if attribute.description %}
+            <dt data-toggle="popover" data-content="{{attribute.description}}">{{attribute.name}}</dt>
+            {% else %}
             <dt>{{attribute.name}}</dt>
+            {% endif %}
             <dd>{{attribute.value}}</dd>
             {% endfor %}
         </dl>

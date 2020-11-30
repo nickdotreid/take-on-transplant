@@ -10,16 +10,18 @@
         <span class="patient-photo-placeholder"></span>
         {% endif %}
         <h2>{{patient.name}}</h2>
-        <dl>
+        <ul class="patient-attributes">
             {% for attribute in patient.attributes %}
-            {% if attribute.description %}
-            <dt data-toggle="popover" data-content="{{attribute.description}}">{{attribute.name}}</dt>
-            {% else %}
-            <dt>{{attribute.name}}</dt>
-            {% endif %}
-            <dd>{{attribute.value}}</dd>
+            <li>
+                {% if attribute.description %}
+                <span data-toggle="popover" data-content="{{attribute.description}}">{{attribute.name}}</span>
+                {% else %}
+                <span>{{attribute.name}}</span>
+                {% endif %}
+                {{attribute.value}}
+            </li>
             {% endfor %}
-        </dl>
+        </ul>
         {% if patient.story_highlights %}
         <div class="collapsible-content">
             <h3 class="title">Story Hightlights</h3>

@@ -22,11 +22,7 @@ nav > a {
     padding: 0.25em 0.25em;
 }
 
-.is-sticky.is-stuck {
-    display: block;
-    position: fixed;
-    z-index: 1;
-}
+
 
 h1, h2, h3, h4 {
     margin: 0px;
@@ -71,14 +67,20 @@ dl {
     }
 }
 
+@media(min-width: 1000px) {
+    .container {
+        width: 960px;
+        margin: 0px auto;
+    }
+}
+
 
 .container-with-sidebar {
     @extend .container;  
 }
 
-@media(min-width: 1000px) {
+@media(min-width: 600px) {
     .container-with-sidebar {
-        width: 960px;
         padding: 0px;
         margin: 0px auto;
         position: relative;
@@ -118,10 +120,6 @@ dl {
                 }
             }
         }
-
-        > span > .sidebar.is-sticky.is-stuck {
-            top: 150px !important;
-        }
     }
 
 }
@@ -142,6 +140,12 @@ header {
     }
     > *:last-child {
         margin-right:0px;
+    }
+}
+
+@media(min-width: 600px) {
+    header {
+        padding-left: 350px;
     }
 }
 
@@ -229,6 +233,7 @@ header {
     .patient-attributes {
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
 
         > li {
             list-style-type: none;
@@ -237,7 +242,7 @@ header {
 
         > * > span {
             display: block;
-            font-style: italic;
+            font-size: 14px;
         }
     }
 
@@ -283,25 +288,6 @@ header {
     .patient-profile {
         width: 960px;
         margin: 0px auto;
-    }
-}
-
-
-.patient-profile.is-sticky.is-stuck {
-    top: 0px;
-    > * {
-        display: none;
-    }
-    > img {
-        display: block;
-        transform: translate(0px, -75px);
-    }
-    > h1, > h2,
-    > .title {
-        display: block;
-        background-color: #c8f2f7;
-        padding-top: 10px;
-        padding-bottom: 10px;
     }
 }
 
@@ -395,4 +381,56 @@ header {
         }
     }
 }
+
+
+
+
+.is-sticky.is-stuck {
+    display: block;
+    position: fixed;
+    z-index: 1;
+}
+
+body > header {
+    position: sticky;
+    top: 0px;
+    z-index: 1;
+    height:30px;
+
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top:0px;
+        left:0px;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        z-index: -1;
+    }
+}
+
+
+.patient-profile.is-sticky.is-stuck {
+    top: 40px !important;
+    > * {
+        display: none;
+    }
+    > img {
+        display: block;
+        transform: translate(0px, -75px);
+    }
+    > h1, > h2,
+    > .title {
+        display: block;
+        background-color: #c8f2f7;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+}
+
+.sidebar.is-sticky.is-stuck {
+    top: 200px !important;
+}
+
 

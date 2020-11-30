@@ -5,10 +5,31 @@
 html {
     font-size: 18px;
     font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
 }
 
 a, a:visited {
     color: #0000ff;
+}
+
+a.active {
+    color: #000000;
+    text-decoration: none;
+}
+
+nav > a {
+    display: block;
+    padding: 0.25em 0.25em;
+}
+
+.is-sticky.is-stuck {
+    display: block;
+    position: fixed;
+    z-index: 1;
+}
+
+h1, h2, h3, h4 {
+    margin: 0px;
 }
 
 dl {
@@ -55,40 +76,33 @@ dl {
     @extend .container;  
 }
 
-@media(min-width: 800px) {
+@media(min-width: 1000px) {
     .container-with-sidebar {
-        width: 760px;
+        width: 960px;
+        padding: 0px;
         margin: 0px auto;
         position: relative;
 
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-
-        > * {
-            flex: 1 1 auto;
-        }
-
-        > .patient-profile {
-            display: block;
-            flex-basis: 100%;
-            margin-bottom: 0em;
-            padding-bottom: 0em;
-        }
-
         > .content {
             display: block;
-            width: 300px;
+            margin-left: 290px;
         }
 
-        > .sidebar {
-            position: sticky;
-            top: 20px;
-            width: 100px;
-            height: 30px;
-            flex: 0 1 100px;
+        > .content > * {
+            padding-top: 75px;
+            &:first-child {
+                padding-top: 0px;
+            }
+        }
 
-            > nav > * {
+        > span > .sidebar,
+        > .sidebar {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 290px;
+
+            > nav.popover-links > * {
                 display: block;
                 width: 50px;
                 height: 50px;
@@ -103,6 +117,10 @@ dl {
                     background-color: #c8f2f7;
                 }
             }
+        }
+
+        > span > .sidebar.is-sticky.is-stuck {
+            top: 150px !important;
         }
     }
 
@@ -135,7 +153,7 @@ header {
     position: relative;
     min-height: 230px;
     margin-top: 1em;
-    margin-bottom: 3em;
+    margin-bottom: 2em;
     padding-bottom: 2em;
     align-items: center;
 
@@ -177,13 +195,20 @@ header {
         bottom: 0em;
         right: 1em;
         color: #fff;
+        font-size: 1.2em;
         font-weight: bold;
         padding: 0.5em 1em;
         width: auto;
-        box-shadow: 0px 0px 10px #000;
-        background-color: rgb(39, 56, 120);
-        border-radius: 5px;
+        border: 2px solid rgb(39, 56, 120);
+        background: rgb(39, 56, 120);
+        background: linear-gradient(180deg, rgba(118,139,219,1) 10%, rgba(39,56,120,1) 100%);
+        border-radius: 15px;
         text-decoration: none;
+
+        &:focus,
+        &:hover {
+            background: linear-gradient(180deg, rgba(118,139,219,1) 0%, rgba(39,56,120,1) 100%);
+        }
     }
 
     > img,
@@ -199,6 +224,21 @@ header {
         border: 8px #FFF solid;
         box-shadow: 0px 5px 10px #333;
         background-color: #eeeeee;
+    }
+
+    .patient-attributes {
+        display: flex;
+        flex-direction: row;
+
+        > li {
+            list-style-type: none;
+            margin: 0.25em 1em;
+        }
+
+        > * > span {
+            display: block;
+            font-style: italic;
+        }
     }
 
     > .collapsible-content {
@@ -232,6 +272,43 @@ header {
     }
 }
 
+@media(min-width: 600px) {
+    .patient-profile {
+        width: 560px;
+        margin: 0px auto;
+    }
+}
+
+@media(min-width: 1000px) {
+    .patient-profile {
+        width: 960px;
+        margin: 0px auto;
+    }
+}
+
+
+.patient-profile.is-sticky.is-stuck {
+    top: 0px;
+    > * {
+        display: none;
+    }
+    > img {
+        display: block;
+        transform: translate(0px, -75px);
+    }
+    > h1, > h2,
+    > .title {
+        display: block;
+        background-color: #c8f2f7;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+}
+
+.container > .patient-profile {
+    width: 100%;
+}
+
 .tags {
     display: flex;
     flex-direction: row;
@@ -253,7 +330,7 @@ header {
 }
 
 .collapsible-content {
-
+    background-color: #71d0da;
     > .title {
         display: block;
         cursor: pointer;
@@ -263,9 +340,6 @@ header {
         position: relative;
         font-weight: bold;
         width: auto;
-        box-shadow: 0px 0px 5px #333;
-        background-color: #71d0da;
-        border-radius: 5px;
         text-decoration: none;
     }
 
@@ -295,7 +369,7 @@ header {
     > .content {
         display: none;
         padding: 0.25em 1em;
-        margin: 0em 0.5em;
+        margin: 0em 0.5em 1em;
         background-color: #ffffff;
     }
 

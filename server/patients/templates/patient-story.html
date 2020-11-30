@@ -1,26 +1,37 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container">
-    <div class="patient-profile">
-        {% if patient.thumbnail %}
-        <img src="{{patient.thumbnail.url}}" />
-        {% else %}
-        <span class="patient-photo-placeholder"></span>
-        {% endif %}
-        <h2>{{patient.name}}</h2>
-        <dl>
-            {% for attribute in patient.attributes %}
-            <dt>{{attribute.name}}</dt>
-            <dd>{{attribute.value}}</dd>
-            {% endfor %}
-        </dl>
-        <nav>
-            {% for story in stories %}
-            {% url 'patient-story-toc' patient.id story.id as story_url %}
-            <a href="{{story_url}}">{{story.title}}</a>
-            {% endfor %}
-        </nav>
+<div class="patient-profile is-sticky">
+    {% if patient.thumbnail %}
+    <img src="{{patient.thumbnail.url}}" />
+    {% else %}
+    <span class="patient-photo-placeholder"></span>
+    {% endif %}
+    <h1>{{patient.name}}</h1>
+    <ul class="patient-attributes">
+        {% for attribute in patient.attributes %}
+        <li>
+            <span>{{attribute.name}}</span>
+            {{attribute.value}}
+        </li>
+        {% endfor %}
+    </dl>
+</div>
+<div class="container-with-sidebar">
+    <nav class="sidebar is-sticky">
+        {% for story in stories %}
+        <a href="#story-{{story.id}}">{{story.title}}</a>
+        {% endfor %}
+    </nav>
+    <div class="content">
+        {% for story in stories %}
+        <div id="story-{{story.id}}">
+            <h2>{{story.title}}</h2>
+            {% autoescape off %}
+            {{story.content}}
+            {% endautoescape %}
+        </div>
+        {% endfor %}
     </div>
 </div>
 

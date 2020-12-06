@@ -38,6 +38,7 @@ services:
         ports:
             - 8080:8080
         volumes:
+            - ./fixtures:/take-on-transplant/fixtures
             - ./icons:/take-on-transplant/icons
             - ./server:/take-on-transplant/server
             - server-media:/media/

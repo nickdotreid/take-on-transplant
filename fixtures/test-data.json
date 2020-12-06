@@ -1,0 +1,2665 @@
+[
+{
+    "model": "patients.patient",
+    "pk": 3,
+    "fields": {
+        "name": "Amy",
+        "published": true,
+        "photo": "photos/Amy_Shannon.jpg",
+        "thumbnail": "thumbnails/Amy_Shannon.jpg",
+        "tags": [
+            13,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24
+        ]
+    }
+},
+{
+    "model": "patients.patient",
+    "pk": 4,
+    "fields": {
+        "name": "Nick",
+        "published": false,
+        "photo": "photos/WIN_20201007_10_53_15_Pro_2.jpg",
+        "thumbnail": "thumbnails/photos/WIN_20201007_10_53_15_Pro_2.jpg",
+        "tags": [
+            2,
+            3,
+            4
+        ]
+    }
+},
+{
+    "model": "patients.patient",
+    "pk": 5,
+    "fields": {
+        "name": "Dustin",
+        "published": true,
+        "photo": "photos/Dustin_C.jpg",
+        "thumbnail": "thumbnails/Dustin_C.jpg",
+        "tags": [
+            12,
+            13,
+            14,
+            15,
+            16
+        ]
+    }
+},
+{
+    "model": "patients.patient",
+    "pk": 6,
+    "fields": {
+        "name": "Kadazia",
+        "published": true,
+        "photo": "photos/Kadazia.jpg",
+        "thumbnail": "thumbnails/Kadazia.jpg",
+        "tags": [
+            8,
+            9,
+            10,
+            11
+        ]
+    }
+},
+{
+    "model": "patients.patient",
+    "pk": 7,
+    "fields": {
+        "name": "Will",
+        "published": true,
+        "photo": "photos/Willem.jpg",
+        "thumbnail": "thumbnails/Willem.jpg",
+        "tags": [
+            5,
+            6,
+            7
+        ]
+    }
+},
+{
+    "model": "patients.patient",
+    "pk": 8,
+    "fields": {
+        "name": "Mark",
+        "published": true,
+        "photo": "photos/Mark_Michael.jpg",
+        "thumbnail": "thumbnails/Mark_Michael.jpg",
+        "tags": [
+            5,
+            25
+        ]
+    }
+},
+{
+    "model": "patients.attribute",
+    "pk": 2,
+    "fields": {
+        "name": "Name",
+        "order": 10,
+        "published": false,
+        "resource": null
+    }
+},
+{
+    "model": "patients.attribute",
+    "pk": 3,
+    "fields": {
+        "name": "Age at transplant",
+        "order": 20,
+        "published": true,
+        "resource": null
+    }
+},
+{
+    "model": "patients.attribute",
+    "pk": 4,
+    "fields": {
+        "name": "FEV1 at transplant",
+        "order": 30,
+        "published": true,
+        "resource": 33
+    }
+},
+{
+    "model": "patients.attribute",
+    "pk": 5,
+    "fields": {
+        "name": "FEV1 1 year after transplant",
+        "order": 40,
+        "published": true,
+        "resource": null
+    }
+},
+{
+    "model": "patients.attribute",
+    "pk": 6,
+    "fields": {
+        "name": "CFTR Genotype",
+        "order": 50,
+        "published": true,
+        "resource": 74
+    }
+},
+{
+    "model": "patients.attribute",
+    "pk": 7,
+    "fields": {
+        "name": "CFTR modulator status at transplant",
+        "order": 60,
+        "published": true,
+        "resource": null
+    }
+},
+{
+    "model": "patients.attribute",
+    "pk": 8,
+    "fields": {
+        "name": "Pre-transplant issues",
+        "order": 70,
+        "published": true,
+        "resource": null
+    }
+},
+{
+    "model": "patients.attribute",
+    "pk": 9,
+    "fields": {
+        "name": "Post-transplant issues",
+        "order": 80,
+        "published": true,
+        "resource": null
+    }
+},
+{
+    "model": "patients.patientattribute",
+    "pk": 2,
+    "fields": {
+        "patient": 7,
+        "attribute": 3,
+        "value": "59 years old"
+    }
+},
+{
+    "model": "patients.patientattribute",
+    "pk": 3,
+    "fields": {
+        "patient": 7,
+        "attribute": 4,
+        "value": "22% predicted"
+    }
+},
+{
+    "model": "patients.patientattribute",
+    "pk": 4,
+    "fields": {
+        "patient": 7,
+        "attribute": 5,
+        "value": "100% predicted"
+    }
+},
+{
+    "model": "patients.patientattribute",
+    "pk": 5,
+    "fields": {
+        "patient": 7,
+        "attribute": 6,
+        "value": "F508del / 306insA"
+    }
+},
+{
+    "model": "patients.patientattribute",
+    "pk": 6,
+    "fields": {
+        "patient": 7,
+        "attribute": 7,
+        "value": "Not eligible for available CFTR modulators"
+    }
+},
+{
+    "model": "patients.patientattribute",
+    "pk": 10,
+    "fields": {
+        "patient": 6,
+        "attribute": 3,
+        "value": "25 years old"
+    }
+},
+{
+    "model": "patients.patientattribute",
+    "pk": 11,
+    "fields": {
+        "patient": 6,
+        "attribute": 4,
+        "value": "18% predicted"
+    }
+},
+{
+    "model": "patients.patientattribute",
+    "pk": 12,
+    "fields": {
+        "patient": 6,
+        "attribute": 5,
+        "value": "76% predicted"
+    }
+},
+{
+    "model": "patients.patientattribute",
+    "pk": 13,
+    "fields": {
+        "patient": 6,
+        "attribute": 6,
+        "value": "Q552P / Unknown"
+    }
+},
+{
+    "model": "patients.patientattribute",
+    "pk": 14,
+    "fields": {
+        "patient": 6,
+        "attribute": 7,
+        "value": "Not eligible for available CFTR modulators"
+    }
+},
+{
+    "model": "patients.patientattribute",
+    "pk": 16,
+    "fields": {
+        "patient": 5,
+        "attribute": 3,
+        "value": "42 years old"
+    }
+},
+{
+    "model": "patients.patientattribute",
+    "pk": 17,
+    "fields": {
+        "patient": 5,
+        "attribute": 4,
+        "value": "12% predicted"
+    }
+},
+{
+    "model": "patients.patientattribute",
+    "pk": 18,
+    "fields": {
+        "patient": 5,
+        "attribute": 5,
+        "value": "76% predicted"
+    }
+},
+{
+    "model": "patients.patientattribute",
+    "pk": 19,
+    "fields": {
+        "patient": 5,
+        "attribute": 6,
+        "value": "F508del / F508del"
+    }
+},
+{
+    "model": "patients.patientattribute",
+    "pk": 20,
+    "fields": {
+        "patient": 5,
+        "attribute": 7,
+        "value": "On Trikafta"
+    }
+},
+{
+    "model": "patients.patientattribute",
+    "pk": 24,
+    "fields": {
+        "patient": 3,
+        "attribute": 3,
+        "value": "46 years old"
+    }
+},
+{
+    "model": "patients.patientattribute",
+    "pk": 25,
+    "fields": {
+        "patient": 3,
+        "attribute": 4,
+        "value": "22% predicted"
+    }
+},
+{
+    "model": "patients.patientattribute",
+    "pk": 26,
+    "fields": {
+        "patient": 3,
+        "attribute": 5,
+        "value": "84% predicted"
+    }
+},
+{
+    "model": "patients.patientattribute",
+    "pk": 27,
+    "fields": {
+        "patient": 3,
+        "attribute": 6,
+        "value": "G551D / N1303K"
+    }
+},
+{
+    "model": "patients.patientattribute",
+    "pk": 28,
+    "fields": {
+        "patient": 3,
+        "attribute": 7,
+        "value": "On Ivacaftor"
+    }
+},
+{
+    "model": "patients.patientattribute",
+    "pk": 33,
+    "fields": {
+        "patient": 8,
+        "attribute": 3,
+        "value": "31 years old"
+    }
+},
+{
+    "model": "patients.patientattribute",
+    "pk": 34,
+    "fields": {
+        "patient": 8,
+        "attribute": 4,
+        "value": "17% predicted"
+    }
+},
+{
+    "model": "patients.patientattribute",
+    "pk": 35,
+    "fields": {
+        "patient": 8,
+        "attribute": 5,
+        "value": "101% predicted"
+    }
+},
+{
+    "model": "patients.patientattribute",
+    "pk": 36,
+    "fields": {
+        "patient": 8,
+        "attribute": 6,
+        "value": "F508 / C.17158G"
+    }
+},
+{
+    "model": "patients.patientattribute",
+    "pk": 37,
+    "fields": {
+        "patient": 8,
+        "attribute": 7,
+        "value": "Not eligible for available CFTR modulators"
+    }
+},
+{
+    "model": "patients.patientstory",
+    "pk": 9,
+    "fields": {
+        "name": null,
+        "order": 10,
+        "published": true,
+        "patient": 3,
+        "title": "Pre-Transplant & Evaluation",
+        "content": "<p>I was diagnosed with CF at the age of 13 and then my first <a href=\"https://take-on-transplant.herokuapp.com/resources/exacerbation\" target=\"_parent\">exacerbation</a> and hospitalization came when I was 14. At that time, I was told that my <a href=\"https://take-on-transplant.herokuapp.com/resources/life-expectancy\">life expectancy</a> would be until about 40-45 years old and knowing that at such a young age had a profound influence on the life decisions that I made going forward. I was the first person in my entire family history to have CF, so it was a big adjustment, but it finally explained why I was always so sick growing up.</p>\r\n\r\n<p>It was very important for me to live life to the absolute fullest and not be defined by CF. Which meant that when I became pregnant before I was slated to go to college, and was told, &ldquo;now or never&rdquo; by the doctors, I decided to have a child. And she was the best thing that happened to me! I also decided that one day, I would go back to college and get my degree.</p>\r\n\r\n<p>I had a full life of working in the corporate sector (until the stress made my health worse and I had to go on <a href=\"/resources/diability\">disability</a>), getting my college degree, starting a business with my husband, being a PTA mom, avid dog rescuer and gardener, and doing as many DIY house projects as I could. My way of staying involved with the CF community was to participate in all research/drug trials that I could since being diagnosed. I also knew that I wanted to donate my old lungs to science someday (if I could, because I did not know at the time if it was an option).</p>\r\n\r\n<p>I was holding steady with my <a href=\"https://take-on-transplant.herokuapp.com/resources/fev1\">FEV1</a> in the upper 30&rsquo;s for quite some time and was quite active. I knew over the years that I was in a slow decline and that eventually my story would come to end. For some reason, I did not think transplant was an option for me and that transplant was reserved for only the super sick and other folks who were worse than I was (denial maybe?). Stress has always played a factor in my CF journey; however, I knew it was really taking a toll on my body, when I had to become my husband&rsquo;s caregiver when he suffered a brain injury and needed more care than I did. I started needing more and more IV <a href=\"https://take-on-transplant.herokuapp.com/resources/antibiotics\">antibiotic </a>treatments at home- it used to be every 3-4 months and then it gradually became every month. Then before transplant, within two days of coming off of IV&rsquo;s I would start to decline again &ndash; so I knew that I was getting worse and worse. The &ldquo;normal&rdquo; daily struggle to breathe got worse, the amounts of meds/treatments needed increased. The frequency of coughing that caused me to pull rib muscles was intensified. I was so exhausted each day from running it all (business, house, hubby, pets) and treatments.</p>\r\n\r\n<p>When I finally had that conversation with my doctor about lung transplant, I was already in the hospital with an exacerbation and it came as a big shock!&nbsp; I knew it was coming, but it was like a light bulb moment when it finally dawned on me that I had become one of those super sick folks. Thankfully, <a href=\"https://take-on-transplant.herokuapp.com/resources/survival-statistics\">transplant had vastly improved</a> over all the years and it was the only way for my story to continue.&nbsp; My daughter was visiting me when the doctor came in and we had a candid conversation together about transplant. We cried and I really freaked out of course (I mean who wouldn&rsquo;t?).&nbsp; After I had a chance to process, my next reaction was to find out anything and everything I could about lung transplant, the <a href=\"/resources/evaluation\">protocols</a>, and what to expect &ndash; I was really anxious to get this ball rolling!!</p>\r\n\r\n<p>As part of the protocols and getting put on the list, the doctors wanted me to lose weight (about 50 pounds) before the surgery (and as soon as possible) because it was a race against time. Unfortunately, I was then diagnosed with melanoma skin cancer, and I had to wait for two years after my biopsy surgery due to the protocols for transplant. I was started on <a href=\"https://take-on-transplant.herokuapp.com/resources/supplemental-oxygen\">oxygen </a>shortly afterwards and experienced life with various tanks (shoulder to the little cart), home condenser, emergency backup tank, and travel pack. It was a very, very stressful time, as you can imagine.&nbsp; I had a 50-foot oxygen tube in the house with my concentrator and it became a joke in my house. We were calling it my tail, and that&rsquo;s how people would find me, by following the tubing. Eventually, I would have to take showers with my oxygen on, no lights, windows open. The house had to be kept on the cool side because any amount of heat was too much for me to breathe.&nbsp; During that waiting process, I developed <a href=\"https://take-on-transplant.herokuapp.com/resources/hypercapnia\">hypercapnia </a>because my body was working so hard to stay alive &ndash; I started on <a href=\"https://take-on-transplant.herokuapp.com/resources/bipap\">Bi-PAP</a> at night and then was encouraged to spend as much time on it during the day that I could. It was my lifeline and I knew it was helping me stay alive. Waiting was the hardest part mentally and emotionally, because when you get that close to transplant, it&rsquo;s a daily struggle to stay alive. I felt a little part of me dying each day and not knowing if I would stay alive long enough for transplant or not.</p>\r\n\r\n<p>I dived into anything I could about the process, what to expect, etc. I watched surgery videos of the clam shell technique and watched the YouTube video of a woman who had CF, breathing for the first time after her lung transplant surgery and the <a href=\"https://take-on-transplant.herokuapp.com/resources/extubated\">tube</a> being taken out &ndash; I dreamed about having that same moment! It kept me going and I made a long list of all the things I wanted to do again or try to do after transplant &ndash; I called it my dreaming list.</p>\r\n\r\n<p>I was told about the Facebook support group, and it was a huge mix of people, of all different lung issues that warranted transplant, as well as a mix of family/friends and pre/post-transplant patients. I asked a ton of questions, read every post that I could, and really got a lot out of participating &ndash; it was amazing and truly needed. I was interested in knowing tips and tricks for before and after surgery, what to expect. What <a href=\"https://take-on-transplant.herokuapp.com/resources/immune-suppression\">medications</a> I might take, what to pack or not to pack in the &ldquo;go bag&rdquo;, which type of insurance was needed to get medications, how other people modified their houses, what supplies people had or wished that they had on hand to make their lives easier. I was able to find out quite a bit about those things.</p>\r\n\r\n<p>I received so much encouragement and love and support from a group of strangers, who felt like family, because no matter what health issue someone had, we were all going through the journey together. I was very lucky to have my therapist to talk to once a week, and sometimes even twice per week. I had her the entire time, since the beginning. I highly recommend getting someone to talk to, because if you didn&rsquo;t have anxiety and depression before, you will (which is totally normal and happens to us all). I had a doctor tell me, if you didn&rsquo;t by this point in the process &ndash; they&rsquo;d be worried that something was wrong with you. That doctor probably has no idea how much that helped me that day, but it was everything.</p>",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstory",
+    "pk": 10,
+    "fields": {
+        "name": null,
+        "order": 20,
+        "published": true,
+        "patient": 3,
+        "title": "The Call, The Transplant, & The Recovery",
+        "content": "<p>From the time I was listed to when I got a <a href=\"/resources/call\">call</a> was so fast (a little over 30 days). I really thought I&rsquo;d have more time to get things in order. &nbsp;When I met with the surgeon, he mentioned a time frame for when he thought I would be getting surgery (around six months). I honestly was not sure I&rsquo;d be able to stay alive that long, because I&rsquo;d already been waiting two years at this point. But I was going to continue to give it everything that I had, and as a bonus I lost about 55 pounds along the way.</p>\r\n\r\n<p>Before I got the call, I was already admitted to the hospital directly from a clinic visit, because I was so sick. I had to do the <a href=\"https://take-on-transplant.herokuapp.com/resources/6mwt\">six-minute walk test</a>&nbsp;and almost passed out within the first minute, which really scared me. I broke down emotionally when I thought about how I was physically going to get back to my car in valet parking, in order to go home, grab my &ldquo;go bag&rdquo; and laptop, because I knew I couldn&rsquo;t walk there. I did not have the energy or the strength. My nurse got the call for me (on my sixth day of being in the hospital) as she was in the process of <a href=\"https://take-on-transplant.herokuapp.com/resources/gowning-up\">gowning up</a>&nbsp;before she could enter my room. I heard her chat with someone and then she said to me that I was going to want to talk to this person (I was totally confused at this point). She was trying to keep her emotions in check. When you hear the words, &ldquo;we have donor lungs&nbsp;for you&rdquo;, you will never forget that moment! I was ecstatically happy, stunned, and shaking with excitement, and then burst into tears of joy. My nurse and I had the best moment together and we hugged and cried. Then fear of surgery/surviving/recovery starts to kick in, because you hope that it&rsquo;s not a dry run. There was celebration that night. My family/friends came, I ate a bunch of sushi and then later when everyone left and it was just my daughter and myself. My fear started to kick in; however, I had work to wrap up &ndash; so we were both up until 4am doing that.&nbsp; We were having conversations about what to do if I didn&rsquo;t make it, and I was also way too excited to sleep with thoughts of: I&rsquo;m going to live and breathe again! I knew I was in really good hands and in the right place to have this life saving surgery, even though my donor lungs were higher than standard risk and going into surgery I had trepidations.</p>\r\n\r\n<p>I had a difficult surgery, with a lot of complications during and after. It was clear at the surgery how weak I had become. I was <a href=\"https://take-on-transplant.herokuapp.com/resources/intubated\">intubated </a>and not awake for almost a week. I wasn&rsquo;t closed&nbsp;after the first surgery, so I had another surgery to close me back up and needed multiple blood transfusions. The <a href=\"https://take-on-transplant.herokuapp.com/resources/icu\">ICU&nbsp;</a>nurses said that I had set a record for the number of IV&rsquo;s after surgery and then I was like an octopus with eight <a href=\"https://take-on-transplant.herokuapp.com/resources/chest-tubes\">tubes</a>. Then, a week or two after surgery, I ended up having heart problems, so they had to shock&nbsp;me. That was scary and weird, especially because I&rsquo;ve seen too many medical shows on TV. I was in the hospital for almost a month. I was mumbling, not talking. I had a terrible time swallowing, and eating was really hard for me afterwards. I was so weak in the beginning that I couldn&rsquo;t hold my cellphone or figure out how to use it and ordering food was challenging because concentrating on the menu and picking up the phone was too much. I developed massive stomach problems after surgery. I was told I was going to have a <a href=\"https://take-on-transplant.herokuapp.com/resources/bronchoscopy\">bronchoscopy&nbsp;</a>if my chest PT wasn&rsquo;t doing the trick (I felt like I failed), and I had no idea what that entailed. I asked, and finally the doctor came in and chatted with me and explained, &ldquo;this is what they do.&rdquo; If they would have told me that before, it would have been fine and would have lowered my anxiety. It was a breeze, and I would do it again!</p>\r\n\r\n<p>There are a lot of things I wish I had known more about. I wish I had learned about additional home health resources that are available out there for my particular home situation. My home situation and family weren&rsquo;t ready when I was discharged and being discharged wasn&rsquo;t a pleasant experience. One of my <a href=\"https://take-on-transplant.herokuapp.com/resources/caregiver\">caregivers&nbsp;</a>got injured, and I thought about hiring a nurse (and should have). We were all so stressed that it caused quite a bit of family drama that could&rsquo;ve been avoided. I would have benefitted from more information about average lengths of recovery, and just how truly hard recovery was going to be. How long my routines would take in comparison to when I was pre-transplant dealing with CF. Not to mention the pain&nbsp;I&rsquo;d be in, along with the anxiety of worrying about everything else &ndash; woo, I was a hot mess!</p>\r\n\r\n<p>I also would have liked to hear about things that are common after surgery, that other patients have experienced, so I didn&rsquo;t feel so alone in dealing with weird things that happened to my body. For example, some of my hair falling out, my skin literally shed from head to toe (I felt like I was a snake). Things like how <a href=\"https://take-on-transplant.herokuapp.com/resources/tacrolimus\">tacrolimus</a> can change your taste buds and other little things. I used to love chocolate, but now I don&rsquo;t really care for it; along with not being able to stand spicy food when I used to love it!</p>\r\n\r\n<p>Recovery took a while, but I became stronger and got better and better once I was home and able to really sleep. I&rsquo;ve been incredibly lucky that my lungs have had no problems whatsoever and that my heart recovered. I&rsquo;m so grateful that I&rsquo;m not struggling to breathe anymore and that my story gets to continue! I can just feel things here and there. The tight rubber band feeling around my chest that&rsquo;s there, the feeling of am I really breathing because the lungs feel a little disconnected from my body, the sensitivity around my chest hasn&rsquo;t gone away but the soreness has gone down quite a bit with my sternum. So, I&rsquo;m hoping that more time will allow the nerves to regrow and that sneezing, yawning or hiccups will feel less awful over time. But now my body actually gets tired before my lungs do!</p>",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstory",
+    "pk": 11,
+    "fields": {
+        "name": null,
+        "order": 30,
+        "published": true,
+        "patient": 3,
+        "title": "Post-Transplant",
+        "content": "<p>My lung transplant was the most humbling experience in my life. As traumatic as it was, you find out who your real friends are and what your family is made of, and who can&rsquo;t handle it. That&rsquo;s totally the beautiful part of life. The UW doctors, nurses and my donor saved my life and for that I will be eternally grateful and can never thank everyone enough! I&rsquo;ve been working through my dream list and checking off things and overjoyed that <a href=\"/resources/health-related-quality-of-life\">I can do all of them!</a> From little things, like walking my dog through the park, going to a huge dog park, seeing the seasons change, yoga, gardening, house improvement projects, continuing to care for my husband, and most importantly watching my daughter fall more in love and knowing that I&rsquo;ll be alive/able to see her get married and possibly have children. I have a second chance at life - quite literally, and the immense joy and happiness that come with that and being able to breathe without any more struggle - that privilege is worth the minute problems that I&rsquo;m left with from the surgery. I remember telling my dentist, that I was going to wait to fix my smile and get braces if I survived transplant, and now I am almost done with the braces! I am now able to plan a vacation, go on long car rides, garden, go hiking, fishing and camping. I haven&rsquo;t been able to breathe this well since I was a teenager!</p>",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstory",
+    "pk": 12,
+    "fields": {
+        "name": null,
+        "order": 40,
+        "published": true,
+        "patient": 3,
+        "title": "My Take on Transplant",
+        "content": "<p>My story is a bit unique because my spouse wasn&rsquo;t able to help out as he would have wanted, and my main caretaker got injured, so I needed more help than I had. However, this process has given me a different perspective on life than I had before transplant. The process makes you cherish all the moments you have left and dream about all the things you could possibly still do. &nbsp;It&rsquo;s definitely a wild ride and not for the faint of heart. No one can truly prepare for this because we are all so different and our body/lungs are all so different. There can be problems that are way worse than mine, and conversely some people just breeze through. Now after having survived the ordeal, I feel compelled to help others along this journey as much as I can. And I hope to one day discover my donor&rsquo;s story, as we are now connected.</p>\r\n\r\n<p>Laugh, stay positive and dream as often and as much as you can. It will help you keep your sanity and it helps to keep hope alive, because this process is scary. Be active as much as you&rsquo;re physically able, because you need to be the strongest you can be before surgery. You want to make sure you get as prepared as you can during the waiting process - knowing you won&rsquo;t be able to do much for a few months. Going to the bathroom by yourself is like a major victory when recovering or taking a hot shower by yourself and being able to stand/breathe easy on your own &ndash; you&rsquo;ll feel like you won the lottery! Prepare the family, it can be overwhelming for them, so make sure that they have support as well. You can prepare your family for everything, but then when it happens to you, their loved one, and they see the aftermath, then that&rsquo;s a different thing and a new reality. I think no amount of preparation can actually prepare them or you for it, but I hope that we can now. My family took photos of me post-surgery because they didn&rsquo;t know if I was going to make it or not, and if I did, they knew I&rsquo;d eventually want to see them. I wish I would&rsquo;ve meal prepped better than I had, but luckily my tribe of family/friends, helped tremendously and people would cook and grocery shop for us.</p>\r\n\r\n<p>I feel strongly about letting your family and friends know how much you truly care about them. Never take anything for granted and be kind to the doctors and nurses &ndash; they deserve it! Lastly, be kind, patient and forgiving of yourself during the waiting and healing process and if you need a lot of naps &ndash; do it.</p>",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstory",
+    "pk": 15,
+    "fields": {
+        "name": null,
+        "order": 10,
+        "published": true,
+        "patient": 5,
+        "title": "Pre-Transplant & Evaluation",
+        "content": "<p>I had never been hospitalized a day in my life for cystic fibrosis. I was building a house, working, and I was getting infections I couldn&rsquo;t kick, especially with smoke from wildfires. It was September 2018, and I went into <a href=\"/resources/respiratory-failure\">respiratory failure</a>. I basically had a heart attack due to respiratory distress and was brought back to life with CPR and adrenaline. The hospital told my wife I had less than a 10% chance of living.</p>\r\n\r\n<p>When I came to and was conscious, the staff was completely shocked that I had lived in our city for 20 years, was 40 years old, and that they had never met me as a CF patient. They honestly didn&rsquo;t believe it. So many people came in and we had a lot of visitors also who were making noise! They vouched for me that I&rsquo;d just lived a life not like many people with cystic fibrosis do.</p>\r\n\r\n<p>I wasn&rsquo;t stable at that point though. They couldn&rsquo;t <a href=\"https://take-on-transplant.herokuapp.com/resources/extubated\">extubate</a> me and decided to keep me on a <a href=\"https://take-on-transplant.herokuapp.com/resources/ventilator\">ventilator</a>, thinking my lungs could improve with treatment and therapy. I had to have a <a href=\"https://take-on-transplant.herokuapp.com/resources/trach\">trach</a> and a <a href=\"https://take-on-transplant.herokuapp.com/resources/feeding-tube\">feeding tube</a>. But I never recovered and I was in and out of the hospital. My infections were just too bad and none of the antibiotics seemed to be keeping them back. By May 2019 my doctor said I just don&rsquo;t think we are going to be able to make these lungs work, we need to start talking about a lung transplant. I was living on a ventilator and <a href=\"http://take-on-transplant.herokuapp.com/resources/low-oxygen\">oxygen</a>. The pressure was on to decide and get the ball rolling about transplant.&nbsp; I really didn&rsquo;t know. But I began to realize what life would look like either way.</p>\r\n\r\n<p>I traveled to the <a href=\"https://take-on-transplant.herokuapp.com/resources/transplant-center\">transplant center</a> and the doctor told me about what to expect. It sounded like anything could happen, but also that I could have a normal life, breathing better than before. I said, well okay that&rsquo;s what I need to hear. I don&rsquo;t want to just suffer through. I don&rsquo;t want to go through this torment of a lung transplant, and then just be miserable or in bad shape still. I felt more confident about the work up, although the <a href=\"https://take-on-transplant.herokuapp.com/resources/antibiotics\">antibiotics </a>still weren&rsquo;t working and I seemed <a href=\"https://take-on-transplant.herokuapp.com/resources/drug-resistant\">drug resistant</a> to anything they could throw at me. Nothing was working.</p>\r\n\r\n<p>I was in pretty bad shape. I went to a <a href=\"https://take-on-transplant.herokuapp.com/resources/long-term-respiratory-care-facility\">long-term respiratory care facility</a> to try to get stronger. Those guys did a good job with <a href=\"https://take-on-transplant.herokuapp.com/resources/pulmonary-rehabilitation\">physical therapy</a> and <a href=\"https://take-on-transplant.herokuapp.com/resources/antibiotics\">antibiotics </a>that helped a bit. Then I went to the <a href=\"https://take-on-transplant.herokuapp.com/resources/transplant-center\">transplant center</a> to get my <a href=\"/resources/evaluation\">work up</a>. I made it through 2 days worth of <a href=\"https://take-on-transplant.herokuapp.com/resources/tests\">tests </a>but then had to be checked into the hospital&mdash;I couldn&rsquo;t do it. They talked about discharging me a few days later but I wasn&#39;t doing well and my doctor back home was saying no you can&rsquo;t check out, you&rsquo;re not going to make it home. My wife worked on scheduling all these appointments to finish the work up but they were way out. The hospital doctor on call said, &lsquo;what? You can&rsquo;t wait that long.&rsquo; So then, they never do this, but all of a sudden, the things you do for the work up like <a href=\"https://take-on-transplant.herokuapp.com/resources/scans\">scans </a>and a <a href=\"https://take-on-transplant.herokuapp.com/resources/colonoscopy\">colonoscopy</a>, meeting with pharmacy, we were able to do them in my hospital room. I was blown away. After we finally got to check out, I was listed for lungs.</p>\r\n\r\n<p>I had to be aware of what was going on. People had to be paying attention to me. I didn&rsquo;t talk because I was on the <a href=\"https://take-on-transplant.herokuapp.com/resources/ventilator\">ventilator</a>. I was always texting. I would have to talk through my wife because she could read lips. That&rsquo;s another thing that was emotional too, being on a ventilator, you can&rsquo;t talk. Being a social person, it was really emotional to have a lot of people visiting, checking in on me, and seeing how I&rsquo;m doing. I loved it, but it was really hard not being able to communicate well.</p>",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstory",
+    "pk": 16,
+    "fields": {
+        "name": null,
+        "order": 20,
+        "published": true,
+        "patient": 5,
+        "title": "Trikafta's Role",
+        "content": "<p>My doctor worked very hard to get insurance to approve <a href=\"https://take-on-transplant.herokuapp.com/resources/trikafta\">Trikafta</a> for me when it came out, and it was a game changer. On a <a href=\"https://take-on-transplant.herokuapp.com/resources/ventilator\">vent</a> I had a pint and a half of mucus because you can&rsquo;t cough it out. When I got on Trikafta I barely produced a half an inch of mucus a day. And then I tried one of my normal antibiotics and it worked on my infection. I thought, boy if I stay on this I&rsquo;ll get lung function back. But I talked to my <a href=\"https://take-on-transplant.herokuapp.com/resources/pulmonologist\">pulmonologist</a> at home and she said she didn&rsquo;t think so.</p>\r\n\r\n<p>Being at home and on Trikafta I was able to do stuff and enjoy my family. Have a pretty good time and just be hopeful about lungs. I had started to get down about things, about not having a normal life. Then I started to see that my normal was going to be different. Trikafta helped me with going through the process of waiting. I&rsquo;m very grateful. It gave me peace, too. It took a lot of stress off my body, I overall felt better in many ways. Even my temperature control got back to normal, more normal, I should say. Being on a ventilator, your temperature controls are a little out of whack.</p>\r\n\r\n<p>Here&rsquo;s what I believe. I believe that if Trikafta had been available to me in July or sooner of 2018, I would not have had my heart attack in September. I really, honestly believe that. I think between Trikafta and the extra <a href=\"https://take-on-transplant.herokuapp.com/resources/physical-therapy\">physical therapy</a> that I got, I got strong enough to go through a surgery. I really do. I was trying to do physical therapy, but Trikafta gave me the chance to do it better, and push myself a little harder. I definitely was that kind of person, I like to push myself. I was trying to push myself, and I couldn&rsquo;t go that long, I would drop down in <a href=\"https://take-on-transplant.herokuapp.com/resources/oxygen-saturation\">oxygen saturation</a>. After the Trikafta, I felt much stronger and able to go longer.</p>\r\n\r\n<p>I think what I would say to someone who wants to be on Trikafta is that first of all if you are really sick and need a lung transplant, it is probably only going to help you be strong enough to get through the surgery. It will make you feel more comfortable. I think it is great to be excited to try it, and maybe your <a href=\"https://take-on-transplant.herokuapp.com/resources/lung-function\">lung capacity</a> is enough to where it can extend things before you need to have a transplant. But your team should agree that your number is high enough to wait for transplant. There&rsquo;s definitely a balance there with waiting and getting stronger either for transplant or generally. I don&rsquo;t think it hurts to be on Trikafta at all, although it is sad how expensive it is and difficult to get approved by insurance.</p>",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstory",
+    "pk": 17,
+    "fields": {
+        "name": null,
+        "order": 30,
+        "published": true,
+        "patient": 5,
+        "title": "The Call, The Transplant, & The Recovery",
+        "content": "<p>The first phone <a href=\"https://take-on-transplant.herokuapp.com/resources/call\">call</a> I got saying they had lungs for me was around 2pm in the afternoon. They said you need to get here by 8pm. We live two and a half hours away from the transplant center.&nbsp; It was winter time and we knew driving was going to be a little slow. But we made it there, we checked in, I got up the next morning and went into surgery. I was ready. I was knocked out, and then I woke up and they said to me you don&rsquo;t have new lungs. It was a trial run, or a <a href=\"https://take-on-transplant.herokuapp.com/resources/dry-run\">dry run</a>. We were told it can happen even multiple times, but it was disappointing.</p>\r\n\r\n<p>Then we were headed home from the transplant center, it was snowing, and a truck went over and blocked all lanes of traffic. I was on battery power on the ventilator and it started overheating. That&rsquo;s how I breathe, and my wife and I started panicking&mdash;what do we do? She had to climb out of her seat and jump in back, get the back-up ventilator and get it going. We were worried about how we could handle things. We had battery power to go for several hours and luckily the lane cleared and we got to drive home.</p>\r\n\r\n<p>We wound up calling the transplant center to check in because I didn&rsquo;t feel well when I got home. I was struggling with the anesthesia effects for a week. They said they&rsquo;d get back to us. We were celebrating my youngest daughter&rsquo;s 14th birthday and my dad was around because he was one of the people who helped me. My wife answered a call, thinking it was just the team getting back to us on how I was feeling, but instead heard that there were two possible sets of lungs and again we should arrive by 8pm.</p>\r\n\r\n<p>When you have a ventilator and are packing in winter, there is a lot to do to get ready. The passes were worse than last time and after the issue we had with the ventilator, we needed to figure out the safest way to travel. We called our local hospital and tried to get an ambulance and they couldn&rsquo;t work it out. One was stuck already and the owner of the company didn&rsquo;t want to send another. We&rsquo;re like ok, we can fly. We call <a href=\"https://take-on-transplant.herokuapp.com/resources/airlift\">airlift </a>and they say it wasn&rsquo;t technically an emergency because I wasn&rsquo;t being rushed over from the hospital. Finally, an ambulance took me to the airport and I got on a plane. Once we landed at the transplant city I was then driven to the transplant center. I arrived five minutes before 8pm.</p>\r\n\r\n<p>I was told my transplant would take 8-10 hours, but it only took five. The surgeon said they were pristine, white, fluffy lungs&hellip; young lungs&hellip; very, very good lungs. I was told I would be in the <a href=\"https://take-on-transplant.herokuapp.com/resources/icu\">ICU </a>for three weeks but I was only there for barely three days. They told me I&rsquo;d be in the hospital for eight weeks and that I&rsquo;d come out still on a ventilator because I had been so dependent on it. But I was breathing so well in the operating room I was quickly down to two liters of oxygen breathing on my own. My doctor knew I was scared to get off the oxygen - that I&rsquo;d had an <a href=\"https://take-on-transplant.herokuapp.com/resources/pulse-oximeter\">oximeter </a>on my finger for a year and a half. She told me when I didn&rsquo;t need it and I kept telling her &lsquo;no, no, no don&rsquo;t turn it off&rsquo;. But she did turn it off, and I was at 95-99%! I&rsquo;ve never gone below, still.</p>\r\n\r\n<p>We moved to The Transplant House after being <a href=\"https://take-on-transplant.herokuapp.com/resources/discharged\">discharged </a>from the hospital. It was a great place, very close and they did a fabulous job. They <a href=\"https://take-on-transplant.herokuapp.com/resources/returning-home\">sent us home</a> after two months instead of three or four. My doctor post-transplant was pretty excited with how things were going. I&rsquo;ve seen her three times and I don&rsquo;t have to go back for three months.&nbsp;&nbsp;&nbsp;</p>",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstory",
+    "pk": 18,
+    "fields": {
+        "name": null,
+        "order": 40,
+        "published": true,
+        "patient": 5,
+        "title": "Post-Transplant",
+        "content": "<p>I knew my lung capacity wasn&rsquo;t up to where it eventually would be, but I already felt 20 years younger. Breathing-wise it was like I was in my twenties. I was obviously in pain for a lot of other reasons, but it was amazing. I&rsquo;d compare it to being underwater and starting to drown, and the feeling of relief when you come out. All the time I just couldn&rsquo;t breathe. <a href=\"https://take-on-transplant.herokuapp.com/resources/health-related-quality-of-life\">Life really changed</a> in that respect.</p>\r\n\r\n<p>The other thing that was huge and shocking to everyone in my life was that I no longer had the CF cough. My whole life I&rsquo;ve coughed up and spit out nasty junk. My grandfather told me that when I was a little, tiny boy, if you keep swallowing that, you&rsquo;re going to get sick. You need to spit it out, but do it respectfully. He said always make sure, don&rsquo;t you spit on the sidewalks. You make sure people don&rsquo;t have to look at it, and all those things. I learned how to do that. But when I got that lung transplant, and I was conscious for a while, I was like, I haven&rsquo;t coughed. And they said, nope, and you won&rsquo;t probably, either. I still have people I&rsquo;m working with today, who are so used to me, they&rsquo;re like, &lsquo;I can&rsquo;t tell you&rsquo;re coming. It&rsquo;s not the normal you.&rsquo; Because I&rsquo;m not coughing.</p>\r\n\r\n<p>We had a <a href=\"https://take-on-transplant.herokuapp.com/resources/support-system\">support network</a> that was incredible. Not only my immediate family, also my parents, and my wife&rsquo;s parents and others. People that don&rsquo;t have what we had, don&rsquo;t have all those gifts and blessing, I don&rsquo;t know how people do this, honestly. I can see where it would be harder to get well, because there&rsquo;s so much to deal with, and not enough help. We had plenty of help, I would never say we didn&rsquo;t have enough. We couldn&rsquo;t have done it without all the help. That&rsquo;s a big factor. I don&rsquo;t know if anybody warns you about that part of it. My wife and my dad were my go to people the whole time I was sick. There was a lot of people that helped and gave assistance, but those two understood me the most and knew what I wanted the most. It was just kind of natural that way. I think it is really important to have more than one, because if you have one, it&rsquo;s hard, it&rsquo;s a lot of work. My wife was basically a 24-hour caregiver for me, and trying to take care of two kids, and then all of the people trying to help us out, manage all that...Manage doctors and nurses and medications, people praying for us, and services coming to us. There was so much, that&rsquo;s a lot to take on. When they tell you that you need two, maybe three helpers, that&rsquo;s no joke. It&rsquo;s definitely exhausting. They get worn out.</p>\r\n\r\n<p>I don&rsquo;t like taking medications, and I have a super high <a href=\"https://take-on-transplant.herokuapp.com/resources/pain-management\">pain tolerance</a>. I&rsquo;d rather not have to take them so often, but I totally understand what needs to be done. I ask a lot of questions, and the team has done a great job of informing me about the ones I need. We were diligent about figuring out what was unnecessary and getting off those. I&rsquo;m basically just on three <a href=\"http://take-on-transplant.herokuapp.com/resources/anti-rejection-medication\">anti-rejection</a> medicines, which is <a href=\"http://take-on-transplant.herokuapp.com/resources/tacrolimus\">tacro</a>, <a href=\"http://take-on-transplant.herokuapp.com/resources/mycophenolate\">mycophenolate</a>, and only 10mg of <a href=\"https://take-on-transplant.herokuapp.com/resources/prednisone\">prednisone</a>. I get to go down to 5mg of prednisone in October, and I keep negotiating to try to get off it because the side effects are just horrendous on my body, most people&rsquo;s bodies. The tacro I&rsquo;ve done pretty well with. We&rsquo;ve had a couple of times when getting off of other drugs has made my tacro level adjust up and down. When it gets too high it looks like I&rsquo;m not super tolerant of it but I&rsquo;ve been tolerating it at low doses. They&rsquo;re trying to keep my tacro between 8 and 10, a pretty low number. What happens with it, for some reason that I dislike the most is how it makes my mouth kind of swell up, and then I bite my cheeks and my tongue a lot, then I get these sores in there. That&rsquo;s uncomfortable. But when it is back down, it almost immediately goes away. That&rsquo;s a sign that I know I&rsquo;m too high on tacro. Then the other one, mycophenolate, I don&rsquo;t know if I have any side effects.</p>",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstory",
+    "pk": 19,
+    "fields": {
+        "name": null,
+        "order": 50,
+        "published": true,
+        "patient": 5,
+        "title": "My Take on Transplant",
+        "content": "<p>My perspective on the whole mental, emotional, and even spiritual parts of transplant is that it has to do with living. When you are fighting infections and on a ventilator, it is pretty miserable. Transitioning from a ventilator to being capped with oxygen was very tough. It&rsquo;s a mental thing, on how you breathe. Your body can adjust, but it takes a little while. It exerts a lot of energy first of all, because I didn&rsquo;t have a lot of breathing capacity. How do I say it? Kind of like all the senses. I would get tingly, I would get hot and sweaty, I would get freezing cold. I would go through all these weird feelings, sensations, and mentally have to deal with how to handle all of it? You can&rsquo;t just shut down. I had to think my way through a lot of it, and distract myself, toughen up to get through. It was hard. I kept trying, but it was difficult to do.</p>\r\n\r\n<p>My wife and I talked a lot about that stuff, and we talked to our doctor at home about our options. She was always very good at giving us the hardcore facts, but yet telling us what the hope was. There were a couple times when several of the ICU&nbsp; doctors told my wife that it wasn&rsquo;t looking good. When I told my doctor that I was scared, she told me that she was scared as well.</p>\r\n\r\n<p>I definitely questioned, can my family handle me living like this, is it practical to continue living this way? It felt like being alive, but not a life. There was a lot going through my brain as far as living or dying, what life would look like. I wanted to live like I always had, a life where I could do a lot. I wanted to enjoy my kids. I have a wonderful wife and want to do stuff with her. I was looking down a road, whether it was slow or fast, of not really living life, but just being alive, and having a whole bunch of people have to give me assistance. That&rsquo;s not what I wanted. There is a lot that can go wrong and you have to depend a lot on people for a lot of things. There&rsquo;s only so much you can do. Life is meant to live it, and transplant gave me a life to live again.</p>\r\n\r\n<p>Transplant also gave me a different perspective on life too. I had a lot going on before I had my heart attack, and I think &ndash; this is natural in life &ndash; we can allow all the outside circumstances and the negative stuff to overwhelm us and stress us out. Then we become negative about a lot of stuff and people. Jumpy and snappy, and just grumpy, and we forget to look at the good. This whole experience, especially coming through it, has really given me a different perspective on a whole lot of things in life. And I appreciate that. More than I think I would have if I wouldn&rsquo;t have had a lung transplant. Or even had this whole situation happen. Not that I really wanted to go through it all, but I&rsquo;m grateful for the whole experience, honestly. I feel blessed.</p>\r\n\r\n<p>I would offer the advice to other people to really go for it. Listen to your body, push, but don&rsquo;t overdo. Ask a lot of questions of your doctor. Be focused after transplant. Don&rsquo;t wait for nurses to ask you to walk or go do your therapies. Nurses are very busy, and you may have to be insistent and forceful because they have a lot of patients to handle and a lot on their plate. Push yourself, get help from somebody else. Do as much therapy and as much walking as you can, as often as you can, to the point where you don&rsquo;t need others walking with you anymore, then you can do it even more. It progresses. I think that speeds up everything. There were so many times walking around the hospital, doing my walks, and I was like, okay let&rsquo;s do it again. I pushed myself and pushed myself. And all the other people that had gotten transplants didn&rsquo;t want to walk, because it hurt and it was uncomfortable. And yeah, it hurt. You&rsquo;re uncomfortable. It&#39;s not fun. But it&rsquo;s just like any muscle, you&rsquo;ve got to keep working it and doing everything. Have a helper and push, that&rsquo;s what I say.</p>\r\n\r\n<p>It is a lot and emotional when you are waiting. But someone is giving you a piece of them, a life they would have lived. I feel a responsibility now to the donor family for what I&rsquo;ve been given. It makes you swallow hard. I don&rsquo;t ever want to take it for granted, I want to be active, helping, serving, working, being social, enjoying people. Smiling more than frowning. Just kind of living it up, responsibly.</p>",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstory",
+    "pk": 20,
+    "fields": {
+        "name": null,
+        "order": 10,
+        "published": true,
+        "patient": 6,
+        "title": "Pre-Transplant & Evaluation",
+        "content": "<p><span style=\"color:black\">I knew that people got lung transplants, but I never really considered it for myself. There were so many unknowns. Would I be considered someone without cystic fibrosis after transplant? What would medications cost? What would be covered? What about the medical bills?</span></p>\r\n\r\n<p><span style=\"color:black\">My <a href=\"https://take-on-transplant.herokuapp.com/resources/lung-function\">lung function</a> had been declining pretty rapidly though. At first, I just went to my doctor to hear about it, to consider it, but then my body crashed and it became a conversation where it was the only option I had left. I knew I was the one who was making the decision, and I made that decision because I could feel I was actively dying. </span></p>\r\n\r\n<p><span style=\"color:black\">I switched my care to the transplant center 18 months before I got my transplant. There was a whole lifetime I had to catch them up on. I was very vocal and was trying to tell the team things about my body they might not have known. My interactions weren&rsquo;t that great. The <a href=\"https://take-on-transplant.herokuapp.com/resources/tests\">tests</a> themselves were fine, but the <a href=\"/resources/evaluation\">evaluation</a> was a lot. I wasn&rsquo;t getting a lot of answers. </span></p>\r\n\r\n<p><span style=\"color:black\">I read everything the doctors gave me. I looked at the material about the procedures that I would be going through for the evaluation workup beforehand, so I would know what was going on. My insurance sent me paperwork about <a href=\"http://take-on-transplant.herokuapp.com/resources/advance-care-planning\">advanced directives</a>, things I read all the way through. But I tried not to get too much into the technical parts of it because it is really easy to get scared off. With surgery<u>,</u> there is a risk of death. I looked at enough to be aware of what was happening and to mentally prepare for the transplant. </span></p>\r\n\r\n<p><span style=\"color:black\">I actually would have liked to hear from a doctor about exactly what&rsquo;s done in the procedure. I didn&rsquo;t know that there was wire implanted in my chest, to hold my <a href=\"https://take-on-transplant.herokuapp.com/resources/sternum\">sternum</a> together. I wish I had known how many <a href=\"https://take-on-transplant.herokuapp.com/resources/chest-tubes\">tubes</a> were going to be put in, and about the trembling hands. I didn&rsquo;t know about those things and I would have liked to know. </span></p>\r\n\r\n<p><span style=\"color:black\">There was a woman who went through a transplant who was able to tell me how she navigated the process, things like insurance and finances. I used her as a sounding board for the questions I had. I didn&rsquo;t go to transplant groups, I didn&rsquo;t feel it was for me. I am a naturally empathetic person and often let my feelings be overshadowed and under-prioritized by others&rsquo;.</span></p>\r\n\r\n<p><span style=\"color:black\">My focus was literally keeping myself alive long enough through the process, to get to the end. That&rsquo;s what I put all my energy into. Making it through each day.</span></p>",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstory",
+    "pk": 21,
+    "fields": {
+        "name": null,
+        "order": 20,
+        "published": true,
+        "patient": 6,
+        "title": "The Call, The Transplant, & The Recovery",
+        "content": "<p><span style=\"color:black\">I was thinking to myself, gosh is this going to happen soon enough? I was feeling my body declining and I was waiting for the <a href=\"https://take-on-transplant.herokuapp.com/resources/call\">call</a>, to get closer to that. I had been on the waitlist for two months when I got my transplant. </span></p>\r\n\r\n<p><span style=\"color:black\">I was doing really well after transplant and it looked like I was going to get out earlier than expected. I qualified for <a href=\"https://take-on-transplant.herokuapp.com/resources/relocation\">housing</a> since I live an hour and a half from the hospital. I was told that as soon as I got admitted for the transplant, the process was then going to be started for finding and securing my local housing. But after five days in the hospital post-transplant, I couldn&rsquo;t figure out what was going on. The nurses and dieticians were prepping me to be released, but arrangements for my housing hadn&rsquo;t happened. As I tried making all kinds of calls to get more information I was being met with a lot of hostility and non-answers from my assigned social worker. </span></p>\r\n\r\n<p><span style=\"color:black\">When I finally got to my original temporary accommodations there was just a general sense of uncleanliness. But we figured well I&rsquo;ll be in my room most of the time, so it doesn&rsquo;t matter. As the days wore on we became aware of the lack of housekeeping (this was important because there is a huge emphasis on the cleanliness of your environment directly after transplant) and the blatant disregard of the non-smoking signs plastered around the building. Think about how much stress I was under being only two weeks post-transplant. Now add in my fear of leaving my hotel room and having to navigate through smokers with my fresh lungs to get to my mom&rsquo;s car.</span></p>\r\n\r\n<p><span style=\"color:black\">Also, add in how my mom is a single mom who had been watching her daughter die for two years, is so excited that she is alive, but now has to take over communicating on my behalf with a social worker who doesn&rsquo;t like me. But hey, we aren&rsquo;t done yet. Add in that I have a younger sister who just had her first baby 5 days after I had my transplant. A transplantee, a single mom, a 21-year-old new single mom, and an infant in one hotel room with sub-par accommodations, just trying to figure out where they&rsquo;re going to be living for the next three months as they try to figure out what their new normal is. Now, remember that post-transplant I was told that a lot of these stresses would be addressed and taken care of by my social worker.</span></p>\r\n\r\n<p><span style=\"color:black\">Being a Black woman with cystic fibrosis (a disease that is notoriously known to be had by near exclusively white folks) and being a Black woman navigating through the healthcare system in general, I am more than used to actions toward me becoming racially charged when I try to advocate for myself. But this situation led me to feel more alone than ever because I was more vulnerable than I had ever been. Here it is these folks held my literal life in their hands and I was being treated like a problem. And when I would try to express what was going on and my feelings to my doctors and other folks in charge of my care (besides my nurses, they were quite lovely) I was met with this white coat of a wall where no one seemed to want to hold anyone accountable or even express empathy toward my situation or say flat out, I shouldn&rsquo;t have been treated the way I was and no other patient should either. </span></p>\r\n\r\n<p><span style=\"color:black\">I lost a lot of trust in all my doctors during that time. During the time I should have just been happy that I could finally breathe. It took a long time to even gain <em>some</em> of that trust back. To this day I haven&rsquo;t been able to thank anyone for my transplant besides the nurses who took care of me in the hospital and my surgeon. Everyone else seemed very much against me or simply unempathetic toward the way I was treated. Even before I decided to go forward with the transplant, I was met with a lot of scare tactics, hostility, a lack of understanding, false information, and questions about my commitment to the process. The folks who have the final say-so of whether or not you&rsquo;re worthy of receiving a transplant have to realize they&rsquo;re able-bodied people assessing us folks whose bodies have been failing us since the day we were born (in a CFers case). And that all of our energy pre-transplant is put into keeping ourselves alive and hoping that when we go to sleep at night, we&rsquo;ll wake up the next morning. </span></p>",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstory",
+    "pk": 22,
+    "fields": {
+        "name": null,
+        "order": 30,
+        "published": true,
+        "patient": 6,
+        "title": "Post-Transplant",
+        "content": "<p><span style=\"color:black\">After the transplant, the rules are completely different. I felt surprised when things weren&rsquo;t how I expected. Breathing wise, I feel better than I ever have before. Which is a pretty low bar to top, considering how low my lung function was before transplant. Better than before doesn&rsquo;t automatically mean, better. It has been over a year since my transplant, and I still <a href=\"https://take-on-transplant.herokuapp.com/resources/numbness\">can&rsquo;t feel my chest</a>. I didn&rsquo;t get my <a href=\"https://take-on-transplant.herokuapp.com/resources/taste\">sense of taste</a> back until over a month or two after transplant. My <a href=\"https://take-on-transplant.herokuapp.com/resources/hand-tremors\">hands still shake</a> consistently. Being a multi-media artist, this is something that affects me daily. Something I&rsquo;ve had to work around and caused me to have to relearn things that came so easily to me before. My muscles still seem non-existent at times. I can count on my breathing while I exercise but I can&rsquo;t count on my body yet. Having a metal rod in my back from a spinal fusion and insulin-dependent <a href=\"https://take-on-transplant.herokuapp.com/resources/diabetes\">diabetes</a> makes it hard to just jump into exercising. I wasn&rsquo;t a super active person pre-transplant because I didn&rsquo;t have the strength or breathing capacity to do so. It&rsquo;s difficult to just switch your mindset in that way. I find it hard to explain this to people, family, friends, and doctors alike. There seems to be an assumption that because I can breathe, I should be able to jump into exercise like a normal person. But it&rsquo;s not that simple and it&rsquo;s hard to explain that to people. </span></p>\r\n\r\n<p><span style=\"color:black\">I&rsquo;m still very much learning how to breathe. I&rsquo;m still very much getting used to the idea that I might have more years ahead of me than I&rsquo;d previously imagined. I&rsquo;m still very much coming to accept all the scars on my body. I&rsquo;m still very much learning and acknowledging that my body belongs to me and not the medical system. </span></p>\r\n\r\n<p><span style=\"color:black\">As I learn, get used to, and acknowledge all these new things I&rsquo;m creating a new normal. In this new normal I have many dislikes and loves. I dislike how long it&rsquo;s taking my feet and legs to get used to all this weight I&rsquo;ve finally been able to put on. I love that I&rsquo;ve been able to put on all this weight and look overall, healthier. I dislike all the side effects I&rsquo;ve had to experience while regulating my medicines and levels to a stable place. I love that I don&rsquo;t have to do breathing treatments anymore. I dislike my hand tremors. I love that I now have the energy to create again, and at a level I wasn&rsquo;t able to before my decline started. I dislike the new depressive and anxiety-driven episodes I&rsquo;ve had to navigate as I reconcile with what comes next. I love that I believe in a <em>next</em> now, at all. I dislike how hard it is for my muscles to catch up to where I want them to be. I love how the energy and little bit of muscles I do have now allow me to chase after my 1-year-old niece and run around with my 11-year-old nephew. </span></p>\r\n\r\n<p><span style=\"color:black\">There are ups and downs in my transplant story. What is clear to me is that I need to feel like my doctors are listening and willing to learn. Yes, they have degrees and can understand the numbers that make me dizzy. But they aren&rsquo;t living in my body. They don&rsquo;t have to carry themselves as if they are the smartest person in the room for me to respect them. My respect goes to doctors who listen, recognize that each patient is different, are willing to learn, and hold themselves and their colleagues accountable. </span></p>",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstory",
+    "pk": 23,
+    "fields": {
+        "name": null,
+        "order": 40,
+        "published": true,
+        "patient": 6,
+        "title": "My Take on Transplant",
+        "content": "<p><span style=\"color:black\">I would tell someone in my situation to continue to speak up for themselves. You are allowed to ask questions. You are allowed to speak up if you feel uncomfortable. You are allowed to question your doctors about something you are confused by, don&rsquo;t agree with, or have heard different information about from another member on your care team. You are allowed to call your doctors and other members on your care team out if you feel they are treating you unfairly. You are allowed to correct them if you believe they are wrong based on the information they&rsquo;ve given you before or the information you&rsquo;ve read in what they have provided you with. You are allowed to remind them that you have a whole history they don&rsquo;t know everything about. You are allowed to remind them that your body is your body and that NO ONE knows what it&rsquo;s like to live in it better than you. You are allowed to remind them that your life is in their hands and that it&rsquo;s important for them to remember and respect that as well as the vulnerable position it puts you in. You are allowed to consistently remind them that this process is hard and that you&rsquo;re just trying to make it out alive, one day at a time. </span></p>\r\n\r\n<p><span style=\"color:black\">Honestly, I feel that <a href=\"https://take-on-transplant.herokuapp.com/resources/support-system\">my family, my best friends</a>, and I got me through my transplant. At it&rsquo;s very basic and stripped-down level doctors and the healthcare system are a means to an end to reach your basic right to be alive. They&rsquo;ve read the books, they have the degrees, they get paid (EVEN IF THEY DON&rsquo;T DO IT FOR THE MONEY THEY DO GET PAID AT THE END OF THE DAY), and they have the title. You don&rsquo;t get paid to be sick and have your body work against you. You get through it because you have to, and you want to live. Your perseverance and ability to fight against what feels like the entire world working against you makes you the strongest and the smartest person in the doctors&rsquo; office. Every time. </span></p>",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstory",
+    "pk": 24,
+    "fields": {
+        "name": null,
+        "order": 10,
+        "published": true,
+        "patient": 7,
+        "title": "Pre-Transplant & Evaluation",
+        "content": "<p>I have lived the past 50 years of my life independently and resolved to not let my CF get in the way of doing the things I love. I completed my engineering degree, got married, had a family, and had a fulfilling career working full time for 31 years as an engineer, technologist, and strategic planner. I&rsquo;ve been lucky to travel internationally for business and pleasure. &nbsp;I&rsquo;ve always participated in many sports and activities that I&rsquo;ve enjoyed. I have a wonderful wife and family, which now includes two granddaughters. These are things I&rsquo;m proud of, because from a young age I was told that the life expectancy for someone with CF was low and I&rsquo;ve done quite well. Prior to contemplating transplant as my health was declining, I had already gone through the process of <a href=\"https://take-on-transplant.herokuapp.com/resources/advance-care-planning\">preparing my finances, will, home, beneficiaries</a>, etc., such that if and when I passed, everything would easily transition to my wife.</p>\r\n\r\n<p>I really began noticing a decline in my health and an impact on my ability to do things in my 50&rsquo;s. I was having more <a href=\"https://take-on-transplant.herokuapp.com/resources/exacerbation\">exacerbations</a>, requiring oxygen, and spending more and more time in the hospital getting IV antibiotics. At the age of 53, I had to leave my career to be on <a href=\"https://take-on-transplant.herokuapp.com/resources/diability\">disability</a>. Things weren&#39;t getting better, and at 58 my CF doctor said it may be the last time to consider lung transplant as a treatment option. We had talked about lung transplant before, and I had always said &ldquo;Nope, I&#39;ll just live life as best I can.&rdquo; I have always had the attitude of &ldquo;do the best in life with the cards that I&#39;ve been given.&rdquo; Transplant wasn&#39;t something I saw for myself. My doctor told me that I was now at the point where I needed to decide if that&rsquo;s really my final decision. He emphasized that my health wasn&rsquo;t getting any better, and I would need to be strong enough to get through some tough <a href=\"https://take-on-transplant.herokuapp.com/resources/evaluation\">evaluation</a> tests if I did decide to go down that route. &ldquo;You&#39;re healthy enough to get through the evaluation process now, but in a few months, &nbsp;you might not be strong enough to get through the process. You&rsquo;re at that decision point where you need to make that final decision, transplant or no transplant.&rdquo;</p>\r\n\r\n<p>My doctors have known me for many years and I trust their clinical knowledge. I really appreciated this honest and straightforward approach that made me aware of where I was. It forced me think about whether I should re-consider transplant as a treatment option for myself. After that appointment, my wife and I set out to research more about lung transplant. To my surprise, the <a href=\"https://take-on-transplant.herokuapp.com/resources/survival-statistics\">survival statistics</a> had improved a lot! The numbers I was using were outdated. I thought people lived maybe five years after transplant. But new data said it has really increased, and 9-10 years was a realistic outcome. A lot of people are living much longer than that. We did a lot of reading online and the more we got educated we began to understand the good that could come with a lung transplant. Yes, it was going to be hard, but this seemed to be the best path and there was real hope for a good outcome. We decided that we should go ahead with a referral and start the evaluation process &ndash; I could always say no. I like to describe myself as a very competitive and goal-oriented individual. Once I do my research and set my mind to something, it is full steam ahead with no looking back. When I decided to go through with an evaluation for lung transplant, I never wavered from that decision. I made it my goal to prepare for transplant, be the best candidate I could be, and to prepare as best possible for what I could expect.</p>\r\n\r\n<p>For the evaluation process I spent 10 days at the hospital going through a battery of tests. That was tough, there were a lot of unpleasant tests. I pushed through those and everything was looking good, but my weight was an issue and my <a href=\"https://take-on-transplant.herokuapp.com/resources/bmi\">BMI</a> was right on the line (too low) which was concerning for the transplant evaluation committee.&nbsp; I was getting really thin, and slowly losing more and more weight because my health was not getting better. The transplant center said I needed to get my weight up before being listed, either by getting a <a href=\"https://take-on-transplant.herokuapp.com/resources/feeding-tube\">feeding tube</a> or by showing them I could gain weight. I spent the next three weeks focusing on eating &ndash; I didn&rsquo;t feel like eating due to all my therapies, but I was eating. I would check in weekly with my nutritionist, getting extra help, and after three weeks I was able to gain six pounds. That extra weight was enough to increase my BMI into acceptable ranges for my transplant center, and I was able to get listed.</p>\r\n\r\n<p>Growing up I never made CF a part of me. I never sought out CF relationships, and didn&#39;t know of anyone who had been through a lung transplant. My wife and I joined a <a href=\"https://take-on-transplant.herokuapp.com/resources/support-group\">support group</a> at my transplant center and connected with patients who were like me and some who had been through the transplant process. I called three or four people just to get more information. They told me their outcomes were much better than I had visualized in my mind for people post-transplant and they educated me on what was needed from your <a href=\"https://take-on-transplant.herokuapp.com/resources/caregiver\">caregiver</a> support system. Talking to people and engaging in the support group were key in giving me a better idea of what to expect and what to plan for. I was able to find mentors who helped me through the time waiting for my lungs. During the waiting period I focused most on preparing my strength prior to surgery. I worked with a physical therapist&nbsp;and did <a href=\"https://take-on-transplant.herokuapp.com/resources/pulmonary-rehabilitation\">pulmonary rehabilitation</a> on stand-up sit-down exercises and walking. I set my goals based on post-transplant patients with a &ldquo;fast recovery.&rdquo; Because you are going to get so weak after surgery, the stronger you are, the faster you can get out of bed. The faster you can get out of bed, the faster you can start walking. The faster you start walking, the faster you can get out of the hospital. And that&rsquo;s the key, getting out of the hospital and getting on that recovery path. If you&rsquo;re not strong, you can&rsquo;t get out of bed, and things go a whole lot slower.</p>",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstory",
+    "pk": 25,
+    "fields": {
+        "name": null,
+        "order": 20,
+        "published": true,
+        "patient": 7,
+        "title": "The Call, The Transplant, & The Recovery",
+        "content": "<p>I did my best to keep a positive attitude while I <a href=\"https://take-on-transplant.herokuapp.com/resources/wait-list\">waited for the call</a>. I kept living and tried doing as much as I could each day. I focused on trying to stay healthy and out of the hospital as much as I could, but after being listed, I had five hospital stays in six months. I started to retain <a href=\"https://take-on-transplant.herokuapp.com/resources/carbon-dioxide\">carbon dioxide</a> and went on to use <a href=\"https://take-on-transplant.herokuapp.com/resources/bipap\">BIPAP</a>. I think the wait was more stressful for my wife. She was always wondering what&rsquo;s going to happen, when are we going to get this phone call? Will he make it through another exacerbation and hospital stay? We made sure we were prepared and ready to get up and go in a moment&rsquo;s notice. Since we had to drive almost 4 hours to get to our transplant center, we had a <a href=\"https://take-on-transplant.herokuapp.com/resources/travel-plan\">travel plan</a> (with flight backup) and our bags were packed.</p>\r\n\r\n<p>After 197 days (about 7 months), we got the call at 10:15am. They asked that we be in the hospital by 7pm for surgery the next morning. We loaded our bags, made the three and a half hour drive, and arrived at the hospital. We checked in for my room, and went through some <a href=\"https://take-on-transplant.herokuapp.com/resources/pre-op-tests\">pre-op tests</a> including an X-Ray, and vital signs. Later that evening I had some family visitors, including my mother, sister, and son. The next morning, I was taken into the pre-op at 8am.&nbsp; At 10:45, I said goodbye to my wife and was wheeled into the operating room. I was scared, but I remained confident that I would have a good outcome and that I would come out happy and breathing clearly. While many calls lead to dry runs, I was lucky and mine was the real thing. My surgery took a little over 12 hours. By 11pm I was in my <a href=\"https://take-on-transplant.herokuapp.com/resources/icu\">ICU </a>room with my wife, <a href=\"https://take-on-transplant.herokuapp.com/resources/intubated\">intubated</a>, but responding to simple commands. My surgeon told my wife that &ldquo;of the thousands of surgeries he has done, my surgery was in his top ten most difficult. The scarring on the left side of my lungs was unbelievable.&rdquo; He commented that he was amazed I was able to breathe at all before transplant.</p>\r\n\r\n<p>I was <a href=\"https://take-on-transplant.herokuapp.com/resources/extubated\">extubated</a> about 24 hours after surgery and was able to take my first breath. It was the first day of &ldquo;Chapter 2&rdquo; and I was focused on recovering back to health. My first food was Jello, but soon I started eating full meals. I started moving between my bed and the chair.&nbsp; I took my first walk three days after surgery. I was very tired. I felt like I was sleep walking, but I wanted to walk. I was glad I was not in a lot of pain. My nurses would ask for my pain rating from 0-10 and I&rsquo;d say 1. They never believed me, and said it was supposed to be around 8.</p>\r\n\r\n<p>Lung transplant surgery is complicated, and I had a setback that required a second <a href=\"https://take-on-transplant.herokuapp.com/resources/intubated\">intubation</a>. My team thought it was possibly <a href=\"https://take-on-transplant.herokuapp.com/resources/sepsis\">sepsis</a>, but it was probably too much pain medication that was making me drowsy and driving a negative reaction to my system. But in a couple of days I was up and walking again. By day nine, I was doing well enough to be transferred out of the <a href=\"https://take-on-transplant.herokuapp.com/resources/icu\">ICU </a>and to a recovery unit. I was able to eat a full breakfast meal and was getting more confident with every step during each walk. I was re-learning how to get dressed and working up my strength to get out of a seated position on my own. You have to be particularly careful with your <a href=\"https://take-on-transplant.herokuapp.com/resources/sternum\">sternum</a>, since it is broken and repaired during surgery.&nbsp; &ldquo;Watch your <a href=\"https://take-on-transplant.herokuapp.com/resources/restrictions\">restrictions</a>&rdquo; was a common nurse&rsquo;s comment. I had occasional visitors from my sons, family, and close friends.&nbsp; I didn&rsquo;t want to be seen much in my condition with <a href=\"https://take-on-transplant.herokuapp.com/resources/chest-tubes\">drain tubes</a>, <a href=\"https://take-on-transplant.herokuapp.com/resources/wires\">wires</a>, and hospital gown. &nbsp;</p>\r\n\r\n<p>On day 15 after my surgery, my care team decided I was ready to be <a href=\"https://take-on-transplant.herokuapp.com/resources/discharged\">discharged</a>. I left the hospital with my Superman t-shirt on and was using a walker on my own. My <a href=\"https://take-on-transplant.herokuapp.com/resources/oxygen-saturation\">oxygen saturation</a> level was at 100% and my <a href=\"https://take-on-transplant.herokuapp.com/resources/pulmonary-function-test\">pulmonary function test</a> showed my <a href=\"https://take-on-transplant.herokuapp.com/resources/fev1\">FEV1</a> was now 66% predicted. Although this was lower than I had imagined, I was still early in my recovery and as I regained my strength I was reassured by my doctors that it would go up with time.</p>\r\n\r\n<p>After being discharged, I was required to <a href=\"https://take-on-transplant.herokuapp.com/resources/relocation\">stay near the hospital</a> for regular evaluations and check-ups. Our housing, known as our &ldquo;transplant house,&rdquo; was at my sister&rsquo;s home which was conveniently located near the transplant center. As part of my recovery outside of the hospital, my wife and I spent a lot of time walking around this new city we were in and I was able to regain my strength by being tourists and exploring parks and local attractions.</p>\r\n\r\n<p>After five weeks at my transplant house, we were able to <a href=\"https://take-on-transplant.herokuapp.com/resources/returning-home\">return home</a>. The normal time to be sent home is usually about three months. I felt accomplished with my timeline of seven and a half weeks after transplant surgery. I can confidently say that none of this would have been possible without my wonderful wife who was my support, caregiver, motivator, and rock throughout this journey. To celebrate the new life my lungs provided, we decided to have our wedding rings re-blessed at the church where we were married 36 years prior.</p>",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstory",
+    "pk": 26,
+    "fields": {
+        "name": null,
+        "order": 30,
+        "published": true,
+        "patient": 7,
+        "title": "Post-Transplant",
+        "content": "<p>When I returned home, the first thing I wanted to do was get rid of the <a href=\"https://take-on-transplant.herokuapp.com/resources/supplemental-oxygen\">supplemental oxygen</a> and medical supplies I would no longer need. I had so much more time &ndash; I saved a huge amount of time and energy from not having to do my <a href=\"https://take-on-transplant.herokuapp.com/resources/nebulizer\">nebulizations </a>multiple times a day. I no longer had a productive cough. &nbsp;I no longer needed to clear my throat regularly. Not everything is better, though, as there are new challenges with many new medications and <a href=\"https://take-on-transplant.herokuapp.com/resources/immune-suppression\">immune suppression</a>. &nbsp;My biggest challenge was managing my new &ldquo;medication induced <a href=\"https://take-on-transplant.herokuapp.com/resources/diabetes\">diabetes</a>&rdquo;. I had to learn a lot about <a href=\"https://take-on-transplant.herokuapp.com/resources/insulin\">insulin</a>, blood glucose, finger pricks, carbohydrates and sugar.&nbsp; Luckily, a key lesson for me was that watching my diet and doing regular exercise (particularly after a meal) helped a ton! My <a href=\"https://take-on-transplant.herokuapp.com/resources/dexcom-g6\">Dexcom G6</a> provided great feedback and was a great incentive.</p>\r\n\r\n<p>I now breathe freely and am able <a href=\"/resources/health-related-quality-of-life\">to do things</a> I haven&rsquo;t been able to enjoy in years.&nbsp; I&rsquo;m now able to look forward to years with my wife, family, and especially my grandchildren. We&rsquo;ve taken trips and hiked at 10,000 feet. I am back on my snow skis and enjoyed time on the mountain.&nbsp; I&rsquo;m waterskiing, kayaking, swimming, and doing all my favorite water sports. I exercise, walk, or bike daily. &nbsp;I&rsquo;m full of energy and taking care of home projects that have long been delayed. My wife complains that watching me makes her tired. It&rsquo;s just amazing.</p>\r\n\r\n<p>Once you are post-transplant, things change dramatically and you go through this shift. I have been lucky to have had very few complications and a very smooth recovery. Everybody&rsquo;s journey is different, and not everyone is like that. Having gone through transplant, I now enjoy coaching people as they consider and prepare for transplant by encouraging them to get as strong as possible before transplant so they have the best chance at having a good outcome. I&rsquo;m also a huge advocate for caregivers and the importance they provide in addition to having a strong support system.</p>",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstory",
+    "pk": 27,
+    "fields": {
+        "name": null,
+        "order": 40,
+        "published": true,
+        "patient": 7,
+        "title": "My Take on Transplant",
+        "content": "<p>My suggestions for those considering a transplant are:</p>\r\n\r\n<ul>\r\n\t<li>Make a decision about transplant BEFORE you&rsquo;re too sick, as the <a href=\"https://take-on-transplant.herokuapp.com/resources/evaluation\">evaluation</a> process is challenging&hellip;.ok, brutal.</li>\r\n\t<li>Getting in shape when you&rsquo;re sick is hard, but stay motivated and do as much as you can. The better physical shape you&rsquo;re in, the faster your recovery. Stand-up/Sit-downs (core) and walking were my key.</li>\r\n\t<li>Have a strong <a href=\"https://take-on-transplant.herokuapp.com/resources/support-system\">support system</a>. My wife was critical to my mental, emotional, and physical success. She was my cheerleader and motivator.</li>\r\n\t<li>While listed, stay positive.&nbsp; Live day to day. Keep living.&nbsp; The right lungs will come at the right time.</li>\r\n\t<li>Expect <a href=\"https://take-on-transplant.herokuapp.com/resources/complications\">complications </a>or setbacks.&nbsp; Everyone has them.&nbsp; A good attitude will help you power through these difficult times.</li>\r\n</ul>\r\n\r\n<p>Lung transplant is totally worth all the pain and effort for a second chance at life.</p>",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstory",
+    "pk": 28,
+    "fields": {
+        "name": null,
+        "order": 10,
+        "published": true,
+        "patient": 8,
+        "title": "Pre-Transplant & Evaluation",
+        "content": "<p>Since I was 14 years old, I was always in and out of the hospital, dealing with anywhere from three to nine <a href=\"https://take-on-transplant.herokuapp.com/resources/exacerbation\">exacerbations</a> per year. Transplant was always an idea that I kept in the back of my mind. By the time I hit around 23 my <a href=\"https://take-on-transplant.herokuapp.com/resources/fev1\">FEV1</a>, and general numbers from my <a href=\"https://take-on-transplant.herokuapp.com/resources/pulmonary-function-test\">pulmonary function test</a>, started tanking more and more. When I was 23-25 years old I already had an FEV1 of 30%.&nbsp; There was one specific year when things started getting pretty drastic. I remember when it happened, it was December. I had just gone to what I thought was going to be a typical doctor&rsquo;s appointment. I think the exact words I was given were something along the lines of, &ldquo;It&rsquo;s very likely if you don&rsquo;t get this lung transplant, you&rsquo;re not going to see passed your 31st birthday.&rdquo; I think at the time I was 29. I might have even been 30.</p>\r\n\r\n<p>I was told, &ldquo;you have a choice here if you want to do this or not.&rdquo; But if I&#39;m honest, I didn&rsquo;t really have a lot of time to interpret or think about whether I should or I shouldn&rsquo;t. It felt like a necessity. I really thought there&rsquo;s an urgency to this. Am I even going to make it? Am I going to actually get the lungs before I die? The decision to be referred felt so fast that I didn&rsquo;t even really have much time to process it.</p>\r\n\r\n<p>Never in my life have I been so anxious. I was very nervous as to what life would be like after transplant if the lung transplant is a success. What if it&rsquo;s not? What happens? I thought about if I don&rsquo;t have CF after transplant, what is my life going to be like? Am I going to be healthy and that&rsquo;s it? Do I have what I need in my life to live a normal, suitable life after&hellip; when I&#39;m &ldquo;healthy&rdquo;? There were so many topics to think about. It&rsquo;s a lot. You try to maneuver around it as best as you can.</p>\r\n\r\n<p>I had to prepare, and quickly. But it took a year, a year and a half, to <a href=\"https://take-on-transplant.herokuapp.com/resources/evaluation\">figure everything all out</a> and for me to be listed. I had to wait six months before I could even talk to the transplant team because I had to establish care with the local CF clinic due to a complicated <a href=\"https://take-on-transplant.herokuapp.com/resources/adherence\">adherence</a> issue. It was excruciating, frustrating, and I had extreme anxiety. After the six months of waiting, I did the <a href=\"https://take-on-transplant.herokuapp.com/resources/tests\">work up</a> and in one year&#39;s worth of time I got the transplant. And during the time I was waiting, I tried to prepare mentally. I was lucky to have a therapist who knows CF.</p>\r\n\r\n<p>I had a really good CF doctor - I connected with him and really appreciated that. Another thing that really influenced me regarding my health care team was my <a href=\"https://take-on-transplant.herokuapp.com/resources/nutrition\">nutritionist</a>. I knew my eating habits were pretty poor. I realized I needed to be in direct contact with my nutritionist to ask her what to do about my diet. That information absolutely helped.</p>\r\n\r\n<p>I did lot of research and figured out what transplant was all about. I was fortunate to have a friend who is a nurse as a resource, who helped me understand what to expect. You can read exactly how transplant works. So my logical side was taken care of. That knowledge strengthened my whole emotional and psychological well-being, and put me more at ease. Understanding for instance, what is a clamshell, the incision that they do. I wondered why don&rsquo;t they cut down instead of right across? Things like that. I tried to just figure out what I could as best as I could, because I came from the mentality that this is obviously a huge deal, and it would be best to have myself educated as best I can. I felt decent about it. If I had questions, I would figure out the answers. I&rsquo;m self-sufficient in that way.</p>",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstory",
+    "pk": 29,
+    "fields": {
+        "name": null,
+        "order": 20,
+        "published": true,
+        "patient": 8,
+        "title": "The Call, The Transplant, & The Recovery",
+        "content": "<p>You still want to have enough health to recuperate from the transplant surgery. I had a hemoptysis occurrence in April where I coughed up massive amounts of blood and it was understood I was essentially on my deathbed. My transplant team wrote to the UNOS lung transplant board to ask for extra points in the lung allocation score because of the serious nature of the episode. Writing the details about this occurrence would be a whole different story in itself. The odds of surviving were truly unknown. Fortunately, after 2 weeks in the ICU, I got better, and then I got my transplant in May. So, within two weeks of getting out of the ICU, I got my transplant.</p>",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstory",
+    "pk": 30,
+    "fields": {
+        "name": null,
+        "order": 30,
+        "published": true,
+        "patient": 8,
+        "title": "Post-Transplant",
+        "content": "<p>Right after transplant it felt like a lot. Here I was with new lungs. It was quite a transformation. Obviously my number one concern was rehabilitation. I needed to build my own schedule. Working out and doing things myself that I couldn&rsquo;t do before. Your care team is there, I believe, to give you the resources, but you&rsquo;ve got to do all the heavy lifting yourself. Looking back, I can see that prednisone really affected my energy and mindset, as well as focus.</p>\r\n\r\n<p>After you get the transplant, your health and your quality of life substantially rises. You have to change. If your transplant is successful, you aren&rsquo;t going to be living the way you were before. I needed a clear direction, and needed to figure out how to best succeed. There are steps you can take to know you are doing your best. Life was colored by the experience of having a completely new quality of life and health. It is like the lowest of the low to the highest of the high. I had so much more happiness. I was glowing and could see love everywhere. It was the honeymoon period of getting a new life.</p>\r\n\r\n<p>There were some challenges with it though. I went through being sick my whole life and it was hard to break the mold. I had anxiety about what to do in life. I suppose there is still a part of me that still sees myself as that sick person. The biggest challenge has been to work through that and tell myself that&rsquo;s not me anymore.</p>\r\n\r\n<p>Right out of transplant I started working out, hanging out with friends. I felt freedom. I was able to breathe and do more activity. What was extremely powerful was the rebirth of sorts from being critical and end-stage. I had a lot of gratitude and carry that into my interactions in life.</p>",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstory",
+    "pk": 31,
+    "fields": {
+        "name": null,
+        "order": 40,
+        "published": true,
+        "patient": 8,
+        "title": "My Take on Transplant",
+        "content": "<p>With end stage cystic fibrosis, your body and physical health is at it&rsquo;s all time lowest. It&rsquo;s exhausting, demanding, with little hope and massive isolation. To me, that was the hardest part. The ache of isolation and seeing how no one in your life is going through what you&rsquo;re going through. There are people worse off than you, and simultaneously you may surround yourself with people with extremely great health. But damn near no one is going through what you&rsquo;re going through.</p>\r\n\r\n<p>What I&rsquo;ve learned is that our physical health will bleed into our mental and emotional health. At end stage, you&rsquo;ll need to keep this in mind. This is going to be the most challenging time in your life. Not just your life, but those who love you as well. My advice is to find something to fight for. If you can stomach being around people, try as best as you can to do so. You are at the end of your current life, with hope that you may have another chance. Learn how to fight every day to achieve that second chance.</p>\r\n\r\n<p>There gets to be a point while waiting where you&rsquo;re just too tired to want to fight. But at some point, I was like, I want to continue to live. You&rsquo;ve got to believe in your own future. I had a couple of friends and some family members that would tell me I had great value to them. They were supportive, and there for me. You being around is important, so you need to fight. That&rsquo;s what I tried to remember.</p>\r\n\r\n<p>When I heard &ldquo;you&rsquo;re going to need a transplant, you&#39;re going to need to be evaluated,&rdquo; I knew I had a purpose. I had to develop that purpose. I&rsquo;m like &ldquo;okay, this is all I&#39;m going to do. I&rsquo;m going to be focused on how I can enjoy my life as best I can with the limited health that I have, and prepare for the transplant.&rdquo; My mission: to enjoy life, to fight, and to inspire.</p>",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstoryhighlight",
+    "pk": 1,
+    "fields": {
+        "name": null,
+        "order": 10,
+        "published": true,
+        "patient": 7,
+        "title": null,
+        "content": "I really began noticing a decline in my health and an impact on my ability to do things in my 50’s.",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstoryhighlight",
+    "pk": 2,
+    "fields": {
+        "name": null,
+        "order": 20,
+        "published": true,
+        "patient": 7,
+        "title": null,
+        "content": "I have always had the attitude to do the best in life with the cards that I've been given, and transplant wasn't something I saw for myself.",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstoryhighlight",
+    "pk": 3,
+    "fields": {
+        "name": null,
+        "order": 30,
+        "published": true,
+        "patient": 7,
+        "title": null,
+        "content": "I appreciated my doctor’s honest and straightforward approach that made me aware of where I was. It forced me think about whether I should re-consider transplant as a treatment option for myself.",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstoryhighlight",
+    "pk": 4,
+    "fields": {
+        "name": null,
+        "order": 40,
+        "published": true,
+        "patient": 7,
+        "title": null,
+        "content": "We did a lot of reading online and the more we got educated we began to understand the good that could come with a lung transplant.",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstoryhighlight",
+    "pk": 5,
+    "fields": {
+        "name": null,
+        "order": 50,
+        "published": true,
+        "patient": 7,
+        "title": null,
+        "content": "While many calls lead to dry runs, I was lucky and mine was the real thing. My surgery took a little over 12 hours.",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstoryhighlight",
+    "pk": 6,
+    "fields": {
+        "name": null,
+        "order": 60,
+        "published": true,
+        "patient": 7,
+        "title": null,
+        "content": "I now breathe freely and am able to do things I haven’t been able to enjoy in years.",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstoryhighlight",
+    "pk": 7,
+    "fields": {
+        "name": null,
+        "order": 10,
+        "published": true,
+        "patient": 3,
+        "title": null,
+        "content": "When I finally had that conversation with my doctor about lung transplant, I was already in the hospital with an exacerbation and it came as a big shock.",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstoryhighlight",
+    "pk": 8,
+    "fields": {
+        "name": null,
+        "order": 10,
+        "published": true,
+        "patient": 6,
+        "title": null,
+        "content": "At first, I just went to my doctor to hear about it, to consider it, but then my body crashed and it became a conversation where transplant was the only option I had left.",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstoryhighlight",
+    "pk": 9,
+    "fields": {
+        "name": null,
+        "order": 20,
+        "published": true,
+        "patient": 6,
+        "title": null,
+        "content": "I read everything the doctors gave me – I looked at the material about the procedures that I would be going through for the evaluation beforehand, so I would know what was going on.",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstoryhighlight",
+    "pk": 10,
+    "fields": {
+        "name": null,
+        "order": 30,
+        "published": true,
+        "patient": 6,
+        "title": null,
+        "content": "I was doing really well after transplant and I got out of the hospital earlier than expected.",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstoryhighlight",
+    "pk": 11,
+    "fields": {
+        "name": null,
+        "order": 40,
+        "published": true,
+        "patient": 6,
+        "title": null,
+        "content": "Being a Black woman with cystic fibrosis and being a Black woman navigating through the healthcare system in general, I am more than used to actions toward me becoming racially charged when I try to advocate for myself. But this situation led me to feel more alone than ever because I was more vulnerable than I had ever been.",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstoryhighlight",
+    "pk": 12,
+    "fields": {
+        "name": null,
+        "order": 50,
+        "published": true,
+        "patient": 6,
+        "title": null,
+        "content": "I’m still very much learning how to breathe. I’m still very much getting used to the idea that I might have more years ahead of me than I’d previously imagined.",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstoryhighlight",
+    "pk": 13,
+    "fields": {
+        "name": null,
+        "order": 10,
+        "published": true,
+        "patient": 5,
+        "title": null,
+        "content": "They couldn’t extubate me and decided to keep me on a ventilator, thinking my lungs could improve with treatment and therapy.",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstoryhighlight",
+    "pk": 14,
+    "fields": {
+        "name": null,
+        "order": 20,
+        "published": true,
+        "patient": 5,
+        "title": null,
+        "content": "Trikafta helped me with going through the process of waiting.",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstoryhighlight",
+    "pk": 15,
+    "fields": {
+        "name": null,
+        "order": 30,
+        "published": true,
+        "patient": 5,
+        "title": null,
+        "content": "I woke up and they said to me you don’t have new lungs. It was a trial run, or a dry run. We were told it can happen even multiple times, but it was disappointing.",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstoryhighlight",
+    "pk": 16,
+    "fields": {
+        "name": null,
+        "order": 40,
+        "published": true,
+        "patient": 5,
+        "title": null,
+        "content": "We had a support network that was incredible.",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstoryhighlight",
+    "pk": 17,
+    "fields": {
+        "name": null,
+        "order": 50,
+        "published": true,
+        "patient": 5,
+        "title": null,
+        "content": "Transplant also gave me a different perspective on life. Someone is giving you a piece of them, a life they would have lived. I don’t ever want to take it for granted, I want to be active, helping, serving, working, being social, enjoying people.",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstoryhighlight",
+    "pk": 18,
+    "fields": {
+        "name": null,
+        "order": 20,
+        "published": true,
+        "patient": 3,
+        "title": null,
+        "content": "I was diagnosed with skin cancer a couple months after the transplant conversation, and then had to wait two years after my biopsy surgery before I was eligible for transplant.",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstoryhighlight",
+    "pk": 19,
+    "fields": {
+        "name": null,
+        "order": 30,
+        "published": true,
+        "patient": 3,
+        "title": null,
+        "content": "I watched the YouTube video of the woman breathing for the first time after her lung transplant surgery and the tube being taken out and dreamed about having that same moment of being able to experience breathing easy!",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstoryhighlight",
+    "pk": 20,
+    "fields": {
+        "name": null,
+        "order": 40,
+        "published": true,
+        "patient": 3,
+        "title": null,
+        "content": "Recovery took a while; I became stronger and got better once I was home.",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstoryhighlight",
+    "pk": 21,
+    "fields": {
+        "name": null,
+        "order": 10,
+        "published": true,
+        "patient": 8,
+        "title": null,
+        "content": "I had just gone to what I thought was going to be a typical doctor’s appointment… I think the exact words I was given were something along the lines of, “It’s very likely if you don’t get this lung transplant, you’re not going to see passed your 31st birthday.” I think at the time I was 29. I might have even been 30.",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstoryhighlight",
+    "pk": 22,
+    "fields": {
+        "name": null,
+        "order": 20,
+        "published": true,
+        "patient": 8,
+        "title": null,
+        "content": "Never in my life have I been so anxious.",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstoryhighlight",
+    "pk": 23,
+    "fields": {
+        "name": null,
+        "order": 30,
+        "published": true,
+        "patient": 8,
+        "title": null,
+        "content": "I did lot of research and figured out what transplant was all about.",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstoryhighlight",
+    "pk": 24,
+    "fields": {
+        "name": null,
+        "order": 40,
+        "published": true,
+        "patient": 8,
+        "title": null,
+        "content": "I had a hemoptysis occurrence in April where I coughed up massive amounts of blood and it was understood I was essentially on my deathbed.",
+        "tags": []
+    }
+},
+{
+    "model": "patients.patientstoryhighlight",
+    "pk": 25,
+    "fields": {
+        "name": null,
+        "order": 50,
+        "published": true,
+        "patient": 8,
+        "title": null,
+        "content": "After you get the transplant, your health and your quality of life substantially rises.",
+        "tags": []
+    }
+},
+{
+    "model": "patients.issue",
+    "pk": 1,
+    "fields": {
+        "name": "On oxygen",
+        "order": 10,
+        "published": true
+    }
+},
+{
+    "model": "patients.issue",
+    "pk": 2,
+    "fields": {
+        "name": "high BMI",
+        "order": 20,
+        "published": true
+    }
+},
+{
+    "model": "patients.issue",
+    "pk": 3,
+    "fields": {
+        "name": "skin cancer (melanoma)",
+        "order": 30,
+        "published": true
+    }
+},
+{
+    "model": "patients.issue",
+    "pk": 4,
+    "fields": {
+        "name": "increasing frequency of exacerbations (from months to weeks)",
+        "order": 40,
+        "published": true
+    }
+},
+{
+    "model": "patients.issue",
+    "pk": 5,
+    "fields": {
+        "name": "Bronchiectasis",
+        "order": 50,
+        "published": true
+    }
+},
+{
+    "model": "patients.issue",
+    "pk": 6,
+    "fields": {
+        "name": "Increasing frequency of hemoptysis (coughing up blood)",
+        "order": 60,
+        "published": true
+    }
+},
+{
+    "model": "patients.issue",
+    "pk": 7,
+    "fields": {
+        "name": "Bi-PAP for hypercapnia (high carbon dioxide)",
+        "order": 70,
+        "published": true
+    }
+},
+{
+    "model": "patients.issue",
+    "pk": 8,
+    "fields": {
+        "name": "Prolonged ICU stay",
+        "order": 80,
+        "published": true
+    }
+},
+{
+    "model": "patients.issue",
+    "pk": 9,
+    "fields": {
+        "name": "early post-op arrhythmia (heart rhythm problem)",
+        "order": 90,
+        "published": true
+    }
+},
+{
+    "model": "patients.issue",
+    "pk": 10,
+    "fields": {
+        "name": "lowered kidney f",
+        "order": 100,
+        "published": true
+    }
+},
+{
+    "model": "patients.issue",
+    "pk": 11,
+    "fields": {
+        "name": "gastroparesis",
+        "order": 110,
+        "published": true
+    }
+},
+{
+    "model": "patients.issue",
+    "pk": 12,
+    "fields": {
+        "name": "osteoporosis from chronic prednisone use (required hip replacement surgery)",
+        "order": 120,
+        "published": true
+    }
+},
+{
+    "model": "patients.issue",
+    "pk": 13,
+    "fields": {
+        "name": "medication side effects",
+        "order": 130,
+        "published": true
+    }
+},
+{
+    "model": "patients.issue",
+    "pk": 14,
+    "fields": {
+        "name": "insulin-dependent CF-related diabetes",
+        "order": 140,
+        "published": true
+    }
+},
+{
+    "model": "patients.issue",
+    "pk": 15,
+    "fields": {
+        "name": "chronic hypoxic/hypercapnic respiratory failure on a ventilator via a tracheostomy",
+        "order": 150,
+        "published": true
+    }
+},
+{
+    "model": "patients.issue",
+    "pk": 16,
+    "fields": {
+        "name": "cardiac arrest",
+        "order": 160,
+        "published": true
+    }
+},
+{
+    "model": "patients.issue",
+    "pk": 17,
+    "fields": {
+        "name": "severe malnutrition (low BMI)",
+        "order": 170,
+        "published": true
+    }
+},
+{
+    "model": "patients.issue",
+    "pk": 18,
+    "fields": {
+        "name": "frequent exacerbations",
+        "order": 180,
+        "published": true
+    }
+},
+{
+    "model": "patients.issue",
+    "pk": 19,
+    "fields": {
+        "name": "On oxygen all the time (even at rest)",
+        "order": 190,
+        "published": true
+    }
+},
+{
+    "model": "patients.issue",
+    "pk": 20,
+    "fields": {
+        "name": "CF-related diabetes",
+        "order": 200,
+        "published": true
+    }
+},
+{
+    "model": "patients.issue",
+    "pk": 21,
+    "fields": {
+        "name": "Hemoptysis",
+        "order": 210,
+        "published": true
+    }
+},
+{
+    "model": "patients.issue",
+    "pk": 22,
+    "fields": {
+        "name": "sinus disease",
+        "order": 220,
+        "published": true
+    }
+},
+{
+    "model": "patients.issue",
+    "pk": 23,
+    "fields": {
+        "name": "underwent sinus surgery",
+        "order": 230,
+        "published": true
+    }
+},
+{
+    "model": "patients.issue",
+    "pk": 24,
+    "fields": {
+        "name": "Difficulty obtaining therapeutic immunosuppression levels",
+        "order": 240,
+        "published": true
+    }
+},
+{
+    "model": "patients.issue",
+    "pk": 25,
+    "fields": {
+        "name": "multiple respiratory viruses (rhinovirus infections – the “common cold”)",
+        "order": 250,
+        "published": true
+    }
+},
+{
+    "model": "patients.issue",
+    "pk": 26,
+    "fields": {
+        "name": "numbness of chest",
+        "order": 260,
+        "published": true
+    }
+},
+{
+    "model": "patients.issue",
+    "pk": 27,
+    "fields": {
+        "name": "Hand tremors",
+        "order": 270,
+        "published": true
+    }
+},
+{
+    "model": "patients.issue",
+    "pk": 28,
+    "fields": {
+        "name": "nasal polypsnasal polyps",
+        "order": 280,
+        "published": true
+    }
+},
+{
+    "model": "patients.issue",
+    "pk": 29,
+    "fields": {
+        "name": "history of sinus infections",
+        "order": 290,
+        "published": true
+    }
+},
+{
+    "model": "patients.issue",
+    "pk": 30,
+    "fields": {
+        "name": "on BIPAP for hypercapnia",
+        "order": 300,
+        "published": true
+    }
+},
+{
+    "model": "patients.issue",
+    "pk": 31,
+    "fields": {
+        "name": "supplemental oxygen",
+        "order": 310,
+        "published": true
+    }
+},
+{
+    "model": "patients.issue",
+    "pk": 32,
+    "fields": {
+        "name": "low BMI",
+        "order": 320,
+        "published": true
+    }
+},
+{
+    "model": "patients.issue",
+    "pk": 33,
+    "fields": {
+        "name": "older age (for CF)",
+        "order": 330,
+        "published": true
+    }
+},
+{
+    "model": "patients.issue",
+    "pk": 34,
+    "fields": {
+        "name": "relocation after transplant",
+        "order": 340,
+        "published": true
+    }
+},
+{
+    "model": "patients.issue",
+    "pk": 35,
+    "fields": {
+        "name": "diabetes",
+        "order": 350,
+        "published": true
+    }
+},
+{
+    "model": "patients.issue",
+    "pk": 36,
+    "fields": {
+        "name": "re-intubation early after transplant",
+        "order": 360,
+        "published": true
+    }
+},
+{
+    "model": "patients.pretransplantissue",
+    "pk": 1,
+    "fields": {
+        "patient": 3,
+        "issue": 1
+    }
+},
+{
+    "model": "patients.pretransplantissue",
+    "pk": 2,
+    "fields": {
+        "patient": 3,
+        "issue": 2
+    }
+},
+{
+    "model": "patients.pretransplantissue",
+    "pk": 3,
+    "fields": {
+        "patient": 3,
+        "issue": 3
+    }
+},
+{
+    "model": "patients.pretransplantissue",
+    "pk": 4,
+    "fields": {
+        "patient": 3,
+        "issue": 4
+    }
+},
+{
+    "model": "patients.pretransplantissue",
+    "pk": 5,
+    "fields": {
+        "patient": 3,
+        "issue": 5
+    }
+},
+{
+    "model": "patients.pretransplantissue",
+    "pk": 6,
+    "fields": {
+        "patient": 3,
+        "issue": 6
+    }
+},
+{
+    "model": "patients.pretransplantissue",
+    "pk": 7,
+    "fields": {
+        "patient": 3,
+        "issue": 7
+    }
+},
+{
+    "model": "patients.pretransplantissue",
+    "pk": 8,
+    "fields": {
+        "patient": 5,
+        "issue": 14
+    }
+},
+{
+    "model": "patients.pretransplantissue",
+    "pk": 9,
+    "fields": {
+        "patient": 5,
+        "issue": 15
+    }
+},
+{
+    "model": "patients.pretransplantissue",
+    "pk": 10,
+    "fields": {
+        "patient": 5,
+        "issue": 16
+    }
+},
+{
+    "model": "patients.pretransplantissue",
+    "pk": 11,
+    "fields": {
+        "patient": 5,
+        "issue": 17
+    }
+},
+{
+    "model": "patients.pretransplantissue",
+    "pk": 12,
+    "fields": {
+        "patient": 6,
+        "issue": 18
+    }
+},
+{
+    "model": "patients.pretransplantissue",
+    "pk": 13,
+    "fields": {
+        "patient": 6,
+        "issue": 19
+    }
+},
+{
+    "model": "patients.pretransplantissue",
+    "pk": 14,
+    "fields": {
+        "patient": 6,
+        "issue": 20
+    }
+},
+{
+    "model": "patients.pretransplantissue",
+    "pk": 15,
+    "fields": {
+        "patient": 6,
+        "issue": 21
+    }
+},
+{
+    "model": "patients.pretransplantissue",
+    "pk": 16,
+    "fields": {
+        "patient": 6,
+        "issue": 22
+    }
+},
+{
+    "model": "patients.pretransplantissue",
+    "pk": 17,
+    "fields": {
+        "patient": 7,
+        "issue": 28
+    }
+},
+{
+    "model": "patients.pretransplantissue",
+    "pk": 18,
+    "fields": {
+        "patient": 7,
+        "issue": 29
+    }
+},
+{
+    "model": "patients.pretransplantissue",
+    "pk": 19,
+    "fields": {
+        "patient": 7,
+        "issue": 30
+    }
+},
+{
+    "model": "patients.pretransplantissue",
+    "pk": 20,
+    "fields": {
+        "patient": 7,
+        "issue": 31
+    }
+},
+{
+    "model": "patients.pretransplantissue",
+    "pk": 21,
+    "fields": {
+        "patient": 7,
+        "issue": 32
+    }
+},
+{
+    "model": "patients.pretransplantissue",
+    "pk": 22,
+    "fields": {
+        "patient": 7,
+        "issue": 33
+    }
+},
+{
+    "model": "patients.posttransplantissue",
+    "pk": 1,
+    "fields": {
+        "patient": 3,
+        "issue": 8
+    }
+},
+{
+    "model": "patients.posttransplantissue",
+    "pk": 2,
+    "fields": {
+        "patient": 3,
+        "issue": 9
+    }
+},
+{
+    "model": "patients.posttransplantissue",
+    "pk": 3,
+    "fields": {
+        "patient": 3,
+        "issue": 10
+    }
+},
+{
+    "model": "patients.posttransplantissue",
+    "pk": 4,
+    "fields": {
+        "patient": 3,
+        "issue": 11
+    }
+},
+{
+    "model": "patients.posttransplantissue",
+    "pk": 5,
+    "fields": {
+        "patient": 3,
+        "issue": 12
+    }
+},
+{
+    "model": "patients.posttransplantissue",
+    "pk": 6,
+    "fields": {
+        "patient": 5,
+        "issue": 13
+    }
+},
+{
+    "model": "patients.posttransplantissue",
+    "pk": 7,
+    "fields": {
+        "patient": 6,
+        "issue": 23
+    }
+},
+{
+    "model": "patients.posttransplantissue",
+    "pk": 8,
+    "fields": {
+        "patient": 6,
+        "issue": 24
+    }
+},
+{
+    "model": "patients.posttransplantissue",
+    "pk": 9,
+    "fields": {
+        "patient": 6,
+        "issue": 25
+    }
+},
+{
+    "model": "patients.posttransplantissue",
+    "pk": 10,
+    "fields": {
+        "patient": 6,
+        "issue": 26
+    }
+},
+{
+    "model": "patients.posttransplantissue",
+    "pk": 11,
+    "fields": {
+        "patient": 6,
+        "issue": 27
+    }
+},
+{
+    "model": "patients.posttransplantissue",
+    "pk": 12,
+    "fields": {
+        "patient": 7,
+        "issue": 34
+    }
+},
+{
+    "model": "patients.posttransplantissue",
+    "pk": 13,
+    "fields": {
+        "patient": 7,
+        "issue": 35
+    }
+},
+{
+    "model": "patients.posttransplantissue",
+    "pk": 14,
+    "fields": {
+        "patient": 7,
+        "issue": 36
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 1,
+    "fields": {
+        "name": "Exacerbation",
+        "slug": "exacerbation",
+        "published": true,
+        "description": "Pulmonary exacerbations are flares of cystic fibrosis lung disease that are typically associated with worsened symptoms (increased cough, sputum production, shortness of breath) and decrease in lung function (e.g. FEV1).",
+        "content": "<p>Pulmonary exacerbations are flares of cystic fibrosis lung disease that are typically associated with worsened symptoms (increased cough, sputum production, shortness of breath) and decrease in lung function (e.g. FEV1).</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 2,
+    "fields": {
+        "name": "Life Expectancy",
+        "slug": "life-expectancy",
+        "published": true,
+        "description": "Survival after lung transplant is tracked by multiple patient registries, including the CF Foundation, the United Network for Organ Sharing (UNOS), and the International Society for Heart and Lung Transplantation (ISHLT).  The ISHLT provides information on how long people from all over the world with various diseases lived after lung transplant. For people with CF transplanted between 1990 and 2018, half lived longer than 9.9 years after transplant, and half lived less than 9.9 years. The term f",
+        "content": "<p>Survival after lung transplant is tracked by multiple patient registries, including the CF Foundation, the United Network for Organ Sharing (UNOS), and the International Society for Heart and Lung Transplantation (ISHLT).</p>\r\n\r\n<p>The ISHLT provides information on how long people from all over the world with various diseases lived after lung transplant. For people with CF transplanted between 1990 and 2018, half lived longer than 9.9 years after transplant, and half lived less than 9.9 years. The term for this is the &ldquo;median survival&rdquo;. In fact, 1 out of 4 CF lung transplant recipients has lived more than 20 years after transplant. ISHLT data also shows improving survival for lung transplant recipients with CF over time, with more recent transplants providing a longer survival benefit.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 5,
+    "fields": {
+        "name": "Slow decline",
+        "slug": "slow-decline",
+        "published": true,
+        "description": "It's slow dude.",
+        "content": "<p>Something</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 6,
+    "fields": {
+        "name": "Transplant",
+        "slug": "transplant",
+        "published": true,
+        "description": "Gross and icky!",
+        "content": "<p>More example text here.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 7,
+    "fields": {
+        "name": "Advance Care Planning",
+        "slug": "advance-care-planning",
+        "published": true,
+        "description": "People with serious illness benefit by planning for a future where they are likely to get sicker so that they can communicate their preferences to their providers and caregivers. Advance care planning is a process that includes conversations about treatment preferences as well as wishes for end-of-life care. As part of the lung transplant evaluation process, people with CF are expected to complete an advanced directive. The CFF recommends routine advance care planning conversations once FEV1< 40",
+        "content": "<p>People with serious illness benefit by planning for a future where they are likely to get sicker so that they can communicate their preferences to their providers and caregivers. Advance care planning is a process that includes conversations about treatment preferences as well as wishes for end-of-life care. As part of the lung transplant evaluation process, people with CF are expected to complete an advanced directive. The CFF recommends routine advance care planning conversations once FEV1&lt; 40% predicted.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 8,
+    "fields": {
+        "name": "Disability",
+        "slug": "diability",
+        "published": true,
+        "description": "Disability, or Social Security Disability Insurance, is a program that pays benefits to individuals who have worked long enough and recently enough and paid Social Security taxes on your earnings. The Supplemental Security Income (SSI) program pays benefits to disabled adults and children who have limited income and resources.",
+        "content": "<p>Disability, or Social Security Disability Insurance, is a program that pays benefits to individuals who have worked long enough and recently enough and paid Social Security taxes on your earnings. The Supplemental Security Income (SSI) program pays benefits to disabled adults and children who have limited income and resources.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 9,
+    "fields": {
+        "name": "Tests",
+        "slug": "tests",
+        "published": true,
+        "description": "Specific tests vary based on your age, medical history, how sick you are, the transplant program, and other factors. Some tests may be already completed as part of routine CF care and the transplant team will need to gather records. Tests may include: pulmonary function testing, blood tests, chest radiology (x-ray or CF scan), etc.",
+        "content": "<p>Specific tests vary based on your age, medical history, how sick you are, the transplant program, and other factors. Some tests may be already completed as part of routine CF care and the transplant team will need to gather records.</p>\r\n\r\n<p>Tests may include: pulmonary function testing; blood tests; chest radiology (x-ray or CT scan); evaluation of your heart (echocardiogram and heart catheterization); evaluation for acid reflux and esophagus function; and cancer screening.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 10,
+    "fields": {
+        "name": "Lung Transplant Evaluation",
+        "slug": "evaluation",
+        "published": true,
+        "description": "The transplant team will outline a list of specific steps that you will need to finish before you can be placed on the waiting list. The steps will be a combination of tests, procedures, and visits with medical providers.",
+        "content": "<p>The transplant team will outline a list of specific steps that you will need to finish before you can be placed on the waiting list. The steps will be a combination of tests, procedures, and visits with medical providers.</p>\r\n\r\n<p>The goals of the &ldquo;evaluation&rdquo; are to:</p>\r\n\r\n<p style=\"margin-left:48px\">(1) Better determine how much you can benefit from transplant</p>\r\n\r\n<p style=\"margin-left:48px\">(2) Identify conditions that could be optimized to improve your chance of success with transplant.</p>\r\n\r\n<p style=\"margin-left:48px\">(3) Identify conditions that could make transplant too risky (contraindications)</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 11,
+    "fields": {
+        "name": "Survival Statistics",
+        "slug": "survival-statistics",
+        "published": true,
+        "description": "Survival after lung transplant is tracked by multiple patient registries, including the CF Foundation, the United Network for Organ Sharing (UNOS), and the International Society for Heart and Lung Transplantation (ISHLT).   The ISHLT provides informa",
+        "content": "<p>Survival after lung transplant is tracked by multiple patient registries, including the CF Foundation, the United Network for Organ Sharing (UNOS), and the International Society for Heart and Lung Transplantation (ISHLT).</p>\r\n\r\n<p>The ISHLT provides information on how long people from all over the world with various diseases lived after lung transplant. For people with CF transplanted between 1990 and 2018, half lived longer than 9.9 years after transplant, and half lived less than 9.9 years. The term for this is the &ldquo;median survival&rdquo;. In fact, 1 out of 4 CF lung transplant recipients has lived more than 20 years after transplant. ISHLT data also shows improving survival for lung transplant recipients with CF over time, with more recent transplants providing a longer survival benefit.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 12,
+    "fields": {
+        "name": "BMI",
+        "slug": "bmi",
+        "published": true,
+        "description": "A measure of nutrition that incorporates a person’s height and weight. A BMI that is too high (obesity) or too low (malnutrition) can make transplant riskier. In fact, there are studies showing that people with obesity or malnutrition before transplant are at a higher risk for having a difficult recovery and worse survival after transplant. For this reason, many lung transplant programs set absolute cutoffs for BMI so that those who are moderately-to-severely underweight or being obese can be in",
+        "content": "<p>A measure of nutrition that incorporates a person&rsquo;s height and weight. A BMI that is too high (obesity) or too low (malnutrition) can make transplant riskier. In fact, there are studies showing that people with obesity or malnutrition <em>before</em> transplant are at a higher risk for having a difficult recovery and worse survival <em>after</em> transplant. For this reason, many lung transplant programs set absolute cutoffs for BMI so&nbsp;that those who are moderately-to-severely underweight or being obese can be&nbsp;ineligible for lung transplant. These thresholds are different at different programs across the country.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 13,
+    "fields": {
+        "name": "Feeding Tube",
+        "slug": "feeding-tube",
+        "published": true,
+        "description": "Feeding tubes can be temporary or more durable. Temporary feeding tubes may be inserted into the nose and go into the stomach or small intestine. More durable feeding tubes (e.g. PEG or G-tube) can be placed by surgeons, gastroenterologists or interventional radiologists and are typically connected to the surface of the skin on the left upper portion of the abdomen. Either type of feeding tube can be used to deliver liquid tube feedings.",
+        "content": "<p>Feeding tubes can be temporary or more durable. Temporary feeding tubes may be inserted into the nose and go into the stomach or small intestine. More durable feeding tubes (e.g. PEG or G-tube) can be placed by surgeons, gastroenterologists or interventional radiologists and are typically connected to the surface of the skin on the left upper portion of the abdomen. Either type of feeding tube can be used to deliver liquid tube feedings.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 14,
+    "fields": {
+        "name": "Support Group",
+        "slug": "support-group",
+        "published": true,
+        "description": "Support groups exist for people considering lung transplant and their caregivers. Many support groups have a virtual component (or are entirely online). Support groups offer the opportunity to learn about lung transplant from others who have gone through the process and to share your experiences before and after transplant.",
+        "content": "<p>Support groups exist for people considering lung transplant and their caregivers. Many support groups have a virtual component (or are entirely online). Support groups offer the opportunity to learn about lung transplant from others who have gone through the process and to share your experiences before and after transplant.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 15,
+    "fields": {
+        "name": "Caregiver",
+        "slug": "caregiver",
+        "published": true,
+        "description": "Being a caregiver is a commitment. Lung transplant caregiver requirements vary by lung transplant program, but generally must be adults who are nonsmokers, able to drive, and able to stay at the hospital while the patient is recovering from the transplant surgery. Caregivers are useful for providing physical help – carrying/transporting medical equipment, delivering needed items to the hospital, and providing meals.",
+        "content": "<p>Being a caregiver is a commitment. Lung transplant caregiver requirements vary by lung transplant program, but generally must be adults who are nonsmokers, able to drive, and able to stay at the hospital while the patient is recovering from the transplant surgery. Caregivers are useful for providing physical help &ndash; carrying/transporting medical equipment, delivering needed items to the hospital, and providing meals.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 16,
+    "fields": {
+        "name": "Pulmonary Rehabilitation",
+        "slug": "pulmonary-rehabilitation",
+        "published": true,
+        "description": "Pulmonary rehabilitation is a supervised program that includes exercise training, health education, and breathing techniques for people who have certain lung conditions or lung problems.",
+        "content": "<p>Pulmonary rehabilitation is a supervised program that includes exercise training, health education, and breathing techniques for people who have certain lung conditions or lung problems.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 17,
+    "fields": {
+        "name": "Wait List",
+        "slug": "wait-list",
+        "published": true,
+        "description": "After being placed on the waiting list for lung transplant, individuals must be prepared to be called in for lung transplant at any time. Some people wait only hours or days and others wait years. The timing of “the call” depends on many factors including how sick the person waiting is, the availability of donor organs, and whether there are factors that make finding a match more challenging.",
+        "content": "<p>After being placed on the waiting list for lung transplant, individuals must be prepared to be called in for lung transplant at any time. Some people wait only hours or days and others wait years. The timing of &ldquo;the call&rdquo; depends on many factors including how sick the person waiting is, the availability of donor organs, and whether there are factors that make finding a match more challenging.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 18,
+    "fields": {
+        "name": "Carbon Dioxide",
+        "slug": "carbon-dioxide",
+        "published": true,
+        "description": "Carbon dioxide is a toxin that can build up in a person’s blood when their lungs are not working normally.",
+        "content": "<p>Carbon dioxide is a toxin that can build up in a person&rsquo;s blood when their lungs are not working normally.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 19,
+    "fields": {
+        "name": "BiPAP",
+        "slug": "bipap",
+        "published": true,
+        "description": "Bi-level positive airway pressure; this is a form of non-invasive ventilation that is used to help people remove carbon dioxide from their body. BiPAP is delivered by a mask on the face.",
+        "content": "<p>Bi-level positive airway pressure; this is a form of non-invasive ventilation that is used to help people remove carbon dioxide from their body. BiPAP is delivered by a mask on the face.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 20,
+    "fields": {
+        "name": "Travel Plan",
+        "slug": "travel-plan",
+        "published": true,
+        "description": "Transplant centers require lung transplant candidates to stay within a certain distance of the center at all times so they can arrive quickly if a donor becomes available. The distance varies from center to center. Most transplant centers require candidates to have a plan in place for how they will get to the transplant center once they receive the call for transplant.",
+        "content": "<p>Transplant centers require lung transplant candidates to stay within a certain distance of the center at all times so they can arrive quickly if a donor becomes available. The distance varies from center to center. Most transplant centers require candidates to have a plan in place for how they will get to the transplant center once they receive the call for transplant.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 21,
+    "fields": {
+        "name": "Pre-op Tests",
+        "slug": "pre-op-tests",
+        "published": true,
+        "description": "Pre-operative tests may be checked just prior to transplant to ensure a candidate remains healthy enough for the transplant surgery. The tests typically include blood work, imaging (e.g. chest x-ray), and testing for respiratory viruses (including COVID-19).",
+        "content": "<p>Pre-operative tests may be checked just prior to transplant to ensure a candidate remains healthy enough for the transplant surgery. The tests typically include blood work, imaging (e.g. chest x-ray), and testing for respiratory viruses (including COVID-19).</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 22,
+    "fields": {
+        "name": "ICU",
+        "slug": "icu",
+        "published": true,
+        "description": "Intensive Care Unit (ICU): Following a lung transplant, patients are closely monitored in the intensive care unit. Depending on how well the new lungs are working, people spend hours to days on the ventilator with a breathing tube (endotracheal tube) in place.",
+        "content": "<p>Intensive Care Unit (ICU): Following a lung transplant, patients are closely monitored in the intensive care unit. Depending on how well the new lungs are working, people spend hours to days on the ventilator with a breathing tube (endotracheal tube) in place.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 23,
+    "fields": {
+        "name": "Intubated",
+        "slug": "intubated",
+        "published": true,
+        "description": "Having a breathing tube (endotracheal tube) in a person’s windpipe (trachea) to allow connection to a mechanical ventilator for assistance with breathing. Some people are heavily sedated while others are able to be fully awake while on the ventilator, but this depends on multiple medical factors and how tolerant of the breathing tube the patient is.",
+        "content": "<p>Having a breathing tube (endotracheal tube) in a person&rsquo;s windpipe (trachea) to allow connection to a mechanical ventilator for assistance with breathing. Some people are heavily sedated while others are able to be fully awake while on the ventilator, but this depends on multiple medical factors and how tolerant of the breathing tube the patient is.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 24,
+    "fields": {
+        "name": "Extubated",
+        "slug": "extubated",
+        "published": true,
+        "description": "Having the breathing tube (endotracheal tube) removed. Once extubated, a person breathes on their own without the assistance of the ventilator.",
+        "content": "<p>Having the breathing tube (endotracheal tube) removed. Once extubated, a person breathes on their own without the assistance of the ventilator.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 25,
+    "fields": {
+        "name": "Sepsis",
+        "slug": "sepsis",
+        "published": true,
+        "description": "A severe, dangerous reaction that the body may have to an infection.",
+        "content": "<p>A severe, dangerous reaction that the body may have to an infection.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 26,
+    "fields": {
+        "name": "Sternum",
+        "slug": "sternum",
+        "published": true,
+        "description": "Commonly called the “breastbone.” It is the bone in the center of the front of the chest and connects the ribs to form the rib cage.",
+        "content": "<p>Commonly called the &ldquo;breastbone.&rdquo; It is the bone in the center of the front of the chest and connects the ribs to form the rib cage.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 27,
+    "fields": {
+        "name": "Restrictions",
+        "slug": "restrictions",
+        "published": true,
+        "description": "In order to support healing of the broken sternum, or breastbone, lung transplant recipients are placed on sternal precautions or restrictions. These restrictions include limits on how the patient can move or twist and how heavy objects they carry can be.",
+        "content": "<p>In order to support healing of the broken sternum, or breastbone, lung transplant recipients are placed on sternal precautions or restrictions. These restrictions include limits on how the patient can move or twist and how heavy objects they carry can be.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 29,
+    "fields": {
+        "name": "Wires",
+        "slug": "wires",
+        "published": true,
+        "description": "There are monitors for heart rate, blood pressure, and oxygen saturation that remain continuously connected initially. There are multiple types of intravenous (IV) lines/tubes.",
+        "content": "<p>There are monitors for heart rate, blood pressure, and oxygen saturation that remain continuously connected initially. There are multiple types of intravenous (IV) lines/tubes.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 30,
+    "fields": {
+        "name": "Discharged",
+        "slug": "discharged",
+        "published": true,
+        "description": "Allowed to leave the hospital.",
+        "content": "<p>Allowed to leave the hospital.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 31,
+    "fields": {
+        "name": "Oxygen Saturation",
+        "slug": "oxygen-saturation",
+        "published": true,
+        "description": "The fraction of oxygen-saturated hemoglobin relative to the total hemoglobin in the blood. Oxygen saturation is normally 95-100%.",
+        "content": "<p>The fraction of oxygen-saturated hemoglobin relative to the total hemoglobin in the blood. Oxygen saturation is normally 95-100%.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 32,
+    "fields": {
+        "name": "Pulmonary Function Test",
+        "slug": "pulmonary-function-test",
+        "published": true,
+        "description": "The pulmonary function test most commonly used is spirometry. Spirometry measures how much air the lungs are moving (volume) and how quickly (flow). The FEV1 and FVC are two important measurements from spirometry that are tracked over time for people with a lung transplant.",
+        "content": "<p>The pulmonary function test most commonly used is spirometry. Spirometry measures how much air the lungs are moving (volume) and how quickly (flow). The FEV1 and FVC are two important measurements from spirometry that are tracked over time for people with a lung transplant.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 33,
+    "fields": {
+        "name": "FEV1",
+        "slug": "fev1",
+        "published": true,
+        "description": "Forced expiratory volume in one second; this is a lung function measurement that describes how much air is breathed out in one second when a person is blowing out as hard as they can. FEV1 is used post-transplant to monitor the function of the lung transplant.",
+        "content": "<p>Forced expiratory volume in one second; this is a lung function measurement that describes how much air is breathed out in one second when a person is blowing out as hard as they can. FEV1 is used post-transplant to monitor the function of the lung transplant.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 34,
+    "fields": {
+        "name": "Relocation",
+        "slug": "relocation",
+        "published": true,
+        "description": "Relocation after lung transplant is sometimes required by the lung transplant center. There are frequent doctor’s appointments scheduled early after the transplant. It is important to remain close to the transplant center so that you can be evaluated quickly if a complication arises.",
+        "content": "<p>Relocation after lung transplant is sometimes required by the lung transplant center. There are frequent doctor&rsquo;s appointments scheduled early after the transplant. It is important to remain close to the transplant center so that you can be evaluated quickly if a complication arises.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 35,
+    "fields": {
+        "name": "Returning Home",
+        "slug": "returning-home",
+        "published": true,
+        "description": "If a person relocates after transplant to be closer to the transplant center, multiple factors will influence the timing for returning home. The number and severity of complications after transplant, the strength of your support system, the distance to your permanent home, and how well you are managing the new medication and monitoring regimen will all be factors in the timing.",
+        "content": "<p>If a person relocates after transplant to be closer to the transplant center, multiple factors will influence the timing for returning home. The number and severity of complications after transplant, the strength of your support system, the distance to your permanent home, and how well you are managing the new medication and monitoring regimen will all be factors in the timing.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 36,
+    "fields": {
+        "name": "Supplemental Oxygen",
+        "slug": "supplemental-oxygen",
+        "published": true,
+        "description": "Supplemental oxygen is a higher concentration of oxygen that is prescribed to treat low oxygen levels.",
+        "content": "<p>Supplemental oxygen is a higher concentration of oxygen that is prescribed to treat low oxygen levels.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 37,
+    "fields": {
+        "name": "Nebulizer",
+        "slug": "nebulizer",
+        "published": true,
+        "description": "Nebulizers are drug delivery devices used to administer medication in the form of a mist inhaled into the lungs. Nebulizers are commonly used for the treatment of cystic fibrosis. Typically, people living with CF use nebulizers for hours each day prior to lung transplant.",
+        "content": "<p>Nebulizers are drug delivery devices used to administer medication in the form of a mist inhaled into the lungs. Nebulizers are commonly used for the treatment of cystic fibrosis. Typically, people living with CF use nebulizers for hours each day prior to lung transplant.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 38,
+    "fields": {
+        "name": "Immune Suppression",
+        "slug": "immune-suppression",
+        "published": true,
+        "description": "The dampening of the immune system’s strength. Immune suppression is necessary so that the body accepts the transplanted organ. Immune suppression requires multiple medications, some of which require blood tests for monitoring levels.",
+        "content": "<p>The dampening of the immune system&rsquo;s strength. Immune suppression is necessary so that the body accepts the transplanted organ. Immune suppression requires multiple medications, some of which require blood tests for monitoring levels.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 39,
+    "fields": {
+        "name": "Diabetes",
+        "slug": "diabetes",
+        "published": true,
+        "description": "People with CF frequently have diabetes at the time of lung transplant and many go on to develop diabetes after transplant. The risk of diabetes is related to problems in the pancreas due to CF, but diabetes can also be induced by medications (e.g. prednisone) after transplant.",
+        "content": "<p>People with CF frequently have diabetes at the time of lung transplant and many go on to develop diabetes after transplant. The risk of diabetes is related to problems in the pancreas due to CF, but diabetes can also be induced by medications (e.g. prednisone) after transplant.&nbsp;</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 40,
+    "fields": {
+        "name": "Insulin",
+        "slug": "insulin",
+        "published": true,
+        "description": "Insulin is a medication used to treat diabetes. Insulin is injected under the skin in response to measured blood sugar (blood glucose) levels.",
+        "content": "<p>Insulin is a medication used to treat diabetes. Insulin is injected under the skin in response to measured blood sugar (blood glucose) levels.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 41,
+    "fields": {
+        "name": "Dexcom G6",
+        "slug": "dexcom-g6",
+        "published": true,
+        "description": "Dexcom G6 is a brand of continuous glucose monitor. The Dexcom G6 has an associated app that gives real-time feedback about blood sugar (blood glucose) levels.",
+        "content": "<p>Dexcom G6 is a brand of continuous glucose monitor. The Dexcom G6 has an associated app that gives real-time feedback about blood sugar (blood glucose) levels.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 43,
+    "fields": {
+        "name": "Support System",
+        "slug": "support-system",
+        "published": true,
+        "description": "A support system can include family, friends, online support groups, and others. People in your support system can provide mental/emotional support as you deal with uncertainty or complications before and after transplant. A support system is also useful for providing physical help – carrying/transporting medical equipment, delivering needed items to the hospital, providing meals.",
+        "content": "<p>A support system can include family, friends, online support groups, and others. People in your support system can provide mental/emotional support as you deal with uncertainty or complications before and after transplant. A support system is also useful for providing physical help &ndash; carrying/transporting medical equipment, delivering needed items to the hospital, providing meals.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 44,
+    "fields": {
+        "name": "Complications",
+        "slug": "complications",
+        "published": true,
+        "description": "Complications are common but are largely treatable and manageable. Complications after transplant may include bleeding, developing a lung collapse (pneumothorax), heart rhythm abnormalities (arrhythmias), or infections. The need for re-intubation (replacement of the breathing tube) for mechanical ventilation can also occur.",
+        "content": "<p>Complications are common but are largely treatable and manageable. Complications after transplant may include bleeding, developing a lung collapse (pneumothorax), heart rhythm abnormalities (arrhythmias), or infections. The need for re-intubation (replacement of the breathing tube) for mechanical ventilation can also occur.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 45,
+    "fields": {
+        "name": "Respiratory Failure",
+        "slug": "respiratory-failure",
+        "published": true,
+        "description": "Occurs when lungs can’t get enough oxygen into the blood.",
+        "content": "<p>Occurs when lungs can&rsquo;t get enough oxygen into the blood.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 46,
+    "fields": {
+        "name": "Ventilator",
+        "slug": "ventilator",
+        "published": true,
+        "description": "A machine that helps someone breathe.",
+        "content": "<p>A machine that helps someone breathe.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 47,
+    "fields": {
+        "name": "Trach",
+        "slug": "trach",
+        "published": true,
+        "description": "An incision in the neck is made in order to insert a tube that brings air to the lungs.",
+        "content": "<p>An incision in the neck is made in order to insert a tube that brings air to the lungs.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 48,
+    "fields": {
+        "name": "Low Oxygen",
+        "slug": "low-oxygen",
+        "published": true,
+        "description": "Some people living with advanced CF lung disease have low oxygen levels in the blood. Supplemental oxygen may be prescribed to treat low levels. It is typically delivered through plastic tubing from an oxygen tank or concentrator.",
+        "content": "<p>Some people living with advanced CF lung disease have low oxygen levels in the blood. Supplemental oxygen may be prescribed to treat low levels. It is typically delivered through plastic tubing from an oxygen tank or concentrator.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 49,
+    "fields": {
+        "name": "Transplant Center",
+        "slug": "transplant-center",
+        "published": true,
+        "description": "Certain hospitals that offer lung transplants.",
+        "content": "<p>Certain hospitals that offer lung transplants.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 50,
+    "fields": {
+        "name": "Antibiotics",
+        "slug": "antibiotics",
+        "published": true,
+        "description": "Antibiotics are used to treat infections caused by bacteria. They are used to treat worsened symptoms of illness (increased cough, sputum production, shortness of breath) and decrease in lung function (e.g. FEV1).",
+        "content": "<p>Antibiotics are used to treat infections caused by bacteria.&nbsp;They are used to treat worsened symptoms of illness (increased cough, sputum production, shortness of breath) and decrease in lung function (e.g. FEV1).</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 51,
+    "fields": {
+        "name": "Drug Resistant",
+        "slug": "drug-resistant",
+        "published": true,
+        "description": "Resistance to antibiotics is a common issue for people with CF. Bacteria changes in ways that can cause antibiotics stop working.",
+        "content": "<p>Resistance to antibiotics is a common issue for people with CF. Bacteria changes in ways that can cause antibiotics stop working.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 52,
+    "fields": {
+        "name": "Long-term Respiratory Care Facility",
+        "slug": "long-term-respiratory-care-facility",
+        "published": true,
+        "description": "Care is provided on an ongoing basis in a living situation by respiratory and physical therapists and nurses.",
+        "content": "<p>Care is provided on an ongoing basis in a living situation by respiratory and physical therapists and nurses.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 53,
+    "fields": {
+        "name": "Scans",
+        "slug": "scans",
+        "published": true,
+        "description": "Such as a bone density scan and chest CT scan",
+        "content": "<p>Such as a bone density scan and chest CT scan</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 54,
+    "fields": {
+        "name": "Colonoscopy",
+        "slug": "colonoscopy",
+        "published": true,
+        "description": "Cancer screening is a part of transplant evaluation. A colonoscopy is a common exam to detect changes or abnormalities in the large intestine and rectum. A long, flexible tube with a camera is inserted into the rectum so a doctor can view the inside of the entire colon.",
+        "content": "<p>Cancer screening is a part of transplant evaluation. A colonoscopy is a common exam to detect changes or abnormalities in the large intestine and rectum. A long, flexible tube with a camera is inserted into the rectum so a doctor can view the inside of the entire colon.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 55,
+    "fields": {
+        "name": "Trikafta",
+        "slug": "trikafta",
+        "published": true,
+        "description": "Trikafta is a medication that treats the abnormal protein that causes CF. Modulators are only effective for people with certain CFTR mutations.  Trikafta was approved in October 2019 for use in the United States among people 12 years or older with at least one copy of the F508del mutation of CFTR and is a highly effective CFTR modulator.",
+        "content": "<p>Trikafta is a medication that treats the abnormal protein that causes CF. Modulators are only effective for people with certain CFTR mutations.&nbsp; Trikafta was approved in October 2019 for use in the United States among people 12 years or older with at least one copy of the F508del mutation of CFTR and is a highly effective CFTR modulator.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 56,
+    "fields": {
+        "name": "Pulmonologist",
+        "slug": "pulmonologist",
+        "published": true,
+        "description": "A physician who specializes in respiratory illnesses like CF.",
+        "content": "<p>A physician who specializes in respiratory illnesses like CF.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 57,
+    "fields": {
+        "name": "Physical Therapy",
+        "slug": "physical-therapy",
+        "published": true,
+        "description": "Exercise and movement is important for people with advanced cystic fibrosis for posture, airway clearance, and body pain.",
+        "content": "<p>Exercise and movement is important for people with advanced cystic fibrosis for posture, airway clearance, and body pain.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 58,
+    "fields": {
+        "name": "Lung Function",
+        "slug": "lung-function",
+        "published": true,
+        "description": "Lung function is also known as FEV1: forced expiratory volume in one second; a measurement that describes how much air is breathed out in one second when a person is blowing out as hard as they can.",
+        "content": "<p>Lung function is also known as FEV1: forced expiratory volume in one second; a measurement that describes how much air is breathed out in one second when a person is blowing out as hard as they can.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 59,
+    "fields": {
+        "name": "Call",
+        "slug": "call",
+        "published": true,
+        "description": "After being placed on the waiting list for lung transplant, individuals must be prepared to be called in for lung transplant at any time. Some people wait only hours or days and others wait years. The timing of “the call” depends on many factors including how sick the person waiting is, the availability of donor organs, and whether there are factors that make finding a match more challenging.",
+        "content": "<p>After being placed on the waiting list for lung transplant, individuals must be prepared to be called in for lung transplant at any time. Some people wait only hours or days and others wait years. The timing of &ldquo;the call&rdquo; depends on many factors including how sick the person waiting is, the availability of donor organs, and whether there are factors that make finding a match more challenging.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 60,
+    "fields": {
+        "name": "Dry Run",
+        "slug": "dry-run",
+        "published": true,
+        "description": "“Dry run” is the circumstance when an individual is called to the hospital for lung transplant but the surgery is cancelled, often due to unforeseen problems with the donor lungs.",
+        "content": "<p>&ldquo;Dry run&rdquo; is the circumstance when an individual is called to the hospital for lung transplant but the surgery is cancelled, often due to unforeseen problems with the donor lungs.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 61,
+    "fields": {
+        "name": "Airlift",
+        "slug": "airlift",
+        "published": true,
+        "description": "Medical transport services by air.",
+        "content": "<p>Medical transport services by air.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 62,
+    "fields": {
+        "name": "Pulse Oximeter",
+        "slug": "pulse-oximeter",
+        "published": true,
+        "description": "A pulse oximeter is a small device that clips onto the finger and measures the level of oxygen in the blood.",
+        "content": "<p>A pulse oximeter is a small device that clips onto the finger and measures the level of oxygen in the blood.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 63,
+    "fields": {
+        "name": "Health-related Quality of Life",
+        "slug": "health-related-quality-of-life",
+        "published": true,
+        "description": "Health-related quality of life can improve within a few months after transplant for individuals with CF.",
+        "content": "<p>Health-related quality of life can improve within a few months after transplant for individuals with CF.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 64,
+    "fields": {
+        "name": "Pain Management",
+        "slug": "pain-management",
+        "published": true,
+        "description": "Opioid medications are prescribed for pain management after lung transplant.",
+        "content": "<p>Opioid medications are prescribed for pain management after lung transplant.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 65,
+    "fields": {
+        "name": "Anti-Rejection Medication",
+        "slug": "anti-rejection-medication",
+        "published": true,
+        "description": "Medications are necessary so that the body accepts the transplanted organ. Some require blood tests for monitoring levels.",
+        "content": "<p>Medications are necessary so that the body accepts the transplanted organ. Some require blood tests for monitoring levels.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 66,
+    "fields": {
+        "name": "Tacrolimus",
+        "slug": "tacrolimus",
+        "published": true,
+        "description": "Tacrolimus is an immunosuppressive drug used after lung transplant to lower the risk of organ rejection.",
+        "content": "<p><span style=\"background-color:white\"><span style=\"color:#202124\">Tacrolimus is an immunosuppressive drug used after lung transplant to lower the risk of organ rejection.</span></span></p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 67,
+    "fields": {
+        "name": "Mycophenolate",
+        "slug": "mycophenolate",
+        "published": true,
+        "description": "Mycophenolate is an immunosuppressive drug used after lung transplant to lower the risk of organ rejection.",
+        "content": "<p><span style=\"background-color:white\"><span style=\"color:#202124\">Mycophenolate is an immunosuppressive drug used after lung transplant to lower the risk of organ rejection.</span></span></p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 68,
+    "fields": {
+        "name": "Prednisone",
+        "slug": "prednisone",
+        "published": true,
+        "description": "A corticosteroid",
+        "content": "<p>A corticosteroid</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 69,
+    "fields": {
+        "name": "6MWT",
+        "slug": "6mwt",
+        "published": true,
+        "description": "The six-minute walking test (6MWT) is used to measure pulmonary function through walk distance, oxygen saturation and pulse rate during the walk, and breathlessness after the walk.",
+        "content": "<p>The six-minute walking test (6MWT) is used to measure pulmonary function through walk distance, oxygen saturation and pulse rate during the walk, and breathlessness after the walk.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 70,
+    "fields": {
+        "name": "Chest Tubes",
+        "slug": "chest-tubes",
+        "published": true,
+        "description": "Chest tubes are placed during the lung transplant surgery to help drain air, fluid, and blood from around the lungs and to help the new lungs remain inflated.",
+        "content": "<p>Chest tubes are placed during the lung transplant surgery to help drain air, fluid, and blood from around the lungs and to help the new lungs remain inflated.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 71,
+    "fields": {
+        "name": "Bronchoscopy",
+        "slug": "bronchoscopy",
+        "published": true,
+        "description": "A bronchoscopy is performed by a pulmonologist so they can look at the lungs and air passages. A thin tube (bronchoscope) is passed through the nose or mouth, down the throat and into the lungs.",
+        "content": "<p>A bronchoscopy is performed by a pulmonologist so they can look at the lungs and air passages. A thin tube (bronchoscope) is passed through the nose or mouth, down the throat and into the lungs.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 72,
+    "fields": {
+        "name": "Hypercapnia",
+        "slug": "hypercapnia",
+        "published": true,
+        "description": "High levels of carbon dioxide in the blood. Carbon dioxide is a toxin that can build up in a person’s blood when their lungs are not working normally.",
+        "content": "<p>High levels of carbon dioxide in the blood. Carbon dioxide is a toxin that can build up in a person&rsquo;s blood when their lungs are not working normally.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 73,
+    "fields": {
+        "name": "Gowning Up",
+        "slug": "gowning-up",
+        "published": true,
+        "description": "Infection control measure for CF patients.",
+        "content": "<p>Infection control measure for CF patients.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 74,
+    "fields": {
+        "name": "Example CTFR Genotype",
+        "slug": "example-ctfr-genotype",
+        "published": true,
+        "description": "This is the CTFR Genotype, and I'm not sure what to put here.",
+        "content": "<p>Something</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 75,
+    "fields": {
+        "name": "Numbness",
+        "slug": "numbness",
+        "published": true,
+        "description": "Numbness can occur around the chest incision.",
+        "content": "<p>Numbness can occur around the chest incision.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 76,
+    "fields": {
+        "name": "Taste",
+        "slug": "taste",
+        "published": true,
+        "description": "Altered sense of taste and smell can be side effects of medications.",
+        "content": "<p>Altered sense of taste and smell can be side effects of medications.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 77,
+    "fields": {
+        "name": "Hand Tremors",
+        "slug": "hand-tremors",
+        "published": true,
+        "description": "Hand tremors are a relatively common post-transplant symptom.",
+        "content": "<p>Hand tremors are a relatively common post-transplant symptom.</p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 78,
+    "fields": {
+        "name": "Adherence",
+        "slug": "adherence",
+        "published": true,
+        "description": "The extent to which a person’s behavior – taking medication, following a diet, and/or executing lifestyle changes, corresponds with agreed recommendations from a health care provider.",
+        "content": "<p><span style=\"background-color:white\"><span style=\"color:black\">The extent to which a person&rsquo;s behavior &ndash; taking medication, following a diet, and/or executing lifestyle changes, corresponds with agreed recommendations from a health care provider.</span></span></p>"
+    }
+},
+{
+    "model": "resources.resource",
+    "pk": 79,
+    "fields": {
+        "name": "Nutrition",
+        "slug": "nutrition",
+        "published": true,
+        "description": "There are studies showing that people with obesity or malnutrition before transplant are at a higher risk for having a difficult recovery and worse survival after transplant. For this reason, many lung transplant programs set absolute cutoffs for BMI so that those who are moderately-to-severely underweight or being obese can be ineligible for lung transplant. These thresholds are different at different programs across the country.",
+        "content": "<p>There are studies showing that people with obesity or malnutrition <em>before</em> transplant are at a higher risk for having a difficult recovery and worse survival <em>after</em> transplant. For this reason, many lung transplant programs set absolute cutoffs for BMI so&nbsp;that those who are moderately-to-severely underweight or being obese can be&nbsp;ineligible for lung transplant. These thresholds are different at different programs across the country.</p>"
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 1,
+    "fields": {
+        "name": "Example tag",
+        "published": true,
+        "warning": false
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 2,
+    "fields": {
+        "name": "Warning Tag",
+        "published": true,
+        "warning": true
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 3,
+    "fields": {
+        "name": "Other example tag",
+        "published": true,
+        "warning": false
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 4,
+    "fields": {
+        "name": "Test Tag",
+        "published": false,
+        "warning": false
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 5,
+    "fields": {
+        "name": "Good Outcome",
+        "published": true,
+        "warning": false
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 6,
+    "fields": {
+        "name": "Fast Recovery",
+        "published": true,
+        "warning": false
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 7,
+    "fields": {
+        "name": "Relocation",
+        "published": true,
+        "warning": false
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 8,
+    "fields": {
+        "name": "Insurance",
+        "published": true,
+        "warning": false
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 9,
+    "fields": {
+        "name": "Finances",
+        "published": true,
+        "warning": false
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 10,
+    "fields": {
+        "name": "Mental Health",
+        "published": true,
+        "warning": false
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 11,
+    "fields": {
+        "name": "Diabetes",
+        "published": true,
+        "warning": false
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 12,
+    "fields": {
+        "name": "Markers of Disease Severity",
+        "published": true,
+        "warning": false
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 13,
+    "fields": {
+        "name": "Caregiver Support",
+        "published": true,
+        "warning": false
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 14,
+    "fields": {
+        "name": "Trikafta",
+        "published": true,
+        "warning": false
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 15,
+    "fields": {
+        "name": "Dry Run",
+        "published": true,
+        "warning": false
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 16,
+    "fields": {
+        "name": "Medications",
+        "published": true,
+        "warning": false
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 17,
+    "fields": {
+        "name": "Oxygen",
+        "published": true,
+        "warning": false
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 18,
+    "fields": {
+        "name": "BMI",
+        "published": true,
+        "warning": false
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 19,
+    "fields": {
+        "name": "Exacerbations",
+        "published": true,
+        "warning": false
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 20,
+    "fields": {
+        "name": "Hemoptysis",
+        "published": true,
+        "warning": false
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 21,
+    "fields": {
+        "name": "Cancer",
+        "published": true,
+        "warning": false
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 22,
+    "fields": {
+        "name": "Contraindications",
+        "published": true,
+        "warning": false
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 23,
+    "fields": {
+        "name": "Bronchoscopy",
+        "published": true,
+        "warning": false
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 24,
+    "fields": {
+        "name": "Recovery",
+        "published": true,
+        "warning": false
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 25,
+    "fields": {
+        "name": "Preparing mentally and emotionally",
+        "published": true,
+        "warning": false
+    }
+}
+]

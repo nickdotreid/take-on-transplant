@@ -34,6 +34,7 @@ ADD ./requirements.txt ./requirements.txt
 RUN pip install -r requirements.txt
 RUN pip install django-ckeditor
 
+ADD ./fixtures /take-on-transplant/fixtures
 ADD ./icons /take-on-transplant/icons
 ADD ./ui /take-on-transplant/ui
 ADD ./server /take-on-transplant/server

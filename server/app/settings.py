@@ -65,7 +65,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'app.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
@@ -135,6 +134,8 @@ if os.path.isdir('/take-on-transplant/templates-compiled'):
     STATICFILES_DIRS = [
         '/take-on-transplant/templates-compiled'
     ]
+
+FIXTURE_DIRS = ['/take-on-transplant/fixtures']
 
 # Email Settings
 if 'SENDGRID_API_KEY' in os.environ:

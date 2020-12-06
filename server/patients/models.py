@@ -128,7 +128,16 @@ class Patient(models.Model):
         .all()
         return [pi.issue for pi in patient_issues]
 
-class Attribute(models.Model):
+class AbstractOrderable(models.Model):
+    name = models.CharField(max_length=250, null=True)
+    order = models.PositiveIntegerField()
+    published = models.BooleanField(default = True)
+
+    class Meta:
+        abstract = True
+        ordering = ['order']
+
+class Attribute(AbstractOrderable):
     name = models.CharField(max_length=250)
     order = models.PositiveIntegerField()
     published = models.BooleanField(default = True)
@@ -185,7 +194,7 @@ class PatientAttribute(models.Model):
         else:
             return None
 
-class PatientStory(models.Model):
+class PatientStory(AbstractOrderable):
     patient = models.ForeignKey(
         Patient,
         on_delete = models.CASCADE,
@@ -193,28 +202,21 @@ class PatientStory(models.Model):
     )
 
     title = models.CharField(max_length=250)
-    published = models.BooleanField(default = True)
-    order = models.PositiveIntegerField()
-
     content = RichTextField(
         blank = True,
         null=True
     )
-
     tags = models.ManyToManyField(
         Tag,
         blank = True
     )
 
-class PatientStoryHighlight(models.Model):
+class PatientStoryHighlight(AbstractOrderable):
     patient = models.ForeignKey(
         Patient,
         on_delete = models.CASCADE,
         related_name = '+'
     )
-
-    order = models.PositiveIntegerField()
-    published = models.BooleanField(default=True)
 
     title = models.CharField(
         blank = True,
@@ -229,7 +231,7 @@ class PatientStoryHighlight(models.Model):
 
     tags = models.ManyToManyField(Tag)
 
-class Issue(models.Model):
+class Issue(AbstractOrderable):
     name = models.CharField(max_length=250)
     order = models.PositiveIntegerField()
     published = models.BooleanField(default = True)

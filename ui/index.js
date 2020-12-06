@@ -3,20 +3,25 @@ import tippy from 'tippy.js';
 
 function registerPopovers() {
     document.querySelectorAll('[data-toggle="popover"]').forEach((element) => {
-        const content = element.getAttribute('data-content');
-        if (content) {
-            tippy(element, {
-                content: content
-            });
+        let content = element.getAttribute('data-content');
+        const resource_id = element.getAttribute('resource-id');
+        if(resource_id) {
+            const resource = document.getElementById(`resource-${resource_id}`);
+            if (resource) {
+                content = resource.innerHTML;
+            }
         }
-    });
-
-    document.querySelectorAll('.popover-links a').forEach((element) => {
-        const content = element.text;
         if (content) {
-            tippy(element, {
+            const _tippy = tippy(element, {
+                allowHTML: true,
+                appendTo: document.body,
                 content: content,
-                placement: 'right'
+                interactive: true,
+                trigger: 'mouseenter focus click'
+            });
+            element.addEventListener('click', (event) => {
+                event.preventDefault();
+                _tippy.show();
             });
         }
     });

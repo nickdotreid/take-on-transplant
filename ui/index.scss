@@ -22,7 +22,9 @@ nav > a {
     padding: 0.25em 0.25em;
 }
 
-
+.popover-content {
+    display: none;
+}
 
 h1, h2, h3, h4 {
     margin: 0px;
@@ -468,4 +470,14 @@ body > header {
     top: 200px !important;
 }
 
+.tippy-box {
+    background-color: #fff;
+    border: #000 2px solid;
+    color: #000;
+    font-size: 14px;
+}
 
+.tippy-box > .tippy-content {
+    max-height: 300px;
+    overflow: hidden;
+}

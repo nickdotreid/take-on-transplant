@@ -34,5 +34,15 @@
         {% endfor %}
     </div>
 </div>
+<div style="display: none;">
+    {% for resource in resources %}
+    <div id="resource-{{resource.id}}">
+        <h3>{{resource.name}}</h3>
+        {% autoescape off %}
+        {{resource.content}}
+        {% endautoescape %}
+    </div>
+    {% endfor %}
+</div>
 
 {% endblock %}

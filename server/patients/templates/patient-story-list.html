@@ -3,13 +3,16 @@
 {% block content %}
 <div class="container">
     {% for patient in patients %}
+    {% url 'patient-story' patient.id as patient_story_url %}
     <div class="patient-profile">
-        {% if patient.thumbnail %}
-        <img src="{{patient.thumbnail.url}}" />
-        {% else %}
-        <span class="patient-photo-placeholder"></span>
-        {% endif %}
-        <h2>{{patient.name}}</h2>
+        <a class="patient-photo" href="{{patient_story_url}}">
+            {% if patient.thumbnail %}
+            <img src="{{patient.thumbnail.url}}" />
+            {% else %}
+            <span class="patient-photo-placeholder"></span>
+            {% endif %}    
+        </a>
+        <h2><a href="{{patient_story_url}}">{{patient.name}}</a></h2>
         <ul class="patient-attributes">
             {% for attribute in patient.attributes %}
             <li>
@@ -44,7 +47,7 @@
             {% endif %}
         {% endfor %}
         </ul>
-        <a href="{% url 'patient-story' patient.id %}">View {{patient.name}}'s story</a>
+        <a href="{{patient_story_url}}">View {{patient.name}}'s story</a>
     </div>
     {% endfor %}
 </div>

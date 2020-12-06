@@ -216,6 +216,15 @@ header {
         line-height: 1em;
         font-size: 24px;
         font-weight: bold;
+
+        > a {
+            color: #000;
+            text-decoration: none;
+            &:hover,
+            &:focus {
+                text-decoration: underline;
+            }
+        }
     }
 
     > a:last-child {
@@ -240,10 +249,10 @@ header {
         }
     }
 
-    > img,
-    > .patient-photo-placeholder {
+    > .patient-photo {
         display: block;
         position: absolute;
+        overflow: hidden;
         top: 0px;
         left: 15px;
         width: 200px;

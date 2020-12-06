@@ -3,9 +3,9 @@
 {% block content %}
 <div class="patient-profile is-sticky">
     {% if patient.thumbnail %}
-    <img src="{{patient.thumbnail.url}}" />
+    <img class="patient-photo" src="{{patient.thumbnail.url}}" />
     {% else %}
-    <span class="patient-photo-placeholder"></span>
+    <span class="patient-photo"></span>
     {% endif %}
     <h1>{{patient.name}}</h1>
     <ul class="patient-attributes">

@@ -450,6 +450,7 @@ body > header {
 
 .patient-profile.is-sticky.is-stuck {
     top: 40px !important;
+    min-height: 40px;
     > * {
         display: none;
     }
@@ -480,4 +481,72 @@ body > header {
 .tippy-box > .tippy-content {
     max-height: 300px;
     overflow: hidden;
+
+    > .popover-read-more {
+        display: block;
+        width: 100%;
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        padding: 1em 0.5em;
+        background: rgb(255,255,255);
+        background: linear-gradient(180deg, rgba(255,255,255,0) 10%, rgba(255,255,255,1) 40%);
+    }
+}
+
+.popover-target {
+    display: inline-block;
+    width: 0.75em;
+    height: 0.75em;
+    background-color: #000;
+    mask: url('../icons/chat_bubble_outline-24px.svg');
+    mask-size: cover;
+}
+
+a > .popover-target {
+    background-color: #0000FF;
+}
+
+body > .modal {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+
+    &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        background-color: #000000;
+        opacity: 0.3;
+        z-index: -1;
+    }
+
+    > .modal-close {
+        flex: 0 0 auto;
+        width: 400px;
+        padding: 0.5em 1em;
+        display: block;
+        background-color: #fff;
+        text-align: right;
+    }
+
+    > .modal-content {
+        flex: 0 0 auto;
+        width: 400px;
+        margin: 0em;
+        background-color: #FFF;
+        padding: 1em;
+    }
 }

@@ -38,9 +38,11 @@
     {% for resource in resources %}
     <div id="resource-{{resource.id}}">
         <h3>{{resource.name}}</h3>
-        {% autoescape off %}
-        {{resource.content}}
-        {% endautoescape %}
+        <div class="resource-content">
+            {% autoescape off %}
+            {{resource.content}}
+            {% endautoescape %}
+        </div>
     </div>
     {% endfor %}
 </div>

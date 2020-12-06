@@ -15,6 +15,7 @@ services:
         ports:
             - 8000:8000
         volumes:
+            - ./icons:/take-on-transplant/icons
             - ./ui:/take-on-transplant/ui
             - ./dist:/take-on-transplant/dist
             - ./templates:/take-on-transplant/templates
@@ -37,6 +38,7 @@ services:
         ports:
             - 8080:8080
         volumes:
+            - ./icons:/take-on-transplant/icons
             - ./server:/take-on-transplant/server
             - server-media:/media/
             - ./ui:/take-on-transplant/ui

@@ -128,24 +128,49 @@ header {
     @extend .container;
 
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 
     > * {
+        display: none;
         margin: 0px 0.25em;
     }
 
     > *:first-child {
+        display: block;
         flex-grow: 1;
         margin-left: 0px;
+
+        &:before {
+            content: '';
+            display: block;
+            width: 1.5em;
+            height: 1.5em;
+            float: left;
+            transform: translate(0%, -10%);
+            margin-right:0.25em;
+            background: #0000FF;
+            mask: url('../icons/home-24px.svg');
+            mask-size: cover;
+        }
     }
+
     > *:last-child {
         margin-right:0px;
     }
 }
 
 @media(min-width: 600px) {
+    
     header {
-        padding-left: 350px;
+        flex-direction: row;
+    }
+
+    header > * {
+        display: block;
+    }
+
+    header > *:first-child {
+        padding-left: 250px;
     }
 }
 
@@ -407,6 +432,7 @@ body > header {
         height: 100%;
         background-color: #fff;
         z-index: -1;
+        opacity: 0.7;
     }
 }
 

@@ -4,12 +4,12 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../ui/index.scss">
-    <title>{% block title %}Take On Transplant{% endblock %}</title>
+    <title>{% block title %}CF Stories{% endblock %}</title>
 </head>
 
 <body>
     <header>
-        <a href="/">Take on Transplant</a>
+        <a href="/">CF Stories</a>
         {% if user.is_staff %}
         {% url 'admin:index' as admin_url %}
         <a href="{{admin_url}}">Admin</a>

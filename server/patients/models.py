@@ -93,6 +93,13 @@ class Patient(models.Model):
 
     def get_patient_attributes(self):
         return PatientAttribute.objects.filter(
+            patient = self,
+            attribute__published = True
+        ).all()
+
+    def get_all_patient_attributes(self):
+        return PatientAttribute.objects.filter(
+            models.Q(attribute__published=True) | models.Q(attribute__published=False),
             patient = self
         ).all()
 
@@ -160,13 +167,11 @@ class Attribute(AbstractOrderable):
 class PatientAttributeManager(models.Manager):
 
     def get_queryset(self):
-        return super().get_queryset() \
+        queryset = super().get_queryset() \
         .prefetch_related('attribute') \
         .prefetch_related('attribute__resource') \
-        .order_by('attribute__order') \
-        .filter(
-            attribute__published = True
-        )
+        .order_by('attribute__order')
+        return queryset
 
 class PatientAttribute(models.Model):
     patient = models.ForeignKey(

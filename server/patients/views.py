@@ -22,9 +22,20 @@ class PatientStoryList(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        context['patients'] = Patient.objects.order_by('name') \
+        patients = Patient.objects.order_by('name') \
         .filter(published = True) \
         .all()
+
+        if 'attributes' in self.request.GET:
+            for patient in patients:
+                patient._attributes = patient.get_all_patient_attributes()
+
+        context['patients'] = patients
+
+        if 'highlights' in self.request.GET:
+            context['show_highlights'] = True
+        if 'tags' in self.request.GET:
+            context['show_tags'] = True
         
         return context
 

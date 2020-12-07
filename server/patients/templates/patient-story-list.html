@@ -25,9 +25,9 @@
             </li>
             {% endfor %}
         </ul>
-        {% if patient.story_highlights %}
+        {% if show_highlights and patient.story_highlights %}
         <div class="collapsible-content">
-            <h3 class="title">Story Hightlights</h3>
+            <h3 class="title">Story Highlights</h3>
             <div class="content">
                 {% for highlight in patient.story_highlights %}
                 {% if highlight.title %}
@@ -38,6 +38,7 @@
             </div>
         </div>
         {% endif %}
+        {% if show_tags and patient.published_tags %}
         <ul class="tags">
         {% for tag in patient.published_tags %}
             {% if tag.warning %}
@@ -47,6 +48,7 @@
             {% endif %}
         {% endfor %}
         </ul>
+        {% endif %}
         <a href="{{patient_story_url}}">View {{patient.name}}'s story</a>
     </div>
     {% endfor %}

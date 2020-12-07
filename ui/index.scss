@@ -151,7 +151,9 @@ header {
             transform: translate(0%, -10%);
             margin-right:0.25em;
             background: #0000FF;
-            mask: url('../icons/home-24px.svg');
+            -webkit-mask-image: url('../icons/home-24px.svg');
+            -webkit-mask-size: cover;
+            mask-image: url('../icons/home-24px.svg');
             mask-size: cover;
         }
     }
@@ -499,7 +501,9 @@ body > header {
     width: 0.75em;
     height: 0.75em;
     background-color: #000;
-    mask: url('../icons/chat_bubble_outline-24px.svg');
+    -webkit-mask-image: url('../icons/chat_bubble_outline-24px.svg');
+    -webkit-mask-size: cover;
+    mask-image: url('../icons/chat_bubble_outline-24px.svg');
     mask-size: cover;
 }
 

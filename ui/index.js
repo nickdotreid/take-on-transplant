@@ -13,15 +13,16 @@ function registerPopovers() {
             }
         }
         if (content) {
-            const popover_target = document.createElement('span');
-            popover_target.classList.add('popover-target');
-            element.appendChild(popover_target);
-            const _tippy = tippy(popover_target, {
+            // const popover_target = document.createElement('span');
+            // popover_target.classList.add('popover-target');
+            // element.appendChild(popover_target);
+            const _tippy = tippy(element, {
                 allowHTML: true,
                 appendTo: document.body,
                 content: content,
                 interactive: true,
                 trigger: 'mouseenter focus click',
+                followCursor: true,
                 plugins: [followCursor],
                 onShow: (instance) => {
                     hideAll({exclude: instance});

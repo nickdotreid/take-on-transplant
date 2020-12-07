@@ -22,7 +22,7 @@ function registerPopovers() {
                 content: content,
                 interactive: true,
                 trigger: 'mouseenter focus click',
-                followCursor: true,
+                followCursor: 'initial',
                 plugins: [followCursor],
                 onShow: (instance) => {
                     hideAll({exclude: instance});

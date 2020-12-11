@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>All Resources</h2>
+{% for resource in resources %}
+<h2>{{resource.name}}</h2>
+{% autoescape off %}
+{{resource.content}}
+{% endautoescape %}
+{% endfor %}
+{% endblock %}

@@ -38,4 +38,12 @@ class ResourceDetailView(TemplateView):
         context['description'] = resource.description
         context['content'] = resource.content
         return context
-        
+
+class AllResourcesView(TemplateView):
+
+    template_name = 'all-resources.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['resources'] = Resource.objects.filter().all()
+        return context

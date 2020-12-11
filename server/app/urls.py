@@ -19,6 +19,7 @@ from patients.views import PatientStoryTableOfContentsView
 from patients.views import PatientStoryList
 from resources.views import ResourceListView
 from resources.views import ResourceDetailView
+from resources.views import AllResourcesView
 
 class EmailAuthenticationForm(AuthenticationForm):
     
@@ -65,6 +66,7 @@ urlpatterns = [
     path('reset-password/complete/', PasswordResetConfirmView.as_view(), name='password_reset_complete'),
     path('reset-password/sent/', PasswordResetDoneView.as_view(), name='password_reset_done'),
     path('reset-password/', PasswordResetView.as_view(), name='password_reset'),
+    path('all-resources/', AllResourcesView.as_view(), name='resources-all'),
     path('resources/<resource_slug>', ResourceDetailView.as_view(), name='resource-detail'),
     path('resources/', ResourceListView.as_view(), name='resource-list'),
     path('story/<patient_id>/story/<story_id>/', PatientStoryTableOfContentsView.as_view(), name='patient-story'),

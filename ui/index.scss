@@ -2,6 +2,9 @@
 @import "normalize.css/normalize.css";
 @import "tippy.js/dist/tippy.css";
 
+$text-color: #000000;
+$secondary-background-color: #c8f2f7;
+
 html {
     font-size: 18px;
     font-family: Arial, sans-serif;
@@ -172,48 +175,41 @@ header {
     header > * {
         display: block;
     }
-
-    header > *:first-child {
-        padding-left: 250px;
-    }
 }
 
 .patient-profile {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: start;
-    position: relative;
-    min-height: 230px;
+    display: block;
+    flex-direction: column;
+    flex-wrap: nowrap;
     margin-top: 1em;
     margin-bottom: 2em;
-    padding-bottom: 2em;
-    align-items: center;
+    
+    position: relative;
 
     > * {
         margin: 0em;
         padding: 1em;
-        width: 200px;
+        padding-left: 150px;
     }
 
-    > *:nth-child(2),
-    > *:nth-child(3) {
-        padding-left: 250px;
-        width: auto;
-        flex-basis: 100%;
-    }
-
-    > *:nth-child(2) {
-        padding-top: 35px;
-    }
-
-    > *:nth-child(3) {
-        background-color: #c8f2f7;
-        min-height: 150px;
+    > .patient-photo {
+        display: block;
+        position: absolute;
+        overflow: hidden;
+        top: 0px;
+        left: 15px;
+        width: 100px;
+        height: 100px;
+        padding: 0px;
+        border-radius: 50%;
+        border: 8px #FFF solid;
+        box-shadow: 0px 5px 10px #333;
+        background-color: #eeeeee;
     }
 
     > h1, > h2, > h3,
     > .title {
+        background-color: transparent;
         margin: 0px;
         padding-top: 0px;
         padding-bottom: 0px;
@@ -231,7 +227,8 @@ header {
         }
     }
 
-    > a:last-child {
+    > a:last-child,
+    > .primary-link {
         display: block;
         z-index: 2;
         bottom: 0em;
@@ -240,6 +237,7 @@ header {
         font-size: 1.2em;
         font-weight: bold;
         padding: 0.5em 1em;
+        margin: 0.5em 1em;
         width: auto;
         border: 2px solid rgb(39, 56, 120);
         background: rgb(39, 56, 120);
@@ -253,29 +251,15 @@ header {
         }
     }
 
-    > .patient-photo {
-        display: block;
-        position: absolute;
-        overflow: hidden;
-        top: 0px;
-        left: 15px;
-        width: 200px;
-        height: 200px;
-        padding: 0px;
-        border-radius: 50%;
-        border: 8px #FFF solid;
-        box-shadow: 0px 5px 10px #333;
-        background-color: #eeeeee;
-    }
-
     .patient-attributes {
+        background-color: $secondary-background-color;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         flex-wrap: wrap;
 
         > li {
             list-style-type: none;
-            margin: 0.25em 1em;
+            margin: 0.25em 0em;
         }
 
         > * > span {
@@ -319,6 +303,28 @@ header {
     .patient-profile {
         width: 560px;
         margin: 0px auto;
+
+        padding-bottom: 3em;
+
+
+        > *:nth-child(2),
+        > *:nth-child(3) {
+            padding-left: 250px;
+        }
+    
+        > *:nth-child(2) {
+            padding-top: 35px;
+        }
+
+        > .patient-photo {
+            width: 200px;
+            height: 200px;
+        }
+
+        > a:last-child {
+            float:right;
+        }
+
     }
 }
 
@@ -326,6 +332,17 @@ header {
     .patient-profile {
         width: 960px;
         margin: 0px auto;
+        min-height: 230px;
+
+        > .patient-attributes {
+            flex-direction: row;
+            > li {
+                margin: 0.25em 1em;
+            }
+            > li:first-child {
+                margin-left: 0px;
+            }
+        }
     }
 }
 

@@ -1,6 +1,17 @@
 {% extends 'base.html' %}
 
+{% block footer %}
+<a href="/?attributes&highlights&tags">Extended Home Page</a>
+{% endblock %}
+
 {% block content %}
+<article class="container">
+    <p>Explore stories of people with Cystic Fibrosis who decided to get a lung transplant.</p>
+    <section>
+        <p>FEV1 means functional lung volume.</p>
+    </section>
+</article>
+
 <div class="container">
     {% for patient in patients %}
     {% url 'patient-story' patient.id as patient_story_url %}
@@ -16,11 +27,7 @@
         <ul class="patient-attributes">
             {% for attribute in patient.attributes %}
             <li>
-                {% if attribute.description %}
-                <span data-toggle="popover" data-content="{{attribute.description}}">{{attribute.name}}</span>
-                {% else %}
                 <span>{{attribute.name}}</span>
-                {% endif %}
                 {{attribute.value}}
             </li>
             {% endfor %}

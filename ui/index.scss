@@ -129,6 +129,22 @@ dl {
 
 }
 
+@media(min-width: 600px) {
+    article.container > .main {
+        width: 400px;
+        float:left;
+    }
+    article.container > .aside {
+        float: right;
+    }
+
+    article.container:after {
+        content:'';
+        display: block;
+        clear:both;
+    }
+}
+
 header {
     @extend .container;
 
@@ -186,7 +202,8 @@ header {
     
     position: relative;
 
-    > * {
+    > *,
+    > .tags {
         margin: 0em;
         padding: 1em;
         padding-left: 150px;
@@ -251,7 +268,15 @@ header {
         }
     }
 
-    .patient-attributes {
+    > .story-hightlights {
+        background-color: $secondary-background-color;
+        > .content {
+            background-color: #fff;
+            padding: 1em;
+        }
+    }
+
+    > .patient-attributes {
         background-color: $secondary-background-color;
         display: flex;
         flex-direction: column;
@@ -266,12 +291,6 @@ header {
             display: block;
             font-size: 14px;
         }
-    }
-
-    > .collapsible-content {
-        width: 100%;
-        flex-basis: 100%;
-        padding: 0px;
     }
 
     > nav {
@@ -293,10 +312,6 @@ header {
             box-shadow: 0px 0px 0px #333;
         }
     }
-
-    > .tags {
-        flex-grow: 1;
-    }
 }
 
 @media(min-width: 600px) {
@@ -307,15 +322,11 @@ header {
         padding-bottom: 3em;
 
 
-        > *:nth-child(2),
-        > *:nth-child(3) {
+        > *,
+        > .tags {
             padding-left: 250px;
         }
     
-        > *:nth-child(2) {
-            padding-top: 35px;
-        }
-
         > .patient-photo {
             width: 200px;
             height: 200px;
@@ -348,6 +359,12 @@ header {
 
 .container > .patient-profile {
     width: 100%;
+}
+
+.popover-highlight {
+    text-decoration: none;
+    color: $text-color;
+    background-color: yellow;
 }
 
 .tags {
@@ -498,7 +515,6 @@ body > header {
 }
 
 .tippy-box > .tippy-content {
-    max-height: 300px;
     overflow: hidden;
 
     > .popover-read-more {

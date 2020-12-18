@@ -26,19 +26,6 @@ function registerPopovers() {
                 plugins: [followCursor],
                 onShow: (instance) => {
                     hideAll({exclude: instance});
-                },
-                onShown: (instance) => {
-                    const popper = instance.popper;
-                    const resourceContent = popper.querySelector('.resource-content');
-                    const tippyContent = popper.querySelector('.tippy-content');
-                    const popoverReadMore = popper.querySelector('.popover-read-more');
-                    if (!popoverReadMore && resourceContent.offsetHeight > tippyContent.offsetHeight) {
-                        const readMoreLink = document.createElement('a');
-                        readMoreLink.text = 'Read more';
-                        readMoreLink.classList.add('popover-read-more');
-                        readMoreLink.setAttribute('href', '#resource-'+resource_id);
-                        tippyContent.appendChild(readMoreLink);
-                    }
                 }
             });
             element.addEventListener('click', (event) => {

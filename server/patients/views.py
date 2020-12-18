@@ -67,6 +67,7 @@ class PatientView(TemplateView):
                         resource = Resource.objects.filter(slug = resource_slug).first()
                     if resource:
                         link['data-toggle'] = "popover"
+                        link['class'] = "popover-highlight"
                         link['resource-id'] = resource.id
                         self.add_resource(resource)
                     definition = None

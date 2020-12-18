@@ -6,10 +6,12 @@
 
 {% block content %}
 <article class="container">
-    <p>Explore stories of people with Cystic Fibrosis who decided to get a lung transplant.</p>
-    <section>
+    <div class="main">
+        <p>Explore stories of people with Cystic Fibrosis who decided to get a lung transplant.</p>
+    </div>
+    <div class="aside">
         <p>FEV1 means functional lung volume.</p>
-    </section>
+    </div>
 </article>
 
 <div class="container">
@@ -24,27 +26,6 @@
             {% endif %}    
         </a>
         <h2><a href="{{patient_story_url}}">{{patient.name}}</a></h2>
-        <ul class="patient-attributes">
-            {% for attribute in patient.attributes %}
-            <li>
-                <span>{{attribute.name}}</span>
-                {{attribute.value}}
-            </li>
-            {% endfor %}
-        </ul>
-        {% if show_highlights and patient.story_highlights %}
-        <div class="collapsible-content">
-            <h3 class="title">Story Highlights</h3>
-            <div class="content">
-                {% for highlight in patient.story_highlights %}
-                {% if highlight.title %}
-                <strong>{{highlight.title}}</strong>
-                {% endif %}
-                <p>{{highlight.content}}</p>
-                {% endfor %}
-            </div>
-        </div>
-        {% endif %}
         {% if show_tags and patient.published_tags %}
         <ul class="tags">
         {% for tag in patient.published_tags %}
@@ -55,6 +36,27 @@
             {% endif %}
         {% endfor %}
         </ul>
+        {% endif %}
+        <ul class="patient-attributes">
+            {% for attribute in patient.attributes %}
+            <li>
+                <span>{{attribute.name}}</span>
+                {{attribute.value}}
+            </li>
+            {% endfor %}
+        </ul>
+        {% if show_highlights and patient.story_highlights %}
+        <div class="story-hightlights">
+            <h3 class="title">Story Highlights</h3>
+            <div class="content">
+                {% for highlight in patient.story_highlights %}
+                {% if highlight.title %}
+                <strong>{{highlight.title}}</strong>
+                {% endif %}
+                <p>{{highlight.content}}</p>
+                {% endfor %}
+            </div>
+        </div>
         {% endif %}
         <a href="{{patient_story_url}}">View {{patient.name}}'s story</a>
     </div>

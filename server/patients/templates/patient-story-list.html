@@ -1,16 +1,25 @@
 {% extends 'base.html' %}
 
+{% block header %}
+
+{% endblock %}
+
 {% block footer %}
 <a href="/?attributes&highlights&tags">Extended Home Page</a>
 {% endblock %}
 
 {% block content %}
 <article class="container">
-    <div class="main">
-        <p>Explore stories of people with Cystic Fibrosis who decided to get a lung transplant.</p>
-    </div>
+    <h1><a class="home" href="/">CF Stories</a></h1>
+    <p class="large">Explore stories from people living with Cystic Fibrosis (CF) who have a lung transplant. In the stories, they share their journeys from pre-transplant to post and give advice to others living with CF.</p>
     <div class="aside">
-        <p>FEV1 means functional lung volume.</p>
+        <h3>Helpful Definitions</h3>
+        <p>
+            FEV1 (forced expiratory volume in one second) is a lung function measurement (a type of pulmonary function test or "PFT").
+            FEV1 measures the volume of air your lungs can breathe out in one second and is an accurate way to determine how well your lungs function.
+            <strong>The FEV1 is an important component of the decision for a CF doctor to recommend lung transplant as a treatment option.</strong>
+            FEV1 is also used after lung transplant to determine how well the lung transplant is working.
+        </p>
     </div>
 </article>
 

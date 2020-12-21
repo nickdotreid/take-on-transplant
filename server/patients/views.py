@@ -40,7 +40,6 @@ class PatientStoryList(TemplateView):
         return context
 
 class PatientView(TemplateView):
-    resources = []
     template_name = 'patient-story.html'
 
     def get_patient(self, patient_id):
@@ -48,13 +47,6 @@ class PatientView(TemplateView):
             return Patient.objects.get(id = patient_id)
         except Patient.DoesNotExist:
             raise Http404('Patient does not exist')
-
-    def get_resrouces(self):
-        return self.resources
-
-    def add_resource(self, new_resource):
-        if new_resource.id not in [_r.id for _r in self.resources]:
-            self.resources.append(new_resource)
 
     def add_resource_popovers(self, content):
         if content:
@@ -68,14 +60,7 @@ class PatientView(TemplateView):
                     if resource:
                         link['data-toggle'] = "popover"
                         link['class'] = "popover-highlight"
-                        link['resource-id'] = resource.id
-                        self.add_resource(resource)
-                    definition = None
-                    for slug in re.findall('.*definitions\/(.*)$', href):
-                        definition = Definition.objects.filter(slug = slug).first()
-                    if definition:
-                        link['data-toggle'] = "popover"
-                        link['data-content'] = definition.description
+                        link['data-content'] = resource.content
             return str(soup)
         else:
             return content
@@ -98,7 +83,6 @@ class PatientStoryView(PatientView):
                 'content': self.add_resource_popovers(story.content)
             })
         context['stories'] = stories
-        context['resources'] = self.resources
         return context
 
 class PatientStoryTableOfContentsView(PatientView):

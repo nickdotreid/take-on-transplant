@@ -162,6 +162,12 @@ dl {
                 }
             }
         }
+
+        > .fixed-back {
+            position: fixed;
+            bottom: 0px;
+            padding-bottom: 1em;
+        }
     }
 
 }
@@ -379,6 +385,7 @@ a.popover-highlight,
 a.popover-highlight:visited {
     text-decoration-style: dashed;
     color: $text-color;
+    background-color: #fff4da;
 }
 
 .tags {

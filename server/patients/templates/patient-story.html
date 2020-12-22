@@ -33,18 +33,8 @@
         </div>
         {% endfor %}
     </div>
+    <a class="fixed-back" href="/">View all stories</a>
 </div>
-<div style="display: none;">
-    {% for resource in resources %}
-    <div id="resource-{{resource.id}}">
-        <h3>{{resource.name}}</h3>
-        <div class="resource-content">
-            {% autoescape off %}
-            {{resource.content}}
-            {% endautoescape %}
-        </div>
-    </div>
-    {% endfor %}
-</div>
+
 
 {% endblock %}

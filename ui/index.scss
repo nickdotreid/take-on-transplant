@@ -241,6 +241,21 @@ header {
     }
 }
 
+body > footer {
+    background-color: #eee;
+    padding: 2em 1em;
+
+    > * {
+        @extend .container;
+    }
+
+    > form {
+        > label {
+            display: block;
+        }
+    }
+}
+
 .patient-profile {
     display: block;
     flex-direction: column;

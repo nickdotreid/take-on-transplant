@@ -27,6 +27,7 @@ class PatientStoryList(TemplateView):
         .all()
 
         if 'attributes' in self.request.GET:
+            context['show_all_attributes'] = True
             for patient in patients:
                 patient._attributes = patient.get_all_patient_attributes()
 

@@ -19,18 +19,20 @@
         {% block footer %}
 
         {% endblock %}
-        {% if user.is_staff %}
-        {% url 'admin:index' as admin_url %}
-        <a href="{{admin_url}}">Admin</a>
-        {% endif %}
-        {% if user.is_authenticated %}
-        {% url 'resources' as resources_url %}
-        <a href="{{resources_url}}">Resources Library</a>
-        {% url 'logout' as logout_url %}
-        <a href="{{logout_url}}">Logout</a>
-        {% else %}
-        <a href="{% url 'login' %}">Login</a>
-        {% endif %}
+        <nav>
+            {% if user.is_staff %}
+            {% url 'admin:index' as admin_url %}
+            <a href="{{admin_url}}">Admin</a>
+            {% endif %}
+            {% if user.is_authenticated %}
+            {% url 'resources' as resources_url %}
+            <a href="{{resources_url}}">Resources Library</a>
+            {% url 'logout' as logout_url %}
+            <a href="{{logout_url}}">Logout</a>
+            {% else %}
+            <a href="{% url 'login' %}">Login</a>
+            {% endif %}
+        </nav>
     </footer>
     <script type="text/javascript" src="../ui/index.js"></script>
     {% block script %}

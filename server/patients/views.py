@@ -36,6 +36,14 @@ class PatientStoryList(TemplateView):
             context['show_highlights'] = True
         if 'tags' in self.request.GET:
             context['show_tags'] = True
+
+        resource_ids = []
+        for patient in patients:
+            for patient_attribute in patient.attributes:
+                attribute = patient_attribute.attribute
+                if attribute.resource_id and attribute.resource_id not in resource_ids:
+                    resource_ids.append(attribute.resource_id)
+        context['resources'] = Resource.objects.filter(id__in=resource_ids).all()
         
         return context
 

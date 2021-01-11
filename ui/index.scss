@@ -702,3 +702,17 @@ body > .modal {
         padding: 1em;
     }
 }
+
+form {
+    > label {
+        display: block;
+        margin-top: 1em;
+    }
+
+    > input[type=submit] {
+        display: block;
+        width: 100%;
+        margin: 1em 0em;
+        padding: 0.5em 2em;
+    }
+}

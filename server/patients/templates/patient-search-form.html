@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block header %}
+
+{% endblock %}
+
+{% block content %}
+{% if patient and explination %}
+<div class="container">
+    <p>{{explination}}</p>
+    <div class="patient-profile">
+        <h2>{{patient.name}}</h2>
+    </div>    
+</div>
+{% endif %}
+<div class="container">
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="Search" />
+    </form>
+</div>
+
+{% endblock %}

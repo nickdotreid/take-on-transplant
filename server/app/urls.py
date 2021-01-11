@@ -17,6 +17,7 @@ from django.urls import path
 from patients.views import PatientStoryView
 from patients.views import PatientStoryTableOfContentsView
 from patients.views import PatientStoryList
+from patients.views import PatientSearchForm
 from resources.views import ResourceListView
 from resources.views import ResourceDetailView
 from resources.views import AllResourcesView
@@ -53,7 +54,7 @@ login_view = LoginView.as_view(
 )
 logout_view = LogoutView.as_view(
     next_page = '/login/'
-)
+) 
 
 urlpatterns = [
     # override admin login logout
@@ -71,5 +72,6 @@ urlpatterns = [
     path('resources/', ResourceListView.as_view(), name='resource-list'),
     path('story/<patient_id>/story/<story_id>/', PatientStoryTableOfContentsView.as_view(), name='patient-story'),
     path('story/<patient_id>/', PatientStoryView.as_view(), name='patient-story'),
+    path('search', PatientSearchForm.as_view(), name='search'),
     path('', PatientStoryList.as_view(), name='patient-story-list')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

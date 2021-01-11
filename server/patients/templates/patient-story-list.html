@@ -18,7 +18,11 @@
     </label>
     <label>
         <input type="checkbox" name="tags" value="" {% if show_tags %} checked {% endif %} />
-        Tags
+        Show Tags
+    </label>
+    <label>
+        <input type="checkbox" name="warnings" value="" {% if show_warnings %} checked {% endif %} />
+        Show Warnings
     </label>
     <input type="submit" value="Update" />
 </form>
@@ -54,6 +58,9 @@
             {% endif %}    
         </a>
         <h2><a href="{{patient_story_url}}">{{patient.name}}</a></h2>
+        {% if show_warnings and patient.warning %}
+        <p class="warning">{{patient.warning}}</p>
+        {% endif %}
         {% if show_tags and patient.published_tags %}
         <ul class="tags">
         {% for tag in patient.published_tags %}

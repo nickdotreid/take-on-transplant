@@ -38,6 +38,9 @@ class PatientStoryList(TemplateView):
         if 'tags' in self.request.GET:
             context['show_tags'] = True
 
+        if 'warnings' in self.request.GET:
+            context['show_warnings'] = True
+
         resource_ids = []
         for patient in patients:
             for patient_attribute in patient.attributes:

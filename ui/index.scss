@@ -353,6 +353,27 @@ body > footer {
         }
     }
 
+    > .warning {
+        padding-top: 0px;
+        padding-bottom: 0px;
+        color: #B30909;
+
+        &:before {
+            content: '';
+            display: block;
+            width: 1.5em;
+            height: 1.5em;
+            float: left;
+            transform: translate(0%, -10%);
+            margin-right:0.25em;
+            background: #B30909;
+            -webkit-mask-image: url('../icons/warning-24px.svg');
+            -webkit-mask-size: cover;
+            mask-image: url('../icons/warning-24px.svg');
+            mask-size: cover;
+        }
+    }
+
     > .story-hightlights {
         background-color: $secondary-background-color;
         > .content {
@@ -432,9 +453,22 @@ body > footer {
         width: 960px;
         margin: 0px auto;
         min-height: 230px;
+        padding-top: 45px;
+
+        > * {
+            clear: both;
+        }
 
         > h1, > h2, > h3, > .title {
-            padding-top: 45px;
+            float: left;
+            clear: none;
+        }
+        > .warning {
+            padding: 0px;
+            margin: 0px;
+            color: #B30909;
+            float: right;
+            clear: none;
         }
 
         > .patient-attributes {

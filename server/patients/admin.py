@@ -65,6 +65,7 @@ class PatientAdmin(admin.ModelAdmin):
         'name',
         'photo',
         'published',
+        'warning',
         'tags'
     ]
 

@@ -29,6 +29,11 @@ class Patient(models.Model):
         blank = True
     )
 
+    warning = models.CharField(
+        max_length=250,
+        null = True
+    )
+
     @property
     def published_tags(self):
         return self.tags.filter(

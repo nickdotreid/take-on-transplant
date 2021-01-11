@@ -26,7 +26,7 @@
     <div class="content">
         {% for story in stories %}
         <div id="story-{{story.id}}">
-            <h2>{{story.title}}</h2>
+            <h2 class="sticky">{{story.title}}</h2>
             {% autoescape off %}
             {{story.content}}
             {% endautoescape %}

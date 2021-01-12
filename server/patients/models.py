@@ -156,6 +156,7 @@ class Attribute(AbstractOrderable):
 
     resource = models.ForeignKey(
         Resource,
+        blank = True,
         on_delete = models.SET_NULL,
         null = True,
         related_name = '+'

@@ -30,6 +30,7 @@ class Patient(models.Model):
     )
 
     warning = models.CharField(
+        blank = True,
         max_length=250,
         null = True
     )

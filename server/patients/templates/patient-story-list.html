@@ -4,31 +4,6 @@
 
 {% endblock %}
 
-{% block footer %}
-{% if user.is_staff %}
-<form method="GET">
-    <legend>Story List Feature Toggles</legend>
-    <label>
-        <input type="checkbox" name="attributes" {% if show_all_attributes %} checked {% endif %} value="" />
-        All Attributes
-    </label>
-    <label>
-        <input type="checkbox" name="highlights" value="" {% if show_highlights %} checked {% endif %} />
-        Show Highlights
-    </label>
-    <label>
-        <input type="checkbox" name="tags" value="" {% if show_tags %} checked {% endif %} />
-        Show Tags
-    </label>
-    <label>
-        <input type="checkbox" name="warnings" value="" {% if show_warnings %} checked {% endif %} />
-        Show Warnings
-    </label>
-    <input type="submit" value="Update" />
-</form>
-{% endif %}
-{% endblock %}
-
 {% block content %}
 <article class="container-with-aside">
     <h1><a class="home" href="/">CF Stories</a></h1>
@@ -58,20 +33,6 @@
             {% endif %}    
         </a>
         <h2><a href="{{patient_story_url}}">{{patient.name}}</a></h2>
-        {% if show_warnings and patient.warning %}
-        <p class="warning">{{patient.warning}}</p>
-        {% endif %}
-        {% if show_tags and patient.published_tags %}
-        <ul class="tags">
-        {% for tag in patient.published_tags %}
-            {% if tag.warning %}
-            <li class="warning">{{tag.name}}</li>
-            {% else %}
-            <li>{{tag.name}}</li>
-            {% endif %}
-        {% endfor %}
-        </ul>
-        {% endif %}
         <ul class="patient-attributes">
             {% for attribute in patient.attributes %}
             <li>
@@ -80,7 +41,6 @@
             </li>
             {% endfor %}
         </ul>
-        {% if show_highlights and patient.story_highlights %}
         <div class="story-hightlights">
             <h3 class="title">Story Highlights</h3>
             <div class="content">
@@ -92,7 +52,6 @@
                 {% endfor %}
             </div>
         </div>
-        {% endif %}
         <a href="{{patient_story_url}}">View {{patient.name}}'s story</a>
     </div>
     {% endfor %}

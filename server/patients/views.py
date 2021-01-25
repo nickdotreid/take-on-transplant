@@ -29,21 +29,7 @@ class PatientStoryList(TemplateView):
         .filter(published = True) \
         .all()
 
-        if 'attributes' in self.request.GET:
-            context['show_all_attributes'] = True
-            for patient in patients:
-                patient._attributes = patient.get_all_patient_attributes()
-
         context['patients'] = patients
-
-        if 'highlights' in self.request.GET:
-            context['show_highlights'] = True
-        if 'tags' in self.request.GET:
-            context['show_tags'] = True
-
-        if 'warnings' in self.request.GET:
-            context['show_warnings'] = True
-
         resource_ids = []
         for patient in patients:
             for patient_attribute in patient.attributes:

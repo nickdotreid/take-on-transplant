@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for category in categories %}
+<section class="container">
+    <h2>{{category.name}}</h2>
+    {% for question in category.questions %}
+    <article>
+        {% url 'faq-category-question' category.id question.id as question_url %}
+        <a href="{{question_url}}">{{question.text}}</a>
+        <span>{{question.number_of_responses}} Responses</span>
+    </article>
+    {% endfor %}
+</section>
+{% endfor %}
+
+{% endblock %}

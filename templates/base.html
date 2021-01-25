@@ -24,11 +24,15 @@
             {% url 'admin:index' as admin_url %}
             <a href="{{admin_url}}">Admin</a>
             {% endif %}
+
             {% if user.is_authenticated %}
             {% url 'search' as search_url %}
             <a href="{{search_url}}">Search</a>
             {% url 'resources' as resources_url %}
             <a href="{{resources_url}}">Resources Library</a>
+            {% url 'faq-list' as faq_url %}
+            <a href="{{faq_url}}">Frequently Asked Questions</a>
+            
             {% url 'logout' as logout_url %}
             <a href="{{logout_url}}">Logout</a>
             {% else %}

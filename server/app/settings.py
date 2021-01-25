@@ -25,7 +25,8 @@ INSTALLED_APPS = [
     'ckeditor',
     'tags',
     'resources',
-    'patients'
+    'patients',
+    'faqs'
 ]
 
 MIDDLEWARE = [

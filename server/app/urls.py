@@ -14,6 +14,8 @@ from django.forms import CharField
 from django.forms import EmailField
 from django.urls import path
 
+from faqs.views import FAQCategoryList
+from faqs.views import CategoryQuestionView
 from patients.views import PatientStoryView
 from patients.views import PatientStoryTableOfContentsView
 from patients.views import PatientStoryList
@@ -70,6 +72,8 @@ urlpatterns = [
     path('all-resources/', AllResourcesView.as_view(), name='resources-all'),
     path('resources/<resource_slug>', ResourceDetailView.as_view(), name='resource-detail'),
     path('resources/', ResourceListView.as_view(), name='resource-list'),
+    path('faq/category/<category_id>/question/<question_id>', CategoryQuestionView.as_view(), name='faq-category-question'),
+    path('faq/', FAQCategoryList.as_view(), name='faq-list'),
     path('story/<patient_id>/story/<story_id>/', PatientStoryTableOfContentsView.as_view(), name='patient-story'),
     path('story/<patient_id>/', PatientStoryView.as_view(), name='patient-story'),
     path('search', PatientSearchForm.as_view(), name='search'),

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="container">
+    <p class="large">{{question.text}}</p>
+    {% for response in question.responses %}
+    <article>
+        {% autoescape off %}
+        {{response.text}}
+        {% endautoescape %}
+        {% if response.patient %}
+        <aside>
+            <a href="#">{{response.patient.name}}</a>
+        </aside>
+        {% endif %}
+    </article>
+    {% endfor %}
+</section>
+
+{% endblock %}

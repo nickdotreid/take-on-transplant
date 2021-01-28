@@ -62,6 +62,6 @@ function setupStickyElements() {
 
 window.addEventListener('DOMContentLoaded', () => {
     registerPopovers();
-    setupStickyElements();
+    // setupStickyElements();
     setupActiveLinks();
 });

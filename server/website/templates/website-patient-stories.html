@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
 
+{% block header %}
+<a class="home" href="{% url 'website-home' %}">Take on Transplant</a>
+<a href="{% url 'website-stories' %}">Patient Stories</a>
+<a href="{% url 'website-resources' %}">Resource Library</a>
+<a href="{% url 'website-faq-categories' %}">Frequently Asked Questions</a>
+{% endblock %}
+
 {% block content %}
-<div class="container">
+<section class="container">
     {% for patient in patients %}
     {% url 'patient-story' patient.id as patient_story_url %}
-    <div class="patient-profile">
-        <a class="patient-photo" href="{{patient_story_url}}">
-            {% if patient.thumbnail %}
-            <img src="{{patient.thumbnail.url}}" />
-            {% else %}
-            <span class="patient-photo-placeholder"></span>
-            {% endif %}    
-        </a>
+    <article>
         <h2><a href="{{patient_story_url}}">{{patient.name}}</a></h2>
         <ul class="patient-attributes">
             {% for attribute in patient.attributes %}
@@ -33,7 +33,7 @@
             </div>
         </div>
         <a href="{{patient_story_url}}">View {{patient.name}}'s story</a>
-    </div>
+    </article>
     {% endfor %}
-</div>
+</section>
 {% endblock %}

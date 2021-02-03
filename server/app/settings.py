@@ -26,7 +26,8 @@ INSTALLED_APPS = [
     'tags',
     'resources',
     'patients',
-    'faqs'
+    'faqs',
+    'website'
 ]
 
 MIDDLEWARE = [

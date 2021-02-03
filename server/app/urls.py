@@ -23,6 +23,10 @@ from patients.views import PatientSearchForm
 from resources.views import ResourceListView
 from resources.views import ResourceDetailView
 from resources.views import AllResourcesView
+from website.views import HomePageView
+from website.views import WebsitePatientStoriesView
+from website.views import ResourceLibraryView
+from website.views import ResourceArticleView
 
 class EmailAuthenticationForm(AuthenticationForm):
     
@@ -59,6 +63,10 @@ logout_view = LogoutView.as_view(
 ) 
 
 urlpatterns = [
+    path('website/resources/<article_id>', ResourceArticleView.as_view(), name='website-resource-article'),
+    path('website/resources', ResourceLibraryView.as_view(), name='website-resources'),
+    path('website/stories', WebsitePatientStoriesView.as_view(), name='website-stories'),
+    path('website/', HomePageView.as_view(), name='website-home'),
     # override admin login logout
     path('admin/login/', login_view),
     path('admin/logout/', logout_view),

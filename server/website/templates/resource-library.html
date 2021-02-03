@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="container">
+    {% for article in articles %}
+    <article>
+        {% url 'website-resource-article' article.id as article_url %}
+        <h2><a href="{{article_url}}">{{article.title}}</a></h2>
+        {% if article.description %}
+        <p>{{article.description}}</p>
+        {% endif %}
+        {% if article.children %}
+        <ul>
+        {% for child_article in article.children %}
+            <li>
+                <a href="#">{{child_article.title}}</a>
+            </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+        <a href="{{article_url}}">View {{article.title}}</a>
+    </article>
+    {% endfor %}
+</section>
+{% endblock %}
+

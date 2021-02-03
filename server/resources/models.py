@@ -48,7 +48,6 @@ class Article(models.Model):
         related_name = '+'
     )
 
-    
     description = models.CharField(
         blank = True,
         null = True,
@@ -57,6 +56,12 @@ class Article(models.Model):
     content = RichTextField(
         null = True
     )
+
+    @property
+    def children(self):
+        if not hasattr(self,'_children'):
+            self._children = self.get_children()
+        return self._children
 
     def save(self, *args, **kwargs):
         if not self.order:
@@ -68,3 +73,6 @@ class Article(models.Model):
             title = self.title,
             status = 'published' if self.published else 'unpublished'
         )
+
+    def get_children(self):
+        return Article.objects.filter(parent=self, published=True).all()

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<article class="container">
+    <h1>{{article.title}}</h1>
+    {% autoescape off %}
+    {{article.content}}
+    {% endautoescape %}
+    {% for child_article in article.children %}
+    <section>
+        <h2 id="child_article.id">{{child_article.title}}</h2>
+        {% autoescape off %}
+        {{child_article.content}}
+        {% endautoescape %}
+    </section>
+    {% endfor %}
+</article>
+{% endblock %}
+

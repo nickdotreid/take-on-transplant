@@ -1,5 +1,8 @@
 from django.contrib import admin
 
+from admin_ordering.admin import OrderableAdmin
+
+from .models import Article
 from .models import Definition
 from .models import Resource
 
@@ -34,4 +37,37 @@ class DefinitionAdmin(admin.ModelAdmin):
         'name',
         'published',
         'description'
+    ]
+
+class ArticleAdminInline(OrderableAdmin, admin.StackedInline):
+    model = Article
+    ordering_field = 'order'
+    show_change_link = True
+
+    fields = [
+        'title',
+        'order',
+        'published'
+    ]
+
+@admin.register(Article)
+class ArticleAdmin(admin.ModelAdmin):
+
+    order = [
+        'parent',
+        'order'
+    ]
+
+    list_filter = [
+        'published'
+    ]
+
+    list_display = [
+        'title',
+        'parent',
+        'published'
+    ]
+
+    inlines = [
+        ArticleAdminInline
     ]

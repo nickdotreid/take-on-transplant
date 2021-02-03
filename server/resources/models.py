@@ -33,3 +33,38 @@ class Resource(AbstractResource):
     content = RichTextField(
         null = True
     )
+
+class Article(models.Model):
+    title = models.CharField(max_length=500)
+    published = models.BooleanField(default=True)
+    order = models.PositiveIntegerField(
+        blank = True
+    )
+    parent = models.ForeignKey(
+        'self',
+        blank = True,
+        null = True,
+        on_delete = models.CASCADE,
+        related_name = '+'
+    )
+
+    
+    description = models.CharField(
+        blank = True,
+        null = True,
+        max_length = 500
+    )
+    content = RichTextField(
+        null = True
+    )
+
+    def save(self, *args, **kwargs):
+        if not self.order:
+            self.order = (Article.objects.count() + 1) * 10
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return '{title} ({status})'.format(
+            title = self.title,
+            status = 'published' if self.published else 'unpublished'
+        )

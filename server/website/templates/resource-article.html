@@ -8,10 +8,15 @@
     {% endautoescape %}
     {% for child_article in article.children %}
     <section>
-        <h2 id="child_article.id">{{child_article.title}}</h2>
+        <h2 id="article-{{child_article.id}}">{{child_article.title}}</h2>
+        {% if child_article.description %}
+        <p>{{child_article.description}}</p>
+        {% endif %}
+        {% if child_article.content %}
         {% autoescape off %}
         {{child_article.content}}
         {% endautoescape %}
+        {% endif %}
     </section>
     {% endfor %}
 </article>

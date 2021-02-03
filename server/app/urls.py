@@ -27,6 +27,8 @@ from website.views import HomePageView
 from website.views import WebsitePatientStoriesView
 from website.views import ResourceLibraryView
 from website.views import ResourceArticleView
+from website.views import FrequentlyAskedQuestionListView
+from website.views import FrequentlyAskedQuestionView
 
 class EmailAuthenticationForm(AuthenticationForm):
     
@@ -63,6 +65,8 @@ logout_view = LogoutView.as_view(
 ) 
 
 urlpatterns = [
+    path('website/questions/<question_id>', FrequentlyAskedQuestionView.as_view(), name='website-faq'),
+    path('website/questions', FrequentlyAskedQuestionListView.as_view(), name='website-faq-categories'),
     path('website/resources/<article_id>', ResourceArticleView.as_view(), name='website-resource-article'),
     path('website/resources', ResourceLibraryView.as_view(), name='website-resources'),
     path('website/stories', WebsitePatientStoriesView.as_view(), name='website-stories'),

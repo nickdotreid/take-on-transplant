@@ -14,10 +14,13 @@
 </div>
 {% endif %}
 <div class="container">
-    <form action="" method="POST">
+    <form action="" method="POST" novalidate>
         {% csrf_token %}
         {{form}}
-        <input type="submit" value="Search" />
+        <input type="submit" value="Save" />
+        {% if survey_complete %}
+        <input type="submit" value="Reset" name="reset" />
+        {% endif %}
     </form>
 </div>
 

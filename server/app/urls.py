@@ -19,7 +19,6 @@ from faqs.views import CategoryQuestionView
 from patients.views import PatientStoryView
 from patients.views import PatientStoryTableOfContentsView
 from patients.views import PatientStoryList
-from patients.views import PatientSearchForm
 from resources.views import ResourceListView
 from resources.views import ResourceDetailView
 from resources.views import AllResourcesView
@@ -29,6 +28,7 @@ from website.views import ResourceLibraryView
 from website.views import ResourceArticleView
 from website.views import FrequentlyAskedQuestionListView
 from website.views import FrequentlyAskedQuestionView
+from website.views import MyCFStageSurveyView
 
 class EmailAuthenticationForm(AuthenticationForm):
     
@@ -70,6 +70,7 @@ urlpatterns = [
     path('website/resources/<article_id>', ResourceArticleView.as_view(), name='website-resource-article'),
     path('website/resources', ResourceLibraryView.as_view(), name='website-resources'),
     path('website/stories', WebsitePatientStoriesView.as_view(), name='website-stories'),
+    path('website/mycfstage', MyCFStageSurveyView.as_view(), name='website-mycfstage'),
     path('website/', HomePageView.as_view(), name='website-home'),
     # override admin login logout
     path('admin/login/', login_view),
@@ -88,6 +89,5 @@ urlpatterns = [
     path('faq/', FAQCategoryList.as_view(), name='faq-list'),
     path('story/<patient_id>/story/<story_id>/', PatientStoryTableOfContentsView.as_view(), name='patient-story'),
     path('story/<patient_id>/', PatientStoryView.as_view(), name='patient-story'),
-    path('search', PatientSearchForm.as_view(), name='search'),
     path('', PatientStoryList.as_view(), name='patient-story-list')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

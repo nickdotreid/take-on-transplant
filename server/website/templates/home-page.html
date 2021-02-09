@@ -10,12 +10,38 @@
 {% block content %}
 <div class="container">
     <h1>Take On Transplant</h1>
+    <p>This is a prototype website to help people with Cystic Fibrosis understand lung transplant as a treatment option, so they can make informed care decisions.</p>
+    {% if took_survey %}
+    <p>You took the MyCFStageSurvey, to <a href="{% url 'website-mycfstage' %}">change your answers, click here.</a></p>
+    {% else %}
+    <p>Take the <a href="{% url 'website-mycfstage' %}">MyCFStage</a> survey to get personalized content. <a href="{% url 'website-mycfstage' %}">Click here</a></p>
+    {% endif %}
+    {% if contents %}
+    {% for content in contents %}
+    <article>
+        <h3><a href="{{content.link}}">{{content.title}}</a></h3>
+        {% if content.excerpt %}
+        <p>{{content.excerpt}}</p>
+        {% endif %}
+        <a href="{{content.link}}">View {{content.content_type}}</a>
+    </article>
+    {% endfor %}
+    {% else %}
     <ul>
-        <li>MyCFStage</li>
+        <li><a href="{% url 'website-mycfstage' %}">My CF Stage</a></li>
         <li><a href="{% url 'website-stories' %}">Patient Stories</a></li>
         <li><a href="{% url 'website-resources' %}">Resource Library</a></li>
         <li><a href="{% url 'website-faq-categories' %}">Frequently Asked Questions</a></li>
         <li>Glossary</li>
     </ul>
+    {% endif %}
 </div>
+{% endblock %}
+
+{% block footer %}
+<form action="" method="POST" novalidate>
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="Change" />
+</form>
 {% endblock %}

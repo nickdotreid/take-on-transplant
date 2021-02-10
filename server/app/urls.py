@@ -65,13 +65,7 @@ logout_view = LogoutView.as_view(
 ) 
 
 urlpatterns = [
-    path('website/questions/<question_id>', FrequentlyAskedQuestionView.as_view(), name='website-faq'),
-    path('website/questions', FrequentlyAskedQuestionListView.as_view(), name='website-faq-categories'),
-    path('website/resources/<article_id>', ResourceArticleView.as_view(), name='website-resource-article'),
-    path('website/resources', ResourceLibraryView.as_view(), name='website-resources'),
-    path('website/stories', WebsitePatientStoriesView.as_view(), name='website-stories'),
-    path('website/mycfstage', MyCFStageSurveyView.as_view(), name='website-mycfstage'),
-    path('website/', HomePageView.as_view(), name='website-home'),
+
     # override admin login logout
     path('admin/login/', login_view),
     path('admin/logout/', logout_view),
@@ -82,12 +76,13 @@ urlpatterns = [
     path('reset-password/complete/', PasswordResetCompleteView.as_view(), name='password_reset_complete'),
     path('reset-password/sent/', PasswordResetDoneView.as_view(), name='password_reset_done'),
     path('reset-password/', PasswordResetView.as_view(), name='password_reset'),
-    path('all-resources/', AllResourcesView.as_view(), name='resources-all'),
-    path('resources/<resource_slug>', ResourceDetailView.as_view(), name='resource-detail'),
-    path('resources/', ResourceListView.as_view(), name='resource-list'),
-    path('faq/category/<category_id>/question/<question_id>', CategoryQuestionView.as_view(), name='faq-category-question'),
-    path('faq/', FAQCategoryList.as_view(), name='faq-list'),
     path('story/<patient_id>/story/<story_id>/', PatientStoryTableOfContentsView.as_view(), name='patient-story'),
     path('story/<patient_id>/', PatientStoryView.as_view(), name='patient-story'),
-    path('', PatientStoryList.as_view(), name='patient-story-list')
+    path('questions/<question_id>', FrequentlyAskedQuestionView.as_view(), name='website-faq'),
+    path('questions', FrequentlyAskedQuestionListView.as_view(), name='website-faq-categories'),
+    path('resources/<article_id>', ResourceArticleView.as_view(), name='website-resource-article'),
+    path('resources', ResourceLibraryView.as_view(), name='website-resources'),
+    path('stories', WebsitePatientStoriesView.as_view(), name='website-stories'),
+    path('mycfstage', MyCFStageSurveyView.as_view(), name='website-mycfstage'),
+    path('', HomePageView.as_view(), name='website-home'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

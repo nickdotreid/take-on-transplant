@@ -1,0 +1,51 @@
+
+
+html {
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+}
+
+a, a:visited {
+    color: #0000ff;
+}
+
+a.active {
+    color: #000000;
+    text-decoration: none;
+}
+
+
+dl {
+    dt, dd {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    dt {
+        margin-top: 0.5em;
+        font-size: 14px;
+    }
+    dt:first-child{
+        margin-top: 0em;
+    }
+    dt:after {
+        content: ':';
+    }
+
+    &:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+}
+
+ul.unstyled {
+    padding: 0px;
+    > li {
+        list-style-type: none;
+        margin: 0px;
+        padding: 0px;
+        margin-top: 0.5em;
+    }
+}

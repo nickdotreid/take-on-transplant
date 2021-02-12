@@ -19,6 +19,10 @@ class WebsiteConfigurationForm(forms.Form):
         label = 'Show content on homepage',
         required = False
     )
+    show_top_navigation = forms.BooleanField(
+        label = 'Show top navigation',
+        required = False
+    )
 
 class HomePageView(TemplateView):
 
@@ -27,6 +31,7 @@ class HomePageView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
+        show_top_navigation = self.request.session['show_top_navigation'] if 'show_top_navigation' in self.request.session else True
         show_content = self.request.session['show_content_on_homepage'] if 'show_content_on_homepage' in self.request.session else False
         survey_complete = self.request.session['survey-complete'] if 'survey-complete' in self.request.session else False
         if survey_complete:
@@ -61,16 +66,18 @@ class HomePageView(TemplateView):
                 contents = contents[:7]
             context['contents'] = contents
             
-
+        context['show_top_navigation'] = show_top_navigation
         context['form'] = WebsiteConfigurationForm({
-            'show_content_on_homepage': self.request.session['show_content_on_homepage'] if 'show_content_on_homepage' in self.request.session else False
+            'show_top_navigation': show_top_navigation,
+            'show_content_on_homepage': show_content
         })
         return context
 
     def post(self, request):
         form = WebsiteConfigurationForm(request.POST)
         if form.is_valid():
-            request.session['show_content_on_homepage'] = form.cleaned_data['show_content_on_homepage']
+            for key in form.cleaned_data.keys():
+                request.session[key] = form.cleaned_data[key]
             return HttpResponseRedirect(reverse('website-home'))
         context = self.get_context_data()
         context['form'] = form

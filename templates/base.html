@@ -4,13 +4,13 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../ui/index.scss">
-    <title>{% block title %}CF Stories{% endblock %}</title>
+    <title>{% block title %}Take On Transplant{% endblock %}</title>
 </head>
 
 <body>
     <header>
         {% block header %}
-        <a class="home" href="/">CF Stories</a>
+        <a class="home" href="/">Take On Transplant</a>
         
         {% endblock %}
     </header>
@@ -24,15 +24,8 @@
             {% url 'admin:index' as admin_url %}
             <a href="{{admin_url}}">Admin</a>
             {% endif %}
-
-            {% if user.is_authenticated %}
-            {% url 'search' as search_url %}
-            <a href="{{search_url}}">Search</a>
-            {% url 'resources' as resources_url %}
-            <a href="{{resources_url}}">Resources Library</a>
-            {% url 'faq-list' as faq_url %}
-            <a href="{{faq_url}}">Frequently Asked Questions</a>
             
+            {% if user.is_authenticated %}
             {% url 'logout' as logout_url %}
             <a href="{{logout_url}}">Logout</a>
             {% else %}

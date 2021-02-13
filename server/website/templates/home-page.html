@@ -3,7 +3,7 @@
 {% block header %}
 <a class="home" href="{% url 'website-home' %}">Take on Transplant</a>
 {% if show_top_navigation %}
-<a href="{% url 'website-stories' %}">Patient Stories</a>
+<a href="{% url 'website-patient-story-list' %}">Patient Stories</a>
 <a href="{% url 'website-resources' %}">Resource Library</a>
 <a href="{% url 'website-faq-categories' %}">Frequently Asked Questions</a>
 {% endif %}
@@ -33,7 +33,7 @@
     {% else %}
     <ul>
         <li><a href="{% url 'website-mycfstage' %}">My CF Stage</a></li>
-        <li><a href="{% url 'website-stories' %}">Patient Stories</a></li>
+        <li><a href="{% url 'website-patient-story-list' %}">Patient Stories</a></li>
         <li><a href="{% url 'website-resources' %}">Resource Library</a></li>
         <li><a href="{% url 'website-faq-categories' %}">Frequently Asked Questions</a></li>
         <li>Glossary</li>
@@ -43,9 +43,11 @@
 {% endblock %}
 
 {% block footer %}
+{% if form %}
 <form action="" method="POST" novalidate>
     {% csrf_token %}
     {{form}}
     <input type="submit" value="Change" />
 </form>
+{% endif %}
 {% endblock %}

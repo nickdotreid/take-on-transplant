@@ -24,22 +24,37 @@ class WebsiteConfigurationForm(forms.Form):
         required = False
     )
 
-class HomePageView(TemplateView):
+class BaseWebsiteView(TemplateView):
+    
+    def get_patient_story_link(self, patient):
+        return reverse('patient-story', kwargs={
+            'patient_id': patient.id
+        })
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['show_top_navigation'] = self.request.session['show_top_navigation'] if 'show_top_navigation' in self.request.session else True
+        context['show_content'] = self.request.session['show_content_on_homepage'] if 'show_content_on_homepage' in self.request.session else False
+        context['took_survey'] = self.request.session['survey-complete'] if 'survey-complete' in self.request.session else False
+        
+        context['form'] = WebsiteConfigurationForm({
+            'show_top_navigation': context['show_top_navigation'],
+            'show_content_on_homepage': context['show_content']
+        })
+        return context
+
+class HomePageView(BaseWebsiteView):
 
     template_name = 'home-page.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        show_top_navigation = self.request.session['show_top_navigation'] if 'show_top_navigation' in self.request.session else True
-        show_content = self.request.session['show_content_on_homepage'] if 'show_content_on_homepage' in self.request.session else False
-        survey_complete = self.request.session['survey-complete'] if 'survey-complete' in self.request.session else False
-        if survey_complete:
-            context['took_survey'] = True
-        if show_content:
+        if context['show_content']:
             contents = []
             for article in Article.objects.all():
                 contents.append({
+                    'object': article,
                     'title': article.title,
                     'excerpt': article.description,
                     'content_type': 'article',
@@ -49,28 +64,25 @@ class HomePageView(TemplateView):
                 })
             for question in FrequentlyAskedQuestion.objects.all():
                 contents.append({
+                    'object': question,
                     'title': question.text,
                     'content_type': 'question',
                     'link': reverse('website-faq', kwargs={
                         'question_id': question.id
                     })
                 })
-            for story_highlight in PatientStoryHighlight.objects.all():
+            for patient in Patient.objects.filter(published=True).all():
                 contents.append({
-                    'title': story_highlight.patient.name,
+                    'object': patient,
+                    'title': patient.name,
                     'content_type': 'story',
-                    'excerpt': story_highlight.content
+                    'excerpt': patient.story_highlights[0].content if patient.story_highlights else None,
+                    'link': self.get_patient_story_link(patient)
                 })
             random.shuffle(contents)
-            if survey_complete:
+            if context['took_survey']:
                 contents = contents[:7]
             context['contents'] = contents
-            
-        context['show_top_navigation'] = show_top_navigation
-        context['form'] = WebsiteConfigurationForm({
-            'show_top_navigation': show_top_navigation,
-            'show_content_on_homepage': show_content
-        })
         return context
 
     def post(self, request):
@@ -124,7 +136,7 @@ class SearchForm(forms.Form):
         label = "How many exacerbations have you had in the past year?"
     )
 
-class MyCFStageSurveyView(TemplateView):
+class MyCFStageSurveyView(BaseWebsiteView):
     template_name = 'patient-search-form.html'
 
     SURVEY_KEYS = ['fev', 'age', 'sex', 'treatments', 'exacerbations']
@@ -155,15 +167,21 @@ class MyCFStageSurveyView(TemplateView):
         context['form'] = form
         return render(request, self.template_name, context)
 
-class WebsitePatientStoriesView(PatientStoryList):
+class PatientStoryListView(BaseWebsiteView):
 
-    template_name = 'website-patient-stories.html'
+    template_name = 'patient-story-list.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['patients'] = Patient.objects.filter(published=True)
         return context
 
-class ResourceLibraryView(TemplateView):
+class PatientStoryView(BaseWebsiteView):
+
+    template_name = 'patient-story.html'
+
+
+class ResourceLibraryView(BaseWebsiteView):
 
     template_name = 'resource-library.html'
 
@@ -179,7 +197,7 @@ class ResourceLibraryView(TemplateView):
 
         return context
 
-class ResourceArticleView(TemplateView):
+class ResourceArticleView(BaseWebsiteView):
 
     template_name = 'resource-article.html'
 
@@ -194,7 +212,7 @@ class ResourceArticleView(TemplateView):
 
         return context
 
-class FrequentlyAskedQuestionListView(TemplateView):
+class FrequentlyAskedQuestionListView(BaseWebsiteView):
 
     template_name = 'frequently-asked-question-list.html'
 
@@ -203,7 +221,7 @@ class FrequentlyAskedQuestionListView(TemplateView):
         context['categories'] = FAQCategory.objects.all()
         return context
 
-class FrequentlyAskedQuestionView(TemplateView):
+class FrequentlyAskedQuestionView(BaseWebsiteView):
 
     template_name = 'frequently-asked-question.html'
 

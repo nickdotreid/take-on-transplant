@@ -14,16 +14,9 @@ from django.forms import CharField
 from django.forms import EmailField
 from django.urls import path
 
-from faqs.views import FAQCategoryList
-from faqs.views import CategoryQuestionView
-from patients.views import PatientStoryView
-from patients.views import PatientStoryTableOfContentsView
-from patients.views import PatientStoryList
-from resources.views import ResourceListView
-from resources.views import ResourceDetailView
-from resources.views import AllResourcesView
 from website.views import HomePageView
-from website.views import WebsitePatientStoriesView
+from website.views import PatientStoryListView
+from website.views import PatientStoryView
 from website.views import ResourceLibraryView
 from website.views import ResourceArticleView
 from website.views import FrequentlyAskedQuestionListView
@@ -76,13 +69,12 @@ urlpatterns = [
     path('reset-password/complete/', PasswordResetCompleteView.as_view(), name='password_reset_complete'),
     path('reset-password/sent/', PasswordResetDoneView.as_view(), name='password_reset_done'),
     path('reset-password/', PasswordResetView.as_view(), name='password_reset'),
-    path('story/<patient_id>/story/<story_id>/', PatientStoryTableOfContentsView.as_view(), name='patient-story'),
-    path('story/<patient_id>/', PatientStoryView.as_view(), name='patient-story'),
     path('questions/<question_id>', FrequentlyAskedQuestionView.as_view(), name='website-faq'),
     path('questions', FrequentlyAskedQuestionListView.as_view(), name='website-faq-categories'),
     path('resources/<article_id>', ResourceArticleView.as_view(), name='website-resource-article'),
     path('resources', ResourceLibraryView.as_view(), name='website-resources'),
-    path('stories', WebsitePatientStoriesView.as_view(), name='website-stories'),
+    path('stories/<patient_id>/', PatientStoryView.as_view(), name='patient-story'),
+    path('stories', PatientStoryListView.as_view(), name='website-patient-story-list'),    
     path('mycfstage', MyCFStageSurveyView.as_view(), name='website-mycfstage'),
     path('', HomePageView.as_view(), name='website-home'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

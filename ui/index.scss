@@ -3,6 +3,7 @@
 @import "tippy.js/dist/tippy.css";
 
 $text-color: #000000;
+$link-color: #0000FF;
 $secondary-background-color: #c8f2f7;
 
 @import "./base.scss";
@@ -71,6 +72,21 @@ h1, h2, h3, h4 {
 
 .large {
     font-size: 24px;
+}
+
+.title,
+a.title {
+    @extend .large;
+}
+
+a.title {
+    color: $text-color;
+    text-decoration: none;
+    &:hover,
+    &:focus {
+        color: $link-color;
+        text-decoration: underline;
+    }
 }
 
 header {
@@ -192,21 +208,20 @@ form {
 }
 
 
-.content-gallery,
-ul.content-gallery {
+.content-gallery {
     @extend .unstyled;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
 
-    > *,
-    > li {
+    > * {
         display: block;
         width: 100%;
         padding: 0.5em;
         margin: 0em;
         margin-bottom: 1em;
+        border-top: $text-color 1px solid;
     }
 
     > * > a:first-child {
@@ -223,10 +238,57 @@ ul.content-gallery {
 }
 
 @media(min-width: 600px) {
-    .content-gallery > *,
-    ul.content-gallery > li {
+    .content-gallery > * {
         width: 250px;
         flex: 0 0 auto;
+    }
+
+    .content-gallery > *.patient-story {
+        display: block;
+        width: 100%;
+
+        > * {
+            display: block;
+            float: left;
+            width: 250px;
+        }
+
+        > a {
+            display: block;
+            float: none;
+            clear: both;
+        }
+    }
+}
+
+@media(min-width: 1000px) {
+
+    .content-gallery > * {
+        width: 250px;
+        flex: 0 0 auto;
+    }
+
+    .content-gallery > *.patient-story {
+
+        > * {
+            display: block;
+            float: left;
+            width: 250px;
+        }
+
+        > dl {
+            width: 350px;
+        }
+
+        > .content {
+            width: 600px;
+        }
+
+        > a {
+            display: block;
+            float: none;
+            clear: both;
+        }
     }
 }
 

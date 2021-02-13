@@ -4,15 +4,15 @@ from django import forms
 from django.http import Http404
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.views.generic.base import TemplateView
+from django.template.loader import render_to_string
 from django.urls import reverse
+from django.views.generic.base import TemplateView
 
 from resources.models import Article
 from faqs.models import FrequentlyAskedQuestion
 from faqs.models import Category as FAQCategory
 from patients.models import Patient
 from patients.models import PatientStoryHighlight
-from patients.views import PatientStoryList
 
 class WebsiteConfigurationForm(forms.Form):
     show_content_on_homepage = forms.BooleanField(
@@ -25,11 +25,6 @@ class WebsiteConfigurationForm(forms.Form):
     )
 
 class BaseWebsiteView(TemplateView):
-    
-    def get_patient_story_link(self, patient):
-        return reverse('patient-story', kwargs={
-            'patient_id': patient.id
-        })
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -47,38 +42,32 @@ class HomePageView(BaseWebsiteView):
 
     template_name = 'home-page.html'
 
+    def render_article(self, article):
+        return render_to_string('resource-article-partial.html', {
+            'article': article
+        })
+
+    def render_question(self, question):
+        return render_to_string('question-partial.html', {
+            'question': question
+        })
+
+    def render_patient(self, patient):
+        return render_to_string('patient-story-partial.html', {
+            'patient': patient
+        })
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
         if context['show_content']:
             contents = []
             for article in Article.objects.all():
-                contents.append({
-                    'object': article,
-                    'title': article.title,
-                    'excerpt': article.description,
-                    'content_type': 'article',
-                    'link': reverse('website-resource-article', kwargs={
-                        'article_id': article.id
-                    })
-                })
+                contents.append(self.render_article(article))
             for question in FrequentlyAskedQuestion.objects.all():
-                contents.append({
-                    'object': question,
-                    'title': question.text,
-                    'content_type': 'question',
-                    'link': reverse('website-faq', kwargs={
-                        'question_id': question.id
-                    })
-                })
+                contents.append(self.render_question(question))
             for patient in Patient.objects.filter(published=True).all():
-                contents.append({
-                    'object': patient,
-                    'title': patient.name,
-                    'content_type': 'story',
-                    'excerpt': patient.story_highlights[0].content if patient.story_highlights else None,
-                    'link': self.get_patient_story_link(patient)
-                })
+                contents.append(self.render_patient(patient))
             random.shuffle(contents)
             if context['took_survey']:
                 contents = contents[:7]
@@ -90,7 +79,7 @@ class HomePageView(BaseWebsiteView):
         if form.is_valid():
             for key in form.cleaned_data.keys():
                 request.session[key] = form.cleaned_data[key]
-            return HttpResponseRedirect(reverse('website-home'))
+            return HttpResponseRedirect(reverse('home'))
         context = self.get_context_data()
         context['form'] = form
         return render(request, self.template_name, context)
@@ -173,7 +162,9 @@ class PatientStoryListView(BaseWebsiteView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['patients'] = Patient.objects.filter(published=True)
+        patients = Patient.objects.filter(published=True).all()
+
+        context['patients'] = patients
         return context
 
 class PatientStoryView(BaseWebsiteView):

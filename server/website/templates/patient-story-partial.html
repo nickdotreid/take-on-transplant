@@ -1,0 +1,19 @@
+<article class="patient-story">
+    {% url 'patient-story' patient.id as url %}
+    <a href="{{url}}" class="title">{{patient.name}}</a>
+    <dl>
+        {% for attribute in patient.attributes %}
+        <dt>{{attribute.name}}</dt>
+        <dd>{{attribute.value}}</dd>
+        {% endfor %}
+    </dl>
+    <div class="content">
+        {% for highlight in patient.story_highlights %}
+        {% if highlight.title %}
+        <strong>{{highlight.title}}</strong>
+        {% endif %}
+        <p>{{highlight.content}}</p>
+        {% endfor %}
+    </div>
+    <a href="{{url}}">View {{patient.name}}'s story</a>
+</article>

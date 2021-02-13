@@ -23,6 +23,7 @@ from website.views import FrequentlyAskedQuestionListView
 from website.views import FrequentlyAskedQuestionView
 from website.views import MyCFStageSurveyView
 
+
 class EmailAuthenticationForm(AuthenticationForm):
     
     email = CharField(
@@ -55,7 +56,7 @@ login_view = LoginView.as_view(
 )
 logout_view = LogoutView.as_view(
     next_page = '/login/'
-) 
+)
 
 urlpatterns = [
 
@@ -69,12 +70,12 @@ urlpatterns = [
     path('reset-password/complete/', PasswordResetCompleteView.as_view(), name='password_reset_complete'),
     path('reset-password/sent/', PasswordResetDoneView.as_view(), name='password_reset_done'),
     path('reset-password/', PasswordResetView.as_view(), name='password_reset'),
-    path('questions/<question_id>', FrequentlyAskedQuestionView.as_view(), name='website-faq'),
-    path('questions', FrequentlyAskedQuestionListView.as_view(), name='website-faq-categories'),
-    path('resources/<article_id>', ResourceArticleView.as_view(), name='website-resource-article'),
-    path('resources', ResourceLibraryView.as_view(), name='website-resources'),
+    path('questions/<question_id>', FrequentlyAskedQuestionView.as_view(), name='question'),
+    path('questions', FrequentlyAskedQuestionListView.as_view(), name='question-list'),
+    path('resources/<article_id>', ResourceArticleView.as_view(), name='resource-article'),
+    path('resources', ResourceLibraryView.as_view(), name='resource-list'),
     path('stories/<patient_id>/', PatientStoryView.as_view(), name='patient-story'),
-    path('stories', PatientStoryListView.as_view(), name='website-patient-story-list'),    
-    path('mycfstage', MyCFStageSurveyView.as_view(), name='website-mycfstage'),
-    path('', HomePageView.as_view(), name='website-home'),
+    path('stories', PatientStoryListView.as_view(), name='patient-story-list'),    
+    path('mycfstage', MyCFStageSurveyView.as_view(), name='mycfstage'),
+    path('', HomePageView.as_view(), name='home'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

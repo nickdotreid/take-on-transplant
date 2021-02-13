@@ -1,0 +1,6 @@
+<article class="resource-article">
+    {% url 'resource-article' article.id as url %}
+    <a class="title" href="{{url}}">{{article.title}}</a>
+    <p>{{article.description}}</p>
+    <a href="{{url}}">View resource article</a>
+</article>

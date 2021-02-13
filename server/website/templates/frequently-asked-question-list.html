@@ -6,7 +6,7 @@
     <h2>{{category.name}}</h2>
     {% for question in category.questions  %}
     <article>
-        <a href="{% url 'website-faq' question.id %}">{{question.text}}</a>
+        <a href="{% url 'question' question.id %}">{{question.text}}</a>
         <span>{{question.number_of_responses}} Responses</span>
     </article>
     {% endfor %}

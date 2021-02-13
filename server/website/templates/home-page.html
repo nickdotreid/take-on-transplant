@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block header %}
-<a class="home" href="{% url 'website-home' %}">Take on Transplant</a>
+<a class="home" href="{% url 'home' %}">Take on Transplant</a>
 {% if show_top_navigation %}
-<a href="{% url 'website-patient-story-list' %}">Patient Stories</a>
-<a href="{% url 'website-resources' %}">Resource Library</a>
-<a href="{% url 'website-faq-categories' %}">Frequently Asked Questions</a>
+<a href="{% url 'patient-story-list' %}">Patient Stories</a>
+<a href="{% url 'resource-list' %}">Resource Library</a>
+<a href="{% url 'question-list' %}">Frequently Asked Questions</a>
 {% endif %}
 {% endblock %}
 
@@ -14,28 +14,24 @@
     <h1>Take On Transplant</h1>
     <p>This is a prototype website to help people with Cystic Fibrosis understand lung transplant as a treatment option, so they can make informed care decisions.</p>
     {% if took_survey %}
-    <p>You took the MyCFStageSurvey, to <a href="{% url 'website-mycfstage' %}">change your answers, click here.</a></p>
+    <p>You took the MyCFStageSurvey, to <a href="{% url 'mycfstage' %}">change your answers, click here.</a></p>
     {% else %}
-    <p>Take the <a href="{% url 'website-mycfstage' %}">MyCFStage</a> survey to get personalized content. <a href="{% url 'website-mycfstage' %}">Click here</a></p>
+    <p>Take the <a href="{% url 'mycfstage' %}">MyCFStage</a> survey to get personalized content. <a href="{% url 'mycfstage' %}">Click here</a></p>
     {% endif %}
     {% if contents %}
-    <ul class="content-gallery">
+    <section class="content-gallery">
     {% for content in contents %}
-    <li>
-        <a href="{{content.link}}">{{content.title}}</a>
-        {% if content.excerpt %}
-        <p>{{content.excerpt}}</p>
-        {% endif %}
-        <a href="{{content.link}}">View {{content.content_type}}</a>
-    </li>
+    {% autoescape off %}
+    {{content}}
+    {% endautoescape %}
     {% endfor %}
-    </ul>
+    </section>
     {% else %}
     <ul>
-        <li><a href="{% url 'website-mycfstage' %}">My CF Stage</a></li>
-        <li><a href="{% url 'website-patient-story-list' %}">Patient Stories</a></li>
-        <li><a href="{% url 'website-resources' %}">Resource Library</a></li>
-        <li><a href="{% url 'website-faq-categories' %}">Frequently Asked Questions</a></li>
+        <li><a href="{% url 'mycfstage' %}">My CF Stage</a></li>
+        <li><a href="{% url 'patient-story-list' %}">Patient Stories</a></li>
+        <li><a href="{% url 'resource-list' %}">Resource Library</a></li>
+        <li><a href="{% url 'question-list' %}">Frequently Asked Questions</a></li>
         <li>Glossary</li>
     </ul>
     {% endif %}
@@ -44,7 +40,7 @@
 
 {% block footer %}
 {% if form %}
-<form action="" method="POST" novalidate>
+<form action="{% url 'home' %}" method="POST" novalidate>
     {% csrf_token %}
     {{form}}
     <input type="submit" value="Change" />

@@ -1,0 +1,8 @@
+<article class="frequently-asked-question">
+    {% url 'question' question.id as url %}
+    <a href="{{url}}">
+        {{question.text}}
+    </a>
+    <span>{{question.number_of_responses}} Responses</span>
+    <a href="{{url}}">View frequently asked question</a>
+</article>

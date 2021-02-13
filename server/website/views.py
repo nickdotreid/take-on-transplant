@@ -14,6 +14,9 @@ from faqs.models import Category as FAQCategory
 from patients.models import Patient
 from patients.models import PatientStoryHighlight
 
+from .models import RelatedItem
+from .models import RelatedItemsList
+
 class WebsiteConfigurationForm(forms.Form):
     show_content_on_homepage = forms.BooleanField(
         label = 'Show content on homepage',
@@ -25,6 +28,9 @@ class WebsiteConfigurationForm(forms.Form):
     )
 
 class BaseWebsiteView(TemplateView):
+
+    def get_question_related_content(self, question):
+        return []
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -216,6 +222,20 @@ class FrequentlyAskedQuestionView(BaseWebsiteView):
 
     template_name = 'frequently-asked-question.html'
 
+    def get_related_list(self, question):
+        try:
+            return RelatedItemsList.objects.get(
+                name = 'question-{id}'.format(id=question.id)
+            )
+        except RelatedItemsList.DoesNotExist:
+            return RelatedItemsList.objects.create(
+                name = 'question-{id}'.format(id=question.id)
+            )
+
+    def get_related_content(self, question):
+        related_list = self.get_related_list(question)
+        return related_list.items
+
     def get_context_data(self, question_id, **kwargs):
         try:
             question = FrequentlyAskedQuestion.objects.get(id=question_id)
@@ -223,4 +243,58 @@ class FrequentlyAskedQuestionView(BaseWebsiteView):
             raise Http404('Question does not exist')
         context = super().get_context_data(**kwargs)
         context['question'] = question
+        context['related_content'] = self.get_related_content(question)
         return context
+
+
+class FrequentlyAskedQuestionRelatedContentView(FrequentlyAskedQuestionView):
+
+    template_name = 'add-related-content-page.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        question = context['question']
+        related_content = self.get_related_content(question)
+        selected_questions = related_content
+        all_questions = FrequentlyAskedQuestion.objects.filter(
+            published = True
+        ).exclude(
+            id = context['question'].id
+        ).all()
+
+        context['questions'] = []
+        for question in all_questions:
+            selected = False
+            if question.id in [q.id for q in selected_questions if q is not None]: 
+                selected = True
+            context['questions'].append({
+                'text': question.text,
+                'id': question.id,
+                'selected': selected
+            })
+
+        return context
+
+    def post(self, request, question_id, **kwargs):
+        try:
+            question = FrequentlyAskedQuestion.objects.get(id=question_id)
+        except FrequentlyAskedQuestion.DoesNotExist:
+            raise Http404('Question does not exist')
+        related_list = self.get_related_list(question)
+        RelatedItem.objects.filter(item_list=related_list).delete()
+        if 'related_content[]' in request.POST:
+            for item in request.POST.getlist('related_content[]'):
+                content_type, content_id = item.split('-')
+                try:
+                    _question = FrequentlyAskedQuestion.objects.get(id=content_id)
+                except FrequentlyAskedQuestion.DoesNotExist:
+                    continue
+                RelatedItem.objects.create(
+                    item_list = related_list,
+                    content_object = _question
+                )
+
+        
+        return HttpResponseRedirect(reverse('question', kwargs={
+            'question_id': question.id
+        }))

@@ -1,0 +1,24 @@
+{% extends 'home-page.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Edit Related Content</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Related Questions</legend>
+            {% for question in questions %}
+            <label for="question-{{question.id}}">{{question.text}}</label>
+            <input id="question-{{question.id}}"
+                type="checkbox"
+                name="related_content[]"
+                value="question-{{question.id}}"
+                {% if question.selected %}checked="checked"{% endif %}
+                />
+            {% endfor %}
+        </fieldset>
+        <input type="submit" value="Save" />
+    </form>
+</div>
+{% endblock %}
+

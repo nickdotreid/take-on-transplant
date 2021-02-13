@@ -16,5 +16,12 @@
     {% endfor %}    
     </ul>
 </article>
+<div class="content-gallery container">
+    {% for content in related_content %}
+    <p>{{content}}</p>
+    {% endfor %}
+    <a href="{% url 'question-related-content' question.id %}">Add Related Questions</a>
+</div>
+
 {% endblock %}
 

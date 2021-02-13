@@ -21,6 +21,7 @@ from website.views import ResourceLibraryView
 from website.views import ResourceArticleView
 from website.views import FrequentlyAskedQuestionListView
 from website.views import FrequentlyAskedQuestionView
+from website.views import FrequentlyAskedQuestionRelatedContentView
 from website.views import MyCFStageSurveyView
 
 
@@ -70,6 +71,7 @@ urlpatterns = [
     path('reset-password/complete/', PasswordResetCompleteView.as_view(), name='password_reset_complete'),
     path('reset-password/sent/', PasswordResetDoneView.as_view(), name='password_reset_done'),
     path('reset-password/', PasswordResetView.as_view(), name='password_reset'),
+    path('questions/<question_id>/related', FrequentlyAskedQuestionRelatedContentView.as_view(), name='question-related-content'),
     path('questions/<question_id>', FrequentlyAskedQuestionView.as_view(), name='question'),
     path('questions', FrequentlyAskedQuestionListView.as_view(), name='question-list'),
     path('resources/<article_id>', ResourceArticleView.as_view(), name='resource-article'),

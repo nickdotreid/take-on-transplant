@@ -1,19 +1,12 @@
 {% extends 'home-page.html' %}
 
 {% block content %}
-<div class="patient-profile is-sticky">
-    {% if patient.thumbnail %}
-    <img class="patient-photo" src="{{patient.thumbnail.url}}" />
-    {% else %}
-    <span class="patient-photo"></span>
-    {% endif %}
+<div class="container">
     <h1>{{patient.name}}</h1>
-    <ul class="patient-attributes">
+    <dl>
         {% for attribute in patient.attributes %}
-        <li>
-            <span>{{attribute.name}}</span>
-            {{attribute.value}}
-        </li>
+        <dt>{{attribute.name}}</dt>
+        <dd>{{attribute.value}}</dd>
         {% endfor %}
     </dl>
 </div>

@@ -14,9 +14,9 @@ from django.forms import CharField
 from django.forms import EmailField
 from django.urls import path
 
+from patients.views import PatientStoryView
 from website.views import HomePageView
 from website.views import PatientStoryListView
-from website.views import PatientStoryView
 from website.views import ResourceLibraryView
 from website.views import ResourceArticleView
 from website.views import FrequentlyAskedQuestionListView

@@ -50,24 +50,6 @@ h1, h2, h3, h4 {
     > a:hover {
         text-decoration: underline;
     }
-
-    &.sticky {
-        position: sticky;
-        top: 0px;
-        width: 100%;
-        padding: 0.5em 0em;
-        background-color: #fff;
-        border-bottom: 1px $text-color solid;
-
-    }
-}
-
-@media(min-width: 1000px) {
-    h1, h2, h3, h4 {
-        &.sticky {
-            top: 125px;
-        }
-    }
 }
 
 .large {

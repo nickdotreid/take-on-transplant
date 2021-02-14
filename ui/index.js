@@ -1,5 +1,6 @@
 import Sticky from 'sticky-js'
 import tippy, {followCursor, hideAll} from 'tippy.js';
+import Sortable from 'sortablejs';
 
 function registerPopovers() {
     document.querySelectorAll('[data-toggle="popover"]').forEach((element) => {
@@ -133,9 +134,18 @@ function setupTexthighligher() {
     });
 }
 
+function makeSortableLists() {
+    console.log('hi')
+    document.querySelectorAll('.sortable').forEach(function(element) {
+        new Sortable(element);
+        console.log('sort me!');
+    })
+}
+
 window.addEventListener('DOMContentLoaded', () => {
     registerPopovers();
     // setupStickyElements();
     setupActiveLinks();
     setupTexthighligher();
+    makeSortableLists();
 });

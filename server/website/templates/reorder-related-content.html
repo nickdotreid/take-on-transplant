@@ -1,0 +1,26 @@
+{% extends 'home-page.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Reorder Related Content</h2>
+    <p class="large">{{question.text}}</p>
+</div>
+<form action="" method="POST" class="container">
+    {% csrf_token %}
+    <fieldset>
+        <legend>Reorder content</legend>
+        <ul class="sortable">
+            {% for content in related_content %}
+            <li>
+                {{content.text}}
+                <input type="hidden" name="ordered_content[]" value="{{content.id}}" />
+            </li>
+            {% endfor %}
+        </ul>
+    </fieldset>
+
+    <input type="submit" value="Save" />
+</form>
+
+{% endblock %}
+

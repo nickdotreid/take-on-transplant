@@ -1,0 +1,23 @@
+
+ul.sortable {
+    margin: 0px;
+    padding: 0px;
+
+    > li {
+        cursor:grab;
+        margin: 1em;
+        padding: 0.5em;
+        border-top: 1px #000 solid;
+        list-style-type: none;
+    }
+
+    > *.sortable-ghost {
+        background-color: #eee;
+        height: 1em;
+    }
+
+    > *.sortable-drag {
+        opacity: 0.7;
+    }
+}
+

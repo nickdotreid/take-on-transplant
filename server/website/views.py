@@ -246,6 +246,53 @@ class FrequentlyAskedQuestionView(BaseWebsiteView):
         context['related_content'] = self.get_related_content(question)
         return context
 
+class ReorderRelatedContent(FrequentlyAskedQuestionView):
+
+    template_name = 'reorder-related-content.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        question = context['question']
+        related_content = context['related_content']
+        serialized_content = []
+        for content in related_content:
+            serialized_content.append({
+                'id': 'question-%d' % (content.id),
+                'text': content.text
+            })
+        context['related_content'] = serialized_content
+        return context
+
+    def post(self, request, question_id, **kwargs):
+
+        try:
+            question = FrequentlyAskedQuestion.objects.get(id=question_id)
+        except FrequentlyAskedQuestion.DoesNotExist:
+            raise Http404('Question does not exist')
+        related_list = self.get_related_list(question)
+        related_items = RelatedItem.objects.filter(item_list=related_list).all()
+        related_by_id = {}
+        for related_item in related_items:
+            content_id = 'question-%d' % (related_item.object_id)
+            related_by_id[content_id] = related_item
+        
+        ordered_content = request.POST.getlist('ordered_content[]')
+        new_item_list = []
+        for ordered_content_id in ordered_content:
+            if ordered_content_id in related_by_id:
+                new_item_list.append(related_by_id[ordered_content_id])
+
+        for related_item in related_items:
+            if related_item not in new_item_list:
+                related_item.delete()
+
+        for index, related_item in enumerate(new_item_list):
+            related_item.order = (index + 1) * 10
+            related_item.save()
+
+        return HttpResponseRedirect(reverse('question', kwargs={
+            'question_id': question.id
+        }))
 
 class FrequentlyAskedQuestionRelatedContentView(FrequentlyAskedQuestionView):
 

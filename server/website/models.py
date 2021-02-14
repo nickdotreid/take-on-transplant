@@ -1,3 +1,5 @@
+import random
+
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
@@ -25,3 +27,12 @@ class RelatedItem(models.Model):
         if not self.order:
             self.order = (RelatedItem.objects.filter(item_list=self.item_list).count() + 1) * 10
         super().save(*args, **kwargs)
+
+class StudySession(models.Model):
+    
+    high_agency_version = models.BooleanField()
+    integrated_content_version = models.BooleanField()
+
+    start = models.DateTimeField(
+        auto_now_add=True
+    )

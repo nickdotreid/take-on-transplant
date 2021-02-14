@@ -13,6 +13,19 @@
 <div class="container">
     <h1>Take On Transplant</h1>
     <p>This is a prototype website to help people with Cystic Fibrosis understand lung transplant as a treatment option, so they can make informed care decisions.</p>
+    {% if study_session %}
+    <form action="{% url 'study-session' %}" method="POST">
+        {% csrf_token %}
+        <p>Your study session id is {{study_session.id}}</p>
+        <input type="submit" name="clear" value="Clear" />
+    </form>    
+    {% else %}
+    <form action="{% url 'study-session' %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" name="prototype-a" value="Prototype A" />
+        <input type="submit" name="prototype-b" value="Prototype B" />
+    </form>
+    {% endif %}
     {% if took_survey %}
     <p>You took the MyCFStageSurvey, to <a href="{% url 'mycfstage' %}">change your answers, click here.</a></p>
     {% else %}

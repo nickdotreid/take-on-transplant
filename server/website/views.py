@@ -16,6 +16,7 @@ from patients.models import PatientStoryHighlight
 
 from .models import RelatedItem
 from .models import RelatedItemsList
+from .models import StudySession
 
 class WebsiteConfigurationForm(forms.Form):
     show_content_on_homepage = forms.BooleanField(
@@ -29,15 +30,45 @@ class WebsiteConfigurationForm(forms.Form):
 
 class BaseWebsiteView(TemplateView):
 
+    def setup(self, request, *args, **kwargs):
+        super().setup(request, *args, **kwargs)
+        if 'study_session_id' in request.session and request.session['study_session_id'] is not None:
+            self.setup_study_session(request.session['study_session_id'])
+        else:
+            self.setup_session_configuration()
+
+    def setup_study_session(self, study_session_id):
+        try:
+            study_session = StudySession.objects.get(id=study_session_id)
+            self.study_session = study_session
+            if study_session.high_agency_version:
+                self.show_recommended_content = False
+            else:
+                self.show_recommended_content = True
+            if study_session.integrated_content_version:
+                self.show_top_navigation = False
+                self.show_content_on_homepage = True
+            else:
+                self.show_top_navigation = True
+                self.show_content_on_homepage = False
+        except StudySession.DoesNotExist:
+            self.setup_session_configuration()
+
+    def setup_session_configuration(self):
+        self.study_session = None
+        self.show_recommended_content = self.request.session['show_recommended_content'] if 'show_recommended_content' in self.request.session else True
+        self.show_top_navigation = self.request.session['show_top_navigation'] if 'show_top_navigation' in self.request.session else True
+        self.show_content_on_homepage = self.request.session['show_content_on_homepage'] if 'show_content_on_homepage' in self.request.session else False
+
     def get_question_related_content(self, question):
         return []
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['show_top_navigation'] = self.request.session['show_top_navigation'] if 'show_top_navigation' in self.request.session else True
-        context['show_content'] = self.request.session['show_content_on_homepage'] if 'show_content_on_homepage' in self.request.session else False
+        context['study_session'] = self.study_session
         context['took_survey'] = self.request.session['survey-complete'] if 'survey-complete' in self.request.session else False
-        
+        context['show_top_navigation'] = self.show_top_navigation
+        context['show_content'] = self.show_content_on_homepage
         context['form'] = WebsiteConfigurationForm({
             'show_top_navigation': context['show_top_navigation'],
             'show_content_on_homepage': context['show_content']
@@ -161,6 +192,28 @@ class MyCFStageSurveyView(BaseWebsiteView):
         context = self.get_context_data()
         context['form'] = form
         return render(request, self.template_name, context)
+
+class StudySessionView(TemplateView):
+
+    def post(self, request):
+        if 'clear' in request.POST and request.session['study_session_id']:
+            request.session['study_session_id'] = None
+            return HttpResponseRedirect(reverse('home'))
+        study_session = None
+        if 'prototype-a' in request.POST:
+            study_session = StudySession.objects.create(
+                high_agency_version = True,
+                integrated_content_version = False
+            )
+        if 'prototype-b' in request.POST:
+            study_session = StudySession.objects.create(
+                high_agency_version = True,
+                integrated_content_version = False
+            )
+        if study_session:
+            request.session['study_session_id'] = study_session.id
+        return HttpResponseRedirect(reverse('home'))
+
 
 class PatientStoryListView(BaseWebsiteView):
 

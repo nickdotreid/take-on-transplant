@@ -24,7 +24,7 @@ from website.views import FrequentlyAskedQuestionView
 from website.views import FrequentlyAskedQuestionRelatedContentView
 from website.views import MyCFStageSurveyView
 from website.views import ReorderRelatedContent
-
+from website.views import StudySessionView
 
 class EmailAuthenticationForm(AuthenticationForm):
     
@@ -81,5 +81,6 @@ urlpatterns = [
     path('stories/<patient_id>/', PatientStoryView.as_view(), name='patient-story'),
     path('stories', PatientStoryListView.as_view(), name='patient-story-list'),    
     path('mycfstage', MyCFStageSurveyView.as_view(), name='mycfstage'),
+    path('study-session', StudySessionView.as_view(), name='study-session'),
     path('', HomePageView.as_view(), name='home'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

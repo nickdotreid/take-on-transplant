@@ -5,18 +5,20 @@
     <h1>Edit Related Content</h1>
     <form action="" method="POST">
         {% csrf_token %}
+        {% for content_type in content_types %}
         <fieldset>
-            <legend>Related Questions</legend>
-            {% for question in questions %}
-            <label for="question-{{question.id}}">{{question.text}}</label>
-            <input id="question-{{question.id}}"
+            <legend>{{content_type.title}}</legend>
+            {% for item in content_type.items %}
+            <label for="{{item.content_id}}">{{item.title}}</label>
+            <input id="{{item.content_id}}"
                 type="checkbox"
                 name="related_content[]"
-                value="question-{{question.id}}"
-                {% if question.selected %}checked="checked"{% endif %}
+                value="{{item.content_id}}"
+                {% if item.content_id in related_content %}checked="checked"{% endif %}
                 />
             {% endfor %}
         </fieldset>
+        {% endfor %}
         <input type="submit" value="Save" />
     </form>
 </div>

@@ -12,8 +12,8 @@
         <ul class="sortable">
             {% for content in related_content %}
             <li>
-                {{content.text}}
-                <input type="hidden" name="ordered_content[]" value="{{content.id}}" />
+                {{content.title}}
+                <input type="hidden" name="ordered_content[]" value="{{content.content_id}}" />
             </li>
             {% endfor %}
         </ul>

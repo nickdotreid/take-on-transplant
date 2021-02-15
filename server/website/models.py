@@ -9,6 +9,14 @@ class RelatedItemsList(models.Model):
 
     @property
     def items(self):
+        return RelatedItem.objects.filter(
+            item_list = self
+        ) \
+        .order_by('order') \
+        .all()
+
+    @property
+    def content_list(self):
         return [item.content_object for item in RelatedItem.objects.order_by('order').filter(item_list = self).all()]
 
 class RelatedItem(models.Model):

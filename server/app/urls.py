@@ -14,14 +14,14 @@ from django.forms import CharField
 from django.forms import EmailField
 from django.urls import path
 
-from patients.views import PatientStoryView
+from website.views import PatientStoryView
 from website.views import HomePageView
 from website.views import PatientStoryListView
 from website.views import ResourceLibraryView
 from website.views import ResourceArticleView
 from website.views import FrequentlyAskedQuestionListView
 from website.views import FrequentlyAskedQuestionView
-from website.views import FrequentlyAskedQuestionRelatedContentView
+from website.views import RelatedContentView
 from website.views import MyCFStageSurveyView
 from website.views import ReorderRelatedContent
 from website.views import StudySessionView
@@ -72,8 +72,8 @@ urlpatterns = [
     path('reset-password/complete/', PasswordResetCompleteView.as_view(), name='password_reset_complete'),
     path('reset-password/sent/', PasswordResetDoneView.as_view(), name='password_reset_done'),
     path('reset-password/', PasswordResetView.as_view(), name='password_reset'),
-    path('questions/<question_id>/reorder-related', ReorderRelatedContent.as_view(), name='question-reorder-related-content'),
-    path('questions/<question_id>/related', FrequentlyAskedQuestionRelatedContentView.as_view(), name='question-related-content'),
+    path('related-content/<content_type>/<content_id>/reorder', ReorderRelatedContent.as_view(), name='reorder-related-content'),
+    path('related-content/<content_type>/<content_id>', RelatedContentView.as_view(), name='related-content'),
     path('questions/<question_id>', FrequentlyAskedQuestionView.as_view(), name='question'),
     path('questions', FrequentlyAskedQuestionListView.as_view(), name='question-list'),
     path('resources/<article_id>', ResourceArticleView.as_view(), name='resource-article'),

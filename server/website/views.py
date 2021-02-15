@@ -13,6 +13,7 @@ from faqs.models import FrequentlyAskedQuestion
 from faqs.models import Category as FAQCategory
 from patients.models import Patient
 from patients.models import PatientStoryHighlight
+from patients.views import PatientStoryView as OGPatientStoryView
 
 from .models import RelatedItem
 from .models import RelatedItemsList
@@ -60,8 +61,23 @@ class BaseWebsiteView(TemplateView):
         self.show_top_navigation = self.request.session['show_top_navigation'] if 'show_top_navigation' in self.request.session else True
         self.show_content_on_homepage = self.request.session['show_content_on_homepage'] if 'show_content_on_homepage' in self.request.session else False
 
-    def get_question_related_content(self, question):
-        return []
+    def get_related_list(self, question):
+        try:
+            return RelatedItemsList.objects.get(
+                name = 'question-{id}'.format(id=question.id)
+            )
+        except RelatedItemsList.DoesNotExist:
+            return RelatedItemsList.objects.create(
+                name = 'question-{id}'.format(id=question.id)
+            )
+
+    def get_related_items(self, question):
+        related_list = self.get_related_list(question)
+        return related_list.items
+
+    def get_related_content(self, question):
+        related_list = self.get_related_list(question)
+        return related_list.content_list
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -226,10 +242,15 @@ class PatientStoryListView(BaseWebsiteView):
         context['patients'] = patients
         return context
 
-class PatientStoryView(BaseWebsiteView):
+class PatientStoryView(OGPatientStoryView, BaseWebsiteView):
 
-    template_name = 'patient-story.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        patient = context['patient']
+        related_content = self.get_related_content(patient)
+        context['related_content'] = related_content
 
+        return context
 
 class ResourceLibraryView(BaseWebsiteView):
 
@@ -259,6 +280,8 @@ class ResourceArticleView(BaseWebsiteView):
         context = super().get_context_data(**kwargs)
 
         context['article'] = article
+        related_content = self.get_related_content(article)
+        context['related_content'] = related_content        
 
         return context
 
@@ -275,20 +298,6 @@ class FrequentlyAskedQuestionView(BaseWebsiteView):
 
     template_name = 'frequently-asked-question.html'
 
-    def get_related_list(self, question):
-        try:
-            return RelatedItemsList.objects.get(
-                name = 'question-{id}'.format(id=question.id)
-            )
-        except RelatedItemsList.DoesNotExist:
-            return RelatedItemsList.objects.create(
-                name = 'question-{id}'.format(id=question.id)
-            )
-
-    def get_related_content(self, question):
-        related_list = self.get_related_list(question)
-        return related_list.items
-
     def get_context_data(self, question_id, **kwargs):
         try:
             question = FrequentlyAskedQuestion.objects.get(id=question_id)
@@ -299,34 +308,186 @@ class FrequentlyAskedQuestionView(BaseWebsiteView):
         context['related_content'] = self.get_related_content(question)
         return context
 
-class ReorderRelatedContent(FrequentlyAskedQuestionView):
+class RelatedContentView(BaseWebsiteView):
+
+    template_name = 'add-related-content-page.html'
+
+    CONTENT_TYPES = {
+        'patient': Patient,
+        'question': FrequentlyAskedQuestion,
+        'resource': Article
+    }
+
+    def get_question(self, question_id):
+        try:
+            return FrequentlyAskedQuestion.objects.get(id=question_id)
+        except FrequentlyAskedQuestion.DoesNotExist:
+            raise Http404('Question does not exist')
+
+    def get_content(self, content_type, content_id):
+        for key, _model in self.CONTENT_TYPES.items():
+            if content_type == key:
+                try:
+                    return _model.objects.get(id=content_id)
+                except _model.DoesNotExist:
+                    raise Http404('Content not found')
+        raise Http404('Unknown content type')
+
+    def get_all_questions(self, questions_to_exclude):
+        return FrequentlyAskedQuestion.objects.filter(
+            published = True
+        ).exclude(
+            id__in = [q.id for q in questions_to_exclude]
+        ).all()
+
+    def serialize_question(self, question):
+        return {
+            'title': question.text,
+            'content_id': self.get_content_id(question)
+        }
+
+    def serialize_patient(self, patient):
+        return {
+            'title': patient.name,
+            'content_id': self.get_content_id(patient)
+        }
+
+    def serialize_resource(self, resource):
+        return {
+                'title': resource.title,
+                'content_id': self.get_content_id(resource)
+        }
+
+    def serialize_questions(self, questions):
+        serialized = []
+        for question in questions:
+            serialized.append(self.serialize_question(question))
+        return serialized
+
+    def serialize_patients(self, patients):
+        serialized = []
+        for patient in patients:
+            serialized.append(self.serialize_patient(patient))
+        return serialized
+
+    def serialize_resources(self, resources):
+        serialized = []
+        for resource in resources:
+            serialized.append(self.serialize_resource(resource))
+        return serialized
+    
+    def serialize_content(self, content_object):
+        for key, model in self.CONTENT_TYPES.items():
+            if isinstance(content_object, model):
+                if key == 'question':
+                    return self.serialize_question(content_object)
+                if key == 'patient':
+                    return self.serialize_patient(content_object)
+                if key == 'resource':
+                    return self.serialize_resource(content_object)
+
+    def get_content_id(self, content_object):
+        for key, model in self.CONTENT_TYPES.items():
+            if isinstance(content_object, model):
+                return '{key}-{id}'.format(
+                    key=key,
+                    id = content_object.id
+                )
+        return None
+    
+    def get_content_from_id(self, content_id):
+        content_type, content_id = content_id.split('-')
+        if content_type in self.CONTENT_TYPES:
+            _model = self.CONTENT_TYPES[content_type]
+            try:
+                return _model.objects.get(id=content_id)
+            except _model.DoesNotExist:
+                pass
+        return None
+
+    def get_content_url(self, content_object):
+        for key, model in self.CONTENT_TYPES.items():
+            if isinstance(content_object, model):
+                if key == 'question':
+                    return reverse('question', kwargs={
+                        'question_id': content_object.id
+                    })
+                if key == 'resource':
+                    return reverse('resource-article', kwargs={
+                        'article_id': content_object.id
+                    })
+                if key == 'patient':
+                    return reverse('patient-story', kwargs={
+                        'patient_id': content_object.id
+                    })
+        return None
+
+    def get_context_data(self, content_type, content_id, **kwargs):
+        context = super().get_context_data(**kwargs)
+        self.content_object = self.get_content(content_type, content_id)
+        
+        self.related_content = self.get_related_items(self.content_object)
+        context['related_content'] = [self.get_content_id(rc.content_object) for rc in self.related_content]
+
+        all_questions = FrequentlyAskedQuestion.objects.filter(published=True).all()
+        all_patients = Patient.objects.filter(
+            published = True
+        ).all()
+        all_resources = Article.objects.filter(
+            published = True,
+            parent = None
+        ).all()
+        context['content_types'] = [
+            {
+                'title': 'Questions',
+                'items': self.serialize_questions(all_questions)
+            },
+            {
+                'title': 'Patient Stories',
+                'items': self.serialize_patients(all_patients)
+            },
+            {
+                'title': 'Resource Articles',
+                'items': self.serialize_resources(all_resources)
+            }
+        ]
+
+        return context
+
+    def post(self, request, content_type, content_id, **kwargs):
+        content = self.get_content(content_type, content_id)
+        related_list = self.get_related_list(content)
+        RelatedItem.objects.filter(item_list=related_list).delete()
+        if 'related_content[]' in request.POST:
+            for item in request.POST.getlist('related_content[]'):
+                content_object = self.get_content_from_id(item)
+                if content_object:
+                    RelatedItem.objects.create(
+                        item_list = related_list,
+                        content_object = content_object
+                    )
+        return HttpResponseRedirect(self.get_content_url(content))
+
+class ReorderRelatedContent(RelatedContentView):
 
     template_name = 'reorder-related-content.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        question = context['question']
-        related_content = context['related_content']
+        related_content = self.related_content
         serialized_content = []
-        for content in related_content:
-            serialized_content.append({
-                'id': 'question-%d' % (content.id),
-                'text': content.text
-            })
+        for item in related_content:
+            serialized_content.append(self.serialize_content(item.content_object))
         context['related_content'] = serialized_content
         return context
 
-    def post(self, request, question_id, **kwargs):
-
-        try:
-            question = FrequentlyAskedQuestion.objects.get(id=question_id)
-        except FrequentlyAskedQuestion.DoesNotExist:
-            raise Http404('Question does not exist')
-        related_list = self.get_related_list(question)
+    def post(self, request, content_type, content_id, **kwargs):
+        content = self.get_content(content_type, content_id)
+        related_list = self.get_related_list(content)
         related_items = RelatedItem.objects.filter(item_list=related_list).all()
         related_by_id = {}
         for related_item in related_items:
-            content_id = 'question-%d' % (related_item.object_id)
+            content_id = self.get_content_id(related_item.content_object)
             related_by_id[content_id] = related_item
         
         ordered_content = request.POST.getlist('ordered_content[]')
@@ -343,58 +504,4 @@ class ReorderRelatedContent(FrequentlyAskedQuestionView):
             related_item.order = (index + 1) * 10
             related_item.save()
 
-        return HttpResponseRedirect(reverse('question', kwargs={
-            'question_id': question.id
-        }))
-
-class FrequentlyAskedQuestionRelatedContentView(FrequentlyAskedQuestionView):
-
-    template_name = 'add-related-content-page.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        question = context['question']
-        related_content = self.get_related_content(question)
-        selected_questions = related_content
-        all_questions = FrequentlyAskedQuestion.objects.filter(
-            published = True
-        ).exclude(
-            id = context['question'].id
-        ).all()
-
-        context['questions'] = []
-        for question in all_questions:
-            selected = False
-            if question.id in [q.id for q in selected_questions if q is not None]: 
-                selected = True
-            context['questions'].append({
-                'text': question.text,
-                'id': question.id,
-                'selected': selected
-            })
-
-        return context
-
-    def post(self, request, question_id, **kwargs):
-        try:
-            question = FrequentlyAskedQuestion.objects.get(id=question_id)
-        except FrequentlyAskedQuestion.DoesNotExist:
-            raise Http404('Question does not exist')
-        related_list = self.get_related_list(question)
-        RelatedItem.objects.filter(item_list=related_list).delete()
-        if 'related_content[]' in request.POST:
-            for item in request.POST.getlist('related_content[]'):
-                content_type, content_id = item.split('-')
-                try:
-                    _question = FrequentlyAskedQuestion.objects.get(id=content_id)
-                except FrequentlyAskedQuestion.DoesNotExist:
-                    continue
-                RelatedItem.objects.create(
-                    item_list = related_list,
-                    content_object = _question
-                )
-
-        
-        return HttpResponseRedirect(reverse('question', kwargs={
-            'question_id': question.id
-        }))
+        return HttpResponseRedirect(self.get_content_url(content))

@@ -30,4 +30,12 @@
 </div>
 
 
+<div class="content-gallery container">
+    {% for content in related_content %}
+    <p>{{content}}</p>
+    {% endfor %}
+    <a href="{% url 'related-content' 'patient' patient.id %}">Add or Remove Related Content</a>
+    <a href="{% url 'reorder-related-content' 'patient' patient.id %}">Reorder Related Content</a>
+</div>
+
 {% endblock %}

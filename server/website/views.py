@@ -276,8 +276,8 @@ class PatientStoryListView(BaseWebsiteView):
         sort_options = [
             ('alphabetical', 'Alphabetical'),
             ('age', 'Age'),
-            ('fev1before', 'Fev1 Before Transplat'),
-            ('fev1after', 'Fev1 After Transplat')
+            ('fev1before', 'Fev1 Before Transplant'),
+            ('current-fev1', 'Current Fev1')
         ]
         sort_order = sort_options[0][0]
         sort_name = sort_options[0][1]
@@ -289,8 +289,25 @@ class PatientStoryListView(BaseWebsiteView):
         
         if sort_order == 'alphabetical':
             patients.sort(key=lambda p: p.name)
-        else:
-            random.shuffle(patients)
+        if sort_order == 'age':
+            patients.sort(
+                key=lambda p: p.get_value(['age', 'age-at-transplant']) if p.get_value(['age', 'age-at-transplant']) else 0,
+                reverse=True
+            )
+        if sort_order == 'fev1before':
+            value_keys = ['fev1-at-transplant', 'fev1-at-transplant-evaluation']
+            patients.sort(
+                key=lambda p: p.get_value(value_keys) if p.get_value(value_keys) else 0,
+                reverse=True
+            )
+            print([(p.name, p.get_value(value_keys)) for p in patients])
+        if sort_order == 'current-fev1':
+            value_keys = ['current-fev1']
+            patients.sort(
+                key=lambda p: p.get_value(value_keys) if p.get_value(value_keys) else 0,
+                reverse=True
+            )
+            print([(p.name, p.get_value(value_keys)) for p in patients])
         
         context['patients'] = patients
         context['sort_order'] = sort_order

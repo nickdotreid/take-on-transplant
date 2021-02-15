@@ -8,7 +8,7 @@
 <section class="container content-gallery">
     <nav>
         <div class="list-sort">
-            <span>Sorted <a href="#">Alphabetically</a></span>
+            <span>Sorted <a href="#">{{sort_name}}</a></span>
             <nav>
                 {% for option in sort_options %}
                 <a href="{{option.link}}" {% if option.selected %}class="selected"{% endif %}>

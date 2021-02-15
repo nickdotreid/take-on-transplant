@@ -3,6 +3,7 @@ from django.core.files import File
 from django.db import models
 from PIL import Image
 from PIL import ImageOps
+import re
 
 from ckeditor.fields import RichTextField
 from slugify import slugify
@@ -109,6 +110,28 @@ class Patient(models.Model):
             patient = self
         ).all()
 
+    def get_attribute(self, key):
+        if not hasattr(self, '_all_attribute_values'):
+            self._all_attribute_values = self.get_all_patient_attributes()
+        for attribute in self._all_attribute_values:
+            if attribute.key == key:
+                return attribute.value
+        return None
+
+    def get_attribute_as_int(self, key):
+        value = self.get_attribute(key)
+        if value is None:
+            return value
+        else:
+            return int(re.sub('\D','',value))
+
+    def get_value(self, keys):
+        for key in keys:
+            value = self.get_attribute_as_int(key)
+            if value is not None:
+                return value
+        return None
+
     def get_stories(self):
         return PatientStory.objects.filter(
             patient = self,
@@ -198,6 +221,10 @@ class PatientAttribute(models.Model):
     @property
     def name(self):
         return self.attribute.name
+
+    @property
+    def key(self):
+        return slugify(self.attribute.name)
 
     @property
     def description(self):

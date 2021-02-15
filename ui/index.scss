@@ -192,12 +192,20 @@ a > .popover-target {
             color: #00F;
         }
     }
+
 }
 
 @media(min-width: 600px) {
     .content-gallery > * {
         width: 250px;
         flex: 0 0 auto;
+    }
+
+    .content-gallery > nav {
+        flex: 1 0 auto;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
     }
 
     .content-gallery > *.patient-story {
@@ -246,6 +254,26 @@ a > .popover-target {
             float: none;
             clear: both;
         }
+    }
+}
+
+.list-sort {
+    display: block;
+    position: relative;
+    > nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        position: 50%;
+        background-color: #fff;
+        border: #000 1px solid;
+    }
+
+    > span:hover + nav,
+    > span:focus + nav,
+    > nav:hover,
+    > nav:focus-within {
+        display: block;
     }
 }
 

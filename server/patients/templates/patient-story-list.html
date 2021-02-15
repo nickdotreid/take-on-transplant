@@ -6,6 +6,18 @@
     <p class="large">Explore stories from caregivers and people living with Cystic Fibrosis (CF) as they share their experiences with lung transplant. In the stories, they share their journeys from pre-transplant to post and give advice to others living with CF. Stories may include good outcomes or challenges they have faced as a way to help educate those who may be considering lung transplant as a treatment option now or in the future.</p>
 </article>
 <section class="container content-gallery">
+    <nav>
+        <div class="list-sort">
+            <span>Sorted <a href="#">Alphabetically</a></span>
+            <nav>
+                {% for option in sort_options %}
+                <a href="{{option.link}}" {% if option.selected %}class="selected"{% endif %}>
+                    {{option.name}}
+                </a>
+                {% endfor %}
+            </nav>
+        </div>
+    </nav>
     {% for patient in patients %}
     {% include 'patient-story-partial.html' %}
     {% endfor %}

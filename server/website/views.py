@@ -46,7 +46,6 @@ class BaseWebsiteView(TemplateView):
             self.setup_study_session(request.session['study_session_id'])
         else:
             self.setup_session_configuration()
-        print('study session is', self.study_session)
 
     def setup_study_session(self, study_session_id):
         try:
@@ -272,9 +271,41 @@ class PatientStoryListView(BaseWebsiteView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        patients = Patient.objects.filter(published=True).all()
-
+        patients = list(Patient.objects.filter(published=True).all())
+        
+        sort_options = [
+            ('alphabetical', 'Alphabetical'),
+            ('age', 'Age'),
+            ('fev1before', 'Fev1 Before Transplat'),
+            ('fev1after', 'Fev1 After Transplat')
+        ]
+        sort_order = sort_options[0][0]
+        sort_name = sort_options[0][1]
+        if 'sort' in self.request.GET:
+            for key, name in sort_options:
+                if key == self.request.GET['sort']:
+                    sort_order = key
+                    sort_name = name
+        
+        if sort_order == 'alphabetical':
+            patients.sort(key=lambda p: p.name)
+        else:
+            random.shuffle(patients)
+        
         context['patients'] = patients
+        context['sort_order'] = sort_order
+        context['sort_name'] = sort_name
+        context['sort_options'] = []
+        for key, name in sort_options:
+            selected = False
+            if key == sort_order:
+                selected = True
+            context['sort_options'].append({
+                'name': name,
+                'selected': selected,
+                'link': '?sort='+key
+            })
+
         return context
 
 class PatientStoryView(OGPatientStoryView, BaseWebsiteView):

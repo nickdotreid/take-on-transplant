@@ -22,10 +22,14 @@
 </article>
 <div class="content-gallery container">
     {% for content in related_content %}
-    <p>{{content}}</p>
+    {% autoescape off %}
+    {{content}}
+    {% endautoescape %}
     {% endfor %}
-    <a href="{% url 'related-content' 'resource' article.id %}">Add or Remove Related Content</a>
-    <a href="{% url 'reorder-related-content' 'resource' article.id %}">Reorder Related Content</a>
+    <nav>
+        <a href="{% url 'related-content' 'resource' article.id %}">Add or Remove Related Content</a>
+        <a href="{% url 'reorder-related-content' 'resource' article.id %}">Reorder Related Content</a>
+    </nav>
 </div>
 
 {% endblock %}

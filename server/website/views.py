@@ -101,6 +101,24 @@ class BaseWebsiteView(TemplateView):
         related_list = self.get_related_list(question)
         return related_list.content_list
 
+    def render_related_content(self, content):
+        related_list = self.get_related_list(content)
+        rendered_content = []
+        for _content in related_list.content_list:
+            rendered = self.render_content(_content)
+            if rendered:
+                rendered_content.append(rendered)
+        return rendered_content
+
+    def render_content(self, content):
+        if isinstance(content, FrequentlyAskedQuestion):
+            return self.render_question(content)
+        if isinstance(content, Patient):
+            return self.render_patient(content)
+        if isinstance(content, Article):
+            return self.render_article(content)
+        return None
+
     def render_article(self, article):
         return render_to_string('resource-article-partial.html', {
             'article': article
@@ -150,10 +168,36 @@ class HomePageView(BaseWebsiteView):
         context = super().get_context_data(**kwargs)
 
         if context['show_content'] and context['took_survey']:
-            contents = self.get_and_render_all_content()
-            if context['took_survey']:
-                contents = contents[:7]
-            context['contents'] = contents
+            patients = []
+            try:
+                will = Patient.objects.get(name='Will')
+                context['will'] = will
+                patients.append(will)
+            except Patient.DoesNotExist():
+                pass
+            try:
+                amy = Patient.objects.get(name='Amy')
+                context['amy'] = amy
+                patients.append(amy)
+            except Patient.DoesNotExist():
+                pass
+
+            context['patients'] = patients
+
+            questions = list(FrequentlyAskedQuestion.objects.filter(published=True).all())
+            random.shuffle(questions)
+            questions = questions[:3]
+            context['questions'] = questions
+
+            resources = list(Article.objects.filter(published=True, parent=True).all())
+            random.shuffle(resources)
+            resources = resources[:2]
+            context['resources'] = resources
+            
+            contents = [p for p in patients]
+            contents += resources
+            contents += questions
+            context['contents'] = [self.render_content(c) for c in contents]
         return context
 
     def post(self, request):
@@ -285,9 +329,7 @@ class PatientStoryView(OGPatientStoryView, BaseWebsiteView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         patient = context['patient']
-        related_content = self.get_related_content(patient)
-        context['related_content'] = related_content
-
+        context['related_content'] = self.render_related_content(patient)
         return context
 
 class ResourceLibraryView(BaseWebsiteView):
@@ -318,8 +360,7 @@ class ResourceArticleView(BaseWebsiteView):
         context = super().get_context_data(**kwargs)
 
         context['article'] = article
-        related_content = self.get_related_content(article)
-        context['related_content'] = related_content        
+        context['related_content'] = self.render_related_content(article)   
 
         return context
 
@@ -343,7 +384,7 @@ class FrequentlyAskedQuestionView(BaseWebsiteView):
             raise Http404('Question does not exist')
         context = super().get_context_data(**kwargs)
         context['question'] = question
-        context['related_content'] = self.get_related_content(question)
+        context['related_content'] = self.render_related_content(question)
         return context
 
 class RelatedContentView(BaseWebsiteView):

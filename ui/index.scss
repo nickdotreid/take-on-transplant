@@ -8,6 +8,7 @@ $secondary-background-color: #c8f2f7;
 
 @import "./base.scss";
 @import "./layout.scss";
+@import "./forms.scss";
 @import "./sortable.scss";
 
 
@@ -163,32 +164,6 @@ a.popover-highlight:visited {
 a > .popover-target {
     background-color: #0000FF;
 }
-
-form {
-    > label {
-        display: block;
-        margin-top: 1em;
-    }
-
-    > input[type=submit] {
-        display: block;
-        width: 100%;
-        margin: 1em 0em;
-        padding: 0.5em 2em;
-    }
-
-    label + input[type=checkbox] {
-        display: block;
-        float: left;
-
-        &::after {
-            content: '';
-            display: block;
-            clear: both;
-        }
-    }
-}
-
 
 .content-gallery {
     @extend .unstyled;

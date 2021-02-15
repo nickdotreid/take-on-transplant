@@ -1,6 +1,5 @@
 import random
 
-from django import forms
 from django.http import Http404
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
@@ -15,23 +14,13 @@ from patients.models import Patient
 from patients.models import PatientStoryHighlight
 from patients.views import PatientStoryView as OGPatientStoryView
 
+from .forms import WebsiteConfigurationForm
+from .forms import MyCFStageForm
 from .models import RelatedItem
 from .models import RelatedItemsList
 from .models import StudySession
 
-class WebsiteConfigurationForm(forms.Form):
-    show_content_on_homepage = forms.BooleanField(
-        label = 'Show content on homepage',
-        required = False
-    )
-    show_survey = forms.BooleanField(
-        label = 'Show MyCFStage Survey',
-        required = False
-    )
-    show_top_navigation = forms.BooleanField(
-        label = 'Show top navigation',
-        required = False
-    )
+
 
 class BaseWebsiteView(TemplateView):
 
@@ -152,12 +141,6 @@ class BaseWebsiteView(TemplateView):
         context['show_top_navigation'] = self.show_top_navigation
         context['show_content'] = self.show_content_on_homepage
         context['show_survey'] = self.show_survey
-
-        context['form'] = WebsiteConfigurationForm({
-            'show_top_navigation': self.show_top_navigation,
-            'show_content_on_homepage': self.show_content_on_homepage,
-            'show_survey': self.show_survey
-        })
         return context
 
 class HomePageView(BaseWebsiteView):
@@ -166,6 +149,10 @@ class HomePageView(BaseWebsiteView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+
+        context['form'] = WebsiteConfigurationForm({
+            'features': [feature for feature, label in WebsiteConfigurationForm.FEATURE_FLAGS if feature in self.request.session and self.request.session[feature]]
+        })
 
         if context['show_content'] and context['took_survey']:
             patients = []
@@ -203,8 +190,10 @@ class HomePageView(BaseWebsiteView):
     def post(self, request):
         form = WebsiteConfigurationForm(request.POST)
         if form.is_valid():
-            for key in form.cleaned_data.keys():
-                request.session[key] = form.cleaned_data[key]
+            for flag, label in WebsiteConfigurationForm.FEATURE_FLAGS:
+                request.session[flag] = None
+            for key in form.cleaned_data['features']:
+                request.session[key] = True
             return HttpResponseRedirect(reverse('home'))
         context = self.get_context_data()
         context['form'] = form
@@ -219,47 +208,6 @@ class AllContentView(BaseWebsiteView):
         context['contents'] = self.get_and_render_all_content()
         return context
 
-class SearchForm(forms.Form):
-    fev = forms.ChoiceField(
-        label = "What is your FEV1?",
-        choices = [
-            (0.1, "10%"),
-            (0.2, "20%"),
-            (0.3, "30%"),
-            (0.4, "40%"),
-            (0.5, "50%"),
-            (0.6, "60%"),
-            (0.7, "70%"),
-            (0.8, "80%"),
-            (0.9, "90%"),
-            ( 1, "100%")
-        ],
-        widget = forms.RadioSelect
-    )
-    age = forms.IntegerField(
-        label = "How old are you?"
-    )
-    sex = forms.ChoiceField(
-        label = "Which sex were you assigned at birth?",
-        choices = [
-            ("male", "Male"),
-            ("female", "Female")
-        ],
-        widget = forms.RadioSelect
-    )
-    treatments = forms.MultipleChoiceField(
-        label = "Are you using any of the following treatments?",
-        choices = [
-            (1, "Ivacaftor (Kalydeco)"),
-            (2, "Elexacaftor/Tezacaftor/Ivacaftor (Trikafta)"),
-            (3, "Using supplemental oxygen")
-        ],
-        widget = forms.CheckboxSelectMultiple
-    )
-    exacerbations = forms.IntegerField(
-        label = "How many exacerbations have you had in the past year?"
-    )
-
 class MyCFStageSurveyView(BaseWebsiteView):
     template_name = 'patient-search-form.html'
 
@@ -270,7 +218,7 @@ class MyCFStageSurveyView(BaseWebsiteView):
         current_session_data = {}
         for key in self.SURVEY_KEYS:
             current_session_data[key] = self.request.session[key] if key in self.request.session else None
-        context['form'] = SearchForm(initial=current_session_data)
+        context['form'] = MyCFStageForm(initial=current_session_data)
         context['survey_complete'] = self.request.session['survey-complete'] if 'survey-complete' in self.request.session else False
         return context
 
@@ -281,7 +229,7 @@ class MyCFStageSurveyView(BaseWebsiteView):
                     request.session[key] = None
             request.session['survey-complete'] = False
             return HttpResponseRedirect(reverse('home'))
-        form = SearchForm(request.POST)
+        form = MyCFStageForm(request.POST)
         if form.is_valid():
             for key in self.SURVEY_KEYS:
                 request.session[key] = form.cleaned_data[key]

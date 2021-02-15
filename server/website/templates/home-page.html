@@ -93,7 +93,7 @@
 {% endblock %}
 
 {% block footer %}
-{% if form %}
+{% if form and user.is_staff %}
 <form action="{% url 'home' %}" method="POST" novalidate>
     {% csrf_token %}
     {{form}}

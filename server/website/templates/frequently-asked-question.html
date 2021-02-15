@@ -22,10 +22,12 @@
     {{content}}
     {% endautoescape %}
     {% endfor %}
+    {% if user.is_staff %}
     <nav>
         <a href="{% url 'related-content' 'question' question.id %}">Add or Remove Related Content</a>
         <a href="{% url 'reorder-related-content' 'question' question.id %}">Reorder Related Content</a>
     </nav>
+    {% endif %}
 </div>
 
 {% endblock %}

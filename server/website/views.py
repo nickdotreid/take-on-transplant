@@ -24,12 +24,32 @@ class WebsiteConfigurationForm(forms.Form):
         label = 'Show content on homepage',
         required = False
     )
+    show_survey = forms.BooleanField(
+        label = 'Show MyCFStage Survey',
+        required = False
+    )
     show_top_navigation = forms.BooleanField(
         label = 'Show top navigation',
         required = False
     )
 
 class BaseWebsiteView(TemplateView):
+
+    study_session = None
+
+    show_top_navigation = True
+    show_recommended_content = True
+    show_content_on_homepage = False
+    show_survey = False
+    survey_complete = False
+
+    FEATURE_FLAGS = [
+        'show_recommended_content',
+        'show_top_navigation',
+        'show_content_on_homepage',
+        'show_survey',
+        'survey_complete'        
+    ]
 
     def setup(self, request, *args, **kwargs):
         super().setup(request, *args, **kwargs)
@@ -44,8 +64,10 @@ class BaseWebsiteView(TemplateView):
             self.study_session = study_session
             if study_session.high_agency_version:
                 self.show_recommended_content = False
+                self.show_survey = False
             else:
                 self.show_recommended_content = True
+                self.show_survey = True
             if study_session.integrated_content_version:
                 self.show_top_navigation = False
                 self.show_content_on_homepage = True
@@ -57,9 +79,9 @@ class BaseWebsiteView(TemplateView):
 
     def setup_session_configuration(self):
         self.study_session = None
-        self.show_recommended_content = self.request.session['show_recommended_content'] if 'show_recommended_content' in self.request.session else True
-        self.show_top_navigation = self.request.session['show_top_navigation'] if 'show_top_navigation' in self.request.session else True
-        self.show_content_on_homepage = self.request.session['show_content_on_homepage'] if 'show_content_on_homepage' in self.request.session else False
+        for flag in self.FEATURE_FLAGS:
+            if flag in self.request.session:
+                setattr(self, flag, self.request.session[flag])
 
     def get_related_list(self, question):
         try:
@@ -79,22 +101,6 @@ class BaseWebsiteView(TemplateView):
         related_list = self.get_related_list(question)
         return related_list.content_list
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['study_session'] = self.study_session
-        context['took_survey'] = self.request.session['survey-complete'] if 'survey-complete' in self.request.session else False
-        context['show_top_navigation'] = self.show_top_navigation
-        context['show_content'] = self.show_content_on_homepage
-        context['form'] = WebsiteConfigurationForm({
-            'show_top_navigation': context['show_top_navigation'],
-            'show_content_on_homepage': context['show_content']
-        })
-        return context
-
-class HomePageView(BaseWebsiteView):
-
-    template_name = 'home-page.html'
-
     def render_article(self, article):
         return render_to_string('resource-article-partial.html', {
             'article': article
@@ -110,18 +116,41 @@ class HomePageView(BaseWebsiteView):
             'patient': patient
         })
 
+    def get_and_render_all_content(self):
+        contents = []
+        for article in Article.objects.filter(published=True, parent=None).all():
+            contents.append(self.render_article(article))
+        for question in FrequentlyAskedQuestion.objects.filter(published=True).all():
+            contents.append(self.render_question(question))
+        for patient in Patient.objects.filter(published=True).all():
+            contents.append(self.render_patient(patient))
+        random.shuffle(contents)
+        return contents
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['study_session'] = self.study_session
+        context['took_survey'] = self.request.session['survey-complete'] if 'survey-complete' in self.request.session else False
+        context['show_top_navigation'] = self.show_top_navigation
+        context['show_content'] = self.show_content_on_homepage
+        context['show_survey'] = self.show_survey
+
+        context['form'] = WebsiteConfigurationForm({
+            'show_top_navigation': self.show_top_navigation,
+            'show_content_on_homepage': self.show_content_on_homepage,
+            'show_survey': self.show_survey
+        })
+        return context
+
+class HomePageView(BaseWebsiteView):
+
+    template_name = 'home-page.html'
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        if context['show_content']:
-            contents = []
-            for article in Article.objects.all():
-                contents.append(self.render_article(article))
-            for question in FrequentlyAskedQuestion.objects.all():
-                contents.append(self.render_question(question))
-            for patient in Patient.objects.filter(published=True).all():
-                contents.append(self.render_patient(patient))
-            random.shuffle(contents)
+        if context['show_content'] and context['took_survey']:
+            contents = self.get_and_render_all_content()
             if context['took_survey']:
                 contents = contents[:7]
             context['contents'] = contents
@@ -136,6 +165,15 @@ class HomePageView(BaseWebsiteView):
         context = self.get_context_data()
         context['form'] = form
         return render(request, self.template_name, context)
+
+class AllContentView(BaseWebsiteView):
+
+    template_name = 'all-content-page.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['contents'] = self.get_and_render_all_content()
+        return context
 
 class SearchForm(forms.Form):
     fev = forms.ChoiceField(
@@ -198,13 +236,13 @@ class MyCFStageSurveyView(BaseWebsiteView):
                 if key in request.session:
                     request.session[key] = None
             request.session['survey-complete'] = False
-            return HttpResponseRedirect(reverse('website-home'))
+            return HttpResponseRedirect(reverse('home'))
         form = SearchForm(request.POST)
         if form.is_valid():
             for key in self.SURVEY_KEYS:
                 request.session[key] = form.cleaned_data[key]
             request.session['survey-complete'] = True
-            return HttpResponseRedirect(reverse('website-home'))
+            return HttpResponseRedirect(reverse('home'))
         context = self.get_context_data()
         context['form'] = form
         return render(request, self.template_name, context)
@@ -223,8 +261,8 @@ class StudySessionView(TemplateView):
             )
         if 'prototype-b' in request.POST:
             study_session = StudySession.objects.create(
-                high_agency_version = True,
-                integrated_content_version = False
+                high_agency_version = False,
+                integrated_content_version = True
             )
         if study_session:
             request.session['study_session_id'] = study_session.id

@@ -1,0 +1,15 @@
+{% extends 'home-page.html' %}
+
+{% block content %}
+{% if contents %}
+<section class="content-gallery container">
+    {% for content in contents %}
+    {% autoescape off %}
+    {{content}}
+    {% endautoescape %}
+    {% endfor %}
+</section>
+{% endif %}
+
+{% endblock %}
+

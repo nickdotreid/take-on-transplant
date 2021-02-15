@@ -46,6 +46,7 @@ class BaseWebsiteView(TemplateView):
             self.setup_study_session(request.session['study_session_id'])
         else:
             self.setup_session_configuration()
+        print('study session is', self.study_session)
 
     def setup_study_session(self, study_session_id):
         try:
@@ -138,9 +139,11 @@ class BaseWebsiteView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['study_session'] = self.study_session
         context['took_survey'] = self.request.session['survey-complete'] if 'survey-complete' in self.request.session else False
+        
         context['show_top_navigation'] = self.show_top_navigation
         context['show_content'] = self.show_content_on_homepage
         context['show_survey'] = self.show_survey
+        
         return context
 
 class HomePageView(BaseWebsiteView):
@@ -246,15 +249,17 @@ class StudySessionView(TemplateView):
             request.session['study_session_id'] = None
             return HttpResponseRedirect(reverse('home'))
         study_session = None
-        if 'prototype-a' in request.POST:
+        if 'marco' in request.POST:
             study_session = StudySession.objects.create(
-                high_agency_version = True,
-                integrated_content_version = False
-            )
-        if 'prototype-b' in request.POST:
-            study_session = StudySession.objects.create(
+                persona = 'marco',
                 high_agency_version = False,
                 integrated_content_version = True
+            )
+        if 'tamika' in request.POST:
+            study_session = StudySession.objects.create(
+                persona = 'tamika',
+                high_agency_version = True,
+                integrated_content_version = False
             )
         if study_session:
             request.session['study_session_id'] = study_session.id

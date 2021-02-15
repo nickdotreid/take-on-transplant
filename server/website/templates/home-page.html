@@ -10,22 +10,35 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1>Take On Transplant</h1>
-    <p>This is a prototype website to help people with Cystic Fibrosis understand lung transplant as a treatment option, so they can make informed care decisions.</p>
-    {% if study_session %}
-    <form action="{% url 'study-session' %}" method="POST">
-        {% csrf_token %}
+<div class="container-with-aside">
+    <article>
+        <h1>Take On Transplant</h1>
+        <p class="large">This is a prototype website to help people with Cystic Fibrosis understand lung transplant as a treatment option, so they can make informed care decisions.</p>
+    </article>
+    <aside>
+        {% if study_session %}
+        {% if study_session.persona == 'marco'%}
+        <p>Marco has lower lung function, and is considering treatment now treatment: evaluation content.</p>
+        {% endif %}
+        {% if study_session.persona == 'tamika' %}
+        <p>Tamika has higher lung function and isn’t considering LTx: markers of disease severity</p>
+        {% endif %}
         <p>Your study session id is {{study_session.id}}</p>
-        <input type="submit" name="clear" value="Clear" />
-    </form>    
-    {% else %}
-    <form action="{% url 'study-session' %}" method="POST">
-        {% csrf_token %}
-        <input type="submit" name="prototype-a" value="Prototype A" />
-        <input type="submit" name="prototype-b" value="Prototype B" />
-    </form>
-    {% endif %}
+        <form action="{% url 'study-session' %}" method="POST">
+            {% csrf_token %}
+            <input type="submit" name="clear" value="Clear" />
+        </form>    
+        {% else %}
+        <p>To participate in the usability study, please choose an example patient to view a custom prototype. <strong>You are using the default website.</strong></p>
+        <form action="{% url 'study-session' %}" method="POST">
+            {% csrf_token %}
+            <input type="submit" name="marco" value="Marco" />
+            <input type="submit" name="tamika" value="Tamika" />
+        </form>
+        {% endif %}
+    </aside>
+</div>
+<div class="container">
     {% if show_survey %}
     {% if took_survey %}
     <p>You took the MyCFStageSurvey, to <a href="{% url 'mycfstage' %}">change your answers, click here.</a></p>
@@ -38,11 +51,15 @@
         {% if forloop.last %} and {% endif %}
         <a href="{% url 'patient-story' patient.id %}">{{patient.name}}{% if forloop.last %}.{% else %},{% endif %}</a>
         {% endfor %}
+    </p>
+    <p>
         You can also read more in the Resource Library:
         {% for resource in resources %}
         {% if forloop.last %} and {% endif %}
         <a href="{% url 'resource-article' resource.id %}">{{resource.title}}{% if forloop.last %}.{% else %},{% endif %}</a>
         {% endfor %}
+    </p>
+    <p>
         See frequently asked questions
         {% for question in questions %}
         {% if forloop.last %} and {% endif %}
@@ -55,12 +72,9 @@
     <p>Take the <a href="{% url 'mycfstage' %}">MyCFStage</a> survey to get personalized content. <a href="{% url 'mycfstage' %}">Click here</a></p>
     {% endif %}
     {% else %}
-    <ul>
-        <li><a href="{% url 'mycfstage' %}">My CF Stage</a></li>
-        <li><a href="{% url 'patient-story-list' %}">Patient Stories</a></li>
-        <li><a href="{% url 'resource-list' %}">Resource Library</a></li>
-        <li><a href="{% url 'question-list' %}">Frequently Asked Questions</a></li>
-    </ul>
+    <p><a href="{% url 'patient-story-list' %}">Patient Stories</a></p>
+    <p><a href="{% url 'resource-list' %}">Resource Library</a></p>
+    <p><a href="{% url 'question-list' %}">Frequently Asked Questions</a></p>
     {% endif %}
 
     {% if contents %}

@@ -52,6 +52,7 @@ class MyCFStageForm(forms.Form):
             (2, "Elexacaftor/Tezacaftor/Ivacaftor (Trikafta)"),
             (3, "Using supplemental oxygen")
         ],
+        required = False,
         widget = forms.CheckboxSelectMultiple
     )
     exacerbations = forms.IntegerField(

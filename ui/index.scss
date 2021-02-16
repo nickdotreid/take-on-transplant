@@ -170,10 +170,11 @@ a > .popover-target {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
 
     > * {
         display: block;
+        position: relative;
         width: 100%;
         padding: 0.5em;
         margin: 0em;
@@ -198,12 +199,17 @@ a > .popover-target {
         }
     }
 
+    > * > a:last-child {
+        display: block;
+    }
+
 }
 
 @media(min-width: 600px) {
     .content-gallery > * {
-        width: 250px;
-        flex: 0 0 auto;
+        width: 40%;
+        flex: 1 0 auto;
+        margin: 1em 0.5em;
     }
 
     .content-gallery > nav {
@@ -215,46 +221,26 @@ a > .popover-target {
     }
 
     .content-gallery > *.patient-story {
-        display: block;
-        width: 550px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
         flex: 0 0 auto;
 
         > * {
             display: block;
-            float: left;
-            width: 250px;
-        }
-
-        > a {
-            display: block;
-            float: none;
-            clear: both;
-        }
-    }
-}
-
-@media(min-width: 1000px) {
-
-    .content-gallery > * {
-        width: 350px;
-        flex: 0 0 auto;
-    }
-
-    .content-gallery > *.patient-story {
-        width: 650px;
-
-        > * {
+            flex: 0 1 auto;
             width: 250px;
         }
 
         > .content {
-            width: 400px;
+            flex: 1 0 auto;
         }
 
         > a {
             display: block;
-            float: none;
-            clear: both;
+            flex: 0 0 auto;
+            width: 100%;
         }
     }
 }
@@ -326,25 +312,18 @@ a > .popover-target {
 }
 
 .faq-response {
-    display: flex;
-    flex-direction: row-reverse;
-    border-top: 2px #000 solid;
-    padding: 0px;
-    margin-bottom: 1em;
-    > * {
-        width: 250px;
-        border-right: 1px #000 solid;
-        padding: 1em;
-        margin:0px;
-        flex: 0 0 auto;
-        &:first-child {
-            border-right-width: 0px;
-        }
+    margin: 1em 0em;
+    
+    > h3:first-child {
+        margin: 0px;
+        padding: 0px;
     }
 
-    > .content {
-        flex: 1 0 auto;
+    > .content > *:first-child {
+        margin-top: 0px;
     }
-
+    > .content > *:last-child {
+        margin-bottom: 0px;
+    }
 }
 

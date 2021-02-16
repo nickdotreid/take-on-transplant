@@ -1,43 +1,51 @@
 {% extends 'home-page.html' %}
 
 {% block content %}
-<section class="container">
-    <p class="large">{{question.text}}</p>
-    {% for response in question.responses  %}
-    <article class="faq-response">
-        <div class="content">
-            {% autoescape off %}
-            {{response.text}}
-            {% endautoescape %}    
-        </div>
-        <aside>
-            {% if response.author %}
-            <p class="title">{{response.author.name}}</p>
-            {% if response.author.description %}
-            <p>{{response.author.description}}</p>
+<section class="container-with-sidebar">
+    <div class="sidebar">
+        <nav>
+            {% for response in question.responses  %}
+            <a href="#response-{{response.id}}">{{response.author.name}}</a>
+            {% endfor %}
+            {% if show_recommended_content %}
+            <a href="#related-content">Related Content</a>
             {% endif %}
-            {% if response.author.patient %}
+        </nav>
+    </div>
+    <div class="content">
+        <p class="large">{{question.text}}</p>
+        {% for response in question.responses  %}
+        <article id="response-{{response.id}}" class="faq-response">
+            {% if response.author %}
+            <h3>{{response.author.name}}</h3>
+            {% endif %}
+            <div class="content">
+                {% autoescape off %}
+                {{response.text}}
+                {% endautoescape %}    
+            </div>
+            {% if response.author and response.author.patient %}
             <a href="{% url 'patient-story' response.author.patient.id %}">View {{response.author.name}}'s story</a>
             {% endif %}
+        </article>
+        {% endfor %}
+
+        {% if show_recommended_content %}
+        <div id="related-content" class="content-gallery">
+            {% for content in related_content %}
+            {% autoescape off %}
+            {{content}}
+            {% endautoescape %}
+            {% endfor %}
+            {% if user.is_staff %}
+            <nav>
+                <a href="{% url 'related-content' 'question' question.id %}">Add or Remove Related Content</a>
+                <a href="{% url 'reorder-related-content' 'question' question.id %}">Reorder Related Content</a>
+            </nav>
             {% endif %}
-        </aside>
-    </article>
-    {% endfor %}
+        </div>
+        {% endif %}
+    </div>
 </section>
-{% if show_recommended_content %}
-<div class="content-gallery container">
-    {% for content in related_content %}
-    {% autoescape off %}
-    {{content}}
-    {% endautoescape %}
-    {% endfor %}
-    {% if user.is_staff %}
-    <nav>
-        <a href="{% url 'related-content' 'question' question.id %}">Add or Remove Related Content</a>
-        <a href="{% url 'reorder-related-content' 'question' question.id %}">Reorder Related Content</a>
-    </nav>
-    {% endif %}
-</div>
-{% endif %}
 {% endblock %}
 

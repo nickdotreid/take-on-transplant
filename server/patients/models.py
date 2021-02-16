@@ -114,7 +114,7 @@ class Patient(models.Model):
         if not hasattr(self, '_all_attribute_values'):
             self._all_attribute_values = self.get_all_patient_attributes()
         for attribute in self._all_attribute_values:
-            if attribute.key == key:
+            if attribute.key == slugify(key):
                 return attribute.value
         return None
 
@@ -131,6 +131,13 @@ class Patient(models.Model):
             if value is not None:
                 return value
         return None
+    
+    def get_value_pairs(self, keys):
+        for key in keys:
+            value = self.get_attribute(key)
+            if value is not None:
+                return value, slugify(value)
+        return None, None
 
     def get_stories(self):
         return PatientStory.objects.filter(

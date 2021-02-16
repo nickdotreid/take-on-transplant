@@ -32,3 +32,17 @@ form {
         }
     }
 }
+
+form > fieldset {
+    @extend form;
+    border: 0px;
+    margin-top: 1em;
+    > legend {
+        margin: 0px;
+        padding: 0px;
+        font-weight: bold;
+    }
+    > label {
+        margin-top: 0.25em;
+    }
+}

@@ -5,8 +5,9 @@
     <h1>Patient Stories</h1>
     <p class="large">Explore stories from caregivers and people living with Cystic Fibrosis (CF) as they share their experiences with lung transplant. In the stories, they share their journeys from pre-transplant to post and give advice to others living with CF. Stories may include good outcomes or challenges they have faced as a way to help educate those who may be considering lung transplant as a treatment option now or in the future.</p>
 </article>
-<section class="container content-gallery">
+<section class="container-with-form">
     <nav>
+        <span>Showing {{number_patients_showing}} of {{number_patients}}</span>
         <div class="list-sort">
             <span>Sorted <a href="#">{{sort_name}}</a></span>
             <nav>
@@ -18,8 +19,25 @@
             </nav>
         </div>
     </nav>
-    {% for patient in patients %}
-    {% include 'patient-story-partial.html' %}
-    {% endfor %}
+    <form action="" method="GET">
+        <input type="hidden" name="sort" value="{{sort_order}}" />
+        {% for filter in filters %}
+        <fieldset>
+            <legend>{{filter.title}}</legend>
+            {% for option in filter.options %}
+            <label>
+                <input type="radio" name="{{filter.slug}}" value="{{option.slug}}" {% if option.selected %}checked="checked"{% endif %} />
+                {{option.name}}
+            </label>
+            {% endfor %}
+        </fieldset>
+        {% endfor %}
+        <input type="submit" value="Update" />
+    </form>
+    <div class="content-gallery">
+        {% for patient in patients %}
+        {% include 'patient-story-partial.html' %}
+        {% endfor %}
+    </div>
 </section>
 {% endblock %}

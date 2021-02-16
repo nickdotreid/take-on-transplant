@@ -160,3 +160,35 @@ body {
         }
     }
 }
+
+.container-with-form {
+    @extend .container-with-sidebar;
+
+}
+
+@media(min-width: 1000px) {
+    .container-with-form > *{
+        float: left;
+        width: 660px;
+    }
+    .container-with-form > form {
+        float: right;
+        width: 250px;
+        position: sticky;
+        top: 0px;
+    }
+    .container-with-form > nav:first-child {
+        clear: both;
+        position: sticky;
+        top: 0px;
+        background-color: #fff;
+        padding: 1em 0em;
+        display: flex;
+        justify-content: flex-end;
+
+        > *:first-child {
+            flex: 1 0 auto;
+        }
+    }
+}
+

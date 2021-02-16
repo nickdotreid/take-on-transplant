@@ -308,7 +308,61 @@ class PatientStoryListView(BaseWebsiteView):
                 reverse=True
             )
             print([(p.name, p.get_value(value_keys)) for p in patients])
-        
+
+        filters = [{
+            'title': 'Gender',
+            'slug': 'gender',
+            'keys': ['gender']
+        }, {
+            'title': 'Genotype',
+            'slug': 'genotype',
+            'keys': ['cftr genotype']
+        }, {
+            'title': 'Modulator Status',
+            'slug': 'modulator-status',
+            'keys': ['CFTR modulator status at transplant']
+        }]
+        for patient in patients:
+            for _filter in filters:
+                value, slug = patient.get_value_pairs(_filter['keys'])
+                if value is not None:
+                    if 'options' not in _filter:
+                        _filter['options'] = {}
+                    if slug not in _filter['options']:
+                        _filter['options'][slug] = {
+                            'name': value,
+                            'slug': slug,
+                            'count': 0
+                        }
+                    _filter['options'][slug]['count'] += 1
+        context['number_patients'] = len(patients)
+        for _filter in filters:
+            if _filter['slug'] in self.request.GET:
+                value = self.request.GET[_filter['slug']]
+                if value != '':
+                    patients = [p for p in patients if p.get_value_pairs(_filter['keys'])[1] == value]
+        context['number_patients_showing'] = len(patients)
+
+        context['filters'] = []
+        for _filter in filters:
+            options_flattened = list(_filter['options'].values())
+            options_flattened.sort(key=lambda x: x['name'])
+            has_selected_option = False
+            for option in options_flattened:
+                if _filter['slug'] in self.request.GET:
+                    if option['slug'] == self.request.GET[_filter['slug']]:
+                        option['selected'] = True
+                        has_selected_option = True
+            options_flattened.append({
+                'name': 'Show All',
+                'slug': '',
+                'selected': not has_selected_option
+            })
+            context['filters'].append({
+                'title': _filter['title'],
+                'slug': _filter['slug'],
+                'options': options_flattened
+            })
         context['patients'] = patients
         context['sort_order'] = sort_order
         context['sort_name'] = sort_name

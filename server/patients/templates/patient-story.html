@@ -17,6 +17,9 @@
         {% for story in stories %}
         <a href="#story-{{story.id}}">{{story.title}}</a>
         {% endfor %}
+        {% if show_recommended_content %}
+        <a href="#recommended-content">{{story.title}}</a>
+        {% endif %}
     </nav>
     <div class="content">
         {% for story in stories %}
@@ -27,24 +30,24 @@
             {% endautoescape %}
         </div>
         {% endfor %}
+        {% if show_recommended_content %}
+        <div id="recommended-content" class="content-gallery container">
+            <h2>Recommended Content</h2>
+            {% for content in related_content %}
+            {% autoescape off %}
+            {{content}}
+            {% endautoescape %}
+            {% endfor %}
+            {% if user.is_staff %}
+            <nav>
+                <a href="{% url 'related-content' 'patient' patient.id %}">Add or Remove Related Content</a>
+                <a href="{% url 'reorder-related-content' 'patient' patient.id %}">Reorder Related Content</a>
+            </nav>
+            {% endif %}
+        </div>
+        {% endif %}
     </div>
     <a class="fixed-back" href="/">View all stories</a>
 </div>
-
-{% if show_recommended_content %}
-<div class="content-gallery container">
-    {% for content in related_content %}
-    {% autoescape off %}
-    {{content}}
-    {% endautoescape %}
-    {% endfor %}
-    {% if user.is_staff %}
-    <nav>
-        <a href="{% url 'related-content' 'patient' patient.id %}">Add or Remove Related Content</a>
-        <a href="{% url 'reorder-related-content' 'patient' patient.id %}">Reorder Related Content</a>
-    </nav>
-    {% endif %}
-</div>
-{% endif %}
 
 {% endblock %}

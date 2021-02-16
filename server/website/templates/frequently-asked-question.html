@@ -32,6 +32,7 @@
 
         {% if show_recommended_content %}
         <div id="related-content" class="content-gallery">
+            <h2>Recommended Content</h2>
             {% for content in related_content %}
             {% autoescape off %}
             {{content}}

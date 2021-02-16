@@ -1,6 +1,12 @@
 {% extends 'home-page.html' %}
 
 {% block content %}
+<div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="large">
+        Read questions about lung transplant and answers provided by people with CF who have undergone lung transplant, in their own words. These questions are the most frequent ones they hear or the ones they asked when they went through the process. There are also responses from transplant doctors for questions about medical information. 
+    </p>
+</div>
 {% for category in categories %}
 <section class="container">
     <h2>{{category.name}}</h2>

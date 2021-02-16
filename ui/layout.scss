@@ -48,6 +48,23 @@ body {
     }
 }
 
+.container-horizontal {
+    @extend .container;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    > * {
+        flex: 1 1 auto;
+        margin-left: 1em;
+    }
+
+    > *:first-child {
+        flex: 0 0 auto;
+        width: 290px;
+        margin-left: 0em;
+    }
+}
 
 .container-with-sidebar {
     @extend .container;
@@ -166,10 +183,12 @@ body {
 }
 
 @media(min-width: 1000px) {
-    .container-with-form > *{
+    .container-with-form > *,
+    .container-with-form > .content{
         float: left;
         width: 660px;
     }
+
     .container-with-form > form {
         float: right;
         width: 250px;

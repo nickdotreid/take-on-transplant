@@ -8,14 +8,41 @@
     </p>
 </div>
 {% for category in categories %}
-<section class="container">
-    <h2>{{category.name}}</h2>
-    <div class="content-gallery">
-        {% for question in category.questions  %}
-        {% include 'question-partial.html' %}
-        {% endfor %}
+<section class="container-with-form">
+    <form action="" method="GET">
+        <fieldset>
+            <legend>Filters</legend>
+            <label>
+                <input type="checkbox" name="" checked />
+                Finances
+            </label>
+            <label>
+                <input type="checkbox" name="" checked />
+                Caregiver information
+            </label>
+            <label>
+                <input type="checkbox" name="" checked />
+                Evaluation testing
+            </label>
+            <label>
+                <input type="checkbox" name="" checked />
+                Signs CF is worsening
+            </label>
+            <label>
+                <input type="checkbox" name="" checked />
+                Transplant surgery
+            </label>
+        </fieldset>
+        <input type="submit" value="Update" />
+    </form>
+    <div class="content">
+        <h2>{{category.name}}</h2>
+        <div class="content-gallery">
+            {% for question in category.questions  %}
+            {% include 'question-partial.html' %}
+            {% endfor %}
+        </div>
     </div>
-
 </section>
 {% endfor %}
 {% endblock %}

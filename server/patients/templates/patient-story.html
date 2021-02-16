@@ -1,14 +1,16 @@
 {% extends 'home-page.html' %}
 
 {% block content %}
-<div class="container">
+<div class="container-horizontal">
     <h1>{{patient.name}}</h1>
-    <dl>
+    <ul class="horizontal">
         {% for attribute in patient.attributes %}
-        <dt>{{attribute.name}}</dt>
-        <dd>{{attribute.value}}</dd>
+        <li>
+            <em class="title">{{attribute.name}}</em>
+            {{attribute.value}}
+        </li>
         {% endfor %}
-    </dl>
+    </ul>
 </div>
 <div class="container-with-sidebar">
     <nav class="sidebar is-sticky">

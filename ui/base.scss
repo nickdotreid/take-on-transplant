@@ -40,12 +40,36 @@ dl {
     }
 }
 
+
+.unstyled-list,
 ul.unstyled {
     padding: 0px;
+    margin: 0px;
     > li {
         list-style-type: none;
         margin: 0px;
         padding: 0px;
         margin-top: 0.5em;
+    }
+}
+
+ul.horizontal {
+    @extend .unstyled-list;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+    > li {
+        display: block;
+        margin: 0em 1em;
+        margin-bottom: 1em;
+    }
+
+    > li > *.title {
+        font-size: 1em;
+        display: block;
+        font-style: normal;
+        color: #565656
     }
 }

@@ -7,9 +7,9 @@
 </article>
 <section class="container-with-form">
     <nav>
-        <span>Showing {{number_patients_showing}} of {{number_patients}}</span>
+        <span>Showing {{number_patients_showing}} of {{number_patients}} patient stories</span>
         <div class="list-sort">
-            <span>Sorted <a href="#">{{sort_name}}</a></span>
+            <span>Sorted by <a href="#">{{sort_name}}</a></span>
             <nav>
                 {% for option in sort_options %}
                 <a href="{{option.link}}" {% if option.selected %}class="selected"{% endif %}>
@@ -23,7 +23,7 @@
         <input type="hidden" name="sort" value="{{sort_order}}" />
         {% for filter in filters %}
         <fieldset>
-            <legend>{{filter.title}}</legend>
+            <legend>Filter by {{filter.title}}</legend>
             {% for option in filter.options %}
             <label>
                 <input type="radio" name="{{filter.slug}}" value="{{option.slug}}" {% if option.selected %}checked="checked"{% endif %} />

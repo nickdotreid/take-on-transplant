@@ -152,7 +152,7 @@ class HomePageView(BaseWebsiteView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        context['form'] = WebsiteConfigurationForm({
+        context['home_form'] = WebsiteConfigurationForm({
             'features': [feature for feature, label in WebsiteConfigurationForm.FEATURE_FLAGS if feature in self.request.session and self.request.session[feature]]
         })
 
@@ -213,28 +213,19 @@ class AllContentView(BaseWebsiteView):
 class MyCFStageSurveyView(BaseWebsiteView):
     template_name = 'patient-search-form.html'
 
-    SURVEY_KEYS = ['fev', 'age', 'sex', 'treatments', 'exacerbations']
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         current_session_data = {}
-        for key in self.SURVEY_KEYS:
-            current_session_data[key] = self.request.session[key] if key in self.request.session else None
         context['form'] = MyCFStageForm(initial=current_session_data)
         context['survey_complete'] = self.request.session['survey-complete'] if 'survey-complete' in self.request.session else False
         return context
 
     def post(self, request):
         if 'reset' in request.POST:
-            for key in self.SURVEY_KEYS:
-                if key in request.session:
-                    request.session[key] = None
             request.session['survey-complete'] = False
             return HttpResponseRedirect(reverse('home'))
         form = MyCFStageForm(request.POST)
         if form.is_valid():
-            for key in self.SURVEY_KEYS:
-                request.session[key] = form.cleaned_data[key]
             request.session['survey-complete'] = True
             return HttpResponseRedirect(reverse('home'))
         context = self.get_context_data()

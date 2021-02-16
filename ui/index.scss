@@ -242,17 +242,11 @@ a > .popover-target {
     .content-gallery > *.patient-story {
 
         > * {
-            display: block;
-            float: left;
             width: 250px;
         }
 
-        > dl {
-            width: 350px;
-        }
-
         > .content {
-            width: 600px;
+            width: 400px;
         }
 
         > a {
@@ -301,6 +295,31 @@ a > .popover-target {
     > nav:hover,
     > nav:focus-within {
         display: block;
+    }
+}
+
+.mycfstage-callout {
+    font-size: 24px;
+    border-top: 1px #000 solid;
+    border-bottom: 1px #000 solid;
+    text-align: center;
+
+    margin: 3em 0em;
+
+    > a.button {
+        display: inline-block;
+        text-decoration: none;
+        color: #000;
+        background-color:#eee;
+        border: 1px solid #000;
+        width: auto;
+        padding: 0.5em 1em;
+        margin: 1em auto;
+        &:hover,
+        &:focus {
+            background-color:rgb(221, 221, 255);
+            border-color: #00F;
+        }
     }
 }
 

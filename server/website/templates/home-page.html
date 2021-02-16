@@ -40,37 +40,41 @@
 </div>
 <div class="container">
     {% if show_survey %}
-    {% if took_survey %}
-    <p>You took the MyCFStageSurvey, to <a href="{% url 'mycfstage' %}">change your answers, click here.</a></p>
-
-    <p>You have advanced lung disease with markers of increased disease severity based on your low FEV1 and frequent CF exacerbations that required IV antibiotics. The use of Trikafta (elexacaftor/tezacaftor/ivacaftor) may delay the need for lung transplant, but people with advanced lung disease are likely to benefit from lung transplant at some time in the future.  It is important to continue to talk with your doctor about lung transplant. You may want to connect with patients who have been through the lung transplant journey. </p>
-
-    <p>
-        We recommend beginning your Take on Transplant journey with the following stories:
-        {% for patient in patients %}
-        {% if forloop.last %} and {% endif %}
-        <a href="{% url 'patient-story' patient.id %}">{{patient.name}}{% if forloop.last %}.{% else %},{% endif %}</a>
-        {% endfor %}
-    </p>
-    <p>
-        You can also read more in the Resource Library:
-        {% for resource in resources %}
-        {% if forloop.last %} and {% endif %}
-        <a href="{% url 'resource-article' resource.id %}">{{resource.title}}{% if forloop.last %}.{% else %},{% endif %}</a>
-        {% endfor %}
-    </p>
-    <p>
-        See frequently asked questions
-        {% for question in questions %}
-        {% if forloop.last %} and {% endif %}
-        <a href="{% url 'question' question.id %}">"{{question.text}}"{% if forloop.last %}.{% else %},{% endif %}</a>
-        {% endfor %}
-    </p>
-
-
-    {% else %}
-    <p>Take the <a href="{% url 'mycfstage' %}">MyCFStage</a> survey to get personalized content. <a href="{% url 'mycfstage' %}">Click here</a></p>
-    {% endif %}
+        {% if took_survey %}
+        <p>You took the MyCFStageSurvey, to <a href="{% url 'mycfstage' %}">change your answers, click here.</a></p>
+    
+        <p>You have advanced lung disease with markers of increased disease severity based on your low FEV1 and frequent CF exacerbations that required IV antibiotics. The use of Trikafta (elexacaftor/tezacaftor/ivacaftor) may delay the need for lung transplant, but people with advanced lung disease are likely to benefit from lung transplant at some time in the future.  It is important to continue to talk with your doctor about lung transplant. You may want to connect with patients who have been through the lung transplant journey. </p>
+    
+        <p>
+            We recommend beginning your Take on Transplant journey with the following stories:
+            {% for patient in patients %}
+            {% if forloop.last %} and {% endif %}
+            <a href="{% url 'patient-story' patient.id %}">{{patient.name}}{% if forloop.last %}.{% else %},{% endif %}</a>
+            {% endfor %}
+        </p>
+        <p>
+            You can also read more in the Resource Library:
+            {% for resource in resources %}
+            {% if forloop.last %} and {% endif %}
+            <a href="{% url 'resource-article' resource.id %}">{{resource.title}}{% if forloop.last %}.{% else %},{% endif %}</a>
+            {% endfor %}
+        </p>
+        <p>
+            See frequently asked questions
+            {% for question in questions %}
+            {% if forloop.last %} and {% endif %}
+            <a href="{% url 'question' question.id %}">"{{question.text}}"{% if forloop.last %}.{% else %},{% endif %}</a>
+            {% endfor %}
+        </p>
+    
+    
+        {% else %}
+        <div class="mycfstage-callout">
+        <p>Take the <a href="{% url 'mycfstage' %}">My CF Stage</a> survey to get personalized content.</p>
+        <a class="button" href="{% url 'mycfstage' %}">Start My CF Stage</a>
+        </div>
+        {% endif %}
+    
     {% else %}
     <p><a href="{% url 'patient-story-list' %}">Patient Stories</a></p>
     <p><a href="{% url 'resource-list' %}">Resource Library</a></p>
@@ -93,10 +97,10 @@
 {% endblock %}
 
 {% block footer %}
-{% if form and user.is_staff %}
+{% if home_form and user.is_staff %}
 <form action="{% url 'home' %}" method="POST" novalidate>
     {% csrf_token %}
-    {{form}}
+    {{home_form}}
     <input type="submit" value="Change" />
 </form>
 {% endif %}

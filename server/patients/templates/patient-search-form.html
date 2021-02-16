@@ -1,19 +1,8 @@
-{% extends 'base.html' %}
-
-{% block header %}
-
-{% endblock %}
+{% extends 'home-page.html' %}
 
 {% block content %}
-{% if patient and explination %}
-<div class="container">
-    <p>{{explination}}</p>
-    <div class="patient-profile">
-        <h2>{{patient.name}}</h2>
-    </div>    
-</div>
-{% endif %}
-<div class="container">
+<div class="container-with-aside">
+
     <form action="" method="POST" novalidate>
         {% csrf_token %}
         {{form}}
@@ -22,6 +11,31 @@
         <input type="submit" value="Reset" name="reset" />
         {% endif %}
     </form>
+    <aside>
+        <p>This is a prototype form that doesn't <em>really</em> work.</p>
+        {% if study_session %}
+        {% if study_session.persona == 'marco'%}
+        <p>Your example patient is <strong>Marco</strong>.</p>
+        <dl>
+            <dt>Age at diagnosis</dt>
+            <dd>Younger than 2 years old</dd>
+            <dt>Gender</dt>
+            <dd>Male</dd>
+            <dt>FEV1% predicted</dt>
+            <dd>30-39%</dd>
+            <dt>Use of supplemental oxygen</dt>
+            <dd>No</dd>
+            <dt>Taking a CFTR modulator</dt>
+            <dd>Trikafta</dd>
+            <dt>Number of pulmonary exacerbations treated with IV antibiotics at home or in the hospital in the past year</dt>
+            <dd>3</dd>
+        </dl>
+        {% endif %}
+        {% if study_session.persona == 'tamika' %}
+        <p>Tamika has higher lung function and isn’t considering LTx: markers of disease severity</p>
+        {% endif %}
+        {% endif %}
+    </aside>
 </div>
 
 {% endblock %}

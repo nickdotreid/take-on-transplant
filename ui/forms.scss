@@ -4,6 +4,17 @@ form {
         margin-top: 1em;
     }
 
+    > .errorlist {
+        color: #b60303;
+        font-weight: bold;
+    }
+
+    > input[type=text],
+    > input[type=number] {
+        display: block;
+        width: 100%;
+    }
+
     > input[type=submit] {
         display: block;
         width: 100%;
@@ -45,4 +56,10 @@ form > fieldset {
     > label {
         margin-top: 0.25em;
     }
+}
+
+form > ul#id_fev {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
 }

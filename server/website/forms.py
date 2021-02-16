@@ -18,26 +18,17 @@ class WebsiteConfigurationForm(forms.Form):
 
 
 class MyCFStageForm(forms.Form):
-    fev = forms.ChoiceField(
-        label = "What is your FEV1?",
+    age_at_diagnosis = forms.ChoiceField(
+        label = "Age at diagnosis",
         choices = [
-            (0.1, "10%"),
-            (0.2, "20%"),
-            (0.3, "30%"),
-            (0.4, "40%"),
-            (0.5, "50%"),
-            (0.6, "60%"),
-            (0.7, "70%"),
-            (0.8, "80%"),
-            (0.9, "90%"),
-            ( 1, "100%")
+            (1, 'Younger than 2 years old'),
+            (2, '2 years old to 18 years old'),
+            (3, 'Older than 18')
         ],
         widget = forms.RadioSelect
     )
-    age = forms.IntegerField(
-        label = "How old are you?"
-    )
-    sex = forms.ChoiceField(
+
+    gender = forms.ChoiceField(
         label = "Which sex were you assigned at birth?",
         choices = [
             ("male", "Male"),
@@ -45,6 +36,30 @@ class MyCFStageForm(forms.Form):
         ],
         widget = forms.RadioSelect
     )
+
+    fev = forms.ChoiceField(
+        label = "What is your FEV1?",
+        choices = [
+            (1, "<30%"),
+            (2, "30-39%"),
+            (3, "40-49%"),
+            (4, "50-59%"),
+            (5, "60-69%"),
+            (6, "70-79%"),
+            (8, ">80%")
+        ],
+        widget = forms.RadioSelect
+    )
+
+    supplemental_oxygen = forms.ChoiceField(
+        label = "Use of supplemental oxygen",
+        choices = [
+            (1, "Yes"),
+            (2, "No")
+        ],
+        widget = forms.RadioSelect
+    )
+
     treatments = forms.MultipleChoiceField(
         label = "Are you using any of the following treatments?",
         choices = [

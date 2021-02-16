@@ -45,8 +45,7 @@
 <div class="container">
     {% if show_survey %}
         {% if took_survey %}
-        <p>You took the MyCFStageSurvey, to <a href="{% url 'mycfstage' %}">change your answers, click here.</a></p>
-    
+        <h2>Survey Results</h2>    
         <p>You have advanced lung disease with markers of increased disease severity based on your low FEV1 and frequent CF exacerbations that required IV antibiotics. The use of Trikafta (elexacaftor/tezacaftor/ivacaftor) may delay the need for lung transplant, but people with advanced lung disease are likely to benefit from lung transplant at some time in the future.  It is important to continue to talk with your doctor about lung transplant. You may want to connect with patients who have been through the lung transplant journey. </p>
     
         <p>
@@ -60,7 +59,11 @@
             You can also read more in the Resource Library:
             {% for resource in resources %}
             {% if forloop.last %} and {% endif %}
+            {% if resource.parent %}
+            <a href="{% url 'resource-article' resource.parent.id %}#article-{{resource.id}}">{{resource.title}}{% if forloop.last %}.{% else %},{% endif %}</a>
+            {% else %}
             <a href="{% url 'resource-article' resource.id %}">{{resource.title}}{% if forloop.last %}.{% else %},{% endif %}</a>
+            {% endif %}
             {% endfor %}
         </p>
         <p>
@@ -70,7 +73,7 @@
             <a href="{% url 'question' question.id %}">"{{question.text}}"{% if forloop.last %}.{% else %},{% endif %}</a>
             {% endfor %}
         </p>
-    
+        <p>These recommendations were generated from your answers to the My CF Stage Survey, to <a href="{% url 'mycfstage' %}">change your answers, click here.</a></p>
     
         {% else %}
         <div class="mycfstage-callout">

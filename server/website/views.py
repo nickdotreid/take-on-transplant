@@ -172,16 +172,12 @@ class HomePageView(BaseWebsiteView):
             except Patient.DoesNotExist():
                 pass
 
-            context['patients'] = patients
+            context['patients'] = Patient.objects.filter(name__in=['Amy', 'Will']).order_by('-name').all()
 
-            questions = list(FrequentlyAskedQuestion.objects.filter(published=True).all())
-            random.shuffle(questions)
-            questions = questions[:3]
+            questions = FrequentlyAskedQuestion.objects.filter(id__in=[1,5]).all()
             context['questions'] = questions
 
-            resources = list(Article.objects.filter(published=True, parent=True).all())
-            random.shuffle(resources)
-            resources = resources[:2]
+            resources = Article.objects.filter(id__in=[14, 9]).order_by('title').all()
             context['resources'] = resources
             
             contents = [p for p in patients]

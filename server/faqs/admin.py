@@ -2,6 +2,7 @@ from django.contrib import admin
 
 from admin_ordering.admin import OrderableAdmin
 
+from .models import Author
 from .models import Category
 from .models import FrequentlyAskedQuestion
 from .models import Answer
@@ -13,6 +14,7 @@ class AnswerAdminInline(OrderableAdmin, admin.StackedInline):
 
     fields = [
         'order',
+        'author',
         'published',
         'text'
     ]
@@ -44,3 +46,7 @@ class CategoryAdmin(OrderableAdmin, admin.ModelAdmin):
     inlines = [
         QuestionInCategoryAdminInline
     ]
+
+@admin.register(Author)
+class AuthorAdmin(admin.ModelAdmin):
+    pass

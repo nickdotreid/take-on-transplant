@@ -170,7 +170,7 @@ a > .popover-target {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
 
     > * {
         display: block;
@@ -216,7 +216,8 @@ a > .popover-target {
 
     .content-gallery > *.patient-story {
         display: block;
-        width: 100%;
+        width: 550px;
+        flex: 0 0 auto;
 
         > * {
             display: block;
@@ -235,11 +236,12 @@ a > .popover-target {
 @media(min-width: 1000px) {
 
     .content-gallery > * {
-        width: 250px;
+        width: 350px;
         flex: 0 0 auto;
     }
 
     .content-gallery > *.patient-story {
+        width: 650px;
 
         > * {
             width: 250px;
@@ -321,5 +323,28 @@ a > .popover-target {
             border-color: #00F;
         }
     }
+}
+
+.faq-response {
+    display: flex;
+    flex-direction: row-reverse;
+    border-top: 2px #000 solid;
+    padding: 0px;
+    margin-bottom: 1em;
+    > * {
+        width: 250px;
+        border-right: 1px #000 solid;
+        padding: 1em;
+        margin:0px;
+        flex: 0 0 auto;
+        &:first-child {
+            border-right-width: 0px;
+        }
+    }
+
+    > .content {
+        flex: 1 0 auto;
+    }
+
 }
 

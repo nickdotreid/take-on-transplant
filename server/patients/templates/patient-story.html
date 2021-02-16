@@ -29,7 +29,7 @@
     <a class="fixed-back" href="/">View all stories</a>
 </div>
 
-
+{% if show_recommended_content %}
 <div class="content-gallery container">
     {% for content in related_content %}
     {% autoescape off %}
@@ -43,5 +43,6 @@
     </nav>
     {% endif %}
 </div>
+{% endif %}
 
 {% endblock %}

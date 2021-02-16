@@ -142,6 +142,7 @@ class BaseWebsiteView(TemplateView):
         context['show_top_navigation'] = self.show_top_navigation
         context['show_content'] = self.show_content_on_homepage
         context['show_survey'] = self.show_survey
+        context['show_recommended_content'] = self.show_recommended_content
         
         return context
 

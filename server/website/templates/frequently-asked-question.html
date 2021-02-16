@@ -1,21 +1,30 @@
 {% extends 'home-page.html' %}
 
 {% block content %}
-<article class="container">
+<section class="container">
     <p class="large">{{question.text}}</p>
-    <ul>
     {% for response in question.responses  %}
-        <li>
+    <article class="faq-response">
+        <div class="content">
             {% autoescape off %}
             {{response.text}}
-            {% endautoescape %}
-            {% if response.patient %}
-            <p>By {{response.patient.name}}</p>
+            {% endautoescape %}    
+        </div>
+        <aside>
+            {% if response.author %}
+            <p class="title">{{response.author.name}}</p>
+            {% if response.author.description %}
+            <p>{{response.author.description}}</p>
             {% endif %}
-        </li>
-    {% endfor %}    
-    </ul>
-</article>
+            {% if response.author.patient %}
+            <a href="{% url 'patient-story' response.author.patient.id %}">View {{response.author.name}}'s story</a>
+            {% endif %}
+            {% endif %}
+        </aside>
+    </article>
+    {% endfor %}
+</section>
+{% if show_recommended_content %}
 <div class="content-gallery container">
     {% for content in related_content %}
     {% autoescape off %}
@@ -29,6 +38,6 @@
     </nav>
     {% endif %}
 </div>
-
+{% endif %}
 {% endblock %}
 

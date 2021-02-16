@@ -31,11 +31,26 @@ class FrequentlyAskedQuestion(models.Model):
     def __str__(self):
         return self.text
 
-class Answer(models.Model):
+class Author(models.Model):
     patient = models.ForeignKey(
         Patient,
         blank = True,
         null = True,
+        on_delete = models.CASCADE,
+        related_name = '+'    
+    )
+    provider = models.BooleanField(default=False)
+    name = models.CharField(max_length=150)
+    description = models.CharField(max_length=500, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
+class Answer(models.Model):
+    author = models.ForeignKey(
+        Author,
+        blank=True,
+        null=True,
         on_delete = models.CASCADE,
         related_name = '+'
     )

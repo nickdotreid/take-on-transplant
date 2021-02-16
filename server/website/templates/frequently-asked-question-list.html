@@ -4,12 +4,12 @@
 {% for category in categories %}
 <section class="container">
     <h2>{{category.name}}</h2>
-    {% for question in category.questions  %}
-    <article>
-        <a href="{% url 'question' question.id %}">{{question.text}}</a>
-        <span>{{question.number_of_responses}} Responses</span>
-    </article>
-    {% endfor %}
+    <div class="content-gallery">
+        {% for question in category.questions  %}
+        {% include 'question-partial.html' %}
+        {% endfor %}
+    </div>
+
 </section>
 {% endfor %}
 {% endblock %}

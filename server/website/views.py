@@ -198,6 +198,14 @@ class HomePageView(BaseWebsiteView):
         context['form'] = form
         return render(request, self.template_name, context)
 
+class ContentListView(BaseWebsiteView):
+
+    template_name = 'content-list-page'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
 class AllContentView(BaseWebsiteView):
 
     template_name = 'all-content-page.html'
@@ -253,20 +261,20 @@ class StudySessionView(TemplateView):
         return HttpResponseRedirect(reverse('home'))
 
 
-class PatientStoryListView(BaseWebsiteView):
+class PatientStoryListView(ContentListView):
 
-    template_name = 'patient-story-list.html'
+    template_name = 'patient-story-list-page.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        patients = list(Patient.objects.filter(published=True).all())
-        
-        sort_options = [
+    def get_sort_options(self):
+        return [
             ('alphabetical', 'Alphabetical'),
             ('age', 'Age'),
             ('fev1before', 'Fev1 Before Transplant'),
             ('current-fev1', 'Current Fev1')
         ]
+    
+    def get_sort_order_and_name(self):
+        sort_options = self.get_sort_options()
         sort_order = sort_options[0][0]
         sort_name = sort_options[0][1]
         if 'sort' in self.request.GET:
@@ -274,7 +282,9 @@ class PatientStoryListView(BaseWebsiteView):
                 if key == self.request.GET['sort']:
                     sort_order = key
                     sort_name = name
-        
+        return (sort_order, sort_name)
+
+    def sort_patients(self, patients, sort_order):
         if sort_order == 'alphabetical':
             patients.sort(key=lambda p: p.name)
         if sort_order == 'age':
@@ -288,15 +298,29 @@ class PatientStoryListView(BaseWebsiteView):
                 key=lambda p: p.get_value(value_keys) if p.get_value(value_keys) else 0,
                 reverse=True
             )
-            print([(p.name, p.get_value(value_keys)) for p in patients])
         if sort_order == 'current-fev1':
             value_keys = ['current-fev1']
             patients.sort(
                 key=lambda p: p.get_value(value_keys) if p.get_value(value_keys) else 0,
                 reverse=True
             )
-            print([(p.name, p.get_value(value_keys)) for p in patients])
+        return patients
 
+    def serialize_sort_options(self, selected_sort_order=None):
+        sort_options = self.get_sort_options()
+        serialized_options = []
+        for key, name in sort_options:
+            selected = False
+            if key == selected_sort_order:
+                selected = True
+            serialized_options.append({
+                'name': name,
+                'selected': selected,
+                'value': key
+            })
+        return serialized_options
+
+    def get_filters_for_patients(self, patients):
         filters = [{
             'title': 'Gender',
             'slug': 'gender',
@@ -323,15 +347,18 @@ class PatientStoryListView(BaseWebsiteView):
                             'count': 0
                         }
                     _filter['options'][slug]['count'] += 1
-        context['number_patients'] = len(patients)
+        return filters
+
+    def filter_patients(self, filters, patients):
         for _filter in filters:
             if _filter['slug'] in self.request.GET:
                 value = self.request.GET[_filter['slug']]
                 if value != '':
                     patients = [p for p in patients if p.get_value_pairs(_filter['keys'])[1] == value]
-        context['number_patients_showing'] = len(patients)
+        return patients      
 
-        context['filters'] = []
+    def serialize_filters(self, filters):
+        serialized_filters = []
         for _filter in filters:
             options_flattened = list(_filter['options'].values())
             options_flattened.sort(key=lambda x: x['name'])
@@ -346,24 +373,34 @@ class PatientStoryListView(BaseWebsiteView):
                 'slug': '',
                 'selected': not has_selected_option
             })
-            context['filters'].append({
+            serialized_filters.append({
                 'title': _filter['title'],
                 'slug': _filter['slug'],
                 'options': options_flattened
             })
-        context['patients'] = patients
+        return serialized_filters
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        patients = list(Patient.objects.filter(published=True).all())
+        
+        sort_order, sort_name = self.get_sort_order_and_name()
+        patients = self.sort_patients(patients, sort_order)
+
+        context['number_patients'] = len(patients)
+
+        filters = self.get_filters_for_patients(patients)
+        patients = self.filter_patients(filters, patients)
+        context['filters'] = self.serialize_filters(filters)
+
+        context['number_patients_showing'] = len(patients)
+        
+        context['content_list'] = [self.render_patient(p) for p in patients]
+
         context['sort_order'] = sort_order
         context['sort_name'] = sort_name
-        context['sort_options'] = []
-        for key, name in sort_options:
-            selected = False
-            if key == sort_order:
-                selected = True
-            context['sort_options'].append({
-                'name': name,
-                'selected': selected,
-                'link': '?sort='+key
-            })
+        context['sort_options'] = self.serialize_sort_options(sort_order)
 
         return context
 

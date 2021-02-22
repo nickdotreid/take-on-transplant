@@ -207,9 +207,8 @@ a > .popover-target {
 
 @media(min-width: 600px) {
     .content-gallery > * {
-        width: 40%;
-        flex: 1 0 auto;
-        margin: 1em 0.5em;
+        flex: 1 1 auto;
+        margin: 1em 0em;
     }
 
     .content-gallery > nav {
@@ -218,30 +217,6 @@ a > .popover-target {
         display: flex;
         flex-direction: row-reverse;
         flex-wrap: nowrap;
-    }
-
-    .content-gallery > *.patient-story {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        width: 100%;
-        flex: 0 0 auto;
-
-        > * {
-            display: block;
-            flex: 0 1 auto;
-            width: 250px;
-        }
-
-        > .content {
-            flex: 1 0 auto;
-        }
-
-        > a {
-            display: block;
-            flex: 0 0 auto;
-            width: 100%;
-        }
     }
 }
 

@@ -1,58 +1,46 @@
-{% extends 'home-page.html' %}
+{% extends 'content-list-page.html' %}
 
-{% block content %}
-<article class="container">
-    <h2>Resource Library</h2>
-    <p class="large">Find medical information, facts, and helpful resources as you consider lung transplant for yourself or as a caregiver. Topics include: Planning for transplant; caregiver information; transplant referral (including signs that your CF is worsening); eligibility, evaluation, and listing; the transplant surgery; surviving and thriving after transplant; and much more. This resource can help prepare you for conversations with your CF doctor, your caregivers, and your family/friends.</p>
-</article>
-<section class="container-with-form">
-    <form action="" method="GET">
-        <fieldset>
-            <legend>Filters</legend>
-            <label>
-                <input type="checkbox" name="" checked />
-                Finances
-            </label>
-            <label>
-                <input type="checkbox" name="" checked />
-                Caregiver information
-            </label>
-            <label>
-                <input type="checkbox" name="" checked />
-                Evaluation testing
-            </label>
-            <label>
-                <input type="checkbox" name="" checked />
-                Signs CF is worsening
-            </label>
-            <label>
-                <input type="checkbox" name="" checked />
-                Transplant surgery
-            </label>
-        </fieldset>
-        <input type="submit" value="Update" />
-    </form>
-    <div class="content">
-        {% for article in articles %}
-        <article class="resource-article">
-            {% url 'resource-article' article.id as article_url %}
-            <h3><a href="{{article_url}}">{{article.title}}</a></h3>
-            {% if article.description %}
-            <p>{{article.description}}</p>
-            {% endif %}
-            {% if article.children %}
-            <ul>
-            {% for child_article in article.children %}
-                <li>
-                    <a href="{{article_url}}#article-{{child_article.id}}">{{child_article.title}}</a>
-                </li>
-            {% endfor %}
-            </ul>
-            {% endif %}
-            <a href="{{article_url}}">View {{article.title}}</a>
-        </article>
-        {% endfor %}
+{% block mainContent %}
+<article class="container-with-aside">
+    <div>
+        <h1>Resource Library</h1>
+        <p class="large">
+            Find medical information, facts, and helpful resources as you consider lung
+            transplant for yourself or as a caregiver.
+        </p>
+        <p>
+            <strong>Topics include:</strong> Planning for transplant; caregiver information; transplant
+            referral (including signs that your CF is worsening); eligibility, evaluation,
+            and listing; the transplant surgery; surviving and thriving after transplant;
+            and much more.
+        </p>
+        <p>
+            This resource can help prepare you for conversations with your
+            CF doctor, your caregivers, and your family/friends.
+        </p>    
     </div>
-</section>
+</article>
+{% endblock %}
+
+{% block listContent %}
+{% for article in articles %}
+<article>
+    {% url 'resource-article' article.id as article_url %}
+    <h3><a href="{{article_url}}">{{article.title}}</a></h3>
+    {% if article.description %}
+    <p>{{article.description}}</p>
+    {% endif %}
+    {% if article.children %}
+    <ul>
+    {% for child_article in article.children %}
+        <li>
+            <a href="{{article_url}}#article-{{child_article.id}}">{{child_article.title}}</a>
+        </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    <a href="{{article_url}}">View {{article.title}}</a>
+</article>
+{% endfor %}
 {% endblock %}
 

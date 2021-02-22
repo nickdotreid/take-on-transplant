@@ -1,0 +1,48 @@
+{% extends 'home-page.html' %}
+
+{% block content %}
+
+{% block mainContent %}
+<article class="container">
+    <h2>Content List</h2>
+</article>
+{% endblock %}
+
+<section class="container-with-form">
+    <form action="" method="GET">
+        {% if sort_options %}
+        <fieldset>
+            <legend>Sorted by:</legend>
+            {% for option in sort_options %}
+            <label>
+                <input type="radio" name="sort" value="{{option.value}}" {% if option.selected %}checked="checked"{% endif %} />
+                {{option.name}}
+            </label>
+            {% endfor %}
+        </fieldset>
+        {% endif %}
+        {% for filter in filters %}
+        <fieldset>
+            <legend>Filter by {{filter.title}}</legend>
+            {% for option in filter.options %}
+            <label>
+                <input type="radio" name="{{filter.slug}}" value="{{option.slug}}" {% if option.selected %}checked="checked"{% endif %} />
+                {{option.name}}
+            </label>
+            {% endfor %}
+        </fieldset>
+        {% endfor %}
+        <input type="submit" value="Update" />
+    </form>
+    <div class="content content-gallery">
+        {% block listContent %}
+        {% for item in content_list %}
+        {% autoescape off %}
+        {{item}}
+        {% endautoescape %}
+        {% endfor %}
+        {% endblock %}
+    </div>
+</section>
+{% endblock %}
+

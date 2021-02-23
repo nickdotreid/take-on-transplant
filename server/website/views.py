@@ -348,14 +348,14 @@ class StudySessionView(TemplateView):
         if 'marco' in request.POST:
             study_session = StudySession.objects.create(
                 persona = 'marco',
-                high_agency_version = True,
-                integrated_content_version = False
+                high_agency_version = False,
+                integrated_content_version = True
             )
         if 'tamika' in request.POST:
             study_session = StudySession.objects.create(
                 persona = 'tamika',
-                high_agency_version = False,
-                integrated_content_version = True
+                high_agency_version = True,
+                integrated_content_version = False
             )
         if study_session:
             request.session['study_session_id'] = study_session.id

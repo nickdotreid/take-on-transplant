@@ -10,6 +10,16 @@ class FrequentlyAskedQuestion(models.Model):
     published = models.BooleanField(default=True)
 
     @property
+    def highlights(self):
+        if not hasattr(self, '_highlights'):
+            highlights = FAQHighlight.objects.filter(
+                question = self,
+                published = True
+            ).order_by('order').all()
+            self._highlights = list(highlights)
+        return self._highlights
+
+    @property
     def responses(self):
         if not hasattr(self, '_responses'):
             self._responses = self.get_responses()
@@ -30,6 +40,27 @@ class FrequentlyAskedQuestion(models.Model):
 
     def __str__(self):
         return self.text
+
+class FAQHighlight(models.Model):
+    question = models.ForeignKey(
+        FrequentlyAskedQuestion,
+        on_delete = models.CASCADE,
+        related_name = '+'
+    )
+
+    order = models.PositiveIntegerField()
+    published = models.BooleanField(default=True)
+
+    title = models.CharField(
+        blank = True,
+        max_length=250,
+        null=True
+    )
+    content = models.CharField(
+        blank = True,
+        max_length=500,
+        null=True
+    )
 
 class Author(models.Model):
     patient = models.ForeignKey(
@@ -68,7 +99,7 @@ class Answer(models.Model):
     published = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.text
+        return self.author.name
 
 class Category(AbstractOrderable):
     

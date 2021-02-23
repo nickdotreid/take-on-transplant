@@ -3,6 +3,14 @@
     <a href="{{url}}">
         {{question.text}}
     </a>
+    {% for highlight in question.highlights %}
+    <p>
+        {% if highlight.title %}
+        <strong>{{highlight.title}}</strong>
+        {% endif %}
+        {{highlight.content}}
+    </p>
+    {% endfor %}
     <p>{{question.number_of_responses}} Responses</p>
     <a href="{{url}}">View frequently asked question</a>
 </article>

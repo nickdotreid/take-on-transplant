@@ -9,6 +9,7 @@ from .models import Category
 from .models import FrequentlyAskedQuestion
 from .models import Answer
 from .models import QuestionInCategory
+from .models import FAQHighlight
 
 class AnswerAdminInline(OrderableAdmin, admin.StackedInline):
     model = Answer
@@ -21,12 +22,24 @@ class AnswerAdminInline(OrderableAdmin, admin.StackedInline):
         'text'
     ]
 
+class FAQHighlightAdminInline(OrderableAdmin, admin.StackedInline):
+    model = FAQHighlight
+    ordering_field = 'order'
+
+    fields = [
+        'order',
+        'published',
+        'title',
+        'content'
+    ]
+
 @admin.register(FrequentlyAskedQuestion)
 class FrequentlyAskedQuestionAdmin(admin.ModelAdmin):
     order = ['text']
 
     inlines = [
         TaggedContentInline,
+        FAQHighlightAdminInline,
         AnswerAdminInline
     ]
 

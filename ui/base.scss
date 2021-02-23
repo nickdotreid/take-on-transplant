@@ -53,6 +53,7 @@ ul.unstyled {
     }
 }
 
+dl.horizontal,
 ul.horizontal {
     @extend .unstyled-list;
     display: flex;
@@ -60,10 +61,12 @@ ul.horizontal {
     flex-wrap: wrap;
     justify-content: space-evenly;
 
+    padding: 0.25em 0em;
+
+    > *,
     > li {
         display: block;
-        margin: 0em 1em;
-        margin-bottom: 1em;
+        margin: 0.25em 0.5em;
     }
 
     > li > *.title {

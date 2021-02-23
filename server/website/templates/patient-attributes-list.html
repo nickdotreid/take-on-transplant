@@ -1,0 +1,8 @@
+<dl class="horizontal">
+    {% for attribute in patient.attributes %}
+    <div>
+        <dt>{{attribute.name}}</dt>
+        <dd>{{attribute.value}}</dd>
+    </div>
+    {% endfor %}
+</dl>

@@ -359,6 +359,11 @@ class PatientStoryView(ContentPageView):
             'title': patient_story.title,
             'content': patient_story.content
         })
+    
+    def render_patient_attributes(self, patient):
+        return render_to_string('patient-attributes-list.html', {
+            'patient': patient
+        })
 
     def get_context_data(self, patient_id, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -382,7 +387,7 @@ class PatientStoryView(ContentPageView):
         context['content_type'] = 'patient'
         context['content_id'] = patient.id
         context['title'] = patient.name
-        context['content_items'] = [self.render_patient_story(story) for story in patient_story_sections]
+        context['content_items'] = ['<h1 id="top">%s</h1>' % (patient.name), self.render_patient_attributes(patient)] + [self.render_patient_story(story) for story in patient_story_sections]
         context['related_content'] = self.render_related_content(patient)
         return context
 

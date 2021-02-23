@@ -26,7 +26,7 @@
 {% for article in articles %}
 <article>
     {% url 'resource-article' article.id as article_url %}
-    <h3><a href="{{article_url}}">{{article.title}}</a></h3>
+    <a href="{{article_url}}">{{article.title}}</a>
     {% if article.description %}
     <p>{{article.description}}</p>
     {% endif %}

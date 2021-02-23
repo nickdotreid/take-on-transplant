@@ -10,6 +10,7 @@
 {% endblock %}
 
 {% block content %}
+{% if not study_session %}
 <div class="container-with-aside">
     <article>
         <h1>Take On Transplant</h1>
@@ -18,20 +19,6 @@
         </p>
     </article>
     <aside>
-        {% if study_session %}
-        <p>You are participating in the Take on Transplant usability study.</p>
-        {% if study_session.persona == 'marco'%}
-        <p>Marco has higher lung function and isn’t considering LTx: markers of disease severity.</p>
-        {% endif %}
-        {% if study_session.persona == 'tamika' %}
-        <p>Tamika has lower lung function, and is considering treatment now treatment: evaluation content.</p>
-        {% endif %}
-        <p>Your study session id is {{study_session.id}}</p>
-        <form action="{% url 'study-session' %}" method="POST">
-            {% csrf_token %}
-            <input type="submit" name="clear" value="Clear" />
-        </form>    
-        {% else %}
         <p>This is a prototype of the Take on Transplant website for a usability study to explore how variation in website affordances effect looking for information.</p>
         <p>To participate in the usability study, please choose an example patient to view a custom prototype. <strong>You are using the default website.</strong></p>
         <form action="{% url 'study-session' %}" method="POST">
@@ -39,71 +26,85 @@
             <input type="submit" name="marco" value="Marco" />
             <input type="submit" name="tamika" value="Tamika" />
         </form>
-        {% endif %}
     </aside>
 </div>
+{% endif %}
+{% if show_survey and took_survey %}
 <div class="container">
-    {% if show_survey %}
-        {% if took_survey %}
-        <h2>Survey Results</h2>    
-        <p>You have advanced lung disease with markers of increased disease severity based on your low FEV1 and frequent CF exacerbations that required IV antibiotics. The use of Trikafta (elexacaftor/tezacaftor/ivacaftor) may delay the need for lung transplant, but people with advanced lung disease are likely to benefit from lung transplant at some time in the future.  It is important to continue to talk with your doctor about lung transplant. You may want to connect with patients who have been through the lung transplant journey. </p>
-    
-        <p>
-            We recommend beginning your Take on Transplant journey with the following stories:
-            {% for patient in patients %}
-            {% if forloop.last %} and {% endif %}
-            <a href="{% url 'patient-story' patient.id %}">{{patient.name}}{% if forloop.last %}.{% else %},{% endif %}</a>
-            {% endfor %}
-        </p>
-        <p>
-            You can also read more in the Resource Library:
-            {% for resource in resources %}
-            {% if forloop.last %} and {% endif %}
-            {% if resource.parent %}
-            <a href="{% url 'resource-article' resource.parent.id %}#article-{{resource.id}}">{{resource.title}}{% if forloop.last %}.{% else %},{% endif %}</a>
-            {% else %}
-            <a href="{% url 'resource-article' resource.id %}">{{resource.title}}{% if forloop.last %}.{% else %},{% endif %}</a>
-            {% endif %}
-            {% endfor %}
-        </p>
-        <p>
-            See frequently asked questions
-            {% for question in questions %}
-            {% if forloop.last %} and {% endif %}
-            <a href="{% url 'question' question.id %}">"{{question.text}}"{% if forloop.last %}.{% else %},{% endif %}</a>
-            {% endfor %}
-        </p>
-        <p>These recommendations were generated from your answers to the My CF Stage Survey, to <a href="{% url 'mycfstage' %}">change your answers, click here.</a></p>
-    
+    <h1>Survey Results</h1>    
+    <p>You have advanced lung disease with markers of increased disease severity based on your low FEV1 and frequent CF exacerbations that required IV antibiotics. The use of Trikafta (elexacaftor/tezacaftor/ivacaftor) may delay the need for lung transplant, but people with advanced lung disease are likely to benefit from lung transplant at some time in the future.  It is important to continue to talk with your doctor about lung transplant. You may want to connect with patients who have been through the lung transplant journey. </p>
+
+    <p>
+        We recommend beginning your Take on Transplant journey with the following stories:
+        {% for patient in patients %}
+        {% if forloop.last %} and {% endif %}
+        <a href="{% url 'patient-story' patient.id %}">{{patient.name}}{% if forloop.last %}.{% else %},{% endif %}</a>
+        {% endfor %}
+        You can also read more in the Resource Library:
+        {% for resource in resources %}
+        {% if forloop.last %} and {% endif %}
+        {% if resource.parent %}
+        <a href="{% url 'resource-article' resource.parent.id %}#article-{{resource.id}}">{{resource.title}}{% if forloop.last %}.{% else %},{% endif %}</a>
         {% else %}
-        <div class="mycfstage-callout">
+        <a href="{% url 'resource-article' resource.id %}">{{resource.title}}{% if forloop.last %}.{% else %},{% endif %}</a>
+        {% endif %}
+        {% endfor %}
+        See frequently asked questions
+        {% for question in questions %}
+        {% if forloop.last %} and {% endif %}
+        <a href="{% url 'question' question.id %}">"{{question.text}}"{% if forloop.last %}.{% else %},{% endif %}</a>
+        {% endfor %}
+        <strong>Preview these items below.</strong>
+    </p>
+    <p>These recommendations were generated from your answers to the My CF Stage Survey, to <a href="{% url 'mycfstage' %}">change your answers, click here.</a></p>
+</div> 
+{% endif %}
+{% if show_survey and not took_survey %}
+<div class="container">
+    <div class="mycfstage-callout">
         <p>Take the <a href="{% url 'mycfstage' %}">My CF Stage</a> survey to get personalized content.</p>
         <a class="button" href="{% url 'mycfstage' %}">Start My CF Stage</a>
-        </div>
-        {% endif %}
+    </div>
+</div>
+{% endif %}
     
-    {% else %}
+{% if not show_survey %}
+<div class="container">
     <p><a href="{% url 'patient-story-list' %}">Patient Stories:</a> Explore stories from people living with cystic fibrosis (CF) as they share their experiences with lung transplant. In the stories, they share their journeys from pre-transplant to life after transplant, and they give advice to others living with CF. Stories may include good outcomes or challenges they have faced to help educate those who may be considering lung transplant as a treatment option now or in the future. There are also stories to provide different perspectives, including caregivers for people with CF who went through transplant and individuals who felt better after starting elexacaftor/tezacaftor/ivacaftor (Trikafta) and deferred transplant.</p>
     <p><a href="{% url 'resource-list' %}">Resource Library:</a> Find medical information, facts, and helpful resources as you consider lung transplant for yourself or as a caregiver. Topics include: Planning for transplant; caregiver information; transplant referral (including signs that your CF is worsening); eligibility, evaluation, and listing; the transplant surgery; surviving and thriving after transplant; and much more. This resource can help prepare you for conversations with your CF doctor, your caregivers, and your family/friends.</p>
     <p><a href="{% url 'question-list' %}">Frequently Asked Questions:</a> Read questions about lung transplant and answers provided by people with CF who have undergone lung transplant, in their own words. These questions are the most frequent ones they hear or the ones they asked when they went through the process. There are also responses from transplant doctors for questions about medical information.</p>
-    {% endif %}
+</div>
+{% endif %}
 
-    {% if contents %}
-    <section class="content-gallery">
+{% if contents %}
+<div id="recommended" class="container content-gallery">
+    <h2>Recommended Content</h2>
     {% for content in contents %}
     {% autoescape off %}
     {{content}}
     {% endautoescape %}
     {% endfor %}
-        <nav>
-            <a href="{% url 'all-content' %}">View All Content</a>
-        </nav>
-    </section>
-    {% endif %}
 </div>
+{% endif %}
+
 {% endblock %}
 
 {% block footer %}
+
+{% if study_session %}
+<form action="{% url 'study-session' %}" method="POST">
+    {% csrf_token %}
+    <p>You are participating in the Take on Transplant usability study.</p>
+    {% if study_session.persona == 'marco'%}
+    <p>Marco has higher lung function and isn’t considering LTx: markers of disease severity.</p>
+    {% endif %}
+    {% if study_session.persona == 'tamika' %}
+    <p>Tamika has lower lung function, and is considering treatment now treatment: evaluation content.</p>
+    {% endif %}
+    <input type="submit" name="clear" value="End Session" />
+</form>   
+{% endif %}
+
 {% if home_form and user.is_staff %}
 <form action="{% url 'home' %}" method="POST" novalidate>
     {% csrf_token %}

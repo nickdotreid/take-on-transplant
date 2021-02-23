@@ -14,10 +14,8 @@
 {% endblock %}
 
 {% block listContent %}
-{% for category in categories %}
-    {% for question in category.questions  %}
-    {% include 'question-partial.html' %}
-    {% endfor %}
+{% for question in questions  %}
+{% include 'question-partial.html' %}
 {% endfor %}
 {% endblock %}
 

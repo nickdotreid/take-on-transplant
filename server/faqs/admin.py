@@ -2,6 +2,8 @@ from django.contrib import admin
 
 from admin_ordering.admin import OrderableAdmin
 
+from tags.admin import TaggedContentInline
+
 from .models import Author
 from .models import Category
 from .models import FrequentlyAskedQuestion
@@ -24,6 +26,7 @@ class FrequentlyAskedQuestionAdmin(admin.ModelAdmin):
     order = ['text']
 
     inlines = [
+        TaggedContentInline,
         AnswerAdminInline
     ]
 

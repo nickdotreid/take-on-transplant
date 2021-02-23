@@ -2,6 +2,8 @@ from django.contrib import admin
 
 from admin_ordering.admin import OrderableAdmin
 
+from tags.admin import TaggedContentInline
+
 from .models import Article
 from .models import Definition
 from .models import Resource
@@ -69,5 +71,6 @@ class ArticleAdmin(admin.ModelAdmin):
     ]
 
     inlines = [
+        TaggedContentInline,
         ArticleAdminInline
     ]

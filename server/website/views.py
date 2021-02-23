@@ -163,21 +163,8 @@ class HomePageView(BaseWebsiteView):
         })
 
         if context['show_content'] and context['took_survey']:
-            patients = []
-            try:
-                will = Patient.objects.get(name='Will')
-                context['will'] = will
-                patients.append(will)
-            except Patient.DoesNotExist():
-                pass
-            try:
-                amy = Patient.objects.get(name='Amy')
-                context['amy'] = amy
-                patients.append(amy)
-            except Patient.DoesNotExist():
-                pass
-
-            context['patients'] = Patient.objects.filter(name__in=['Amy', 'Will']).order_by('-name').all()
+            patients = Patient.objects.filter(name__in=['Amy', 'Will']).order_by('-name').all()
+            context['patients'] = patients
 
             questions = FrequentlyAskedQuestion.objects.filter(id__in=[1,5]).all()
             context['questions'] = questions
@@ -232,6 +219,22 @@ class ContentListView(BaseWebsiteView):
             id__in = tag_categories_by_id.keys(),
             published = True
         ).all()
+        for category in categories:
+            if category.slug in self.request.GET and category.id in tag_categories_by_id:
+                for _tag in tag_categories_by_id[category.id]:
+                    if _tag.slug == self.request.GET[category.slug]:
+                        tagged_items = TaggedContent.objects.filter(tag=_tag).all()
+                        tagged_item_ids = ['%s-%d' % (cont.content_type.model, cont.object_id) for cont in tagged_items]
+                        
+                        filtered_content_items = []
+                        for item in content_items:
+                            ct = ContentType.objects.get_for_model(item)
+                            item_id = '%s-%d' % (ct.model, item.id)
+                            if item_id in tagged_item_ids:
+                                filtered_content_items.append(item)
+                        content_items = filtered_content_items
+
+        return content_items
         
 
     def serialize_tags(self, tags):
@@ -257,7 +260,12 @@ class ContentListView(BaseWebsiteView):
                         'name': _tag.name,
                         'slug': _tag.slug,
                         'selected': current_value == _tag.slug
-                    })            
+                    })
+            _tags.append({
+                'name': 'Show all',
+                'slug': None,
+                'selected': True if not current_value else False
+            })            
             serialized_tags.append({
                 'name': category.name,
                 'slug': category.slug,
@@ -334,6 +342,7 @@ class PatientStoryListView(ContentListView):
         
         tags = self.get_tags_for_content_items(patients)
         context['tags'] = self.serialize_tags(tags)
+        patients = self.filter_content_items(patients)
 
         context['content_list'] = [self.render_patient(p) for p in patients]
         return context
@@ -377,19 +386,23 @@ class PatientStoryView(ContentPageView):
         context['related_content'] = self.render_related_content(patient)
         return context
 
-class ResourceLibraryView(BaseWebsiteView):
+class ResourceLibraryView(ContentListView):
 
     template_name = 'resource-library.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        context['articles'] = Article.objects.filter(
+        articles = Article.objects.filter(
             parent=None,
             published = True
         ) \
         .order_by('order') \
         .all()
+
+        tags = self.get_tags_for_content_items(articles)
+        context['tags'] = self.serialize_tags(tags)
+        context['articles'] = self.filter_content_items(articles)
 
         return context
 
@@ -424,13 +437,20 @@ class ResourceArticleView(ContentPageView):
 
         return context
 
-class FrequentlyAskedQuestionListView(BaseWebsiteView):
+class FrequentlyAskedQuestionListView(ContentListView):
 
     template_name = 'frequently-asked-question-list.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['categories'] = FAQCategory.objects.all()
+        questions = FrequentlyAskedQuestion.objects.filter(
+            published = True
+        )
+
+        tags = self.get_tags_for_content_items(questions)
+        context['tags'] = self.serialize_tags(tags)
+        
+        context['questions'] = self.filter_content_items(questions)
         return context
 
 class FrequentlyAskedQuestionView(ContentPageView):

@@ -21,26 +21,3 @@
     </div>
 </article>
 {% endblock %}
-
-{% block listContent %}
-{% for article in articles %}
-<article>
-    {% url 'resource-article' article.id as article_url %}
-    <a href="{{article_url}}">{{article.title}}</a>
-    {% if article.description %}
-    <p>{{article.description}}</p>
-    {% endif %}
-    {% if article.children %}
-    <ul>
-    {% for child_article in article.children %}
-        <li>
-            <a href="{{article_url}}#article-{{child_article.id}}">{{child_article.title}}</a>
-        </li>
-    {% endfor %}
-    </ul>
-    {% endif %}
-    <a href="{{article_url}}">View {{article.title}}</a>
-</article>
-{% endfor %}
-{% endblock %}
-

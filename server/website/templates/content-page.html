@@ -3,7 +3,7 @@
 {% block content %}
 
 <article class="container-with-sidebar">
-    <nav class="sidebar">
+    <nav class="sidebar {{content_type}}">
         {% for item in nav_items %}
         <a href="#{{item.id}}">{{item.name}}</a>
         {% endfor %}

@@ -4,7 +4,15 @@
 
 $text-color: #000000;
 $link-color: #0000FF;
-$secondary-background-color: #c8f2f7;
+
+$faq-color: #F4D06F;
+$faq-background-color: #F9E9B8;
+
+$patient-color: #8CC7CF;
+$patient-background-color: #DCEFEF;
+
+$resource-color: #C7B6D8;
+$resource-background-color: #EEE7F3;
 
 @import "./base.scss";
 @import "./layout.scss";
@@ -184,10 +192,8 @@ a > .popover-target {
         display: block;
         position: relative;
         width: 100%;
-        padding: 0.5em;
         margin: 0em;
         margin-bottom: 1em;
-        border-top: $text-color 1px solid;
     }
 
     > nav {
@@ -195,20 +201,81 @@ a > .popover-target {
         margin-bottom: 0.5em;
     }
 
-    > * > a:first-child {
-        @extend .large;
-        display: block;
-        color: $text-color;
-        text-decoration: none;
-        &:hover,
-        &:focus {
-            text-decoration: underline;
-            color: #00F;
+    > * {
+        background-color: #eee;
+
+        > * {
+            margin: 1em;
+        }
+
+        > a:first-child,
+        > a:last-child {
+            display: block;
+            padding: 1em;
+            margin: 0em;
+            color: $text-color;
+            text-decoration: none;
+            &:hover,
+            &:focus {
+                text-decoration: underline;
+                color: #00F;
+            }
+        }
+        
+        > a:first-child {
+            @extend .large;
+            padding-bottom: 0.5em;
+            border-bottom: #aaa 0.5em solid;
+            background-color: #fff;
+        }
+    
+        > a:last-child {
+            display: block;
+            background-color: #aaa;
+            padding: 1em;
+            margin: 0em;
+        }
+
+        > .content {
+            background-color: #fff;
+            margin: 0.5em;
+            padding: 0.5em;
         }
     }
 
-    > * > a:last-child {
-        display: block;
+    > .patient-story {
+        background-color: $patient-background-color;
+
+        > a:first-child {
+            border-bottom-color: $patient-color;
+        }
+        > a:last-child {
+            background-color: $patient-color;
+        }
+    }
+
+    > .resource-article {
+        background-color: $resource-background-color;
+
+        > a:first-child {
+            border-bottom-color: $resource-color;
+        }
+
+        > a:last-child {
+            background-color: $resource-color;
+        }
+    }
+
+    > .frequently-asked-question {
+        background-color: $faq-background-color;
+
+        > a:first-child {
+            border-bottom-color: $faq-color;
+        }
+
+        > a:last-child {
+            background-color: $faq-color;
+        }
     }
 
 }
@@ -225,47 +292,6 @@ a > .popover-target {
         display: flex;
         flex-direction: row-reverse;
         flex-wrap: nowrap;
-    }
-}
-
-.list-sort {
-    display: block;
-    position: relative;
-    > nav {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        transform: translate(-50%, 0%);
-        background-color: #fff;
-        border: #000 1px solid;
-        white-space: nowrap;
-        > * {
-            text-decoration: none;
-            margin: 0em;
-            padding: 0.5em 1em;
-            border-top: 1px #000 solid;
-            color: #000;
-
-            &:first-child {
-                border-top-width: 0px;
-            }
-
-            &:hover {
-                background-color: rgb(198, 198, 255);
-            }
-
-            &.selected {
-                color: #00F;
-            }
-        }
-    }
-
-    > span:hover + nav,
-    > span:focus + nav,
-    > nav:hover,
-    > nav:focus-within {
-        display: block;
     }
 }
 
@@ -294,23 +320,6 @@ a > .popover-target {
     }
 }
 
-.content > .resource-article {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin-bottom: 2em;
-
-    > * {
-        width: 40%;
-        flex: 1 1 auto;
-    }
-
-    > *:first-child,
-    > *:last-child {
-        flex: 0 0 auto;
-        width: 100%;
-    }
-}
 
 .faq-response {
     margin: 1em 0em;

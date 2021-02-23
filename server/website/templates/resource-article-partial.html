@@ -1,6 +1,17 @@
 <article class="resource-article">
     {% url 'resource-article' article.id as url %}
-    <a class="title" href="{{url}}">{{article.title}}</a>
-    <p>{{article.description}}</p>
+    <a href="{{url}}">{{article.title}}</a>
+    <div class="content">
+        <p>{{article.description}}</p>
+        {% if article.children %}
+        <ul>
+        {% for child_article in article.children %}
+            <li>
+                <a href="{{article_url}}#article-{{child_article.id}}">{{child_article.title}}</a>
+            </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
     <a href="{{url}}">View resource article</a>
 </article>

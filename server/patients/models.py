@@ -25,17 +25,6 @@ class Patient(models.Model):
         upload_to = 'thumbnails'
     )
 
-    tags = models.ManyToManyField(
-        Tag,
-        blank = True
-    )
-
-    warning = models.CharField(
-        blank = True,
-        max_length=250,
-        null = True
-    )
-
     @property
     def published_tags(self):
         return self.tags.filter(

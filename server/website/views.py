@@ -427,7 +427,10 @@ class PatientStoryView(ContentPageView):
 
         patient_story_sections = patient.get_stories()
 
-        context['nav_items'] = []
+        context['nav_items'] = [{
+            'name': patient.name,
+            'id': 'top'
+        }]
         for story in patient_story_sections:
             context['nav_items'].append({
                 'name': story.title,

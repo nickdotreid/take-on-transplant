@@ -3,6 +3,8 @@ from django.contrib import messages
 
 from admin_ordering.admin import OrderableAdmin
 
+from tags.admin import TaggedContentInline
+
 from .models import Patient
 from .models import Attribute
 from .models import PatientAttribute
@@ -54,7 +56,6 @@ class PatientPostTransplantIssueAdminInline(PatientPretransplantIssueAdminInline
 
 @admin.register(Patient)
 class PatientAdmin(admin.ModelAdmin):
-    filter_horizontal = ['tags']
     order = ['name']
 
     actions = [
@@ -63,13 +64,11 @@ class PatientAdmin(admin.ModelAdmin):
 
     fields = [
         'name',
-        'photo',
-        'published',
-        'warning',
-        'tags'
+        'published'
     ]
 
     inlines = [
+        TaggedContentInline,
         PatientAttributeAdminInline,
         PatientPretransplantIssueAdminInline,
         PatientPostTransplantIssueAdminInline,

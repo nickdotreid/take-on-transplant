@@ -1,6 +1,12 @@
 from django.contrib import admin
+from django.contrib.contenttypes.admin import GenericTabularInline
 
 from .models import Tag
+from .models import TaggedContent
+
+class TaggedContentInline(GenericTabularInline):
+    model = TaggedContent
+    extra = 0
 
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):
@@ -9,12 +15,10 @@ class TagAdmin(admin.ModelAdmin):
 
     fields = [
         'name',
-        'published',
-        'warning'
+        'published'
     ]
 
     list_fields = [
         'name',
-        'published',
-        'warning'
+        'published'
     ]

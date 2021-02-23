@@ -260,8 +260,10 @@ class ContentListView(BaseWebsiteView):
                     _tags.append({
                         'name': _tag.name,
                         'slug': _tag.slug,
+                        'order': _tag.order,
                         'selected': current_value == _tag.slug
                     })
+            _tags.sort(key=lambda _tag: _tag['order'])
             _tags.append({
                 'name': 'Show all',
                 'slug': None,

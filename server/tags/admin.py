@@ -11,6 +11,16 @@ class TaggedContentInline(GenericTabularInline):
     model = TaggedContent
     extra = 0
 
+class TagAdminInline(OrderableAdmin, admin.TabularInline):
+    model = Tag
+    ordering_field = 'order'
+
+    fields = [
+        'name',
+        'published',
+        'order'
+    ]
+
 @admin.register(TagCategory)
 class TagCategoryAdmin(OrderableAdmin, admin.ModelAdmin):
     ordering_field = "order"
@@ -18,6 +28,10 @@ class TagCategoryAdmin(OrderableAdmin, admin.ModelAdmin):
     list_display = ['name', 'order', 'published']
     list_editable = ['order', 'published']
     fields = ['name', 'order', 'published']
+
+    inlines = [
+        TagAdminInline
+    ]
 
 
 @admin.register(Tag)

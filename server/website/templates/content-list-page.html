@@ -10,6 +10,17 @@
 
 <section class="container-with-form">
     <form action="" method="GET">
+        {% if sort_options %}
+        <fieldset>
+            <legend>Sorted by</legend>
+            {% for option in sort_options%}
+            <label>
+                <input type="radio" name="sort" value="{{option.value}}" {% if option.selected %}checked="checked"{% endif %} />
+                {{option.name}}
+            </label>
+            {% endfor %}
+        </fieldset>
+        {% endif %}
         {% for tag in tags %}
         <fieldset>
             <legend>{{tag.name}}</legend>

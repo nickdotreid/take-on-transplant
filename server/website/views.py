@@ -195,6 +195,28 @@ class ContentListView(BaseWebsiteView):
 
     template_name = 'content-list-page'
 
+    sort_options = []
+    sort_order = None
+    sort_order_name = None
+
+    def setup_sort_options(self):
+        if self.sort_options and 'sort' in self.request.GET:
+            for key, name in self.sort_options:
+                if key == self.request.GET['sort']:
+                    self.sort_order = key
+                    self.sort_order_name = name
+
+    def serialize_sort_options(self):
+        serialized = []
+        for key, name in self.sort_options:
+            serialized.append({
+                'name': name,
+                'selected': key == self.sort_order,
+                'value': key
+            })
+        return serialized
+        
+
     def get_tags_for_content_items(self, content_items):
         tags = []
         for item in content_items:
@@ -276,8 +298,13 @@ class ContentListView(BaseWebsiteView):
             })
         return serialized_tags
 
+    def setup(self, request, *args, **kwargs):
+        super().setup(request, *args, **kwargs)
+        self.setup_sort_options()
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['sort_options'] = self.serialize_sort_options()
         return context
 
 class AllContentView(BaseWebsiteView):
@@ -339,12 +366,46 @@ class PatientStoryListView(ContentListView):
 
     template_name = 'patient-story-list-page.html'
 
+    sort_options = [
+        ('alphabetical', 'Alphabetical'),
+        ('age', 'Age'),
+        ('fev1before', 'Fev1 Before Transplant'),
+        ('current-fev1', 'Current Fev1')
+    ]
+    sort_order = 'alphabetical'
+
+    def sort_patients(self, patients):
+        sort_order = self.sort_order
+        if sort_order == 'alphabetical':
+            patients.sort(key=lambda p: p.name)
+        if sort_order == 'age':
+            patients.sort(
+                key=lambda p: p.get_value(['age', 'age-at-transplant']) if p.get_value(['age', 'age-at-transplant']) else 0,
+                reverse=True
+            )
+        if sort_order == 'fev1before':
+            value_keys = ['fev1-at-transplant', 'fev1-at-transplant-evaluation']
+            patients.sort(
+                key=lambda p: p.get_value(value_keys) if p.get_value(value_keys) else 0,
+                reverse=True
+            )
+        if sort_order == 'current-fev1':
+            value_keys = ['current-fev1']
+            patients.sort(
+                key=lambda p: p.get_value(value_keys) if p.get_value(value_keys) else 0,
+                reverse=True
+            )
+        return patients
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         patients = Patient.objects.filter(published=True).all()
         
         tags = self.get_tags_for_content_items(patients)
         context['tags'] = self.serialize_tags(tags)
+
+        patients = list(patients)
+        patients = self.sort_patients(patients)
         patients = self.filter_content_items(patients)
 
         context['content_list'] = [self.render_patient(p) for p in patients]
@@ -457,6 +518,7 @@ class ResourceArticleView(ContentPageView):
         context['content_id'] = article.id
         context['title'] = article.title
         context['content_items'] = [self.render_article_page(article)]
+        context['recommended_content'] = self.render_related_content(article)
 
         return context
 
@@ -464,15 +526,28 @@ class FrequentlyAskedQuestionListView(ContentListView):
 
     template_name = 'frequently-asked-question-list.html'
 
+    
+    sort_options = [
+        ('default', 'Default'),
+        ('responses', 'Most responses')
+    ]
+    sort_order = 'default'
+
+    def sort_questions(self, questions):
+        if self.sort_order == 'responses':
+            questions.sort(key=lambda q: q.number_of_responses, reverse=True)
+        return questions
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        questions = FrequentlyAskedQuestion.objects.filter(
-            published = True
-        )
+        questions = []
+        for category in FAQCategory.objects.filter(published=True).all():
+            questions += category.questions
 
         tags = self.get_tags_for_content_items(questions)
         context['tags'] = self.serialize_tags(tags)
         
+        questions = self.sort_questions(questions)
         context['questions'] = self.filter_content_items(questions)
         return context
 

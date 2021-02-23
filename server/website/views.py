@@ -1,5 +1,6 @@
 import random
 
+from bs4 import BeautifulSoup
 from django.http import Http404
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
@@ -351,13 +352,22 @@ class ContentPageView(BaseWebsiteView):
 
     template_name = 'content-page.html'
 
+    def remove_links_from_content(self, content):
+        soup = BeautifulSoup(content, 'html.parser')
+        for link in soup.find_all('a'):
+            link_replacement = soup.new_tag('span')
+            link_replacement.string = link.text
+            link.replace_with(link_replacement)
+        return str(soup)
+
 class PatientStoryView(ContentPageView):
 
     def render_patient_story(self, patient_story):
+        content = self.remove_links_from_content(patient_story.content)
         return render_to_string('story-partial.html', {
             'id': patient_story.id,
             'title': patient_story.title,
-            'content': patient_story.content
+            'content': content
         })
     
     def render_patient_attributes(self, patient):

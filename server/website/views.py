@@ -434,6 +434,8 @@ class PatientStoryView(ContentPageView):
                 'id': 'story-%d' % (story.id)
             })
         
+        context['content_type'] = 'patient'
+        context['content_id'] = patient.id
         context['title'] = patient.name
         context['content_items'] = [self.render_patient_story(story) for story in patient_story_sections]
         context['related_content'] = self.render_related_content(patient)
@@ -479,6 +481,8 @@ class ResourceArticleView(ContentPageView):
                 'id': 'article-%d' % (_article.id)
             })
         
+        context['content_type'] = 'resource'
+        context['content_id'] = article.id
         context['title'] = article.title
         context['content_items'] = [self.render_article_page(article)]
 
@@ -506,6 +510,8 @@ class FrequentlyAskedQuestionView(ContentPageView):
         except FrequentlyAskedQuestion.DoesNotExist:
             raise Http404('Question does not exist')
         context = super().get_context_data(**kwargs)
+        context['content_type'] = 'question'
+        context['content_id'] = question.id
         context['title'] = question.text
         context['nav_items'] = [{'id':'top', 'name':question.text}] + [{'id': 'response-%d' % (response.id), 'name':response.author.name if response.author else None } for response in question.responses]
         context['content_items'] = ['<h1 id="top">%s</h1>' % (question.text)] + [self.render_faq_response(response) for response in question.responses]

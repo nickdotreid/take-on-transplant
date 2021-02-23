@@ -28,8 +28,8 @@
             {% endfor %}
             {% if user.is_staff %}
             <nav>
-                <a href="{% url 'related-content' 'patient' patient.id %}">Add or Remove Related Content</a>
-                <a href="{% url 'reorder-related-content' 'patient' patient.id %}">Reorder Related Content</a>
+                <a href="{% url 'related-content' content_type content_id %}">Add or Remove Related Content</a>
+                <a href="{% url 'reorder-related-content' content_type content_id %}">Reorder Related Content</a>
             </nav>
             {% endif %}
         </div>

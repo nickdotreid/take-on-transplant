@@ -7,6 +7,8 @@ from django.template.loader import render_to_string
 from django.urls import reverse
 from django.views.generic.base import TemplateView
 
+from django.contrib.contenttypes.models import ContentType
+
 from resources.models import Article
 from faqs.models import FrequentlyAskedQuestion
 from faqs.models import Category as FAQCategory
@@ -14,6 +16,8 @@ from patients.models import Patient
 from patients.models import PatientStory
 from patients.models import PatientStoryHighlight
 from patients.views import PatientStoryView as OGPatientStoryView
+from tags.models import TaggedContent
+from tags.models import TagCategory
 
 from .forms import WebsiteConfigurationForm
 from .forms import MyCFStageForm
@@ -203,6 +207,64 @@ class ContentListView(BaseWebsiteView):
 
     template_name = 'content-list-page'
 
+    def get_tags_for_content_items(self, content_items):
+        tags = []
+        for item in content_items:
+            content_type = ContentType.objects.get_for_model(item)
+            tagged_content_query = TaggedContent.objects.filter(
+                content_type = content_type,
+                object_id = item.id
+            ).prefetch_related('tag')
+            for tagged_content in tagged_content_query.all():
+                if tagged_content.tag.id not in [tag.id for tag in tags]:
+                    tags.append(tagged_content.tag)
+        return tags
+
+    def filter_content_items(self, content_items):
+        tag_categories_by_id = {}
+        tags = self.get_tags_for_content_items(content_items)
+        for tag in tags:
+            if tag.category:
+                if tag.category.id not in tag_categories_by_id:
+                    tag_categories_by_id[tag.category.id] = []
+                tag_categories_by_id[tag.category.id].append(tag)
+        categories = TagCategory.objects.filter(
+            id__in = tag_categories_by_id.keys(),
+            published = True
+        ).all()
+        
+
+    def serialize_tags(self, tags):
+        serialized_tags = []
+        tag_categories_by_id = {}
+        for tag in tags:
+            if tag.category:
+                if tag.category.id not in tag_categories_by_id:
+                    tag_categories_by_id[tag.category.id] = []
+                tag_categories_by_id[tag.category.id].append(tag)
+        categories = TagCategory.objects.filter(
+            id__in = tag_categories_by_id.keys(),
+            published = True
+        ).all()
+        for category in categories:
+            _tags = []
+            current_value = None
+            if category.slug in self.request.GET:
+                current_value = self.request.GET[category.slug]
+            if category.id in tag_categories_by_id:
+                for _tag in tag_categories_by_id[category.id]:
+                    _tags.append({
+                        'name': _tag.name,
+                        'slug': _tag.slug,
+                        'selected': current_value == _tag.slug
+                    })            
+            serialized_tags.append({
+                'name': category.name,
+                'slug': category.slug,
+                'options': _tags
+            })
+        return serialized_tags
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         return context
@@ -266,143 +328,14 @@ class PatientStoryListView(ContentListView):
 
     template_name = 'patient-story-list-page.html'
 
-    def get_sort_options(self):
-        return [
-            ('alphabetical', 'Alphabetical'),
-            ('age', 'Age'),
-            ('fev1before', 'Fev1 Before Transplant'),
-            ('current-fev1', 'Current Fev1')
-        ]
-    
-    def get_sort_order_and_name(self):
-        sort_options = self.get_sort_options()
-        sort_order = sort_options[0][0]
-        sort_name = sort_options[0][1]
-        if 'sort' in self.request.GET:
-            for key, name in sort_options:
-                if key == self.request.GET['sort']:
-                    sort_order = key
-                    sort_name = name
-        return (sort_order, sort_name)
-
-    def sort_patients(self, patients, sort_order):
-        if sort_order == 'alphabetical':
-            patients.sort(key=lambda p: p.name)
-        if sort_order == 'age':
-            patients.sort(
-                key=lambda p: p.get_value(['age', 'age-at-transplant']) if p.get_value(['age', 'age-at-transplant']) else 0,
-                reverse=True
-            )
-        if sort_order == 'fev1before':
-            value_keys = ['fev1-at-transplant', 'fev1-at-transplant-evaluation']
-            patients.sort(
-                key=lambda p: p.get_value(value_keys) if p.get_value(value_keys) else 0,
-                reverse=True
-            )
-        if sort_order == 'current-fev1':
-            value_keys = ['current-fev1']
-            patients.sort(
-                key=lambda p: p.get_value(value_keys) if p.get_value(value_keys) else 0,
-                reverse=True
-            )
-        return patients
-
-    def serialize_sort_options(self, selected_sort_order=None):
-        sort_options = self.get_sort_options()
-        serialized_options = []
-        for key, name in sort_options:
-            selected = False
-            if key == selected_sort_order:
-                selected = True
-            serialized_options.append({
-                'name': name,
-                'selected': selected,
-                'value': key
-            })
-        return serialized_options
-
-    def get_filters_for_patients(self, patients):
-        filters = [{
-            'title': 'Gender',
-            'slug': 'gender',
-            'keys': ['gender']
-        }, {
-            'title': 'Genotype',
-            'slug': 'genotype',
-            'keys': ['cftr genotype']
-        }, {
-            'title': 'Modulator Status',
-            'slug': 'modulator-status',
-            'keys': ['CFTR modulator status at transplant']
-        }]
-        for patient in patients:
-            for _filter in filters:
-                value, slug = patient.get_value_pairs(_filter['keys'])
-                if value is not None:
-                    if 'options' not in _filter:
-                        _filter['options'] = {}
-                    if slug not in _filter['options']:
-                        _filter['options'][slug] = {
-                            'name': value,
-                            'slug': slug,
-                            'count': 0
-                        }
-                    _filter['options'][slug]['count'] += 1
-        return filters
-
-    def filter_patients(self, filters, patients):
-        for _filter in filters:
-            if _filter['slug'] in self.request.GET:
-                value = self.request.GET[_filter['slug']]
-                if value != '':
-                    patients = [p for p in patients if p.get_value_pairs(_filter['keys'])[1] == value]
-        return patients      
-
-    def serialize_filters(self, filters):
-        serialized_filters = []
-        for _filter in filters:
-            options_flattened = list(_filter['options'].values())
-            options_flattened.sort(key=lambda x: x['name'])
-            has_selected_option = False
-            for option in options_flattened:
-                if _filter['slug'] in self.request.GET:
-                    if option['slug'] == self.request.GET[_filter['slug']]:
-                        option['selected'] = True
-                        has_selected_option = True
-            options_flattened.append({
-                'name': 'Show All',
-                'slug': '',
-                'selected': not has_selected_option
-            })
-            serialized_filters.append({
-                'title': _filter['title'],
-                'slug': _filter['slug'],
-                'options': options_flattened
-            })
-        return serialized_filters
-
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        patients = list(Patient.objects.filter(published=True).all())
+        patients = Patient.objects.filter(published=True).all()
         
-        sort_order, sort_name = self.get_sort_order_and_name()
-        patients = self.sort_patients(patients, sort_order)
+        tags = self.get_tags_for_content_items(patients)
+        context['tags'] = self.serialize_tags(tags)
 
-        context['number_patients'] = len(patients)
-
-        filters = self.get_filters_for_patients(patients)
-        patients = self.filter_patients(filters, patients)
-        context['filters'] = self.serialize_filters(filters)
-
-        context['number_patients_showing'] = len(patients)
-        
         context['content_list'] = [self.render_patient(p) for p in patients]
-
-        context['sort_order'] = sort_order
-        context['sort_name'] = sort_name
-        context['sort_options'] = self.serialize_sort_options(sort_order)
-
         return context
 
 class ContentPageView(BaseWebsiteView):

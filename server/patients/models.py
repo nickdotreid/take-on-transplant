@@ -14,16 +14,6 @@ from tags.models import Tag
 class Patient(models.Model):
     name = models.CharField(max_length=50)
     published = models.BooleanField(default=False)
-    photo = models.ImageField(
-        blank = True,
-        null = True,
-        upload_to = 'photos'
-    )
-    thumbnail = models.ImageField(
-        blank = True,
-        null = True,
-        upload_to = 'thumbnails'
-    )
 
     @property
     def published_tags(self):
@@ -48,35 +38,6 @@ class Patient(models.Model):
         if not hasattr(self, '_stories'):
             self._stories = self.get_stories()
         return self._stories
-
-    @property
-    def pre_transplant_issues(self):
-        if not hasattr(self, '_pre_transplant_issues'):
-            self._pre_transplant_issues = self.get_pre_transplant_issues()
-        return self._pre_transplant_issues
-
-    @property
-    def post_transplant_issues(self):
-        if not hasattr(self, '_post_transplant_issues'):
-            self._post_transplant_issues = self.get_post_transplant_issues()
-        return self._post_transplant_issues
-
-    def save(self, *args, **kwargs):
-        self.update_thumbnail()
-        super().save(*args, **kwargs)
-
-    def update_thumbnail(self):
-        if self.photo:
-            image = Image.open(self.photo)
-            thumb = ImageOps.fit(image, (200,200), Image.ANTIALIAS)
-            image_io = BytesIO()
-            thumb.save(image_io, 'JPEG', quality=85)
-            self.thumbnail = File(
-                image_io,
-                name = self.photo.name
-            )
-        else:
-            self.thumbnail = None     
 
     def slug(self):
         return slugify(self.name)

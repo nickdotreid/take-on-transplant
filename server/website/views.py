@@ -453,10 +453,7 @@ class PatientStoryView(ContentPageView):
 
         patient_story_sections = patient.get_stories()
 
-        context['nav_items'] = [{
-            'name': patient.name,
-            'id': 'top'
-        }]
+        context['nav_items'] = []
         for story in patient_story_sections:
             context['nav_items'].append({
                 'name': story.title,
@@ -465,7 +462,7 @@ class PatientStoryView(ContentPageView):
         
         context['content_type'] = 'patient'
         context['content_id'] = patient.id
-        context['title'] = patient.name
+        context['page_title'] = patient.name
         context['content_items'] = ['<h1 id="top">%s</h1>' % (patient.name), self.render_patient_attributes(patient)] + [self.render_patient_story(story) for story in patient_story_sections]
         context['related_content'] = self.render_related_content(patient)
         return context
@@ -504,10 +501,7 @@ class ResourceArticleView(ContentPageView):
             raise Http404('No Article')
         context = super().get_context_data(**kwargs)
 
-        context['nav_items'] = [{
-            'name': article.title,
-            'id': 'article-%d' % (article.id)
-        }]
+        context['nav_items'] = []
         for _article in article.children:
             context['nav_items'].append({
                 'name': _article.title,
@@ -516,7 +510,7 @@ class ResourceArticleView(ContentPageView):
         
         context['content_type'] = 'resource'
         context['content_id'] = article.id
-        context['title'] = article.title
+        context['page_title'] = article.title
         context['content_items'] = [self.render_article_page(article)]
         context['recommended_content'] = self.render_related_content(article)
 
@@ -566,8 +560,8 @@ class FrequentlyAskedQuestionView(ContentPageView):
         context = super().get_context_data(**kwargs)
         context['content_type'] = 'question'
         context['content_id'] = question.id
-        context['title'] = question.text
-        context['nav_items'] = [{'id':'top', 'name':question.text}] + [{'id': 'response-%d' % (response.id), 'name':response.author.name if response.author else None } for response in question.responses]
+        context['page_title'] = question.text
+        context['nav_items'] = [{'id': 'response-%d' % (response.id), 'name':response.author.name if response.author else None } for response in question.responses]
         context['content_items'] = ['<h1 id="top">%s</h1>' % (question.text)] + [self.render_faq_response(response) for response in question.responses]
         context['related_content'] = self.render_related_content(question)
         return context

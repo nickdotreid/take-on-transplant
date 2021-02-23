@@ -4,6 +4,9 @@
 
 <article class="container-with-sidebar">
     <nav class="sidebar {{content_type}}">
+        {% if page_title %}
+        <a class="title" href="#">{{page_title}}</a>
+        {% endif %}
         {% for item in nav_items %}
         <a href="#{{item.id}}">{{item.name}}</a>
         {% endfor %}

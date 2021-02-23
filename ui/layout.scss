@@ -90,35 +90,10 @@ body {
             position: sticky;
             top: 0px;
             left: 0px;
-            width: 180px;
+            width: 160px;
             float: left;
-            background-color: #fff;
             z-index: 5;
-
-            > a {
-                margin: 0.25em;
-                margin-right: 1em;
-                padding: 0.5em 0em;
-                &.active {
-                    background-color: #c8f2f7;
-                }
-            }
-
-            > nav.popover-links > * {
-                display: block;
-                width: 50px;
-                height: 50px;
-                overflow: hidden;
-                text-indent: -10000px;
-                background-color: #71d0da;
-                border: #71d0da 3px solid;
-                border-radius: 50%;
-                margin: 10px auto;
-
-                &.active {
-                    background-color: #c8f2f7;
-                }
-            }
+            padding-right: 20px;
         }
 
         > .fixed-back {
@@ -138,7 +113,7 @@ body {
         width: 960px;
 
         > .sidebar {
-            width: 290px;
+            width: 270px;
             top: 0px;
         }
 

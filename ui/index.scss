@@ -39,7 +39,51 @@ a.home {
 
 nav > a {
     display: block;
-    padding: 0.25em 0.25em;
+    padding: 0.5em 0.25em;
+    margin: 0.25em;
+    text-decoration: none;
+
+    &:hover,
+    &:focus,
+    &.active {
+        background-color: #eee;
+    }
+    border-bottom: #555 2px solid;
+
+}
+
+nav.patient a,
+nav > a.patient-stories {
+
+    &:hover,
+    &:focus,
+    &.active {
+        background-color: $patient-background-color;
+    }
+
+    border-bottom-color: $patient-color;
+}
+
+nav.resource a,
+nav > a.resource-library {
+    &:hover,
+    &:focus,
+    &.active {
+        background-color: $resource-background-color;
+    }
+
+    border-bottom-color: $resource-color;
+}
+
+nav.question a,
+nav > a.frequently-asked-questions {
+    &:hover,
+    &:focus,
+    &.active {
+        background-color: $faq-background-color;
+    }
+
+    border-bottom-color: $faq-color;
 }
 
 .popover-content {
@@ -91,6 +135,16 @@ header {
         margin: 0px 0.25em;
     }
 
+    > a {
+        display: block;
+        padding: 0.25em 0em;
+        text-decoration: none;
+        &:hover,
+        &:focus {
+            text-decoration: underline;
+        }
+    }
+
     > *:first-child {
         display: block;
         flex-grow: 1;
@@ -99,6 +153,11 @@ header {
 
     > *:last-child {
         margin-right:0px;
+    }
+
+    nav > a {
+        margin: 0em 0.5em;
+        padding: 0.25em 1em;
     }
 }
 
@@ -110,6 +169,11 @@ header {
 
     header > * {
         display: block;
+    }
+
+    header > nav {
+        display: flex;
+
     }
 }
 
@@ -241,6 +305,21 @@ a > .popover-target {
             margin: 0.5em;
             padding: 0.5em;
         }
+    }
+
+    > h1, > h2, > h3,
+    > nav {
+        background-color: #FFF;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    > nav > a,
+    > nav > a:first-child,
+    > nav > a:last-child {
+        font-size: 1em;
+        background-color: #eee;
+        border-bottom: #555;
     }
 
     > .patient-story {

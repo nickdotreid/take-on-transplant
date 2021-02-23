@@ -512,7 +512,7 @@ class ResourceArticleView(ContentPageView):
         context['content_id'] = article.id
         context['page_title'] = article.title
         context['content_items'] = [self.render_article_page(article)]
-        context['recommended_content'] = self.render_related_content(article)
+        context['related_content'] = self.render_related_content(article)
 
         return context
 

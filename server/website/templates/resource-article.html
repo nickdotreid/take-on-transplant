@@ -1,54 +1,21 @@
-{% extends 'home-page.html' %}
-
-{% block content %}
-<div class="container-with-sidebar">
-    <div class="sidebar">
-        <nav>
-            <a href="#article-{{article.id}}">{{article.title}}</a>
-            {% for child_article in article.children %}
-            <a href="#article-{{child_article.id}}">{{child_article.title}}</a>
-            {% endfor %}
-            {% if show_recommended_content %}
-            <a href="#related-content">Recommended Content</a>
-            {% endif %}
-        </nav>
-    </div>
-    <div class="content">
-        <article>
-            <h1 id="article-{{article.id}}">{{article.title}}</h1>
-            {% autoescape off %}
-            {{article.content}}
-            {% endautoescape %}
-            {% for child_article in article.children %}
-            <section>
-                <h2 id="article-{{child_article.id}}">{{child_article.title}}</h2>
-                {% if child_article.description %}
-                <p>{{child_article.description}}</p>
-                {% endif %}
-                {% if child_article.content %}
-                {% autoescape off %}
-                {{child_article.content}}
-                {% endautoescape %}
-                {% endif %}
-            </section>
-            {% endfor %}
-        </article>
-        {% if show_recommended_content %}
-        <div id="related-content" class="content-gallery">
-            {% for content in related_content %}
-            {% autoescape off %}
-            {{content}}
-            {% endautoescape %}
-            {% endfor %}
-            {% if user.is_staff %}
-            <nav>
-                <a href="{% url 'related-content' 'resource' article.id %}">Add or Remove Related Content</a>
-                <a href="{% url 'reorder-related-content' 'resource' article.id %}">Reorder Related Content</a>
-            </nav>
-            {% endif %}
-        </div>
+<article>
+    <section id="article-{{article.id}}">
+    <h1>{{article.title}}</h1>
+    {% autoescape off %}
+    {{article.content}}
+    {% endautoescape %}
+    </section>
+    {% for child_article in article.children %}
+    <section id="article-{{child_article.id}}">
+        <h2>{{child_article.title}}</h2>
+        {% if child_article.description %}
+        <p>{{child_article.description}}</p>
         {% endif %}
-    </div>
-</div>
-{% endblock %}
-
+        {% if child_article.content %}
+        {% autoescape off %}
+        {{child_article.content}}
+        {% endautoescape %}
+        {% endif %}
+    </section>
+    {% endfor %}
+</article>

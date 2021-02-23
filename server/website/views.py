@@ -11,6 +11,7 @@ from resources.models import Article
 from faqs.models import FrequentlyAskedQuestion
 from faqs.models import Category as FAQCategory
 from patients.models import Patient
+from patients.models import PatientStory
 from patients.models import PatientStoryHighlight
 from patients.views import PatientStoryView as OGPatientStoryView
 
@@ -404,11 +405,37 @@ class PatientStoryListView(ContentListView):
 
         return context
 
-class PatientStoryView(OGPatientStoryView, BaseWebsiteView):
+class ContentPageView(BaseWebsiteView):
 
-    def get_context_data(self, **kwargs):
+    template_name = 'content-page.html'
+
+class PatientStoryView(ContentPageView):
+
+    def render_patient_story(self, patient_story):
+        return render_to_string('story-partial.html', {
+            'id': patient_story.id,
+            'title': patient_story.title,
+            'content': patient_story.content
+        })
+
+    def get_context_data(self, patient_id, **kwargs):
         context = super().get_context_data(**kwargs)
-        patient = context['patient']
+        try:
+            patient = Patient.objects.get(id=patient_id)
+        except Patient.DoesNotExist:
+            raise Http404('Patient not found')
+
+        patient_story_sections = patient.get_stories()
+
+        context['nav_items'] = []
+        for story in patient_story_sections:
+            context['nav_items'].append({
+                'name': story.title,
+                'id': 'story-%d' % (story.id)
+            })
+        
+        context['title'] = patient.name
+        context['content_items'] = [self.render_patient_story(story) for story in patient_story_sections]
         context['related_content'] = self.render_related_content(patient)
         return context
 
@@ -428,9 +455,12 @@ class ResourceLibraryView(BaseWebsiteView):
 
         return context
 
-class ResourceArticleView(BaseWebsiteView):
+class ResourceArticleView(ContentPageView):
 
-    template_name = 'resource-article.html'
+    def render_article_page(self, article):
+        return render_to_string('resource-article.html', {
+            'article': article
+        })
 
     def get_context_data(self, article_id, **kwargs):
         try:
@@ -439,8 +469,18 @@ class ResourceArticleView(BaseWebsiteView):
             raise Http404('No Article')
         context = super().get_context_data(**kwargs)
 
-        context['article'] = article
-        context['related_content'] = self.render_related_content(article)   
+        context['nav_items'] = [{
+            'name': article.title,
+            'id': 'article-%d' % (article.id)
+        }]
+        for _article in article.children:
+            context['nav_items'].append({
+                'name': _article.title,
+                'id': 'article-%d' % (_article.id)
+            })
+        
+        context['title'] = article.title
+        context['content_items'] = [self.render_article_page(article)]
 
         return context
 
@@ -453,9 +493,12 @@ class FrequentlyAskedQuestionListView(BaseWebsiteView):
         context['categories'] = FAQCategory.objects.all()
         return context
 
-class FrequentlyAskedQuestionView(BaseWebsiteView):
+class FrequentlyAskedQuestionView(ContentPageView):
 
-    template_name = 'frequently-asked-question.html'
+    def render_faq_response(self, response):
+        return render_to_string('faq-response.html',{
+            'response': response
+        })
 
     def get_context_data(self, question_id, **kwargs):
         try:
@@ -463,7 +506,9 @@ class FrequentlyAskedQuestionView(BaseWebsiteView):
         except FrequentlyAskedQuestion.DoesNotExist:
             raise Http404('Question does not exist')
         context = super().get_context_data(**kwargs)
-        context['question'] = question
+        context['title'] = question.text
+        context['nav_items'] = [{'id':'top', 'name':question.text}] + [{'id': 'response-%d' % (response.id), 'name':response.author.name if response.author else None } for response in question.responses]
+        context['content_items'] = ['<h1 id="top">%s</h1>' % (question.text)] + [self.render_faq_response(response) for response in question.responses]
         context['related_content'] = self.render_related_content(question)
         return context
 

@@ -1,0 +1,41 @@
+{% extends 'home-page.html' %}
+
+{% block content %}
+
+<article class="container-with-sidebar">
+    <nav class="sidebar">
+        {% for item in nav_items %}
+        <a href="#{{item.id}}">{{item.name}}</a>
+        {% endfor %}
+        {% if show_recommended_content %}
+        <a href="#recommended-content">Recommended Content</a>
+        {% endif %}
+    </nav>
+    <div class="content">
+        {% for content in content_items %}
+        {% autoescape off %}
+        {{content}}
+        {% endautoescape %}
+        {% endfor %}
+        
+        {% if show_recommended_content %}
+        <div id="recommended-content" class="content-gallery">
+            <h2>Recommended Content</h2>
+            {% for content in related_content %}
+            {% autoescape off %}
+            {{content}}
+            {% endautoescape %}
+            {% endfor %}
+            {% if user.is_staff %}
+            <nav>
+                <a href="{% url 'related-content' 'patient' patient.id %}">Add or Remove Related Content</a>
+                <a href="{% url 'reorder-related-content' 'patient' patient.id %}">Reorder Related Content</a>
+            </nav>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</article>
+
+{% endblock %}
+

@@ -1,0 +1,13 @@
+<article id="response-{{response.id}}" class="faq-response">
+    {% if response.author %}
+    <h3>{{response.author.name}}</h3>
+    {% endif %}
+    <div class="content">
+        {% autoescape off %}
+        {{response.text}}
+        {% endautoescape %}    
+    </div>
+    {% if response.author and response.author.patient %}
+    <a href="{% url 'patient-story' response.author.patient.id %}">View {{response.author.name}}'s story</a>
+    {% endif %}
+</article>

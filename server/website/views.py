@@ -360,6 +360,12 @@ class ContentPageView(BaseWebsiteView):
             link.replace_with(link_replacement)
         return str(soup)
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if 'HTTP_REFERER' in self.request.META:
+            context['back_link'] = self.request.META['HTTP_REFERER']
+        return context
+
 class PatientStoryView(ContentPageView):
 
     def render_patient_story(self, patient_story):

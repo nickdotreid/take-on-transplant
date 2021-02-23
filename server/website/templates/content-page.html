@@ -35,6 +35,9 @@
         </div>
         {% endif %}
     </div>
+    {% if back_link %}
+    <a class="fixed-back" href="{{back_link}}">Back</a>
+    {% endif %}
 </article>
 
 {% endblock %}

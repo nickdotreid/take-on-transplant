@@ -372,6 +372,11 @@ a > .popover-target {
         flex-direction: row-reverse;
         flex-wrap: nowrap;
     }
+
+    .content-gallery > article > dl.horizontal {
+        padding-left: 1em;
+        padding-right: 1em;
+    }
 }
 
 .mycfstage-callout {
@@ -416,3 +421,36 @@ a > .popover-target {
     }
 }
 
+@media(min-width: 1100px) {
+    .home-gallery.content-gallery.container {
+        width: 1100px;
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+
+        > * {
+            margin-left: 1em;
+        }
+        > *:first-child {
+            margin-left: 0px;
+        }
+
+        > article {
+            display: flex;
+            flex-direction: column;
+
+            > * {
+                flex: 0 0 auto;
+            }
+
+            // > a:first-child {
+            //     padding: 0.5em 0em;
+            // }
+
+            > *.content {
+                flex: 1 0 auto;
+            }
+        }
+    }
+}

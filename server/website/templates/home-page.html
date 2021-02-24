@@ -31,6 +31,37 @@
     </aside>
 </div>
 {% endif %}
+
+{% if not show_survey %}
+<section class="container content-gallery home-gallery">
+    <article class="patient-story">
+        <a href="{% url 'patient-story-list' %}">Patient Stories</a>
+        <div class="content">
+            <p>
+                Explore stories from people living with cystic fibrosis (CF) as they share their experiences with lung transplant.
+                In the stories, they share their journeys from pre-transplant to life after transplant, and they give
+                advice to others living with CF.
+            </p>
+        </div>
+        <a href="{% url 'patient-story-list' %}">View patient stories</a>
+    </article>
+    <article class="resource-article">
+        <a href="{% url 'resource-list' %}">Resource Library</a>
+        <div class="content">
+            <p>Find medical information, facts, and helpful resources as you consider lung transplant for yourself or as a caregiver.</p>
+        </div>
+        <a href="{% url 'resource-list' %}">View resource library</a>
+    </article>
+    <article class="frequently-asked-question">
+        <a href="{% url 'question-list' %}">Frequently Asked Questions</a>
+        <div class="content">
+            <p>Read questions about lung transplant and answers provided by people with CF who have undergone lung transplant, in their own words. These questions are the most frequent ones they hear or the ones they asked when they went through the process.</p>
+        </div>
+        <a href="{% url 'question-list' %}">View frequently asked questions</a>
+    </article>
+</section>
+{% endif %}
+
 {% if show_survey and took_survey %}
 <div class="container-with-aside">
     <div class="content">
@@ -66,20 +97,13 @@
 
 </div> 
 {% endif %}
+
 {% if show_survey and not took_survey %}
 <div class="container">
     <div class="mycfstage-callout">
         <p>Take the <a href="{% url 'mycfstage' %}">My CF Stage</a> survey to get personalized content.</p>
         <a class="button" href="{% url 'mycfstage' %}">Start My CF Stage</a>
     </div>
-</div>
-{% endif %}
-    
-{% if not show_survey %}
-<div class="container">
-    <p><a href="{% url 'patient-story-list' %}">Patient Stories:</a> Explore stories from people living with cystic fibrosis (CF) as they share their experiences with lung transplant. In the stories, they share their journeys from pre-transplant to life after transplant, and they give advice to others living with CF. Stories may include good outcomes or challenges they have faced to help educate those who may be considering lung transplant as a treatment option now or in the future. There are also stories to provide different perspectives, including caregivers for people with CF who went through transplant and individuals who felt better after starting elexacaftor/tezacaftor/ivacaftor (Trikafta) and deferred transplant.</p>
-    <p><a href="{% url 'resource-list' %}">Resource Library:</a> Find medical information, facts, and helpful resources as you consider lung transplant for yourself or as a caregiver. Topics include: Planning for transplant; caregiver information; transplant referral (including signs that your CF is worsening); eligibility, evaluation, and listing; the transplant surgery; surviving and thriving after transplant; and much more. This resource can help prepare you for conversations with your CF doctor, your caregivers, and your family/friends.</p>
-    <p><a href="{% url 'question-list' %}">Frequently Asked Questions:</a> Read questions about lung transplant and answers provided by people with CF who have undergone lung transplant, in their own words. These questions are the most frequent ones they hear or the ones they asked when they went through the process. There are also responses from transplant doctors for questions about medical information.</p>
 </div>
 {% endif %}
 

@@ -9,13 +9,15 @@
         <fieldset>
             <legend>{{content_type.title}}</legend>
             {% for item in content_type.items %}
-            <label for="{{item.content_id}}">{{item.title}}</label>
-            <input id="{{item.content_id}}"
-                type="checkbox"
-                name="related_content[]"
-                value="{{item.content_id}}"
-                {% if item.content_id in related_content %}checked="checked"{% endif %}
-                />
+            <label for="{{item.content_id}}">
+                <input id="{{item.content_id}}"
+                    type="checkbox"
+                    name="related_content[]"
+                    value="{{item.content_id}}"
+                    {% if item.content_id in related_content %}checked="checked"{% endif %}
+                    />
+                {{item.title}}
+            </label>
             {% endfor %}
         </fieldset>
         {% endfor %}

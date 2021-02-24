@@ -524,13 +524,25 @@ class ResourceArticleView(ContentPageView):
             'article': article
         })
 
-    def get_context_data(self, article_id, **kwargs):
+    def get_resource_article(self, article_id):
         try:
-            article = Article.objects.get(id=article_id)
+            return Article.objects.get(id=article_id)
         except Article.DoesNotExist:
             raise Http404('No Article')
-        context = super().get_context_data(**kwargs)
 
+    def dispatch(self, request, *args, **kwargs):
+        if 'article_id' in kwargs:
+            self.article = self.get_resource_article(kwargs['article_id'])
+            if self.article.parent:
+                url = reverse('resource-article', kwargs={
+                    'article_id': self.article.parent.id
+                })
+                return HttpResponseRedirect(url + '#article-%d' % (self.article.id))
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, article_id, **kwargs):
+        context = super().get_context_data(**kwargs)
+        article = self.article
         context['nav_items'] = []
         for _article in article.children:
             context['nav_items'].append({
@@ -748,15 +760,24 @@ class RelatedContentView(BaseWebsiteView):
     def post(self, request, content_type, content_id, **kwargs):
         content = self.get_content(content_type, content_id)
         related_list = self.get_related_list(content)
-        RelatedItem.objects.filter(item_list=related_list).delete()
+
+        related_items = RelatedItem.objects.filter(item_list=related_list).all()
+        existing_content_ids = [self.get_content_id(_item.content_object) for _item in related_items]
+        saved_content_object_ids = []
         if 'related_content[]' in request.POST:
             for item in request.POST.getlist('related_content[]'):
                 content_object = self.get_content_from_id(item)
                 if content_object:
+                    saved_content_object_ids.append(item)
+                if content_object and item not in existing_content_ids:
                     RelatedItem.objects.create(
                         item_list = related_list,
                         content_object = content_object
                     )
+        for existing_item in related_items:
+            if self.get_content_id(existing_item.content_object) not in saved_content_object_ids:
+                existing_item.delete()
+            
         return HttpResponseRedirect(self.get_content_url(content))
 
 class ReorderRelatedContent(RelatedContentView):

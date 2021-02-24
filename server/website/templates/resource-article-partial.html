@@ -7,7 +7,7 @@
         <ul>
         {% for child_article in article.children %}
             <li>
-                <a href="{{article_url}}#article-{{child_article.id}}">{{child_article.title}}</a>
+                <a href="{% url 'resource-article' child_article.id %}">{{child_article.title}}</a>
             </li>
         {% endfor %}
         </ul>

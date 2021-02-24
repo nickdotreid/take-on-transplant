@@ -126,6 +126,18 @@
 <form action="{% url 'study-session' %}" method="POST">
     {% csrf_token %}
     <p>You are participating in the Take on Transplant usability study.</p>
+    {% if study_session.persona == 'tamika' %}
+    <p>
+        <strong>Tamika</strong> as had a drastic decline in her health status and she and her doctor
+        are contemplating whether it is time to pursue lung transplant as a potential
+        treatment option. Search for and highlight information about the lung transplant evaluation process.
+    </p>
+    {% endif %}
+    {% if study_session.persona == 'marco' %}
+    <p>
+        <strong>Marco</strong> has advanced CF but his health has been stable. He is curious about lung transplant and is considering raising the topic with his doctor during his next clinic visit. Search for and highlight information about signs that CF is worsening and may require lung transplant.
+    </p>
+    {% endif %}
     <input type="submit" name="clear" value="End Session" />
 </form>   
 {% endif %}

@@ -181,10 +181,10 @@ class HomePageView(BaseWebsiteView):
             patients = Patient.objects.filter(name__in=['Amy', 'Will']).order_by('-name').all()
             context['patients'] = patients
 
-            questions = FrequentlyAskedQuestion.objects.filter(id__in=[1,5]).all()
+            questions = FrequentlyAskedQuestion.objects.filter(id__in=[8,5]).all()
             context['questions'] = questions
 
-            resources = Article.objects.filter(id__in=[14, 9]).order_by('title').all()
+            resources = Article.objects.filter(id__in=[10, 9]).order_by('title').all()
             context['resources'] = resources
             
             contents = [p for p in patients]
@@ -302,7 +302,7 @@ class ContentListView(BaseWebsiteView):
             _tags.sort(key=lambda _tag: _tag['order'])
             _tags.append({
                 'name': 'Show all',
-                'slug': None,
+                'slug': '',
                 'selected': True if not current_value else False
             })            
             serialized_tags.append({
@@ -335,7 +335,14 @@ class MyCFStageSurveyView(BaseWebsiteView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        current_session_data = {}
+        current_session_data = {
+            'age_at_diagnosis': 1,
+            'gender': 'male',
+            'fev': 2,
+            'supplemental_oxygen': 2,
+            'treatments': [2, 3],
+            'exacerbations': 3
+        }
         context['form'] = MyCFStageForm(initial=current_session_data)
         context['survey_complete'] = self.request.session['survey-complete'] if 'survey-complete' in self.request.session else False
         return context
@@ -357,6 +364,7 @@ class StudySessionView(TemplateView):
     def post(self, request):
         if 'clear' in request.POST and request.session['study_session_id']:
             request.session['study_session_id'] = None
+            request.session['survey-complete'] = None
             return HttpResponseRedirect(reverse('home'))
         study_session = None
         if 'marco' in request.POST:

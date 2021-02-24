@@ -6,7 +6,7 @@
     <form action="" method="POST" novalidate>
         {% csrf_token %}
         {{form}}
-        <input type="submit" value="Save" />
+        <input type="submit" value="Submit" />
         {% if survey_complete %}
         <input type="submit" value="Reset" name="reset" />
         {% endif %}
@@ -14,7 +14,6 @@
     <aside>
         <p>This is a prototype form that doesn't <em>really</em> work.</p>
         {% if study_session %}
-        {% if study_session.persona == 'marco'%}
         <p>Your example patient is <strong>Marco</strong>.</p>
         <dl>
             <dt>Age at diagnosis</dt>
@@ -30,10 +29,6 @@
             <dt>Number of pulmonary exacerbations treated with IV antibiotics at home or in the hospital in the past year</dt>
             <dd>3</dd>
         </dl>
-        {% endif %}
-        {% if study_session.persona == 'tamika' %}
-        <p>Tamika has higher lung function and isn’t considering LTx: markers of disease severity</p>
-        {% endif %}
         {% endif %}
     </aside>
 </div>

@@ -126,12 +126,6 @@
 <form action="{% url 'study-session' %}" method="POST">
     {% csrf_token %}
     <p>You are participating in the Take on Transplant usability study.</p>
-    {% if study_session.persona == 'marco'%}
-    <p>Marco has higher lung function and isn’t considering LTx: markers of disease severity.</p>
-    {% endif %}
-    {% if study_session.persona == 'tamika' %}
-    <p>Tamika has lower lung function, and is considering treatment now treatment: evaluation content.</p>
-    {% endif %}
     <input type="submit" name="clear" value="End Session" />
 </form>   
 {% endif %}

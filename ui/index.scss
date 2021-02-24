@@ -45,7 +45,8 @@ nav > a {
 
     &:hover,
     &:focus,
-    &.active {
+    &.active,
+    &.title {
         background-color: #eee;
     }
     border-bottom: #555 2px solid;
@@ -57,7 +58,8 @@ nav > a.patient-stories {
 
     &:hover,
     &:focus,
-    &.active {
+    &.active,
+    &.title {
         background-color: $patient-background-color;
     }
 
@@ -68,7 +70,8 @@ nav.resource a,
 nav > a.resource-library {
     &:hover,
     &:focus,
-    &.active {
+    &.active,
+    &.title {
         background-color: $resource-background-color;
     }
 
@@ -79,7 +82,8 @@ nav.question a,
 nav > a.frequently-asked-questions {
     &:hover,
     &:focus,
-    &.active {
+    &.active,
+    &.title {
         background-color: $faq-background-color;
     }
 
@@ -130,6 +134,9 @@ header {
     display: flex;
     flex-direction: column;
 
+    padding: 0em;
+    margin-bottom: 1em;
+
     > * {
         display: none;
         margin: 0px 0.25em;
@@ -173,7 +180,11 @@ header {
 
     header > nav {
         display: flex;
+    }
 
+    header > a,
+    header > nav > a {
+        padding-top: 1em;
     }
 }
 

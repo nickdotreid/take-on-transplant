@@ -4,9 +4,9 @@
 <a class="home" href="{% url 'home' %}">Take on Transplant</a>
 {% if show_top_navigation %}
 <nav>
-    <a class="patient-stories" href="{% url 'patient-story-list' %}">Patient Stories</a>
-    <a class="resource-library" href="{% url 'resource-list' %}">Resource Library</a>
-    <a class="frequently-asked-questions" href="{% url 'question-list' %}">Frequently Asked Questions</a>
+    {% for item in navigation_links %}
+    <a class="{{item.key}} {% if item.selected %} active {% endif %}" href="{{item.link}}">{{item.name}}</a>
+    {% endfor %}
 </nav>
 {% endif %}
 {% endblock %}

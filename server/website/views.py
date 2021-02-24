@@ -46,6 +46,8 @@ class BaseWebsiteView(TemplateView):
         'survey_complete'        
     ]
 
+    current_navigation_item = None
+
     def setup(self, request, *args, **kwargs):
         super().setup(request, *args, **kwargs)
         if 'study_session_id' in request.session and request.session['study_session_id'] is not None:
@@ -149,6 +151,18 @@ class BaseWebsiteView(TemplateView):
         context['show_content'] = self.show_content_on_homepage
         context['show_survey'] = self.show_survey
         context['show_recommended_content'] = self.show_recommended_content
+
+        navigation_items = [
+            ('patient-stories', 'Patients'),
+            ('resource-library', 'Resources'),
+            ('frequently-asked-questions', 'Frequently Asked Questions')
+        ]
+        navigation_links = {
+            'patient-stories': reverse('patient-story-list'),
+            'resource-library': reverse('resource-list'),
+            'frequently-asked-questions': reverse('question-list')
+        }
+        context['navigation_links'] = [{'link': navigation_links[_id], 'key': _id, 'name': _name, 'selected': True if _id == self.current_navigation_item else False} for _id, _name in navigation_items]
         
         return context
 
@@ -374,6 +388,8 @@ class PatientStoryListView(ContentListView):
     ]
     sort_order = 'alphabetical'
 
+    current_navigation_item = 'patient-stories'
+
     def sort_patients(self, patients):
         sort_order = self.sort_order
         if sort_order == 'alphabetical':
@@ -431,6 +447,8 @@ class ContentPageView(BaseWebsiteView):
 
 class PatientStoryView(ContentPageView):
 
+    current_navigation_item = 'patient-stories'
+
     def render_patient_story(self, patient_story):
         content = self.remove_links_from_content(patient_story.content)
         return render_to_string('story-partial.html', {
@@ -471,6 +489,8 @@ class ResourceLibraryView(ContentListView):
 
     template_name = 'resource-library.html'
 
+    current_navigation_item = 'resource-library'
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
@@ -488,6 +508,8 @@ class ResourceLibraryView(ContentListView):
         return context
 
 class ResourceArticleView(ContentPageView):
+
+    current_navigation_item = 'resource-library'
 
     def render_article_page(self, article):
         return render_to_string('resource-article.html', {
@@ -520,7 +542,8 @@ class FrequentlyAskedQuestionListView(ContentListView):
 
     template_name = 'frequently-asked-question-list.html'
 
-    
+    current_navigation_item = 'frequently-asked-questions'
+
     sort_options = [
         ('default', 'Default'),
         ('responses', 'Most responses')
@@ -546,6 +569,8 @@ class FrequentlyAskedQuestionListView(ContentListView):
         return context
 
 class FrequentlyAskedQuestionView(ContentPageView):
+
+    current_navigation_item = 'frequently-asked-questions'
 
     def render_faq_response(self, response):
         return render_to_string('faq-response.html',{

@@ -80,43 +80,61 @@ function selectionChange() {
     if (range.collapsed || !selectionEnabled) {
         return;
     }
-    selection.collapseToEnd();
 
-    if (range.startContainer == range.endContainer) {
-        console.log('same container');
-        var previous_text = range.startContainer.textContent.slice(0, range.startOffset);
-        var selected_text = range.startContainer.textContent.slice(range.startOffset, range.endOffset);
-        var after_text = range.startContainer.textContent.slice(range.endOffset);
-        
-        selection = document.createElement('span');
-        selection.style="font-weight:bold;"
-        selection.textContent = selected_text;
-        
-        range.startContainer.textContent = previous_text;
-        range.startContainer.after(selection);
+    var highlightButton = document.createElement('button')
+    
+    highlightButton.innerText = 'Make a highlight'
 
-        if (after_text !== "") {
-            selection.after(after_text);
+    var boundingCoords = range.getBoundingClientRect();
+    highlightButton.style = 'position:fixed;top:'+boundingCoords.top+'px;left:'+boundingCoords.right+'px;';
+
+    var body = document.querySelector('body');
+    body.appendChild(highlightButton);
+
+    highlightButton.addEventListener('click', function() {
+        highlightButton.remove();
+        selection.collapseToEnd();
+
+        // var highlight = document.createElement('span');
+        // highlight.classList.add('highlight');
+        // range.surroundContents(highlight);
+
+        if (range.startContainer == range.endContainer) {
+            console.log('same container');
+            var previous_text = range.startContainer.textContent.slice(0, range.startOffset);
+            var selected_text = range.startContainer.textContent.slice(range.startOffset, range.endOffset);
+            var after_text = range.startContainer.textContent.slice(range.endOffset);
+            
+            selection = document.createElement('span');
+            selection.classList.add('highlight');
+            selection.textContent = selected_text;
+            
+            range.startContainer.textContent = previous_text;
+            range.startContainer.after(selection);
+
+            if (after_text !== "") {
+                selection.after(after_text);
+            }
+        } else {
+            // split start element
+            var previous_text = range.startContainer.textContent.slice(0, range.startOffset);
+            var selected_text = range.startContainer.textContent.slice(range.startOffset);
+            range.startContainer.textContent = previous_text;
+            var selection_element = document.createElement('span');
+            selection_element.textContent = selected_text;
+            selection_element.classList.add('highlight');
+            range.startContainer.after(selection_element);
+            // split end element
+            selected_text = range.endContainer.textContent.slice(0,range.endOffset);
+            after_text = range.endContainer.textContent.slice(range.endOffset);
+            selection_element = document.createElement('span');
+            
+            selection_element.textContent = selected_text;
+            selection_element.classList.add("highlight");
+            range.endContainer.before(selection_element);
+            range.endContainer.textContent = after_text;
         }
-    } else {
-        // split start element
-        var previous_text = range.startContainer.textContent.slice(0, range.startOffset);
-        var selected_text = range.startContainer.textContent.slice(range.startOffset);
-        range.startContainer.textContent = previous_text;
-        var selection_element = document.createElement('span');
-        selection_element.textContent = selected_text;
-        selection_element.style="font-weight:bold;"
-        range.startContainer.after(selection_element);
-        // split end element
-        selected_text = range.endContainer.textContent.slice(0,range.endOffset);
-        after_text = range.endContainer.textContent.slice(range.endOffset);
-        selection_element = document.createElement('span');
-        
-        selection_element.textContent = selected_text;
-        selection_element.style="font-weight: bold;";
-        range.endContainer.before(selection_element);
-        range.endContainer.textContent = after_text;
-    }
+    });
 }
 
 function setupTexthighligher() {
@@ -124,10 +142,8 @@ function setupTexthighligher() {
     document.addEventListener('keydown', function(event) {
         console.log(event.code);
         if (event.code.includes('Shift')) {
-            console.log("shift down?")
             selectionEnabled = true;
         } else {
-            console.log("not down;");
             selectionEnabled = false;
         }
     });

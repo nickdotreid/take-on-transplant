@@ -57,6 +57,9 @@ class Article(models.Model):
         null = True
     )
 
+    class Meta:
+        ordering = ['order', 'title']
+
     @property
     def children(self):
         if not hasattr(self,'_children'):

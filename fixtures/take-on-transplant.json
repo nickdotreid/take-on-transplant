@@ -80,6 +80,182 @@
     }
 },
 {
+    "model": "faqs.faqhighlight",
+    "pk": 1,
+    "fields": {
+        "question": 5,
+        "order": 10,
+        "published": true,
+        "title": "Amy",
+        "content": "I knew that transplant was the only option for me in order to survive, so I did the best that I could to prepare."
+    }
+},
+{
+    "model": "faqs.faqhighlight",
+    "pk": 2,
+    "fields": {
+        "question": 5,
+        "order": 20,
+        "published": true,
+        "title": "Will",
+        "content": "My doctor advised me even though we had talked about transplant before, and I had rejected the idea, that \"now\" would likely be the last time that I would have the strength to get through the evaluation process."
+    }
+},
+{
+    "model": "faqs.faqhighlight",
+    "pk": 3,
+    "fields": {
+        "question": 1,
+        "order": 10,
+        "published": true,
+        "title": "Sherry",
+        "content": "I do not remember how many tests I actually had to complete before being listed. I do recall being able to do most of my testing in my local hometown before having to travel to Seattle."
+    }
+},
+{
+    "model": "faqs.faqhighlight",
+    "pk": 4,
+    "fields": {
+        "question": 1,
+        "order": 20,
+        "published": true,
+        "title": "Bill",
+        "content": "The most difficult and part of the evaluation process is the fatigue and grueling toll it takes on your body given your poor health condition."
+    }
+},
+{
+    "model": "faqs.faqhighlight",
+    "pk": 5,
+    "fields": {
+        "question": 3,
+        "order": 10,
+        "published": true,
+        "title": "Sherry",
+        "content": "CF patients will get two lungs: a bilateral lung transplant."
+    }
+},
+{
+    "model": "faqs.faqhighlight",
+    "pk": 6,
+    "fields": {
+        "question": 6,
+        "order": 20,
+        "published": true,
+        "title": "Dustin",
+        "content": "For me the most difficult part was staying healthy enough to actually make it to transplant."
+    }
+},
+{
+    "model": "faqs.faqhighlight",
+    "pk": 7,
+    "fields": {
+        "question": 7,
+        "order": 10,
+        "published": true,
+        "title": "Will",
+        "content": "I found the esophageal manometry evaluation test, which shows whether your esophagus is working properly (swallowing), to be the most uncomfortable."
+    }
+},
+{
+    "model": "faqs.faqhighlight",
+    "pk": 8,
+    "fields": {
+        "question": 8,
+        "order": 10,
+        "published": true,
+        "title": "Kadazia",
+        "content": "I really notice how different it feels to breathe with new lungs when I laugh."
+    }
+},
+{
+    "model": "faqs.faqhighlight",
+    "pk": 9,
+    "fields": {
+        "question": 8,
+        "order": 20,
+        "published": true,
+        "title": "Sarah",
+        "content": "For me to breathe with new lungs was a feeling I don’t think I could ever put into words."
+    }
+},
+{
+    "model": "faqs.faqhighlight",
+    "pk": 10,
+    "fields": {
+        "question": 9,
+        "order": 10,
+        "published": true,
+        "title": "Dustin",
+        "content": "I definitely take many more than I did before transplant."
+    }
+},
+{
+    "model": "faqs.faqhighlight",
+    "pk": 11,
+    "fields": {
+        "question": 9,
+        "order": 20,
+        "published": true,
+        "title": "Holly",
+        "content": "The amount varies for patients because everyone may have different issues."
+    }
+},
+{
+    "model": "faqs.faqhighlight",
+    "pk": 12,
+    "fields": {
+        "question": 10,
+        "order": 10,
+        "published": true,
+        "title": "Sarah",
+        "content": "Without a shadow of a doubt YES!!"
+    }
+},
+{
+    "model": "faqs.faqhighlight",
+    "pk": 13,
+    "fields": {
+        "question": 10,
+        "order": 20,
+        "published": true,
+        "title": "Kadazia",
+        "content": "There are times when I really have to force myself to say yes. And there are times when I can say yes genuinely and without hesitation."
+    }
+},
+{
+    "model": "faqs.faqhighlight",
+    "pk": 14,
+    "fields": {
+        "question": 7,
+        "order": 20,
+        "published": true,
+        "title": "Dustin",
+        "content": "I didn't care for the pH probe. It was also very difficult because I was very sick."
+    }
+},
+{
+    "model": "faqs.faqhighlight",
+    "pk": 15,
+    "fields": {
+        "question": 6,
+        "order": 10,
+        "published": true,
+        "title": "Amy",
+        "content": "Emotionally and physically were the hardest parts of the waiting period."
+    }
+},
+{
+    "model": "faqs.faqhighlight",
+    "pk": 16,
+    "fields": {
+        "question": 3,
+        "order": 20,
+        "published": true,
+        "title": "Dr. Ramos",
+        "content": "Because of chronic infection of the native CF lungs (with pseudomonas, staphylococcus, or other bacteria), receiving only one lung is not an option."
+    }
+},
+{
     "model": "faqs.author",
     "pk": 1,
     "fields": {
@@ -196,7 +372,7 @@
     "fields": {
         "author": 2,
         "question": 1,
-        "text": "<p><span style=\"color:#000000\">I do not remember how many tests I actually had to complete before being listed. I do recall being able to do most of my testing done in my local hometown before having to travel to Seattle. I also had to sign a series of consent forms allowing the transplant center to review all of my medical charts, such as ophthalmologist, dermatologist, dental records, yearly gynecologist visits, primary care physician (in home town), cystic fibrosis doctor visits and hospitalizations. I also had to have a renal screening with 24-hour urine collection, dexa scans (for bone density), EKG and ECHO to look at my heart, an esophagram, multiple Computed Tomography or CT scans (of the chest, abdomen and sinuses). You have to be up to date on your vaccines: flu shot, hepatitis B, tuberculosis and tetanus shot. I also had to travel to the transplant center for more testing, such as 24-hour pH monitor (acid reflux testing), more chest x-rays, numerous blood tests, six minute walk test (how far can you walk with or without oxygen), transplant classes, social worker interviews, a visit with the transplant pulmonologist followed by a visit/interview with the transplant surgeon. I believe all of these tests are considered &quot;brutal&quot; because as a CF patient we aren&#39;t in the best of health. Our lungs are failing and it takes all of our energy just to breathe. Also some of the tests require you to lay down in different positions and having &quot;crappy&quot; lungs and being short of breath with the simplest tasks can be very exhausting. Once you are listed for transplant, you have clinic visits every 3-4 weeks with repeat testing as well. The sicker you are the higher up on the transplant list you will go. Just being able to arrive for your appointment is brutal in itself. It is a long and hard process to complete. But once you have your transplant you get your life back! For me some of the small tasks like blowing out a birthday candle is a memory you will never forget or being able to take a walk without coughing is one of life&#39;s simplest treasures!</span></p>",
+        "text": "<p><span style=\"color:#000000\">I do not remember how many tests I actually had to complete before being listed. I do recall being able to do most of my testing in my local hometown before having to travel to Seattle. I also had to sign a series of consent forms allowing the transplant center to review all of my medical charts, such as ophthalmologist, dermatologist, dental records, yearly gynecologist visits, primary care physician (in home town), cystic fibrosis doctor visits and hospitalizations. I also had to have a renal screening with 24-hour urine collection, dexa scans (for bone density), EKG and ECHO to look at my heart, an esophagram, multiple Computed Tomography or CT scans (of the chest, abdomen and sinuses). You have to be up to date on your vaccines: flu shot, hepatitis B, tuberculosis and tetanus shot. I also had to travel to the transplant center for more testing, such as 24-hour pH monitor (acid reflux testing), more chest x-rays, numerous blood tests, six minute walk test (how far can you walk with or without oxygen), transplant classes, social worker interviews, a visit with the transplant pulmonologist followed by a visit/interview with the transplant surgeon. I believe all of these tests are considered &quot;brutal&quot; because as a CF patient we aren&#39;t in the best of health. Our lungs are failing and it takes all of our energy just to breathe. Also some of the tests require you to lay down in different positions and having &quot;crappy&quot; lungs and being short of breath with the simplest tasks can be very exhausting. Once you are listed for transplant, you have clinic visits every 3-4 weeks with repeat testing as well. The sicker you are the higher up on the transplant list you will go. Just being able to arrive for your appointment is brutal in itself. It is a long and hard process to complete. But once you have your transplant you get your life back! For me some of the small tasks like blowing out a birthday candle is a memory you will never forget or being able to take a walk without coughing is one of life&#39;s simplest treasures!</span></p>",
         "order": 20,
         "published": true
     }
@@ -745,21 +921,7 @@
     "pk": 3,
     "fields": {
         "name": "Amy",
-        "published": true,
-        "photo": "photos/Amy_Shannon.jpg",
-        "thumbnail": "thumbnails/photos/Amy_Shannon.jpg",
-        "warning": null,
-        "tags": [
-            13,
-            17,
-            18,
-            19,
-            20,
-            21,
-            22,
-            23,
-            24
-        ]
+        "published": true
     }
 },
 {
@@ -767,15 +929,7 @@
     "pk": 4,
     "fields": {
         "name": "Nick",
-        "published": false,
-        "photo": "photos/WIN_20201007_10_53_15_Pro_2.jpg",
-        "thumbnail": "thumbnails/photos/WIN_20201007_10_53_15_Pro_2.jpg",
-        "warning": "This is a warning.",
-        "tags": [
-            2,
-            3,
-            4
-        ]
+        "published": false
     }
 },
 {
@@ -783,17 +937,7 @@
     "pk": 5,
     "fields": {
         "name": "Dustin",
-        "published": true,
-        "photo": "photos/Dustin_C.jpg",
-        "thumbnail": "thumbnails/photos/Dustin_C.jpg",
-        "warning": null,
-        "tags": [
-            12,
-            13,
-            14,
-            15,
-            16
-        ]
+        "published": true
     }
 },
 {
@@ -801,16 +945,7 @@
     "pk": 6,
     "fields": {
         "name": "Kadazia",
-        "published": true,
-        "photo": "photos/Kadazia.jpg",
-        "thumbnail": "thumbnails/photos/Kadazia.jpg",
-        "warning": null,
-        "tags": [
-            8,
-            9,
-            10,
-            11
-        ]
+        "published": false
     }
 },
 {
@@ -818,15 +953,7 @@
     "pk": 7,
     "fields": {
         "name": "Will",
-        "published": true,
-        "photo": "photos/Willem.jpg",
-        "thumbnail": "thumbnails/photos/Willem.jpg",
-        "warning": null,
-        "tags": [
-            5,
-            6,
-            7
-        ]
+        "published": true
     }
 },
 {
@@ -834,14 +961,7 @@
     "pk": 8,
     "fields": {
         "name": "Mark",
-        "published": true,
-        "photo": "photos/Mark_Michael.jpg",
-        "thumbnail": "thumbnails/photos/Mark_Michael.jpg",
-        "warning": null,
-        "tags": [
-            5,
-            25
-        ]
+        "published": true
     }
 },
 {
@@ -849,17 +969,7 @@
     "pk": 9,
     "fields": {
         "name": "Ellen",
-        "published": true,
-        "photo": "photos/Elizabeth_Amber_1_small.jpg",
-        "thumbnail": "thumbnails/photos/Elizabeth_Amber_1_small.jpg",
-        "warning": null,
-        "tags": [
-            12,
-            14,
-            26,
-            27,
-            28
-        ]
+        "published": true
     }
 },
 {
@@ -867,11 +977,7 @@
     "pk": 10,
     "fields": {
         "name": "Anna",
-        "published": false,
-        "photo": "photos/Screenshot_2021-01-23_124403.jpg",
-        "thumbnail": "thumbnails/photos/Screenshot_2021-01-23_124403.jpg",
-        "warning": null,
-        "tags": []
+        "published": false
     }
 },
 {
@@ -879,11 +985,7 @@
     "pk": 11,
     "fields": {
         "name": "Natalie",
-        "published": true,
-        "photo": "photos/Screenshot_2021-01-22_165150.jpg",
-        "thumbnail": "thumbnails/photos/Screenshot_2021-01-22_165150.jpg",
-        "warning": null,
-        "tags": []
+        "published": false
     }
 },
 {
@@ -1535,7 +1637,7 @@
     "fields": {
         "name": null,
         "order": 10,
-        "published": true,
+        "published": false,
         "patient": 6,
         "title": "Pre-Transplant & Evaluation",
         "content": "<p><span style=\"color:black\">I knew that people got lung transplants, but I never really considered it for myself. There were so many unknowns. Would I be considered someone without cystic fibrosis after transplant? What would medications cost? What would be covered? What about the medical bills?</span></p>\r\n\r\n<p><span style=\"color:black\">My <a href=\"https://take-on-transplant.herokuapp.com/resources/lung-function\">lung function</a> had been declining pretty rapidly though. At first, I just went to my doctor to hear about it, to consider it, but then my body crashed and it became a conversation where it was the only option I had left. I knew I was the one who was making the decision, and I made that decision because I could feel I was actively dying. </span></p>\r\n\r\n<p><span style=\"color:black\">I switched my care to the transplant center 18 months before I got my transplant. There was a whole lifetime I had to catch them up on. I was very vocal and was trying to tell the team things about my body they might not have known. My interactions weren&rsquo;t that great. The <a href=\"https://take-on-transplant.herokuapp.com/resources/tests\">tests</a> themselves were fine, but the <a href=\"/resources/evaluation\">evaluation</a> was a lot. I wasn&rsquo;t getting a lot of answers. </span></p>\r\n\r\n<p><span style=\"color:black\">I read everything the doctors gave me. I looked at the material about the procedures that I would be going through for the evaluation workup beforehand, so I would know what was going on. My insurance sent me paperwork about <a href=\"http://take-on-transplant.herokuapp.com/resources/advance-care-planning\">advanced directives</a>, things I read all the way through. But I tried not to get too much into the technical parts of it because it is really easy to get scared off. With surgery<u>,</u> there is a risk of death. I looked at enough to be aware of what was happening and to mentally prepare for the transplant. </span></p>\r\n\r\n<p><span style=\"color:black\">I actually would have liked to hear from a doctor about exactly what&rsquo;s done in the procedure. I didn&rsquo;t know that there was wire implanted in my chest, to hold my <a href=\"https://take-on-transplant.herokuapp.com/resources/sternum\">sternum</a> together. I wish I had known how many <a href=\"https://take-on-transplant.herokuapp.com/resources/chest-tubes\">tubes</a> were going to be put in, and about the trembling hands. I didn&rsquo;t know about those things and I would have liked to know. </span></p>\r\n\r\n<p><span style=\"color:black\">There was a woman who went through a transplant who was able to tell me how she navigated the process, things like insurance and finances. I used her as a sounding board for the questions I had. I didn&rsquo;t go to transplant groups, I didn&rsquo;t feel it was for me. I am a naturally empathetic person and often let my feelings be overshadowed and under-prioritized by others&rsquo;.</span></p>\r\n\r\n<p><span style=\"color:black\">My focus was literally keeping myself alive long enough to get through the process, to get to the end. That&rsquo;s what I put all my energy into. Making it through each day.</span></p>",
@@ -1548,7 +1650,7 @@
     "fields": {
         "name": null,
         "order": 20,
-        "published": true,
+        "published": false,
         "patient": 6,
         "title": "The Call, The Transplant, & The Recovery",
         "content": "<p><span style=\"color:black\">I was thinking to myself, gosh is this going to happen soon enough? I was feeling my body declining and I was waiting for the <a href=\"https://take-on-transplant.herokuapp.com/resources/call\">call</a>, to get closer to that. I had been on the waitlist for two months when I got my transplant. </span></p>\r\n\r\n<p><span style=\"color:black\">I was doing really well after transplant and it looked like I was going to get out earlier than expected. I qualified for <a href=\"https://take-on-transplant.herokuapp.com/resources/relocation\">housing</a> since I live an hour and a half from the hospital. I was told that as soon as I got admitted for the transplant, the process was then going to be started for finding and securing my local housing. But after five days in the hospital post-transplant, I couldn&rsquo;t figure out what was going on. The nurses and dieticians were prepping me to be released, but arrangements for my housing hadn&rsquo;t happened. As I tried making all kinds of calls to get more information I was being met with a lot of hostility and non-answers from my assigned social worker. </span></p>\r\n\r\n<p><span style=\"color:black\">When I finally got to my original temporary accommodations there was just a general sense of uncleanliness. But we figured well I&rsquo;ll be in my room most of the time, so it doesn&rsquo;t matter. As the days wore on we became aware of the lack of housekeeping (this was important because there is a huge emphasis on the cleanliness of your environment directly after transplant) and the blatant disregard of the non-smoking signs plastered around the building. Think about how much stress I was under being only two weeks post-transplant. Now add in my fear of leaving my hotel room and having to navigate through smokers with my fresh lungs to get to my mom&rsquo;s car.</span></p>\r\n\r\n<p><span style=\"color:black\">Also, add in how my mom is a single mom who had been watching her daughter die for two years, is so excited that she is alive, but now has to take over communicating on my behalf with a social worker who doesn&rsquo;t like me. But hey, we aren&rsquo;t done yet. Add in that I have a younger sister who just had her first baby 5 days after I had my transplant. A transplantee, a single mom, a 21-year-old new single mom, and an infant in one hotel room with sub-par accommodations, just trying to figure out where they&rsquo;re going to be living for the next three months as they try to figure out what their new normal is. Now, remember that post-transplant I was told that a lot of these stresses would be addressed and taken care of by my social worker.</span></p>\r\n\r\n<p><span style=\"color:black\">Being a Black woman with cystic fibrosis (a disease that is notoriously known to be had by near exclusively white folks) and being a Black woman navigating through the healthcare system in general, I am more than used to actions toward me becoming racially charged when I try to advocate for myself. But this situation led me to feel more alone than ever because I was more vulnerable than I had ever been. Here it is these folks held my literal life in their hands and I was being treated like a problem. And when I would try to express what was going on and my feelings to my doctors and other folks in charge of my care (besides my nurses, they were quite lovely) I was met with this white coat of a wall where no one seemed to want to hold anyone accountable or even express empathy toward my situation or say flat out, I shouldn&rsquo;t have been treated the way I was and no other patient should either. </span></p>\r\n\r\n<p><span style=\"color:black\">I lost a lot of trust in all my doctors during that time. During the time I should have just been happy that I could finally breathe. It took a long time to even gain <em>some</em> of that trust back. To this day I haven&rsquo;t been able to thank anyone for my transplant besides the nurses who took care of me in the hospital and my surgeon. Everyone else seemed very much against me or simply unempathetic toward the way I was treated. Even before I decided to go forward with the transplant, I was met with a lot of scare tactics, hostility, a lack of understanding, false information, and questions about my commitment to the process. The folks who have the final say-so of whether or not you&rsquo;re worthy of receiving a transplant have to realize they&rsquo;re able-bodied people assessing us folks whose bodies have been failing us since the day we were born (in a CFers case). And that all of our energy pre-transplant is put into keeping ourselves alive and hoping that when we go to sleep at night, we&rsquo;ll wake up the next morning. </span></p>",
@@ -1561,7 +1663,7 @@
     "fields": {
         "name": null,
         "order": 30,
-        "published": true,
+        "published": false,
         "patient": 6,
         "title": "Post-Transplant",
         "content": "<p><span style=\"color:black\">After the transplant, the rules were completely different. I felt surprised when things weren&rsquo;t how I expected. Breathing wise, I feel better than I ever have before. Which is a pretty low bar to top, considering how low my lung function was before transplant. Better than before doesn&rsquo;t automatically mean, better. It has been over a year since my transplant, and I still <a href=\"https://take-on-transplant.herokuapp.com/resources/numbness\">can&rsquo;t feel my chest</a>. I didn&rsquo;t get my <a href=\"https://take-on-transplant.herokuapp.com/resources/taste\">sense of taste</a> back until over a month or two after transplant. My <a href=\"https://take-on-transplant.herokuapp.com/resources/hand-tremors\">hands still shake</a> consistently. Being a multi-media artist, this is something that affects me daily. Something I&rsquo;ve had to work around and caused me to have to relearn things that came so easily to me before. My muscles still seem non-existent at times. I can count on my breathing while I exercise but I can&rsquo;t count on my body yet. Having a metal rod in my back from a spinal fusion and insulin-dependent <a href=\"https://take-on-transplant.herokuapp.com/resources/diabetes\">diabetes</a> makes it hard to just jump into exercising. I wasn&rsquo;t a super active person pre-transplant because I didn&rsquo;t have the strength or breathing capacity to do so. It&rsquo;s difficult to just switch your mindset in that way. I find it hard to explain this to people, family, friends, and doctors alike. There seems to be an assumption that because I can breathe, I should be able to jump into exercise like a normal person. But it&rsquo;s not that simple and it&rsquo;s hard to explain that to people. </span></p>\r\n\r\n<p><span style=\"color:black\">I&rsquo;m still very much learning how to breathe. I&rsquo;m still very much getting used to the idea that I might have more years ahead of me than I&rsquo;d previously imagined. I&rsquo;m still very much coming to accept all the scars on my body. I&rsquo;m still very much learning and acknowledging that my body belongs to me and not the medical system. </span></p>\r\n\r\n<p><span style=\"color:black\">As I learn, get used to, and acknowledge all these new things I&rsquo;m creating a new normal. In this new normal I have many dislikes and loves. I dislike how long it&rsquo;s taking my feet and legs to get used to all this weight I&rsquo;ve finally been able to put on. I love that I&rsquo;ve been able to put on all this weight and look overall, healthier. I dislike all the side effects I&rsquo;ve had to experience while regulating my medicines and levels to a stable place. I love that I don&rsquo;t have to do breathing treatments anymore. I dislike my hand tremors. I love that I now have the energy to create again, and at a level I wasn&rsquo;t able to before my decline started. I dislike the new depressive and anxiety-driven episodes I&rsquo;ve had to navigate as I reconcile with what comes next. I love that I believe in a <em>next</em> now, at all. I dislike how hard it is for my muscles to catch up to where I want them to be. I love how the energy and little bit of muscles I do have now allow me to chase after my 1-year-old niece and run around with my 11-year-old nephew. </span></p>\r\n\r\n<p><span style=\"color:black\">There are ups and downs in my transplant story. What is clear to me is that I need to feel like my doctors are listening and willing to learn. Yes, they have degrees and can understand the numbers that make me dizzy. But they aren&rsquo;t living in my body. They don&rsquo;t have to carry themselves as if they are the smartest person in the room for me to respect them. My respect goes to doctors who listen, recognize that each patient is different, are willing to learn, and hold themselves and their colleagues accountable. </span></p>",
@@ -1574,7 +1676,7 @@
     "fields": {
         "name": null,
         "order": 40,
-        "published": true,
+        "published": false,
         "patient": 6,
         "title": "My Take on Transplant",
         "content": "<p><span style=\"color:black\">I would tell someone in my situation to continue to speak up for themselves. You are allowed to ask questions. You are allowed to speak up if you feel uncomfortable. You are allowed to question your doctors about something you are confused by, don&rsquo;t agree with, or have heard different information about from another member on your care team. You are allowed to call your doctors and other members on your care team out if you feel they are treating you unfairly. You are allowed to correct them if you believe they are wrong based on the information they&rsquo;ve given you before or the information you&rsquo;ve read in what they have provided you with. You are allowed to remind them that you have a whole history they don&rsquo;t know everything about. You are allowed to remind them that your body is your body and that NO ONE knows what it&rsquo;s like to live in it better than you. You are allowed to remind them that your life is in their hands and that it&rsquo;s important for them to remember and respect that as well as the vulnerable position it puts you in. You are allowed to consistently remind them that this process is hard and that you&rsquo;re just trying to make it out alive, one day at a time. </span></p>\r\n\r\n<p><span style=\"color:black\">Honestly, I feel that <a href=\"https://take-on-transplant.herokuapp.com/resources/support-system\">my family, my best friends</a>, and I got me through my transplant. At it&rsquo;s very basic and stripped-down level doctors and the healthcare system are a means to an end to reach your basic right to be alive. They&rsquo;ve read the books, they have the degrees, they get paid (even if they don&#39;t do it for the money, they do get paid at the end of the day), and they have the title. You don&rsquo;t get paid to be sick and have your body work against you. You get through it because you have to, and you want to live. Your perseverance and ability to fight against what feels like the entire world working against you makes you the strongest and the smartest person in the doctors&rsquo; office. Every time. </span></p>",
@@ -1691,7 +1793,7 @@
     "fields": {
         "name": null,
         "order": 10,
-        "published": true,
+        "published": false,
         "patient": 9,
         "title": "Pre-Transplant & Evaluation",
         "content": "<p>I was having more and more <a href=\"https://take-on-transplant.herokuapp.com/resources/exacerbation\">exacerbations</a>, and my <a href=\"https://take-on-transplant.herokuapp.com/resources/fev1\">lung function</a> was getting close to the 30s. When it dropped that low, my doctor said, &lsquo;I think we&rsquo;re going to have to start thinking about lung transplant fairly soon.&rsquo; When he said, &ldquo;fairly soon&rdquo; I didn&rsquo;t really know what that meant. A month? A year. I finally asked him to clarify.&nbsp;<br />\r\n<br />\r\nI continued to get sick that year, and after a couple of more exacerbations my doctor said that maybe I should go to the nearest transplant center (in another state) and meet the team. His reasoning was that he wanted me to be <a href=\"https://take-on-transplant.herokuapp.com/resources/evaluation\">evaluated </a>while I was still fairly healthy, that way I could stay ahead of the process rather than be put in the situation of needing an emergent transplant and having the potential to be denied for being too sick.<br />\r\n<br />\r\nHe was very proactive. He said that he&rsquo;d like me to go to find out what it would take for me <a href=\"https://take-on-transplant.herokuapp.com/resources/evaluation\">to be listed</a>. We knew I was going to keep getting sick, and he said that if I got in the system I would be ready to go when I needed the transplant.&nbsp;</p>\r\n\r\n<p>My doctor knew a lot of the <a href=\"https://take-on-transplant.herokuapp.com/resources/tests\">tests</a> the transplant center would need to do and ordered many for me to do preemptively before I traveled down there. He did tests he was able to get insurance to cover. That made the two weeks of testing and <a href=\"https://take-on-transplant.herokuapp.com/resources/evaluation\">evaluation</a> at the transplant center a little easier and less grueling.&nbsp;<br />\r\n<br />\r\nGoing into the first meeting with the transplant team I was under the impression that I was borderline eligible for transplant. I didn&rsquo;t have in my head that I was actually going to be listed. I knew that I was getting sicker though, as I had been pretty sick that whole year, and I was on <a href=\"https://take-on-transplant.herokuapp.com/resources/supplemental-oxygen\">oxygen at night</a>; and my oxygen needs were getting to be more. At the same time, I didn&rsquo;t feel that sick. I thought I was just being proactive and getting established with a team so that when I did fall below that threshold of &ldquo;sick enough to be listed&rdquo; I would have everything ready.&nbsp;</p>\r\n\r\n<p>However, once I got to the transplant center and met the doctors they wasted no time. Four months after being evaluated they were ready to list me and I moved to a <a href=\"https://take-on-transplant.herokuapp.com/resources/relocation\">new state</a> to be near the transplant center. At that point I didn&rsquo;t feel that sick, I was actually feeling pretty good. A couple of months before, I had asked, &ldquo;do I even need to come here, or can we wait?&rdquo; They said no to waiting, because I needed a lung and liver transplant which had a longer <a href=\"https://take-on-transplant.herokuapp.com/resources/wait-list\">waitlist</a> time than lungs alone. They told me I should be listed as soon as possible while I was healthier so I could be strong enough for the surgery.</p>\r\n\r\n<p>It was helpful to hear from my online transplant <a href=\"https://take-on-transplant.herokuapp.com/resources/support-group\">support group</a> about the things that were most difficult for people, things that I could mentally prepare for. I was also reassured by the amount of success that transplant seems to have. To learn that people with CF can expect <a href=\"https://take-on-transplant.herokuapp.com/resources/life-expectancy\">10 years</a>, or even more, after transplant. That the percentage of people experiencing really bad symptoms, or <a href=\"https://take-on-transplant.herokuapp.com/resources/rejection\">rejection</a>, within the first few years is not as significant as I would have expected. I knew how long you spend in the hospital after transplant varies for everyone and the liver transplant makes it more involved. Thankfully, I made a friend who had double lung and liver transplant recently. It was helpful that my mom and I actually got to meet his mom, and my mom got to go and see him. So that was really good, and supportive&nbsp;for my mom.&nbsp;<br />\r\n<br />\r\nThe transplant training was good information but we all left going, &lsquo;what more do we need to know how to do?&nbsp;When we get the call, where do we go? To which door? Where do we park?&rsquo; I feel like the caretakers are kind of at a disadvantage because they need to try to figure out when to give help or not. They&rsquo;re dealing with an adult who has been taking care of themselves their whole life who finds it hard to let people help. I didn&rsquo;t have a sense of really how to talk to my <a href=\"http://take-on-transplant.herokuapp.com/resources/caregiver\">caregivers</a> about job descriptions for them, even after the transplant training.<br />\r\n<br />\r\nOne of the things I knew as I mentally prepared for this transition was that if I was going to come here and be on a waitlist for an unknown period of time, my sole job could not be waiting. I thought then about what I could be able to do with the&nbsp;time, as if it was a sabbatical. I know that that is definitely not the case for everybody that&rsquo;s waiting for a transplant, that it&rsquo;s such a mixed bag. I&rsquo;ve been very, very fortunate. I&rsquo;m grateful I was&nbsp;still able to be pretty independent. I think it would have been infinitely harder if I&#39;d been&nbsp;dependent&nbsp; on oxygen during the day, or getting around, or I&#39;d needed more home care. I did&nbsp;need more help with daily activities when I got an <a href=\"https://take-on-transplant.herokuapp.com/resources/exacerbation\">exacerbation</a>. So again, I&rsquo;m very grateful that I was&nbsp;listed sooner, but also the reality is that being listed sooner meant I had to wait longer.</p>",
@@ -1704,7 +1806,7 @@
     "fields": {
         "name": null,
         "order": 20,
-        "published": true,
+        "published": false,
         "patient": 9,
         "title": "Trikafta's Role",
         "content": "<p>I wanted to have an open mind to what was coming down the pipeline with modulators. But I resisted trying <a href=\"https://take-on-transplant.herokuapp.com/resources/symdeko\">Symdeko</a> for a long time because I&rsquo;d had such a bad experience with <a href=\"https://take-on-transplant.herokuapp.com/resources/orkambi\">Orkambi</a>. Plus, I had it in my head that I didn&rsquo;t want to improve too much to kick me off the wait list, when I&rsquo;d worked so hard and already waited so long for my transplant. But I was also getting exacerbations much more frequently and my quality of life was suffering. So, I decided to try Symdeko and it seemed to help keep me a little more stable.&nbsp;<br />\r\n<br />\r\nIt was such a head game being on the transplant list: On one hand I would worry/wonder: &ldquo;maybe I don&rsquo;t need a transplant if this medication works&hellip;?&rdquo; and on the other, I didn&rsquo;t want to improve too much because I didn&rsquo;t want to wait longer to get transplanted.&nbsp;Once Trikafta was put on the market, my doctors pretty quickly wanted to make sure I had access to it. I&rsquo;d read about other people being on it who had received early access to it, so I felt comfortable starting it. My doctor made it clear that it would be unlikely that I would become healthy enough to be taken off the list, because I need both lung and liver transplants. But that it would help me improve my symptoms, which it did. Not drastically--it can&rsquo;t reverse existing damage. For example, it can&rsquo;t heal scarring. It can help you clear out mucus that maybe you had trouble clearing before, which is great. If I had started off being able to take it when my lungs were a little bit healthier, I think I could have gotten more of an effect.&nbsp;But it was&nbsp;really helpful&nbsp;in helping me stay as stable as I could.</p>\r\n\r\n<p><br />\r\nThe biggest boon was how it made coughing and doing breathing treatments a lot easier. I used to have good days and bad days with coughing, and major coughing spells came and went. But it had&nbsp;been years since I got a sustained reprieve from excessive coughing. Maybe a week here or there, but it would sneak up on me always. Suddenly&nbsp;I coughed a ton less&mdash;probably 80% less. That&rsquo;s huge.&nbsp; My body didn&#39;t produce the same amount of mucus that it did before. When I would wake up in the morning, my body was so different: I didn&#39;t immediately have&nbsp;to do&nbsp;breathing treatments before I could&nbsp;even function. I had&nbsp;more energy too, I wasn&#39;t&nbsp;as exhausted after doing breathing treatments. I could&nbsp;also go out in public with a lot less anxiety&nbsp;about having a coughing fit or getting out of breath. Now with COVID-19, that feels even more important. Everybody looks at you like you&rsquo;re literally passing death around if you&rsquo;re coughing. There were times before Trikafta where I would be on the bus or something, and because I&rsquo;d gotten out of breath getting to the bus, when I got on the bus and my body relaxed I would usually start coughing a ton. So often I would just cough practically the whole ride. It was never comfortable to be out, and I didn&rsquo;t realize how much I just wasn&rsquo;t going out, or staying at home. I would go out for a walk, but I wasn&rsquo;t necessarily going to go hang out in a coffee shop, because I figured it&rsquo;s just not going to be comfortable for me. After I went on Trikafta, it definitely was immediately a relief. I could&nbsp;actually do things in a way that felt&nbsp;more comfortable.</p>\r\n\r\n<p><br />\r\nIt was&nbsp;mentally hard&mdash;I didn&rsquo;t like thinking I could get healthy enough to get off the transplant list and then have to go through the evaluation all over again. I wanted to stay on the transplant list and get a transplant and get that over with, so I could&nbsp;move on to the next stage of my life&nbsp;post-transplant, rather than to have to go back to the beginning. Because I&rsquo;d already started this, and gotten my head around it and done all that work for it, I wasn&#39;t going to give that up. I wanted to knuckle down and get it done. Even if Trikafta had improved my lungs enough to be delisted, I still would have been in a kind of limbo with semi-good lungs. You&rsquo;re not healed. You&rsquo;re just at various levels of fragility.</p>\r\n\r\n<p><br />\r\nWhen you&rsquo;re on the transplant list, you&rsquo;re not just in a queue, with whoever is next getting the next available organs. You have a <a href=\"http://take-on-transplant.herokuapp.com/resources/lung-allocation-score\">score</a> that is determined by a lot of different numbers, which is good as it allows people that are really sick to get transplanted first, no matter how long they&rsquo;ve been on the transplant list. The doctors&nbsp;told me they would&nbsp;know when the lungs were right for me--because of size and height--but that didn&#39;t&nbsp;tell me much about when I could get <a href=\"http://take-on-transplant.herokuapp.com/resources/call\">called</a>.</p>\r\n\r\n<p><br />\r\nIt was&nbsp;a mental and emotional roller coaster, almost more than a physical one. I was kind of in limbo. The&nbsp;fear of not knowing how sick I had&nbsp;to be in order to trigger my turn being up.&nbsp;I didn&rsquo;t know if I should want to get sicker so I could&nbsp;get transplanted sooner.&nbsp;My quality of life was pretty good. I didn&rsquo;t need oxygen, and I was&nbsp;able to stay involved with my art and writing, as well as few online groups I hosted and attended. But all it would take was an exacerbation and I&rsquo;d&nbsp;be done in and in bed for a week or two.</p>\r\n\r\n<p><br />\r\nI was at a low point right before I started taking Trikafta. I was totally exhausted and so it was a huge relief and gave me a much-needed boost. It&rsquo;s a fantastic resource that can prolong living with your body the way that you were born with it. But I&rsquo;ve realized there is no right or wrong way in choosing what treatments or options are right for you. I think we have to use the medical tools that we have available to us. Transplant is something that we have available. But I would hesitate to say transplant should be looked at as &ldquo;a last resort.&rdquo; If your body needs a transplant, it should be fine to get a transplant. And if your body responds really positively to Trikafta, great. But also, there are some people that can&rsquo;t take modulators, or that have horrible side effects when on them. I think it&rsquo;s important to celebrate the possibilities, that people can prolong their lives and have a better quality of life. But at the same time, to make sure that people understand that getting a transplant isn&rsquo;t a failure of something. It&rsquo;s an opportunity also. If your body needs that then your body needs it, and let it be what it is.</p>\r\n\r\n<p><br />\r\nSomething important for doctors, healthcare workers, and other people to be aware of is the cost of drugs like Orkambi and Trikafta. Something I&rsquo;ve talked about with people is the anxiety I had about not being able to take it anymore, or not taking it correctly. The weirdness of taking a drug that costs as much as a house down payment every month is a strange feeling that can cause a lot of anxiety and worry - what if insurance denies you at some point, what if you can&rsquo;t afford to take it... It&rsquo;s such an expensive lifeline, that you literally take every day, and your insurance has to approve every month. We need advocacy, so we can have access to it. It concerns me that it would be an elite drug, when it has such significant quality of life results for people. Some people may be already doing pretty good, and can start living in a way that they couldn&rsquo;t before. A daily existence they didn&rsquo;t think was possible. But unintended side effects for something you are so dependent on is also to be respected.</p>\r\n\r\n<p><br />\r\nI think we have to understand the mental and emotional burden, and patterns that we get stuck in. I think sometimes we can get so stuck in our heads, especially when it&rsquo;s about listening to our bodies. We think we know our bodies, and then Trikafta, this is an important part to add&ndash; every single person that I&rsquo;ve communicated with&nbsp;said to me, I don&rsquo;t know my body anymore. It doesn&rsquo;t act the way that I&rsquo;m used to. I&rsquo;m having to relearn it all over again. That is a significant thing, because we don&rsquo;t often acknowledge just how intricately we have come to know our bodies, and come to know the signs. The CF doctors are always really good about telling me, &ldquo;You know your body best.&rdquo; But at the same time, if we know our body best and then suddenly we don&rsquo;t know our bodies, that&rsquo;s a significant anxiety point. Because then it could be our fault if we get worse, or we didn&rsquo;t pay attention to a sign that we didn&rsquo;t know to pay attention to.&nbsp;The great thing about Trikafta was that I didn&rsquo;t have all the symptoms anymore, but it was also disorienting and frustrating that I didn&rsquo;t know the warning signs of an exacerbation like I had previously.</p>\r\n\r\n<p><br />\r\nThis sounds kind of extreme, but I think I do mean it: is it better for your mental health to not take Trikafta? Is it better to get a transplant? I think it&rsquo;s important to know that there isn&rsquo;t a clear right answer for the next step a lot of times. I think within all of it, it&rsquo;s really important to make sure that you have a very clear sense of what your values are. And what quality of life is for you. It&nbsp;is a mental game. It really does take compassionate listening with somebody else when you get stuck in your head. We can make these decisions on our own, but at the same time, I really need my husband to be like, no, this is what I&rsquo;m seeing. And I need my doctor to be like, this is what I&rsquo;m seeing. I need to be able to trust them to be looking at me from a compassionate, helpfully, critical thinking lens. There&rsquo;s natural suffering, and then there&rsquo;s unnecessary suffering, and the work is to discern between the two so you can address what needs addressing, and let the rest of it be.&nbsp;<br />\r\n&nbsp;</p>",
@@ -1769,7 +1871,7 @@
     "fields": {
         "name": null,
         "order": 10,
-        "published": true,
+        "published": false,
         "patient": 11,
         "title": "Pre-Transplant & Evaluation",
         "content": "<p>I was surprised to be told I could get a lung transplant, and I questioned whether I&rsquo;d get to transplant and be told I&rsquo;m not ready, then have to go through another evaluation to get to that point later. I didn&rsquo;t realize that 35% lung function was low enough to be referred. I guess my CF doctor brought it up because of my need for so many IV antibiotics in one year. At first, they didn&rsquo;t cover a lot of the specifics. They knew that I would ask enough questions if I needed to. But I liked how they just looked at me and said &ldquo;so how do you feel about transplant? I was thinking about referring you, how would you feel about that?&rdquo; Obviously, that seemed like the right approach.</p>\r\n\r\n<p>When I had my first appointment with the transplant team I had to cancel because I couldn&rsquo;t bear the thought of going through <a href=\"https://take-on-transplant.herokuapp.com/resources/tests\">tests</a> at the hospital after what had happened during my last stay. I talked to a psychologist, and three or four months later started again. It took a fair amount of courage to finally do it, considering how long I&rsquo;ll be in-patient after surgery. But the transplant team was very helpful. They were so good with my family members and answered their questions in an organized way and it wasn&rsquo;t too long of a day for us. My partner didn&rsquo;t have any idea what he was supposed to do or not do after a transplant.</p>\r\n\r\n<p>In the past when I thought of transplant, I was apprehensive. I thought about what my family members would go through, more than me. I think the worst risk is to put my family through all of this, have them take all the time off and get into the mindset that I&rsquo;ve going to live, and then possibly I don&rsquo;t even live through the surgery, or I get rejection and then they are stuck in the <a href=\"https://take-on-transplant.herokuapp.com/resources/caregiver\">caregiver</a> role. The point of transplant, I believe, is to get not only yourself, but those around you, a little more freedom. I&rsquo;m worried that it&rsquo;ll just end up shackling them more to me.</p>\r\n\r\n<p>I also wondered if I wanted to be kept <a href=\"https://take-on-transplant.herokuapp.com/resources/survival-statistics\">alive that long</a> with so many things wrong in my body, as if I was an experiment. I feel in the first generation to live this long. No one told me as a kid that I was going to live as long as I was. I thought I would die mid-20s. What if things are going too far? I wasn&rsquo;t sure if all the doctors that see me were on the same page. What about how my kidneys would do? Honestly, my lungs and my heart seem better than the rest of me. Which isn&rsquo;t saying much.</p>\r\n\r\n<p>I&rsquo;ve known of people through Facebook who I&rsquo;ve talked to about lung transplant. It seems like a highly variable, person by person process of what&rsquo;s going to go wrong, and no one really has any idea until it happens. Which is the most frightening thing about it, because I have a little OCD about being ahead of the curve, so I can avoid things before they happen. And to have to put my trust in people that I haven&rsquo;t really met yet is scary. But I&rsquo;m amazed that some people last 15 years, or have less years but they say the years are great.</p>\r\n\r\n<p>I honestly haven&rsquo;t talked too much with my doctors about treatment decisions. I know when to ask for IV <a href=\"https://take-on-transplant.herokuapp.com/resources/antibiotics\">antibiotics</a>, and we talk about if I need my pills upgraded to a stronger dose. I always have concerns about IV antibiotics because they&rsquo;ve given me kidney problems and I&rsquo;m at the point of needing a kidney transplant.</p>\r\n\r\n<p>I just had my fourth sinus surgery. We also had to focus on controlling my diabetes. Mine is really hard to control, and I was trying to work with my <a href=\"https://take-on-transplant.herokuapp.com/resources/diabetes\">diabetes</a> doctors to get a pump and a <a href=\"https://take-on-transplant.herokuapp.com/resources/dexcom-g6\">Dexcom</a> continuous glucose monitor (CGM), but being on Medicaid, they said there was no way to get either. I waited for ten years, and until I finally got fed up and I just called the makers of pumps and CGMs, and three months later I had both. It was kind of heartbreaking. I&rsquo;m also using an app called Android APS (Artificial Pancreas System), and it got my A1C down from 9 to 5.7. When you&rsquo;re a Medicaid patient you have to fight to be given the best medications.</p>\r\n\r\n<p>I had a hospitalization earlier this year for ten days and things went horribly wrong. It&rsquo;s scary as hell to be admitted to the hospital, especially if you don&rsquo;t have someone with you like a family member at all times. It&rsquo;s hard to ask your family members to live in the hospital. I think it really depends on the luck of the draw what doctor you have, how well they know the ins and outs of Medicaid, and how well they go to bat for you. The staff can be dismissive, and there is always a new doctor. No one ever tells you the doctor&rsquo;s name. It&rsquo;s always a frightening experience.</p>",
@@ -1782,7 +1884,7 @@
     "fields": {
         "name": null,
         "order": 20,
-        "published": true,
+        "published": false,
         "patient": 11,
         "title": "Trikafta's Role",
         "content": "<p><span style=\"color:black\">My <a href=\"https://take-on-transplant.herokuapp.com/resources/lung-function\">lung function</a> went from 35% to 45% of predicted as I was going through the transplant process taking <a href=\"https://take-on-transplant.herokuapp.com/resources/symdeko\">Symdeko</a> (tezacaftor/ivacaftor). I tried not to think about how things would be after a lung transplant, because I don&rsquo;t want to jinx things. I didn&rsquo;t want to focus on what wasn&rsquo;t guaranteed to happen. And I came to feel that I was too healthy for transplant. I certainly didn&rsquo;t want to get one before I needed one when I can wait until I actually need it. I wasn&rsquo;t even on oxygen. </span></p>\r\n\r\n<p><span style=\"color:black\">Eight months ago, I was prescribed <a href=\"https://take-on-transplant.herokuapp.com/resources/trikafta\">Trikafta</a>&nbsp;</span>(elexacaftor/tezacaftor/ivacaftor).<span style=\"color:black\">&nbsp;The approval was quite easy, it was surprising. I had maybe one more meeting before they were going to decide to list me for a lung transplant. Within a few weeks I had gained almost 20 percent lung function. It wasn&rsquo;t even my decision, they just took me off the transplant list. They couldn&rsquo;t justify it. My lung function got up to 57% with only a month and a half of the medication. It was quite a shock actually. That was the main emotion. As far as I can tell the doctors aren&rsquo;t really sure what to think about it and I&rsquo;ve only had two appointments by video call during the time I&rsquo;ve been on it. They probably aren&rsquo;t sure if it is going to last and I&rsquo;m not sure it was going to last, but it has for eight months. I don&rsquo;t know how I&rsquo;d handle getting worse, but I&rsquo;m also not sure I could handle getting any better.</span></p>\r\n\r\n<p><span style=\"color:black\">I have energy. I&rsquo;ve painted one door five times for something to do, although in part that&rsquo;s probably from boredom due to the pandemic. Each day I cough maybe five times- that&rsquo;s it in comparison to every other second previously. I haven&rsquo;t had one dose of IVs since going on Trikafta. I haven&rsquo;t had to go to the ER even once. I didn&rsquo;t have any memory of feeling this good. It&rsquo;s good timing because if you cough outside right now with the pandemic, people don&rsquo;t like you, which makes sense. It was amazing. I feel better now than I did 15 years ago. Pretty much everything is different. It&rsquo;s overwhelmingly bizarre. I couldn&rsquo;t imagine not coughing up green phlegm every day. Now when I blow my nose it&rsquo;s clear. It&rsquo;s not horrifying like when I was sick. </span></p>\r\n\r\n<p><span style=\"color:black\">It&rsquo;s been a weird adjustment to spend the better part of a decade thinking you are going to die and then need to prepare that you can live 15-20 more years. It is quite a change to wake up- mentally and physically and realize you haven&rsquo;t lived your life. I don&rsquo;t have much work experience, and even if I want to work I can&rsquo;t because I&rsquo;m on social security and I need to keep it for the medication. I&rsquo;m alive, and now I look around and realize I am so stuck. What do I do with this health if I can&rsquo;t work? I know I&rsquo;m supposed to be really happy, but I&rsquo;m not in my early twenties. I don&rsquo;t have time to go to school and create a career trajectory. If I went to school I&rsquo;d be looking for someone to hire me at 42. </span></p>\r\n\r\n<p><span style=\"color:black\">When I was last healthy enough to work I lost a big portion of my SSI for about a year because of the percentage they took out for every dollar I earned. Then I lost my job because I got sick and couldn&rsquo;t get healthy enough again to work, and it took four months to get my SSI re-instated. Luckily, I still had my insurance. Right now, I&rsquo;m aware that if I worked I would only have so many months before they cut my checks and I lost my insurance. Damned if you do damned if you don&rsquo;t. I do have a job interview coming up. I feel like I have to do something, I&rsquo;m losing my mind. As a woman you feel like you should be contributing to the household now that you&rsquo;re healthy enough to do so. I&rsquo;ve been trying to live on $420 of SSI a month and I&rsquo;m not doing so great at that. And I need to be able to pay my rent and my bills, but if I lose my insurance I&rsquo;m in trouble. I have many many more medications than Trikafta that I have to have. I&rsquo;ve had CF so long there are so many things that have gone wrong. How could I depend on insurance from a business that is small and ask them to cover Trikafta and eight other medications? </span></p>\r\n\r\n<p><span style=\"color:black\">I&rsquo;ve had some side effects from the Trikafta. In the beginning I lost half of my hair. But I guess my body has adjusted to whatever it was going through. My hair is growing back in every direction and is about three and a half inches long. My attention span seems about two seconds long in comparison to what it used to be. It is as if I&rsquo;m in the only generation that is in this in-between phase. We&rsquo;re like the last people with polio. But you do the best you can because that&rsquo;s all you can do. </span></p>\r\n\r\n<p><span style=\"color:black\">People on Facebook and forums are all talking about Trikafta 24/7. It seems like I&rsquo;m having similar issues from what I read. It&rsquo;s hard to keep a handle on your emotions, but maybe that is because those of us on it aren&rsquo;t used to being fully alive and it takes a while to get back to what other people feel all of the time. Emotions are magnified enormously. I think it has to do with having a new lease on life but without a real future. We have a lot of things in our lives we didn&rsquo;t get a chance to examine before because everything was an emergency.&nbsp; There is a guilt factor where you don&rsquo;t want to feel anger or depressed because look where you are now. You don&rsquo;t want to tell your doctor that you are dissatisfied with getting to live longer. But it would be nice to have a regular job and get used to living with a schedule and have things to get up for in the morning that matter. That would make a world of difference. </span></p>\r\n\r\n<p>I&#39;ve stopped having frequent exacerbations on Trikafta, and my&nbsp;lung transplant referral was closed.&nbsp;</p>",
@@ -1795,7 +1897,7 @@
     "fields": {
         "name": null,
         "order": 30,
-        "published": true,
+        "published": false,
         "patient": 9,
         "title": "The Call, The Transplant, & The Recovery",
         "content": "<p>I was getting IV antibiotics about once a month. I was run down, low energy and motivation, and just getting through. The day I got the call I had reached out to my nurse in the morning because I&#39;d coughed up blood the night before, which was common for me. I thought, thank god!&nbsp;</p>\r\n\r\n<p>&nbsp;I was definitely surprised, because it had been two and a half years.&nbsp;I was like, oh, wow. I was pretty calm. I was surprised and relieved,&nbsp;I was&nbsp;excited, and I felt pretty peaceful. I had just been thinking about how I needed to get more organized for transplant! The call came in at 2:30 in the afternoon after I&#39;d eaten and was just hanging out. It was a good timeline, not a horrible rush. I had time to absorb it and talk to people, which was nice. We had a few hours to get ready to go to the hospital. I started calling people and letting them know. They told me to come in at 8pm at night and that if everything was a go, my surgery would be at 10am the next morning.&nbsp;</p>\r\n\r\n<p>They knocked me out after a couple of minutes of getting in the OR. They said okay are you ready and I said I guess. See you on the other side. Then I woke up five days later.&nbsp;I don&rsquo;t remember anything, the surgery or the&nbsp;five days that I was out. The surgery was 15 and a half hours I think?&nbsp;I just remember going in, then I remember waking up. I was told it went really well, no complications, just&nbsp;a vein they had to manuever when they were doing my liver.&nbsp;</p>\r\n\r\n<p>My mouth was drier than it had ever been when I woke up.&nbsp;&nbsp;It felt like a desert. I woke up with the ventilator and the tube in my mouth. But I was really, really frustrated immediately. Get this thing out of my mouth, I need some water. I couldn&rsquo;t communicate well because one, I had something in my mouth, and two, my mouth was so dry. And they kept asking, what do you want? I was so, so frustrated, beyond frustrated. My husband wasn&rsquo;t understanding me, I was trying to sign letters to him. He&rsquo;s like, what, huh? Nobody was getting me. Finally after 20 minutes I got across that I&rsquo;m thirsty, I need water. They said you can&rsquo;t have it because you&rsquo;ll aspirate. I was so mad. They said, your breathing isn&rsquo;t quite there yet. You&rsquo;re at 10 and you need to have 20 breaths per minute or something like that.&nbsp;I didn&rsquo;t know how to get it there. I couldn&#39;t even think I was so thirsty.</p>\r\n\r\n<p>They took everything out and said, ok this is your first breath. It felt weird. The nurses were all really great, but they wanted to do a bunch of things when they came in before I could have water or ice chips. My pain the first two nights was really rough. It took awhile to get my pain meds under control, but once that was resolved I was more comfortable and things got better.&nbsp;</p>",
@@ -1808,7 +1910,7 @@
     "fields": {
         "name": null,
         "order": 40,
-        "published": true,
+        "published": false,
         "patient": 9,
         "title": "Post-Transplant",
         "content": "<p>Recovery was harder than I thought it would be.&nbsp;I needed help getting off the toilet, off the couch, low chairs and stuff. I was still on precautions, so I couldn&rsquo;t use my arms. A lot of things that I wanted to do I couldn&rsquo;t do, either because I didn&rsquo;t have the energy or I didn&rsquo;t have the ability. My days were usually pretty packed with breathing treatments, and PT, and doctors &ndash; I had four teams that would come see me each day.&nbsp;During my down time, I slept. That&rsquo;s all I wanted. But it did get long towards the end, and I just wanted to go home.</p>\r\n\r\n<p>It was nice to be home with my husband, because I couldn&#39;t have visitors for awhile in the hospital because of COVID restrictions.&nbsp;It was definitely a challenge to figure out the meds, and&nbsp;the new schedule. Make sure that I was eating enough. My husband was having to juggle a lot on his end, with the house and the cooking. I think we were both surprised at how hard it was. It was definitely challenging that first couple of weeks. It did get easier, every day was a little bit easier.</p>\r\n\r\n<p>At first it was weird how my diaphragm muscles weren&#39;t there anymore from the surgery. I had gurgles and crackling in my lungs, from the surgery and all the fluid. With CF, you know you have to clear it, but I realized it was fine for things to work themselves out. There were clues, like being ok sleeping in one position on my back. I didn&#39;t feel that different, but I wasn&#39;t coughing. My lungs weren&#39;t fully expanded, until one day when it felt amazing to breathe. I started to have moments of wow, this is going to be really good. There were certain times&nbsp;when&nbsp;my lungs would start&nbsp;to relax. With pure breath, there was no pain or discomfort. Then there were times I was still in pain or out of breath. I was better, but still with the energy and weakness levels of pre-transplant. Working on getting in shape, strong, and building my muscles became important.&nbsp;</p>\r\n\r\n<p>It&#39;s nice getting PFTs now and seeing the numbers go up (85% of predicted) instead of down. I have limitations, but I can get there. Walking is important. Trying to do what you can. Having goals about&nbsp;doing what you want to do.&nbsp;I&rsquo;m definitely looking forward to just being able to expand my physical abilities. Recreationally go on hikes, or biking with my husband. Over the years your world gets small.&nbsp;</p>",
@@ -1821,7 +1923,7 @@
     "fields": {
         "name": null,
         "order": 50,
-        "published": true,
+        "published": false,
         "patient": 9,
         "title": "My Take on Transplant",
         "content": "<p>On the one hand, I&rsquo;m glad it took as long as it did. I did feel like I was ready about a year after I was on the list waiting. But I also can look back and see all these different phases. Accepting and getting my head around transplant. I definitely had a lot of anxiety starting the process. Then feeling like I needed&nbsp;to make all these lists, and get things together. Then I&rsquo;d fizzle out!</p>\r\n\r\n<p>It is important to address your anxiety and worry, find ways to address how you feel. It is legit. Take steps to worry less, to be present.&nbsp;By the time I got the call, I had already worked through all of this&nbsp;grasping for control, and I was like, it&rsquo;s going to be fine. Whatever happens, no problem. I was so peaceful and the whole process really was very peaceful for me. I got excellent care. It ended up being a very positive experience for me. I think my internal state was calm and I was able to go with the flow a lot more, and just be more present, and also curious about it. And therefore, I think hopefully I was a lot more pleasant to deal with. There were low level discomforts and I needed work arounds because it was hard to be an advocate for myself. But it is important to push a bit.&nbsp;Don&rsquo;t forget to say please and thank you, make their job as easy as possible. Do not make them guess what you need and what you want.</p>\r\n\r\n<p>I&rsquo;d say on the emotional, mental, and spiritual level, you have to decide how you&rsquo;re going to go into the waiting. What other things can you focus on that have to do with personal growth, or using the time to prepare. This is your time to reckon with a lot of those harder questions. Who you are, and why you want to do this, and what you are living for, and what brings you joy. Especially if you have a longer waiting time, you start to realize that time is really invaluable. You could spend all of your time waiting with bated breath, but that&rsquo;s exhausting. And it starts to put you into this boundary that doesn&rsquo;t need to exist. Like you can&rsquo;t say yes to anything, or you can&rsquo;t start big projects because you&rsquo;re afraid you&rsquo;ll get interrupted, and then you&rsquo;d be unreliable, then people would think bad of you. And it&rsquo;s just not true, especially if you&rsquo;re out front saying, just know I could get called at any time.</p>\r\n\r\n<p>One thing that I said to myself over and over, it&rsquo;s going to happen when it&rsquo;s supposed to happen. I chose that I was going to believe that, and not be anxious about it not happening. It will happen when it&rsquo;s supposed to happen, and that&rsquo;s just the way it is.</p>\r\n\r\n<p style=\"margin-left:48px\">&nbsp;</p>",
@@ -3628,20 +3730,8 @@
         "published": true,
         "order": 20,
         "parent": null,
-        "description": "-\tBeing a caregiver is a commitment. Lung transplant caregiver requirements vary by lung transplant program, but generally must be adults who are nonsmokers, able to drive, and able to stay at the hospital while the patient is recovering from the transplant surgery.",
+        "description": "Being a caregiver is a commitment. Lung transplant caregiver requirements vary by lung transplant program, but generally must be adults who are nonsmokers, able to drive, and able to stay at the hospital while the patient is recovering from the transplant surgery.",
         "content": "<p>Being a caregiver is a commitment. Lung transplant caregiver requirements vary by lung transplant program, but generally must be adults who are nonsmokers, able to drive, and able to stay at the hospital while the patient is recovering from the transplant surgery. Caregivers advocate for their loved ones in the hospital and post-transplant.</p>\r\n\r\n<p>The recovery period can mean constant care-taking. One caregiver said, &ldquo;I knew I would pretty much have to run the show, take care of her around the clock.&rdquo; Responsibilities include helping with bathing, medications, shopping, cooking and cleaning, monitoring conditions such as diabetes, and accompanying the patient to appointments. A patient may need additional support and help for family members such as their spouse or children.</p>\r\n\r\n<p>Caregivers talk about the benefits of seeing and talking to their own friends. They benefit from help from neighbors and extended family so that they can take breaks. One caregiver said, &ldquo;Expect frustration, a little anxiety, and just being burnt out.&rdquo; Self-care is very important for the caregiver.</p>\r\n\r\n<p>Often, when a patient becomes aware that there are sacrifices and responsibilities, they become concerned about the experience of their caregivers. One pre-transplant candidate said, &ldquo;I feel like there&rsquo;s a lot of emotional support for me &ndash; yeah, what I&rsquo;m going to go through is really hard, but they&rsquo;re going to be the ones that are trying to figure out how to care for me best.&rdquo;</p>\r\n\r\n<p>Additional tips from caregivers include: use of a Caring Bridge journal to keep people informed and a few key contacts to pass along news. Accept the offer of a meal train for regular nutritious food. Enlist help for gardening, pets, and cleaning. Be realistic about how much time you&rsquo;ll spend caregiving.</p>"
-    }
-},
-{
-    "model": "resources.article",
-    "pk": 3,
-    "fields": {
-        "title": "Travel",
-        "published": true,
-        "order": 10,
-        "parent": 2,
-        "description": null,
-        "content": "<p>Remaining within a certain distance of the center (could link to &ldquo;waiting on the list&rdquo;)</p>\r\n\r\n<p>preparing for &ldquo;the call,&rdquo; surgery, and for the hospital stay</p>"
     }
 },
 {
@@ -3653,7 +3743,7 @@
         "order": 20,
         "parent": 1,
         "description": null,
-        "content": "<p>Many factors contribute to the financial cost of lung transplant. There are costs while being evaluated, while waiting for transplant, during the transplant hospitalization, for housing near the transplant center before and/or after transplant, and long-term after transplant. It is also important to consider the potential for disability/lost wages before or while recovering from transplant, which can also affect caregivers who may need to help with your care for a period. Some costs may be covered by health insurance, while others require out-of-pocket payments. The choice of health insurance is always important for individuals with chronic health conditions like CF, but even more important when a person with CF is nearing lung transplant. The CF Foundation&rsquo;s Compass program is a one-on-one service available to help individuals with CF and their family members navigate insurance, financial, or legal issues. Your CF Center&rsquo;s social worker and/or lung transplant program&rsquo;s social worker can provide guidance about saving money for transplant-related expenses and fundraising. Requirements for the amount of savings or financial resources varies from transplant center to transplant center. One CF lung transplant recipient put it best, &ldquo;I&#39;ve seen a number of patients who were not listed because they, for lack of a better way of putting it, failed the financial test. That&#39;s a terrible reason to be denied being listed. But I guess if there&rsquo;s a way &ndash; if you&rsquo;re going to be talking to people ten years before transplant might be a necessity for them &ndash; and if you could somehow suggest that they start a piggy bank or something, that would not be a terrible idea. That&#39;s only one tiny aspect of preparing oneself for transplant, but like I said it&rsquo;s pretty awful if that&rsquo;s the only thing that keeps you from being listed.&rdquo;</p>\r\n\r\n<p>Read More (cost):</p>\r\n\r\n<p>Testing during the evaluation, appointments with doctors/nutritionist/social worker, and procedures to address problems discovered during the evaluation may all come with co-pays or out-of-pocket costs. Depending on your insurance coverage, some tests may need to be performed at preferred or &ldquo;in network&rdquo; sites rather than at the lung transplant center. Understanding the requirements for your insurance policy will be necessary so you can&nbsp; avoid surprise costs during the evaluation.</p>\r\n\r\n<p>Insurance policies may also dictate which lung transplant programs are available to you for your transplant. If you are turned down for transplant at the insurance company&rsquo;s preferred transplant program, it is typically possible to appeal for coverage at an alternative transplant center. This is especially relevant for CF patients with difficult to treat infections (e.g. Burkholderia cenocepacia) or conditions that make their transplant more challenging (e.g. the need for a combined organ transplant like lung-liver transplant).</p>\r\n\r\n<p>If you need to relocate before (while waiting) and/or after lung transplant, there are sometimes insurance benefits to cover housing. Different transplant centers have differing requirements for how close to the hospital you need to remain while listed and after transplant.</p>\r\n\r\n<p>Add link in &ldquo;read more&rdquo;: cff.org/Assistance-Services/About-Compass/What-Is-Compass/&nbsp; (Consider including a link to the video on that page)</p>\r\n\r\n<p>Children&rsquo;s Organ Transplant Association (COTA), serving adults as well as children, is an organization that has a history of helping CF patients fundraise for lung transplant. They have a transplant cost estimator on their website: cota.org<br />\r\n[Ref: https://www.ssa.gov/benefits/disability/]</p>"
+        "content": "<p>Many factors contribute to the financial cost of lung transplant. There are costs while being evaluated, while waiting for transplant, during the transplant hospitalization, for housing near the transplant center before and/or after transplant, and long-term after transplant. It is also important to consider the potential for disability/lost wages before or while recovering from transplant, which can also affect caregivers who may need to help with your care for a period. Some costs may be covered by health insurance, while others require out-of-pocket payments. The choice of health insurance is always important for individuals with chronic health conditions like CF, but even more important when a person with CF is nearing lung transplant. The CF Foundation&rsquo;s Compass program is a one-on-one service available to help individuals with CF and their family members navigate insurance, financial, or legal issues. Your CF Center&rsquo;s social worker and/or lung transplant program&rsquo;s social worker can provide guidance about saving money for transplant-related expenses and fundraising. Requirements for the amount of savings or financial resources varies from transplant center to transplant center. One CF lung transplant recipient put it best, &ldquo;I&#39;ve seen a number of patients who were not listed because they, for lack of a better way of putting it, failed the financial test. That&#39;s a terrible reason to be denied being listed. But I guess if there&rsquo;s a way &ndash; if you&rsquo;re going to be talking to people ten years before transplant might be a necessity for them &ndash; and if you could somehow suggest that they start a piggy bank or something, that would not be a terrible idea. That&#39;s only one tiny aspect of preparing oneself for transplant, but like I said it&rsquo;s pretty awful if that&rsquo;s the only thing that keeps you from being listed.&rdquo;</p>\r\n\r\n<p>Read More (cost):</p>\r\n\r\n<p>Testing during the evaluation, appointments with doctors/nutritionist/social worker, and procedures to address problems discovered during the evaluation may all come with co-pays or out-of-pocket costs. Depending on your insurance coverage, some tests may need to be performed at preferred or &ldquo;in network&rdquo; sites rather than at the lung transplant center. Understanding the requirements for your insurance policy will be necessary so you can&nbsp; avoid surprise costs during the evaluation.</p>\r\n\r\n<p>Insurance policies may also dictate which lung transplant programs are available to you for your transplant. If you are turned down for transplant at the insurance company&rsquo;s preferred transplant program, it is typically possible to appeal for coverage at an alternative transplant center. This is especially relevant for CF patients with difficult to treat infections (e.g. Burkholderia cenocepacia) or conditions that make their transplant more challenging (e.g. the need for a combined organ transplant like lung-liver transplant).</p>\r\n\r\n<p>If you need to relocate before (while waiting) and/or after lung transplant, there are sometimes insurance benefits to cover housing. Different transplant centers have differing requirements for how close to the hospital you need to remain while listed and after transplant.</p>\r\n\r\n<p>Read more:&nbsp;<a href=\"http://cff.org/Assistance-Services/About-Compass/What-Is-Compass/\">CF Foundation: Compass</a></p>\r\n\r\n<p>Children&rsquo;s Organ Transplant Association (COTA), serving adults as well as children, is an organization that has a history of helping CF patients fundraise for lung transplant. They have a transplant cost estimator on their website: <a href=\"http://cota.org\">Cota</a><br />\r\n&nbsp;</p>"
     }
 },
 {
@@ -3665,7 +3755,7 @@
         "order": 10,
         "parent": 1,
         "description": null,
-        "content": "<p>People with serious illness benefit by planning for a future where they are likely to get sicker so that they can communicate their preferences to their providers and caregivers. Advance care planning is a process that includes conversations about treatment preferences as well as wishes for end-of-life care. As part of the lung transplant evaluation process, people with CF are expected to complete an advanced directive. A living will or healthcare advanced directive is a document that guides doctors and caregivers about the kinds of treatment decisions a person would prefer if he/she is seriously ill and unable to speak for him or herself. A durable power of attorney for healthcare is a document that allows a person to choose who they would want to act on his or her behalf for healthcare decisions if he or she was unable to speak for him/herself. This might be a spouse, significant other, family member, or friend. One purpose of advance care planning is to document a patient&rsquo;s preferences in their electronic medical record so that medical providers can view and access this information if necessary.<br />\r\nRead more (advanced care planning):</p>\r\n\r\n<p>Some people may also create an estate plan, which is a legally binding document that designates who would receive your assets if you were to die or become unable to care for yourself including finances. This can involve changing beneficiaries of life insurance policies and retirement accounts, selecting guardians for minor children, providing lifetime income for oneself or others, and minimizing taxes and other estate settlement costs.</p>\r\n\r\n<p>Many people who do advance care planning find the involvement of their family and caregivers to be helpful.<br />\r\n(Link to CFF Palliative Care guidelines?)</p>"
+        "content": "<p>People with serious illness benefit by planning for a future where they are likely to get sicker so that they can communicate their preferences to their providers and caregivers. Advance care planning is a process that includes conversations about treatment preferences as well as wishes for end-of-life care. As part of the lung transplant evaluation process, people with CF are expected to complete an advanced directive. A living will or healthcare advanced directive is a document that guides doctors and caregivers about the kinds of treatment decisions a person would prefer if he/she is seriously ill and unable to speak for him or herself. A durable power of attorney for healthcare is a document that allows a person to choose who they would want to act on his or her behalf for healthcare decisions if he or she was unable to speak for him/herself. This might be a spouse, significant other, family member, or friend. One purpose of advance care planning is to document a patient&rsquo;s preferences in their electronic medical record so that medical providers can view and access this information if necessary.<br />\r\nRead more (advanced care planning):</p>\r\n\r\n<p>Some people may also create an estate plan, which is a legally binding document that designates who would receive your assets if you were to die or become unable to care for yourself including finances. This can involve changing beneficiaries of life insurance policies and retirement accounts, selecting guardians for minor children, providing lifetime income for oneself or others, and minimizing taxes and other estate settlement costs.</p>\r\n\r\n<p>Many people who do advance care planning find the involvement of their family and caregivers to be helpful.&nbsp;</p>"
     }
 },
 {
@@ -3677,7 +3767,7 @@
         "order": 30,
         "parent": 1,
         "description": null,
-        "content": "<p>People who have been through the process of preparing for transplant find support from family, friends, and loved ones to be very helpful. Often, family members are part of the decision-making process. A lung transplant recipient said: &ldquo;We had several conversations, because we knew [transplant] was coming.&rdquo;</p>\r\n\r\n<p>A family member can attend appointments to listen, ask questions, and learn more about ways to participate.</p>\r\n\r\n<p>To be approved for lung transplant, a potential recipient usually needs to name caregivers to be involved. These caregivers need to be available while the person is on the waiting list and through their recovery from the transplant. Specific caregiver requirements can vary between transplant programs.</p>\r\n\r\n<p>Family members and loved ones need information and access to resources specific to caregivers. They can experience their own stress and worry. Most transplant centers have support groups that family members can attend. Many people also find connection with others in similar situations by joining online groups.</p>\r\n\r\n<p>People living through the transplant process may be so sick that they need constant care. One transplant recipient recommended &lsquo;getting comfortable asking for help&rsquo;</p>\r\n\r\n<p>Informal caregivers pre-transplant may come from a large network of people who help with meals, babysitting, driving, fundraising, and more.</p>"
+        "content": "<p>People who have been through the process of preparing for transplant find support from family, friends, and loved ones to be very helpful. Often, family members are part of the decision-making process. A lung transplant recipient said: &ldquo;We had several conversations, because we knew [transplant] was coming.&rdquo;</p>\r\n\r\n<p>A family member can attend appointments to listen, ask questions, and learn more about ways to participate.</p>\r\n\r\n<p>To be approved for lung transplant, a potential recipient usually needs to name caregivers to be involved. These caregivers need to be available while the person is on the waiting list and through their recovery from the transplant. Specific caregiver requirements can vary between transplant programs.</p>\r\n\r\n<p>Family members and loved ones need information and access to resources specific to caregivers. They can experience their own stress and worry. Most transplant centers have support groups that family members can attend. Many people also find connection with others in similar situations by joining online groups.</p>\r\n\r\n<p>People living through the transplant process may be so sick that they need constant care. One transplant recipient recommended &quot;getting comfortable asking for help&quot;</p>\r\n\r\n<p>Informal caregivers pre-transplant may come from a large network of people who help with meals, babysitting, driving, fundraising, and more.</p>"
     }
 },
 {
@@ -3688,8 +3778,8 @@
         "published": true,
         "order": 70,
         "parent": null,
-        "description": null,
-        "content": "<p>Noop</p>"
+        "description": "When you are referred, the transplant team will try to figure out how much transplant could help benefit you (the possible “benefits”), as well as how risky transplant may be for you.",
+        "content": "<p><span style=\"color:black\">Referral for lung transplant is a process that involves a consultation with a lung transplant center, explaining the reason for referral, and providing medical records. Transplant referral is an opportunity for your CF care team to discuss &nbsp;details about your condition with experts in lung transplant. </span></p>\r\n\r\n<p><span style=\"color:black\">The lung transplant center will assess whether you are eligibile for transplant after they receive the referral. Sometimes the assessment will involve an in-person (or telemedicine) clinic visit with members of the transplant team. The referral gives you and your family the chance to learn more about transplant, discuss potential &ldquo;barriers,&rdquo; or &ldquo;contraindications&rdquo;) to transplant, and/or complete a transplant evaluation (see Eligibility, Evaluation, and Listing below). </span></p>\r\n\r\n<p><span style=\"color:black\">Timing of transplant referral can be classified as &ldquo;early&rdquo;, &ldquo;timely&rdquo;, or late&rdquo;. Early referral occurs <strong><u>before</u></strong> transplant is needed. Early referral gives you more opportunity to ask questions and gather information, as well as to address any possible &ldquo;barriers&rdquo; to transplant, some of which may take years to correct (see Eligibility, Evaluation, and Listing below). <strong>The CF Foundation recommends early referral in order to give people living with CF the best chance to fully consider lung transplant and understand it as a treatment option</strong>. For people who are referred early, the lung transplant center may decide to wait longer before starting an evaluation </span></p>\r\n\r\n<ul>\r\n\t<li><span style=\"color:black\">Timely referral occurs at the time that you actually have a medical need or &ldquo;indication&rdquo; for lung transplant (see Signs that CF is Worsening below). </span></li>\r\n\t<li><span style=\"color:black\">Late referral occurs when you are too sick to undergo a routine transplant evaluation and is considered an emergency. Late referral can happen in the setting of an unexpectedly severe exacerbation from </span>which you do<span style=\"color:black\"> not recover, especially if you require mechanical ventilation or other intensive care. Late referral can lead to dying without transplant because there is too little time to be listed, or if a donor organ doesn&rsquo;t become available in time.&nbsp; Some lung transplant programs do not offer emergency evaluations. </span></li>\r\n</ul>"
     }
 },
 {
@@ -3698,10 +3788,10 @@
     "fields": {
         "title": "Timing of Referral",
         "published": true,
-        "order": 10,
+        "order": 30,
         "parent": 7,
         "description": null,
-        "content": "<p>Referral for lung transplant is a process that involves sending a request for consultation to a lung transplant center, transmitting medical records, and explaining the reason for referral.</p>\r\n\r\n<p>Transplant referral provides an opportunity for your CF care team to discuss the details of your condition with the experts in lung transplant.</p>\r\n\r\n<p>The lung transplant center will assess your eligibility for transplant after they receive the referral. Sometimes the assessment will involve an in-person (or telemedicine) clinic visit with members of the transplant team. The referral gives you and your family the chance to learn more about transplant, discuss potential &ldquo;barriers&rdquo; (&ldquo;contraindications&rdquo;) to transplant, and/or complete an evaluation (see Eligibility, Evaluation, and Listing below).</p>\r\n\r\n<p>Early referral occurs prior to the medical need for transplant and gives you the opportunity to ask questions and gather information without the pressure of an immediate medical indication for lung transplant. <strong>The CF Foundation recommends early referral in order to give people living with CF the best chance to fully consider lung transplant and understand it as a treatment option.</strong> Further, early referral gives you time to address any possible &ldquo;barriers&rdquo; to transplant. Some barriers to transplant may take years to correct (see Eligibility, Evaluation, and Listing below). For people who are referred early, the lung transplant center may decide to wait longer before starting a full evaluation (e.g. testing, procedures, appointments with specialists).</p>\r\n\r\n<p>Timely referral occurs when you have a medical need or &ldquo;indication&rdquo; for lung transplant (see Markers of Disease Severity below). Your CF team and lung transplant team will agree that it is time to move forward with a full evaluation (see Eligibility, Evaluation, and Listing below).</p>\r\n\r\n<p>Late referral occurs when you are too sick to undergo a routine transplant evaluation and this is seen as an emergency. Late referral can happen in the setting of an unexpectedly severe exacerbation from which you do not recover, especially if you require mechanical ventilation or other intensive care. Late referral can lead to dying without transplant because there is too little time to proceed with listing or limited lung donor availability (e.g. cannot find a match in time). Some lung transplant programs do not offer emergency evaluations.</p>\r\n\r\n<p>&nbsp;</p>"
+        "content": "<p>Referral for lung transplant is a process that involves sending a request for consultation to a lung transplant center, transmitting medical records, and explaining the reason for referral.</p>\r\n\r\n<p>Transplant referral provides an opportunity for your CF care team to discuss the details of your condition with the experts in lung transplant.</p>\r\n\r\n<p>The lung transplant center will assess your eligibility for transplant after they receive the referral. Sometimes the assessment will involve an in-person (or telemedicine) clinic visit with members of the transplant team. The referral gives you and your family the chance to learn more about transplant, discuss potential &ldquo;barriers&rdquo; (&ldquo;contraindications&rdquo;) to transplant, and/or complete an evaluation (see Eligibility, Evaluation, and Listing below).</p>\r\n\r\n<p>Early referral occurs prior to the medical need for transplant and gives you the opportunity to ask questions and gather information without the pressure of an immediate medical indication for lung transplant. <strong>The CF Foundation recommends early referral in order to give people living with CF the best chance to fully consider lung transplant and understand it as a treatment option.</strong> Further, early referral gives you time to address any possible &ldquo;barriers&rdquo; to transplant. Some barriers to transplant may take years to correct (see Eligibility, Evaluation, and Listing below). For people who are referred early, the lung transplant center may decide to wait longer before starting a full evaluation (e.g. testing, procedures, appointments with specialists).</p>\r\n\r\n<p>Timely referral occurs when you have a medical need or &ldquo;indication&rdquo; for lung transplant (see Signs that CF is Worsening&nbsp;below). Your CF team and lung transplant team will agree that it is time to move forward with a full evaluation (see Eligibility, Evaluation, and Listing below).</p>\r\n\r\n<p>Late referral occurs when you are too sick to undergo a routine transplant evaluation and this is seen as an emergency. Late referral can happen in the setting of an unexpectedly severe exacerbation from which you do not recover, especially if you require mechanical ventilation or other intensive care. Late referral can lead to dying without transplant because there is too little time to proceed with listing or limited lung donor availability (e.g. cannot find a match in time). Some lung transplant programs do not offer emergency evaluations.</p>\r\n\r\n<p>&nbsp;</p>"
     }
 },
 {
@@ -3712,19 +3802,19 @@
         "published": true,
         "order": 20,
         "parent": 7,
-        "description": null,
-        "content": "<p><strong>The biggest factor in the decision to refer for lung transplant is your lung function, as measured by FEV1 % of predicted. </strong>When your FEV1 decreases, it is a sign that your CF is worsening.</p>\r\n\r\n<p>There are different lung function thresholds for referral of adults (age 18 years and older) versus children or adolescents. The CF Foundation recommends referring children who have low FEV1 sooner (at a higher level of FEV1 % of predicted)</p>\r\n\r\n<p>How quickly your lung function is decreasing is also a factor in the decision to refer. If you experience a 20% decrease in your FEV1 % of predicted over the course of 1 year, that is a sign that your CF is worsening.</p>\r\n\r\n<p><strong>Everyone with an FEV1 less than 30% of predicted should be referred for lung transplant.</strong></p>\r\n\r\n<p>Adults with FEV1 between 30% and 40% of predicted should be checked for other signs of worsening CF. For people with lung function in this range, there are certain factors that can prompt referral to a transplant center for consideration of lung transplant (see Markers of Disease Severity below).</p>\r\n\r\n<p>The use of CFTR modulators (e.g. elexacaftor/tezacaftor/ivacaftor) can lead to large improvements in lung function, nutritional status, and other aspects of CF. How long CFTR modulators can delay lung transplant for people with CF is still unknown.</p>\r\n\r\n<p>Distance from the transplant center may be a factor in the timing of referral because it may be more difficult and time consuming to complete an evaluation in that setting. It is important to understand whether you will need to move to a new city for lung transplant, since that may take months or years of planning.</p>\r\n\r\n<p>Younger women should be referred early. There is a &ldquo;gender gap&rdquo; in survival for people living with CF - women are at an increased risk of dying without lung transplant compared to men. There is no difference in post-lung transplant survival between women and men with CF. Women who have CF-related diabetes, rapidly decreasing BMI, or rapidly decreasing FEV1 are considered the highest risk.</p>\r\n\r\n<p>For individuals who are shorter (height under 162 cm or 5 feet 4 inches), there is an increased risk of dying without transplant. The risk is partly explained because it is more difficult to find lung donors with lungs that are the correct size (see Transplant Operation below). Waiting times are longer for people who are shorter.</p>\r\n\r\n<p>Certain types of infections can limit which transplant centers will consider you for a lung transplant (see Contraindications/Modifiable Barriers below). Early referral allows time to determine whether your local transplant center considers a specific infection an absolute barrier to transplant and if you will need to approach other transplant centers (which can be time consuming and expensive if you need to travel).</p>\r\n\r\n<p>If you have liver or kidney disease and may need multiple organs transplanted, early referral is recommended because not all transplant centers perform multi-organ transplants (more than just the lungs at one time) and waiting times can be longer when multiple organs are needed for one recipient.</p>\r\n\r\n<p>It is important to recognize that referral does not necessarily prompt a full evaluation or listing, but instead gives individuals with CF, their families, and providers access to the expertise of the transplant team and the opportunity to fully consider lung transplant as a treatment option.</p>\r\n\r\n<p>&nbsp;</p>"
+        "description": "There are a number of factors that can influence when your cystic fibrosis care team refers you to lung transplant. The biggest factor in the decision to refer for lung transplant is your lung function, as measured by FEV1 % of predicted.",
+        "content": "<p><strong>The biggest factor in the decision to refer for lung transplant is your lung function, as measured by FEV1 % of predicted. </strong>When your FEV1 decreases, it is a sign that your CF is worsening.</p>\r\n\r\n<p>There are different lung function thresholds for referral of adults (age 18 years and older) versus children or adolescents. The CF Foundation recommends referring children who have low FEV1 sooner (at a higher level of FEV1 % of predicted)</p>\r\n\r\n<p>How quickly your lung function is decreasing is also a factor in the decision to refer. If you experience a 20% decrease in your FEV1 % of predicted over the course of 1 year, that is a sign that your CF is worsening.</p>\r\n\r\n<p><strong>Everyone with an FEV1 less than 30% of predicted should be referred for lung transplant.</strong></p>\r\n\r\n<p>Adults with FEV1 between 30% and 40% of predicted should be checked for other signs of worsening CF. For people with lung function in this range, there are certain factors that can prompt referral to a transplant center for consideration of lung transplant (see Signs that CF is Worsening below).</p>\r\n\r\n<p>The use of CFTR modulators (e.g. elexacaftor/tezacaftor/ivacaftor) can lead to large improvements in lung function, nutritional status, and other aspects of CF. How long CFTR modulators can delay lung transplant for people with CF is still unknown.</p>\r\n\r\n<p>Distance from the transplant center may be a factor in the timing of referral because it may be more difficult and time consuming to complete an evaluation in that setting. It is important to understand whether you will need to move to a new city for lung transplant, since that may take months or years of planning.</p>\r\n\r\n<p>Younger women should be referred early. There is a &ldquo;gender gap&rdquo; in survival for people living with CF - women are at an increased risk of dying without lung transplant compared to men. There is no difference in post-lung transplant survival between women and men with CF. Women who have CF-related diabetes, rapidly decreasing BMI, or rapidly decreasing FEV1 are considered the highest risk.</p>\r\n\r\n<p>For individuals who are shorter (height under 162 cm or 5 feet 4 inches), there is an increased risk of dying without transplant. The risk is partly explained because it is more difficult to find lung donors with lungs that are the correct size (see Transplant Operation below). Waiting times are longer for people who are shorter.</p>\r\n\r\n<p>Certain types of infections can limit which transplant centers will consider you for a lung transplant (see Contraindications/Modifiable Barriers below). Early referral allows time to determine whether your local transplant center considers a specific infection an absolute barrier to transplant and if you will need to approach other transplant centers (which can be time consuming and expensive if you need to travel).</p>\r\n\r\n<p>If you have liver or kidney disease and may need multiple organs transplanted, early referral is recommended because not all transplant centers perform multi-organ transplants (more than just the lungs at one time) and waiting times can be longer when multiple organs are needed for one recipient.</p>\r\n\r\n<p>It is important to recognize that referral does not necessarily prompt a full evaluation or listing, but instead gives individuals with CF, their families, and providers access to the expertise of the transplant team and the opportunity to fully consider lung transplant as a treatment option.</p>\r\n\r\n<p>&nbsp;</p>"
     }
 },
 {
     "model": "resources.article",
     "pk": 10,
     "fields": {
-        "title": "Markers of Disease Severity",
+        "title": "Signs that CF is Worsening",
         "published": true,
-        "order": 30,
+        "order": 10,
         "parent": 7,
-        "description": null,
+        "description": "For adults with FEV1 between 30% and 40% of predicted, CF care teams should evaluate for the presence of other signs that your CF is worsening. The signs may include frequent or severe exacerbations, a low BMI, or low oxygen saturation, among others.",
         "content": "<p>Low lung function, as measured by FEV1 % of predicted, is the strongest sign of worsening CF.</p>\r\n\r\n<p>For adults with FEV1 between 30% and 40% of predicted, or children with FEV1 between 40% and 50% of predicted, CF care teams should evaluate for the presence of other signs that your CF is worsening (see Table below)</p>\r\n\r\n<p>Once your FEV1 is less than 40% of predicted (or less than 50% of predicted for children), testing should occur at least once per year to evaluate your 6-minute walk test distance, oxygen saturation with exercise and during sleep, and level of carbon dioxide in the blood. You should also have an echocardiogram (an ultrasound of the heart) at least once to check for signs of pulmonary hypertension (high blood pressures seen on the right side of the heart).</p>\r\n\r\n<p>Referral for lung transplant is recommended if you have low lung function and any additional signs that your CF is worsening.</p>\r\n\r\n<table cellspacing=\"0\" class=\"Table\" style=\"border-collapse:collapse; border:none; width:614px\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td style=\"border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:1px solid black; height:62px; vertical-align:top; width:352px\">\r\n\t\t\t<p><strong>Frequent or severe exacerbations</strong>: IV antibiotics more than 2 times in 1 year or 1 exacerbation that required ICU admission and the use of BiPAP or a ventilator</p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:1px solid black; height:62px; vertical-align:top; width:262px\">\r\n\t\t\t<p><strong>Low BMI</strong>: less than 18 kg/m for adults or less than 5th percentile for children</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td style=\"border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:none; height:56px; vertical-align:top; width:352px\">\r\n\t\t\t<p><strong>6-minute walk test less than 400 meters </strong>(1,312 feet)</p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; height:56px; vertical-align:top; width:262px\">\r\n\t\t\t<p><strong>Low oxygen saturation</strong> (less than 88%) at rest, with exercise, or while sleeping</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td style=\"border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:none; height:62px; vertical-align:top; width:352px\">\r\n\t\t\t<p><strong>High carbon dioxide levels</strong> in the blood (&ldquo;hypercapnia&rdquo;)</p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; height:62px; vertical-align:top; width:262px\">\r\n\t\t\t<p><strong>Pulmonary hypertension</strong>: high blood pressure on the right side of the heart</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td style=\"border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:none; height:46px; vertical-align:top; width:352px\">\r\n\t\t\t<p><strong>Massive hemoptysis</strong> (coughing up a large amount of blood): more than 240 mL (1 cup) over a short time, requiring intensive care and/or bronchial artery embolization to stop the bleeding</p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; height:46px; vertical-align:top; width:262px\">\r\n\t\t\t<p><strong>Pneumothorax</strong> (&ldquo;lung collapse&rdquo;)</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>"
     }
 },
@@ -3733,7 +3823,7 @@
     "pk": 11,
     "fields": {
         "title": "CF-Specific Psychosocial Concerns",
-        "published": true,
+        "published": false,
         "order": 40,
         "parent": 7,
         "description": null,
@@ -3748,15 +3838,15 @@
         "published": true,
         "order": 120,
         "parent": null,
-        "description": null,
-        "content": "<p>Noop</p>"
+        "description": "The transplant team will outline a list of specific steps that you will need to finish before you can be placed on the waiting list. The steps will be a combination of tests, procedures, and visits with medical providers.",
+        "content": "<p>To figure out how much transplant could help you (the benefits), the transplant team will review how sick you are right now: How you feel, whether you are getting worse, how often you are in the hospital or needing antibiotics, your lung function, and other problems or test results to understand your quality of life and chance of dying from your CF lung disease.</p>"
     }
 },
 {
     "model": "resources.article",
     "pk": 13,
     "fields": {
-        "title": "Contraindications/Modifiable Barriers (e.g. conditions or circumstances that may prevent you from being considered for transplant)",
+        "title": "Contraindications/Modifiable Barriers to Transplant",
         "published": true,
         "order": 10,
         "parent": 12,
@@ -3768,12 +3858,12 @@
     "model": "resources.article",
     "pk": 14,
     "fields": {
-        "title": "Evaluation (e.g. testing, procedures, appointments with specialists)",
+        "title": "Evaluation Process",
         "published": true,
         "order": 20,
         "parent": 12,
-        "description": null,
-        "content": "<p><span style=\"color:black\">The transplant team will outline a list of specific steps that you will need to finish before you can be placed on the waiting list. The steps will be a combination of tests, procedures, and visits with medical providers. The goals of this &ldquo;evaluation&rdquo; are to: </span></p>\r\n\r\n<ol>\r\n\t<li>Better determine how much you can benefit from transplant</li>\r\n\t<li>Identify conditions that could be optimized to improve your chance of success with transplant.</li>\r\n\t<li>Identify conditions that could make transplant too risky (contraindications)</li>\r\n</ol>\r\n\r\n<p><span style=\"color:black\">Specific steps vary based on your age, medical history, how sick you are, the transplant program, and other factors. Some you may have already completed as part of routine CF care and the transplant team will need to gather records. Some can be done in your home town, but others may need to be done at the transplant center. Common steps for people with CF are listed in the table below:</span></p>\r\n\r\n<table cellspacing=\"0\" class=\"Table\" style=\"border-collapse:collapse; border:none; width:642px\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td style=\"border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:1px solid black; width:114px\">\r\n\t\t\t<p>Blood tests</p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:1px solid black; width:96px\">\r\n\t\t\t<p>Chest x-ray</p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:1px solid black; width:150px\">\r\n\t\t\t<p>Bone density scan</p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:1px solid black; width:102px\">\r\n\t\t\t<p>Visit(s) with transplant social worker</p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:1px solid black; width:180px\">\r\n\t\t\t<p>Visit(s) with a pharmacist</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td style=\"border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:none; width:114px\">\r\n\t\t\t<p>Pulmonary function tests</p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; width:96px\">\r\n\t\t\t<p>Chest CT scan</p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; width:150px\">\r\n\t\t\t<p>Dental examination</p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; width:102px\">\r\n\t\t\t<p>Visit(s) with a transplant financial counselor</p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; width:180px\">\r\n\t\t\t<p>Visit(s) with an otolaryngologist (ear, nose, and throat doctor) for sinus care</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td style=\"border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:none; width:114px\">\r\n\t\t\t<p>6-minute walk test</p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; width:96px\">\r\n\t\t\t<p>Abdominal imaging (ultrasound or CT)</p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; width:150px\">\r\n\t\t\t<p>Routine vaccinations</p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; width:102px\">\r\n\t\t\t<p>Visit(s) with transplant mental health provider</p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; width:180px\">\r\n\t\t\t<p>Visit(s) with an endocrinologist if you have diabetes or low bone density (osteopenia/osteoporosis)</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td style=\"border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:none; height:49px; width:114px\">\r\n\t\t\t<p>Echocardiogram</p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; height:49px; width:96px\">\r\n\t\t\t<p>Sinus imaging</p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; height:49px; width:150px\">\r\n\t\t\t<p>Updated cancer screening based on age and gender (colonoscopy, PAP smear, mammogram, prostate cancer testing, other)</p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; height:49px; width:102px\">\r\n\t\t\t<p>Visit(s) with transplant dietitian</p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; height:49px; width:180px\">\r\n\t\t\t<p>Visit(s) with a hepatologist (liver doctor) if there are signs of liver disease</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td style=\"border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:none; height:40px; width:114px\">\r\n\t\t\t<p>Heart catheterization</p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; height:40px; width:96px\">\r\n\t\t\t<p>Acid reflux testing</p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; height:40px; width:150px\">\r\n\t\t\t<p>Visit(s) with transplant pulmonologist</p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; height:40px; width:102px\">\r\n\t\t\t<p>Visit(s) with transplant surgeon</p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; height:40px; width:180px\">\r\n\t\t\t<p>Visit(s) with an allergist if you have medication allergies</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>"
+        "description": "The transplant team will outline a list of specific steps that you will need to finish before you can be placed on the waiting list.",
+        "content": "<p><span style=\"color:black\">The transplant team will outline a list of specific steps that you will need to finish before you can be placed on the waiting list. The steps will be a combination of tests, procedures, and visits with medical providers. The goals of this &ldquo;evaluation&rdquo; are to: </span></p>\r\n\r\n<ol>\r\n\t<li>Better determine how much you can benefit from transplant</li>\r\n\t<li>Identify conditions that could be optimized to improve your chance of success with transplant.</li>\r\n\t<li>Identify conditions that could make transplant too risky (contraindications)</li>\r\n</ol>\r\n\r\n<p><span style=\"color:black\">Specific steps vary based on your age, medical history, how sick you are, the transplant program, and other factors. Some you may have already completed as part of routine CF care and the transplant team will need to gather records. Some can be done in your home town, but others may need to be done at the transplant center. </span></p>\r\n\r\n<p><strong><span style=\"color:black\">Common steps in the evaluation process for people with CF are listed&nbsp;below:</span></strong></p>\r\n\r\n<p><u>Diagnostic Tests</u></p>\r\n\r\n<ul>\r\n\t<li>Blood tests</li>\r\n\t<li>Pulmonary function tests</li>\r\n\t<li>6-minute walk test</li>\r\n\t<li>Echocardiogram</li>\r\n\t<li>Heart catheterization</li>\r\n\t<li>Acid reflux testing</li>\r\n</ul>\r\n\r\n<p><u>Imaging</u></p>\r\n\r\n<ul>\r\n\t<li>Chest X-ray</li>\r\n\t<li>Chest CT scan</li>\r\n\t<li>Abdominal imaging (ultrasound or CT)</li>\r\n\t<li>Sinus imaging</li>\r\n\t<li>Bone density scan</li>\r\n</ul>\r\n\r\n<p><u>Health Maintenance</u></p>\r\n\r\n<ul>\r\n\t<li>Dental examination</li>\r\n\t<li>Routine vaccinations</li>\r\n\t<li>Updated cancer screening based on age and gender (colonoscopy, PAP smear, mammogram, prostate cancer testing, other)</li>\r\n</ul>\r\n\r\n<p><u>Specialist Visits</u></p>\r\n\r\n<ul>\r\n\t<li>Visit(s) with transplant pulmonologist</li>\r\n\t<li>Visit(s) with transplant social worker</li>\r\n\t<li>Visit(s) with a transplant financial counselor</li>\r\n\t<li>Visit(s) with transplant mental health provider</li>\r\n\t<li>Visit(s) with transplant dietitian</li>\r\n\t<li>Visit(s) with transplant surgeon</li>\r\n\t<li>Visit(s) with a pharmacist</li>\r\n\t<li>Visit(s) with an otolaryngologist (ear, nose, and throat doctor) for sinus care</li>\r\n\t<li>Visit(s) with an endocrinologist if you have diabetes or low bone density (osteopenia/osteoporosis)</li>\r\n\t<li>Visit(s) with a hepatologist (liver doctor if there are signs of liver disease</li>\r\n\t<li>Visit(s) with an allergist if you have medication allergies</li>\r\n</ul>"
     }
 },
 {
@@ -3784,7 +3874,7 @@
         "published": true,
         "order": 30,
         "parent": 12,
-        "description": null,
+        "description": "After you have finished your evaluation the transplant team will decide about putting you on the waiting list (“listing” you) for donor lungs. After you have been listed, waiting times for transplant vary based on how sick you are, your transplant program, your height/size, your blood type. Across the U.S., in 2018 half of listed people waited less than 2.5 months for lungs, and half waited longer than 2.5 months.",
         "content": "<p><span style=\"color:black\">After you have finished your evaluation the transplant team will decide about putting you on the waiting list (&ldquo;listing&rdquo; you). They will let you know whether you are listed, or whether you need to finish any additional steps to help decide whether transplant is the right decision for you at this time. Sometimes, especially if your CF lung disease has been stable, they may want to see you back in clinic at least once before listing you.&nbsp; </span></p>\r\n\r\n<p><span style=\"color:black\">After you&rsquo;ve been listed, waiting times for transplant vary based on how sick you are, your transplant program, your height/size, your blood type, and whether you have antibodies in the blood that could make you ineligible for some donor lungs. Across the U.S., in 2018 half of listed people waited less than 2.5 months for lungs, and half waited longer than 2.5 months, but this number varies a lot based on the transplant program and the other factors above. How sick you are is measured by the &ldquo;lung allocation score (LAS)&rdquo;, which is calculated based on your test results including lung function, oxygen requirement, blood tests, etc. The U.S. system&rsquo;s goal is to transplant the sickest patients (with the highest LAS) first. Across the U.S., about 10-20% of people on the waiting list die before receiving a transplant or become too sick and are removed from the list. As people get sicker from their lung disease, their LAS should increase to help improve their chance of getting lungs more quickly. </span></p>\r\n\r\n<p><span style=\"color:black\">While listed, you will follow up with your transplant center at least every 3 months. If you are very sick they may ask you to come more frequently. They will update tests and your LAS regularly. It is important to continue regular follow ups and communicate closely with your CF and transplant teams, especially if you feel like you are getting sicker or for other changes in your health. It is also important while listed to continue working on any modifiable barriers to transplant that you may have (see table above) including nutrition, physical conditioning, diabetes, etc. This will help improve your health while listed, help improve your chance of success with transplant, and make sure you remain a good candidate for transplant. </span></p>"
     }
 },
@@ -3793,7 +3883,7 @@
     "pk": 16,
     "fields": {
         "title": "Transplant Operation",
-        "published": true,
+        "published": false,
         "order": 160,
         "parent": null,
         "description": null,
@@ -3805,7 +3895,7 @@
     "pk": 17,
     "fields": {
         "title": "Surviving and thriving after transplant",
-        "published": true,
+        "published": false,
         "order": 170,
         "parent": null,
         "description": null,
@@ -3817,7 +3907,7 @@
     "pk": 18,
     "fields": {
         "title": "Mental health",
-        "published": true,
+        "published": false,
         "order": 180,
         "parent": null,
         "description": null,
@@ -3829,7 +3919,7 @@
     "pk": 19,
     "fields": {
         "title": "Highly Effective CFTR Modulators",
-        "published": true,
+        "published": false,
         "order": 190,
         "parent": null,
         "description": null,
@@ -3837,12 +3927,31 @@
     }
 },
 {
+    "model": "tags.tagcategory",
+    "pk": 1,
+    "fields": {
+        "name": "Gender",
+        "order": 1,
+        "published": true
+    }
+},
+{
+    "model": "tags.tagcategory",
+    "pk": 2,
+    "fields": {
+        "name": "Process",
+        "order": 20,
+        "published": true
+    }
+},
+{
     "model": "tags.tag",
     "pk": 1,
     "fields": {
         "name": "Example tag",
+        "order": null,
         "published": true,
-        "warning": false
+        "category": null
     }
 },
 {
@@ -3850,8 +3959,9 @@
     "pk": 2,
     "fields": {
         "name": "Warning Tag",
+        "order": null,
         "published": true,
-        "warning": true
+        "category": null
     }
 },
 {
@@ -3859,8 +3969,9 @@
     "pk": 3,
     "fields": {
         "name": "Other example tag",
+        "order": null,
         "published": true,
-        "warning": false
+        "category": null
     }
 },
 {
@@ -3868,8 +3979,9 @@
     "pk": 4,
     "fields": {
         "name": "Test Tag",
+        "order": null,
         "published": false,
-        "warning": false
+        "category": null
     }
 },
 {
@@ -3877,8 +3989,9 @@
     "pk": 5,
     "fields": {
         "name": "Good Outcome",
+        "order": null,
         "published": true,
-        "warning": false
+        "category": null
     }
 },
 {
@@ -3886,8 +3999,9 @@
     "pk": 6,
     "fields": {
         "name": "Fast Recovery",
+        "order": null,
         "published": true,
-        "warning": false
+        "category": null
     }
 },
 {
@@ -3895,8 +4009,9 @@
     "pk": 7,
     "fields": {
         "name": "Relocation",
+        "order": null,
         "published": true,
-        "warning": false
+        "category": null
     }
 },
 {
@@ -3904,8 +4019,9 @@
     "pk": 8,
     "fields": {
         "name": "Insurance",
+        "order": null,
         "published": true,
-        "warning": false
+        "category": null
     }
 },
 {
@@ -3913,8 +4029,9 @@
     "pk": 9,
     "fields": {
         "name": "Finances",
+        "order": null,
         "published": true,
-        "warning": false
+        "category": null
     }
 },
 {
@@ -3922,8 +4039,9 @@
     "pk": 10,
     "fields": {
         "name": "Mental Health",
+        "order": null,
         "published": true,
-        "warning": false
+        "category": null
     }
 },
 {
@@ -3931,8 +4049,9 @@
     "pk": 11,
     "fields": {
         "name": "Diabetes",
+        "order": null,
         "published": true,
-        "warning": false
+        "category": null
     }
 },
 {
@@ -3940,8 +4059,9 @@
     "pk": 12,
     "fields": {
         "name": "Markers of Disease Severity",
+        "order": null,
         "published": true,
-        "warning": false
+        "category": null
     }
 },
 {
@@ -3949,8 +4069,9 @@
     "pk": 13,
     "fields": {
         "name": "Caregiver Support",
+        "order": null,
         "published": true,
-        "warning": false
+        "category": null
     }
 },
 {
@@ -3958,8 +4079,9 @@
     "pk": 14,
     "fields": {
         "name": "Trikafta",
+        "order": null,
         "published": true,
-        "warning": false
+        "category": null
     }
 },
 {
@@ -3967,8 +4089,9 @@
     "pk": 15,
     "fields": {
         "name": "Dry Run",
+        "order": null,
         "published": true,
-        "warning": false
+        "category": null
     }
 },
 {
@@ -3976,8 +4099,9 @@
     "pk": 16,
     "fields": {
         "name": "Medications",
+        "order": null,
         "published": true,
-        "warning": false
+        "category": null
     }
 },
 {
@@ -3985,8 +4109,9 @@
     "pk": 17,
     "fields": {
         "name": "Oxygen",
+        "order": null,
         "published": true,
-        "warning": false
+        "category": null
     }
 },
 {
@@ -3994,8 +4119,9 @@
     "pk": 18,
     "fields": {
         "name": "BMI",
+        "order": null,
         "published": true,
-        "warning": false
+        "category": null
     }
 },
 {
@@ -4003,8 +4129,9 @@
     "pk": 19,
     "fields": {
         "name": "Exacerbations",
+        "order": null,
         "published": true,
-        "warning": false
+        "category": null
     }
 },
 {
@@ -4012,8 +4139,9 @@
     "pk": 20,
     "fields": {
         "name": "Hemoptysis",
+        "order": null,
         "published": true,
-        "warning": false
+        "category": null
     }
 },
 {
@@ -4021,8 +4149,9 @@
     "pk": 21,
     "fields": {
         "name": "Cancer",
+        "order": null,
         "published": true,
-        "warning": false
+        "category": null
     }
 },
 {
@@ -4030,8 +4159,9 @@
     "pk": 22,
     "fields": {
         "name": "Contraindications",
+        "order": null,
         "published": true,
-        "warning": false
+        "category": null
     }
 },
 {
@@ -4039,8 +4169,9 @@
     "pk": 23,
     "fields": {
         "name": "Bronchoscopy",
+        "order": null,
         "published": true,
-        "warning": false
+        "category": null
     }
 },
 {
@@ -4048,8 +4179,9 @@
     "pk": 24,
     "fields": {
         "name": "Recovery",
+        "order": null,
         "published": true,
-        "warning": false
+        "category": null
     }
 },
 {
@@ -4057,8 +4189,9 @@
     "pk": 25,
     "fields": {
         "name": "Preparing mentally and emotionally",
+        "order": null,
         "published": true,
-        "warning": false
+        "category": null
     }
 },
 {
@@ -4066,8 +4199,9 @@
     "pk": 26,
     "fields": {
         "name": "Listing",
+        "order": null,
         "published": true,
-        "warning": false
+        "category": null
     }
 },
 {
@@ -4075,8 +4209,9 @@
     "pk": 27,
     "fields": {
         "name": "Lung Allocation Score (LAS)",
+        "order": null,
         "published": true,
-        "warning": false
+        "category": null
     }
 },
 {
@@ -4084,8 +4219,261 @@
     "pk": 28,
     "fields": {
         "name": "Liver-Lung Transplant",
+        "order": null,
         "published": true,
-        "warning": false
+        "category": null
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 29,
+    "fields": {
+        "name": "Evaluation",
+        "order": 290,
+        "published": true,
+        "category": null
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 30,
+    "fields": {
+        "name": "Male",
+        "order": 20,
+        "published": true,
+        "category": 1
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 31,
+    "fields": {
+        "name": "Female",
+        "order": 10,
+        "published": true,
+        "category": 1
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 32,
+    "fields": {
+        "name": "Pre-Transplant and Evaluation",
+        "order": 10,
+        "published": true,
+        "category": 2
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 33,
+    "fields": {
+        "name": "Call, Transplant, and Recovery",
+        "order": 20,
+        "published": true,
+        "category": 2
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 34,
+    "fields": {
+        "name": "Post-Transplant",
+        "order": 30,
+        "published": true,
+        "category": 2
+    }
+},
+{
+    "model": "tags.taggedcontent",
+    "pk": 3,
+    "fields": {
+        "tag": 31,
+        "content_type": [
+            "patients",
+            "patient"
+        ],
+        "object_id": 11
+    }
+},
+{
+    "model": "tags.taggedcontent",
+    "pk": 4,
+    "fields": {
+        "tag": 31,
+        "content_type": [
+            "patients",
+            "patient"
+        ],
+        "object_id": 10
+    }
+},
+{
+    "model": "tags.taggedcontent",
+    "pk": 5,
+    "fields": {
+        "tag": 31,
+        "content_type": [
+            "patients",
+            "patient"
+        ],
+        "object_id": 9
+    }
+},
+{
+    "model": "tags.taggedcontent",
+    "pk": 6,
+    "fields": {
+        "tag": 30,
+        "content_type": [
+            "patients",
+            "patient"
+        ],
+        "object_id": 8
+    }
+},
+{
+    "model": "tags.taggedcontent",
+    "pk": 7,
+    "fields": {
+        "tag": 30,
+        "content_type": [
+            "patients",
+            "patient"
+        ],
+        "object_id": 7
+    }
+},
+{
+    "model": "tags.taggedcontent",
+    "pk": 8,
+    "fields": {
+        "tag": 31,
+        "content_type": [
+            "patients",
+            "patient"
+        ],
+        "object_id": 6
+    }
+},
+{
+    "model": "tags.taggedcontent",
+    "pk": 9,
+    "fields": {
+        "tag": 30,
+        "content_type": [
+            "patients",
+            "patient"
+        ],
+        "object_id": 5
+    }
+},
+{
+    "model": "tags.taggedcontent",
+    "pk": 10,
+    "fields": {
+        "tag": 31,
+        "content_type": [
+            "patients",
+            "patient"
+        ],
+        "object_id": 3
+    }
+},
+{
+    "model": "tags.taggedcontent",
+    "pk": 11,
+    "fields": {
+        "tag": 32,
+        "content_type": [
+            "faqs",
+            "frequentlyaskedquestion"
+        ],
+        "object_id": 1
+    }
+},
+{
+    "model": "tags.taggedcontent",
+    "pk": 12,
+    "fields": {
+        "tag": 32,
+        "content_type": [
+            "faqs",
+            "frequentlyaskedquestion"
+        ],
+        "object_id": 3
+    }
+},
+{
+    "model": "tags.taggedcontent",
+    "pk": 13,
+    "fields": {
+        "tag": 32,
+        "content_type": [
+            "faqs",
+            "frequentlyaskedquestion"
+        ],
+        "object_id": 5
+    }
+},
+{
+    "model": "tags.taggedcontent",
+    "pk": 14,
+    "fields": {
+        "tag": 32,
+        "content_type": [
+            "faqs",
+            "frequentlyaskedquestion"
+        ],
+        "object_id": 6
+    }
+},
+{
+    "model": "tags.taggedcontent",
+    "pk": 15,
+    "fields": {
+        "tag": 32,
+        "content_type": [
+            "faqs",
+            "frequentlyaskedquestion"
+        ],
+        "object_id": 7
+    }
+},
+{
+    "model": "tags.taggedcontent",
+    "pk": 16,
+    "fields": {
+        "tag": 33,
+        "content_type": [
+            "faqs",
+            "frequentlyaskedquestion"
+        ],
+        "object_id": 8
+    }
+},
+{
+    "model": "tags.taggedcontent",
+    "pk": 17,
+    "fields": {
+        "tag": 34,
+        "content_type": [
+            "faqs",
+            "frequentlyaskedquestion"
+        ],
+        "object_id": 9
+    }
+},
+{
+    "model": "tags.taggedcontent",
+    "pk": 18,
+    "fields": {
+        "tag": 34,
+        "content_type": [
+            "faqs",
+            "frequentlyaskedquestion"
+        ],
+        "object_id": 10
     }
 },
 {
@@ -4488,6 +4876,13 @@
     }
 },
 {
+    "model": "website.relateditemslist",
+    "pk": 67,
+    "fields": {
+        "name": "question-15"
+    }
+},
+{
     "model": "website.relateditem",
     "pk": 13,
     "fields": {
@@ -4606,36 +5001,10 @@
 },
 {
     "model": "website.relateditem",
-    "pk": 22,
-    "fields": {
-        "item_list": 13,
-        "order": 1,
-        "content_type": [
-            "patients",
-            "patient"
-        ],
-        "object_id": 6
-    }
-},
-{
-    "model": "website.relateditem",
-    "pk": 23,
-    "fields": {
-        "item_list": 13,
-        "order": 2,
-        "content_type": [
-            "resources",
-            "article"
-        ],
-        "object_id": 18
-    }
-},
-{
-    "model": "website.relateditem",
     "pk": 24,
     "fields": {
         "item_list": 13,
-        "order": 2,
+        "order": 30,
         "content_type": [
             "faqs",
             "frequentlyaskedquestion"
@@ -4654,32 +5023,6 @@
             "patient"
         ],
         "object_id": 7
-    }
-},
-{
-    "model": "website.relateditem",
-    "pk": 26,
-    "fields": {
-        "item_list": 14,
-        "order": 2,
-        "content_type": [
-            "resources",
-            "article"
-        ],
-        "object_id": 3
-    }
-},
-{
-    "model": "website.relateditem",
-    "pk": 27,
-    "fields": {
-        "item_list": 14,
-        "order": 2,
-        "content_type": [
-            "faqs",
-            "frequentlyaskedquestion"
-        ],
-        "object_id": 8
     }
 },
 {
@@ -4723,45 +5066,6 @@
 },
 {
     "model": "website.relateditem",
-    "pk": 31,
-    "fields": {
-        "item_list": 16,
-        "order": 1,
-        "content_type": [
-            "patients",
-            "patient"
-        ],
-        "object_id": 6
-    }
-},
-{
-    "model": "website.relateditem",
-    "pk": 32,
-    "fields": {
-        "item_list": 16,
-        "order": 2,
-        "content_type": [
-            "resources",
-            "article"
-        ],
-        "object_id": 15
-    }
-},
-{
-    "model": "website.relateditem",
-    "pk": 33,
-    "fields": {
-        "item_list": 16,
-        "order": 2,
-        "content_type": [
-            "faqs",
-            "frequentlyaskedquestion"
-        ],
-        "object_id": 5
-    }
-},
-{
-    "model": "website.relateditem",
     "pk": 34,
     "fields": {
         "item_list": 17,
@@ -4771,19 +5075,6 @@
             "patient"
         ],
         "object_id": 3
-    }
-},
-{
-    "model": "website.relateditem",
-    "pk": 35,
-    "fields": {
-        "item_list": 17,
-        "order": 2,
-        "content_type": [
-            "resources",
-            "article"
-        ],
-        "object_id": 6
     }
 },
 {
@@ -5931,6 +6222,149 @@
     }
 },
 {
+    "model": "website.relateditem",
+    "pk": 125,
+    "fields": {
+        "item_list": 16,
+        "order": 20,
+        "content_type": [
+            "resources",
+            "article"
+        ],
+        "object_id": 1
+    }
+},
+{
+    "model": "website.relateditem",
+    "pk": 126,
+    "fields": {
+        "item_list": 13,
+        "order": 10,
+        "content_type": [
+            "patients",
+            "patient"
+        ],
+        "object_id": 8
+    }
+},
+{
+    "model": "website.relateditem",
+    "pk": 127,
+    "fields": {
+        "item_list": 13,
+        "order": 20,
+        "content_type": [
+            "resources",
+            "article"
+        ],
+        "object_id": 12
+    }
+},
+{
+    "model": "website.relateditem",
+    "pk": 128,
+    "fields": {
+        "item_list": 16,
+        "order": 30,
+        "content_type": [
+            "faqs",
+            "frequentlyaskedquestion"
+        ],
+        "object_id": 7
+    }
+},
+{
+    "model": "website.relateditem",
+    "pk": 129,
+    "fields": {
+        "item_list": 16,
+        "order": 10,
+        "content_type": [
+            "patients",
+            "patient"
+        ],
+        "object_id": 5
+    }
+},
+{
+    "model": "website.relateditem",
+    "pk": 130,
+    "fields": {
+        "item_list": 14,
+        "order": 40,
+        "content_type": [
+            "resources",
+            "article"
+        ],
+        "object_id": 12
+    }
+},
+{
+    "model": "website.relateditem",
+    "pk": 131,
+    "fields": {
+        "item_list": 14,
+        "order": 40,
+        "content_type": [
+            "faqs",
+            "frequentlyaskedquestion"
+        ],
+        "object_id": 9
+    }
+},
+{
+    "model": "website.relateditem",
+    "pk": 132,
+    "fields": {
+        "item_list": 17,
+        "order": 40,
+        "content_type": [
+            "resources",
+            "article"
+        ],
+        "object_id": 7
+    }
+},
+{
+    "model": "website.relateditem",
+    "pk": 133,
+    "fields": {
+        "item_list": 64,
+        "order": 30,
+        "content_type": [
+            "faqs",
+            "frequentlyaskedquestion"
+        ],
+        "object_id": 7
+    }
+},
+{
+    "model": "website.relateditem",
+    "pk": 134,
+    "fields": {
+        "item_list": 64,
+        "order": 10,
+        "content_type": [
+            "patients",
+            "patient"
+        ],
+        "object_id": 7
+    }
+},
+{
+    "model": "website.relateditem",
+    "pk": 135,
+    "fields": {
+        "item_list": 64,
+        "order": 20,
+        "content_type": [
+            "resources",
+            "article"
+        ],
+        "object_id": 1
+    }
+},
+{
     "model": "website.studysession",
     "pk": 1,
     "fields": {
@@ -6378,6 +6812,486 @@
         "high_agency_version": true,
         "integrated_content_version": false,
         "start": "2021-02-22T19:00:57.650Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 46,
+    "fields": {
+        "persona": "tamika",
+        "high_agency_version": false,
+        "integrated_content_version": true,
+        "start": "2021-02-23T13:27:14.907Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 47,
+    "fields": {
+        "persona": "marco",
+        "high_agency_version": true,
+        "integrated_content_version": false,
+        "start": "2021-02-23T13:27:20.589Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 48,
+    "fields": {
+        "persona": "marco",
+        "high_agency_version": true,
+        "integrated_content_version": false,
+        "start": "2021-02-23T17:01:53.698Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 49,
+    "fields": {
+        "persona": "tamika",
+        "high_agency_version": false,
+        "integrated_content_version": true,
+        "start": "2021-02-23T17:01:57.629Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 50,
+    "fields": {
+        "persona": "marco",
+        "high_agency_version": true,
+        "integrated_content_version": false,
+        "start": "2021-02-23T17:03:01.384Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 51,
+    "fields": {
+        "persona": "tamika",
+        "high_agency_version": false,
+        "integrated_content_version": true,
+        "start": "2021-02-23T17:55:06.720Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 52,
+    "fields": {
+        "persona": "marco",
+        "high_agency_version": true,
+        "integrated_content_version": false,
+        "start": "2021-02-23T18:01:34.820Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 53,
+    "fields": {
+        "persona": "marco",
+        "high_agency_version": false,
+        "integrated_content_version": true,
+        "start": "2021-02-23T18:09:46.617Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 54,
+    "fields": {
+        "persona": "tamika",
+        "high_agency_version": true,
+        "integrated_content_version": false,
+        "start": "2021-02-23T18:20:05.216Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 55,
+    "fields": {
+        "persona": "marco",
+        "high_agency_version": false,
+        "integrated_content_version": true,
+        "start": "2021-02-23T18:32:20.128Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 56,
+    "fields": {
+        "persona": "tamika",
+        "high_agency_version": true,
+        "integrated_content_version": false,
+        "start": "2021-02-23T18:35:44.603Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 57,
+    "fields": {
+        "persona": "marco",
+        "high_agency_version": false,
+        "integrated_content_version": true,
+        "start": "2021-02-23T18:37:35.601Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 58,
+    "fields": {
+        "persona": "marco",
+        "high_agency_version": false,
+        "integrated_content_version": true,
+        "start": "2021-02-23T18:59:55.165Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 59,
+    "fields": {
+        "persona": "marco",
+        "high_agency_version": false,
+        "integrated_content_version": true,
+        "start": "2021-02-23T22:12:03.759Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 60,
+    "fields": {
+        "persona": "marco",
+        "high_agency_version": false,
+        "integrated_content_version": true,
+        "start": "2021-02-23T22:12:45.034Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 61,
+    "fields": {
+        "persona": "marco",
+        "high_agency_version": false,
+        "integrated_content_version": true,
+        "start": "2021-02-23T22:44:24.238Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 62,
+    "fields": {
+        "persona": "tamika",
+        "high_agency_version": true,
+        "integrated_content_version": false,
+        "start": "2021-02-23T22:59:36.728Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 63,
+    "fields": {
+        "persona": "tamika",
+        "high_agency_version": true,
+        "integrated_content_version": false,
+        "start": "2021-02-23T23:20:46.634Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 64,
+    "fields": {
+        "persona": "tamika",
+        "high_agency_version": true,
+        "integrated_content_version": false,
+        "start": "2021-02-23T23:40:05.879Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 65,
+    "fields": {
+        "persona": "marco",
+        "high_agency_version": false,
+        "integrated_content_version": true,
+        "start": "2021-02-23T23:43:13.804Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 66,
+    "fields": {
+        "persona": "tamika",
+        "high_agency_version": true,
+        "integrated_content_version": false,
+        "start": "2021-02-23T23:46:50.060Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 67,
+    "fields": {
+        "persona": "marco",
+        "high_agency_version": false,
+        "integrated_content_version": true,
+        "start": "2021-02-23T23:46:56.156Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 68,
+    "fields": {
+        "persona": "marco",
+        "high_agency_version": false,
+        "integrated_content_version": true,
+        "start": "2021-02-23T23:47:12.228Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 69,
+    "fields": {
+        "persona": "tamika",
+        "high_agency_version": true,
+        "integrated_content_version": false,
+        "start": "2021-02-24T00:02:43.672Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 70,
+    "fields": {
+        "persona": "marco",
+        "high_agency_version": false,
+        "integrated_content_version": true,
+        "start": "2021-02-24T00:54:29.587Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 71,
+    "fields": {
+        "persona": "tamika",
+        "high_agency_version": true,
+        "integrated_content_version": false,
+        "start": "2021-02-24T00:59:37.412Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 72,
+    "fields": {
+        "persona": "marco",
+        "high_agency_version": false,
+        "integrated_content_version": true,
+        "start": "2021-02-24T01:00:31.274Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 73,
+    "fields": {
+        "persona": "marco",
+        "high_agency_version": false,
+        "integrated_content_version": true,
+        "start": "2021-02-24T01:08:28.260Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 74,
+    "fields": {
+        "persona": "marco",
+        "high_agency_version": false,
+        "integrated_content_version": true,
+        "start": "2021-02-24T01:08:32.770Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 75,
+    "fields": {
+        "persona": "tamika",
+        "high_agency_version": true,
+        "integrated_content_version": false,
+        "start": "2021-02-24T01:08:40.834Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 76,
+    "fields": {
+        "persona": "marco",
+        "high_agency_version": false,
+        "integrated_content_version": true,
+        "start": "2021-02-24T01:23:49.176Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 77,
+    "fields": {
+        "persona": "marco",
+        "high_agency_version": false,
+        "integrated_content_version": true,
+        "start": "2021-02-24T01:29:14.391Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 78,
+    "fields": {
+        "persona": "tamika",
+        "high_agency_version": true,
+        "integrated_content_version": false,
+        "start": "2021-02-24T01:29:40.681Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 79,
+    "fields": {
+        "persona": "marco",
+        "high_agency_version": false,
+        "integrated_content_version": true,
+        "start": "2021-02-24T05:05:14.237Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 80,
+    "fields": {
+        "persona": "marco",
+        "high_agency_version": false,
+        "integrated_content_version": true,
+        "start": "2021-02-24T06:46:18.207Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 81,
+    "fields": {
+        "persona": "tamika",
+        "high_agency_version": true,
+        "integrated_content_version": false,
+        "start": "2021-02-24T06:58:56.529Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 82,
+    "fields": {
+        "persona": "marco",
+        "high_agency_version": false,
+        "integrated_content_version": true,
+        "start": "2021-02-24T16:54:39.572Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 83,
+    "fields": {
+        "persona": "tamika",
+        "high_agency_version": true,
+        "integrated_content_version": false,
+        "start": "2021-02-24T16:56:22.661Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 84,
+    "fields": {
+        "persona": "marco",
+        "high_agency_version": false,
+        "integrated_content_version": true,
+        "start": "2021-02-24T17:39:58.003Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 85,
+    "fields": {
+        "persona": "marco",
+        "high_agency_version": false,
+        "integrated_content_version": true,
+        "start": "2021-02-24T19:28:06.199Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 86,
+    "fields": {
+        "persona": "tamika",
+        "high_agency_version": true,
+        "integrated_content_version": false,
+        "start": "2021-02-24T21:18:13.975Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 119,
+    "fields": {
+        "persona": "marco",
+        "high_agency_version": false,
+        "integrated_content_version": true,
+        "start": "2021-02-25T22:41:46.145Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 120,
+    "fields": {
+        "persona": "marco",
+        "high_agency_version": false,
+        "integrated_content_version": true,
+        "start": "2021-02-26T21:02:09.324Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 121,
+    "fields": {
+        "persona": "tamika",
+        "high_agency_version": true,
+        "integrated_content_version": false,
+        "start": "2021-02-26T21:02:44.669Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 122,
+    "fields": {
+        "persona": "tamika",
+        "high_agency_version": true,
+        "integrated_content_version": false,
+        "start": "2021-02-26T21:03:06.938Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 123,
+    "fields": {
+        "persona": "marco",
+        "high_agency_version": false,
+        "integrated_content_version": true,
+        "start": "2021-02-26T21:05:10.798Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 124,
+    "fields": {
+        "persona": "tamika",
+        "high_agency_version": true,
+        "integrated_content_version": false,
+        "start": "2021-02-26T21:13:32.837Z"
+    }
+},
+{
+    "model": "website.studysession",
+    "pk": 125,
+    "fields": {
+        "persona": "tamika",
+        "high_agency_version": true,
+        "integrated_content_version": false,
+        "start": "2021-02-26T21:50:02.337Z"
     }
 }
 ]

@@ -17,6 +17,7 @@ from patients.models import Patient
 from patients.models import PatientStory
 from patients.models import PatientStoryHighlight
 from patients.views import PatientStoryView as OGPatientStoryView
+from study_sessions.models import StudySession
 from tags.models import TaggedContent
 from tags.models import TagCategory
 
@@ -24,9 +25,6 @@ from .forms import WebsiteConfigurationForm
 from .forms import MyCFStageForm
 from .models import RelatedItem
 from .models import RelatedItemsList
-from .models import StudySession
-
-
 
 class BaseWebsiteView(TemplateView):
 

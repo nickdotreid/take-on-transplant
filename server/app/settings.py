@@ -24,10 +24,11 @@ INSTALLED_APPS = [
     'admin_ordering',
     'ckeditor',
     'tags',
-    'highlights',
     'resources',
     'patients',
     'faqs',
+    'study_sessions',
+    'highlights',
     'website'
 ]
 

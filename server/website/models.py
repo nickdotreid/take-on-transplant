@@ -35,17 +35,3 @@ class RelatedItem(models.Model):
         if not self.order:
             self.order = (RelatedItem.objects.filter(item_list=self.item_list).count() + 1) * 10
         super().save(*args, **kwargs)
-
-class StudySession(models.Model):
-
-    persona = models.CharField(
-        max_length=150,
-        null=True
-    )
-    
-    high_agency_version = models.BooleanField()
-    integrated_content_version = models.BooleanField()
-
-    start = models.DateTimeField(
-        auto_now_add=True
-    )

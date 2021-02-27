@@ -95,6 +95,14 @@ function selectionChange() {
         highlightButton.remove();
         selection.collapseToEnd();
 
+        var request = new XMLHttpRequest()
+        var csrf_token = document.querySelector("input[name='csrfmiddlewaretoken']").value;
+        request.addEventListener("load", function(event) {
+            console.log('loaded');
+        })
+        request.open("POST", "/highlights");
+        request.setRequestHeader('X-CSRFToken', csrf_token);
+        request.send();
         // var highlight = document.createElement('span');
         // highlight.classList.add('highlight');
         // range.surroundContents(highlight);

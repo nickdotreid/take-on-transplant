@@ -30,11 +30,12 @@ class Highlight(models.Model):
         on_delete = models.CASCADE,
         null = True
     )
-
     text = models.CharField(
         max_length=500,
         null=True
     )
+    
+    deleted = models.BooleanField(default=False)
     
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now_add=True)

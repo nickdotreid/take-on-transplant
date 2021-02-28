@@ -82,3 +82,16 @@ class HighlightDetailsView(View):
             else:
                 return HttpResponseBadRequest('Errors in form')        
         return HttpResponseBadRequest('Bad form')
+    
+    def delete(self, request, highlight_id, *args, **kwargs):
+        highlight = self.get_highlight(highlight_id)
+        if request.is_ajax:
+            data = json.loads(request.body)
+            if 'content' in data and highlight.content:
+                highlight.content.content = data['content']
+                highlight.content.save()
+            highlight.deleted = True
+            highlight.save()
+            return HttpResponse('Ok')
+        return HttpResponseBadRequest('Not ajax')
+

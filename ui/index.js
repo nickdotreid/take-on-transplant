@@ -1,6 +1,7 @@
 import tippy, {followCursor, hideAll} from 'tippy.js';
 import Sortable from 'sortablejs';
 import {ContentHighlighter} from './content-highlighter.js'
+import {Highlight} from './content-highlighter.js'
 
 function registerPopovers() {
     document.querySelectorAll('[data-toggle="popover"]').forEach((element) => {
@@ -66,7 +67,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
     if(document.querySelector("input[name='csrfmiddlewaretoken']")) {
         var csrfToken = document.querySelector("input[name='csrfmiddlewaretoken']").value;
-        new ContentHighlighter(csrfToken);
+        var content_highlighter = new ContentHighlighter(csrfToken);
+        document.querySelectorAll('.highlight[highlight-id]').forEach((element) => {
+            var highlight_id = element.getAttribute('highlight-id');
+            new Highlight(content_highlighter,highlight_id,element);
+        });
     }
 
 });

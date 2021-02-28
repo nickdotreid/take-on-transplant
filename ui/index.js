@@ -1,7 +1,6 @@
-import Sticky from 'sticky-js'
 import tippy, {followCursor, hideAll} from 'tippy.js';
 import Sortable from 'sortablejs';
-import {setupHighligher} from './content-highlighter.js'
+import {ContentHighlighter} from './content-highlighter.js'
 
 function registerPopovers() {
     document.querySelectorAll('[data-toggle="popover"]').forEach((element) => {
@@ -55,27 +54,20 @@ function setupActiveLinks() {
     });
 }
 
-function setupStickyElements() {
-
-    new Sticky('.is-sticky', {
-        wrap: true,
-        stickyClass: 'is-stuck'
-    });
-
-}
-
 function makeSortableLists() {
-    console.log('hi')
     document.querySelectorAll('.sortable').forEach(function(element) {
         new Sortable(element);
-        console.log('sort me!');
-    })
+    });
 }
 
 window.addEventListener('DOMContentLoaded', () => {
     registerPopovers();
-    // setupStickyElements();
     setupActiveLinks();
-    setupHighligher();
     makeSortableLists();
+
+    if(document.querySelector("input[name='csrfmiddlewaretoken']")) {
+        var csrfToken = document.querySelector("input[name='csrfmiddlewaretoken']").value;
+        new ContentHighlighter(csrfToken);
+    }
+
 });

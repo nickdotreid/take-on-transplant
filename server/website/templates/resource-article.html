@@ -1,12 +1,12 @@
 <article>
-    <section id="article-{{article.id}}">
+    <section id="article-{{article.id}}" content-id="resource-{{article.id}}">
     <h1>{{article.title}}</h1>
     {% autoescape off %}
     {{article.content}}
     {% endautoescape %}
     </section>
     {% for child_article in article.children %}
-    <section id="article-{{child_article.id}}">
+    <section id="article-{{child_article.id}}" content-id="resource-{{article.id}}">
         <h2>{{child_article.title}}</h2>
         {% if child_article.description %}
         <p>{{child_article.description}}</p>

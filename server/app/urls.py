@@ -15,6 +15,7 @@ from django.forms import EmailField
 from django.urls import path
 
 from highlights.views import HighlightsView
+from highlights.views import HighlightDetailsView
 from website.views import PatientStoryView
 from website.views import HomePageView
 from website.views import PatientStoryListView
@@ -74,7 +75,8 @@ urlpatterns = [
     path('reset-password/complete/', PasswordResetCompleteView.as_view(), name='password_reset_complete'),
     path('reset-password/sent/', PasswordResetDoneView.as_view(), name='password_reset_done'),
     path('reset-password/', PasswordResetView.as_view(), name='password_reset'),
-    path('highlights', HighlightsView.as_view(), name='highlights'),
+    path('highlights/<highlight_id>', HighlightDetailsView.as_view(), name='highlight'),
+    path('highlights', HighlightsView.as_view(), name='highlight-list'),
     path('related-content/<content_type>/<content_id>/reorder', ReorderRelatedContent.as_view(), name='reorder-related-content'),
     path('related-content/<content_type>/<content_id>', RelatedContentView.as_view(), name='related-content'),
     path('questions/<question_id>', FrequentlyAskedQuestionView.as_view(), name='question'),

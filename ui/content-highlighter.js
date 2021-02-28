@@ -1,6 +1,23 @@
 
 function save_highlight_content(highlightId) {
+    if (!document.querySelector("input[name='csrfmiddlewaretoken']")) return;
+    var csrf_token = document.querySelector("input[name='csrfmiddlewaretoken']").value;
     console.log("Now save the content object that the highlight is a part of...", highlightId);
+
+    var highlight = document.querySelector(`[highlight-id="${highlightId}"]`);
+    if (!highlight) return;
+    var content_container = highlight.closest('[content-id]');
+    
+    var request = new XMLHttpRequest();
+    request.responseType = 'json';
+    request.open("POST", `/highlights/${highlightId}`);
+    request.setRequestHeader('content-type', 'application/json');
+    request.setRequestHeader('X-CSRFToken', csrf_token);
+    request.send(JSON.stringify({
+        'text': highlight.innerText,
+        'contentId': content_container.getAttribute('content-id'),
+        'content': content_container.innerHTML
+    }));
 }
 
 function remove_highlight(highlightId) {
@@ -24,6 +41,8 @@ function highlight_text_as(highlightId, range) {
 }
 
 function make_highlight(range) {
+    if (!document.querySelector("input[name='csrfmiddlewaretoken']")) return;
+
     var request = new XMLHttpRequest()
     request.responseType = 'json';
     var csrf_token = document.querySelector("input[name='csrfmiddlewaretoken']").value;

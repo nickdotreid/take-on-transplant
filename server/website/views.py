@@ -28,6 +28,12 @@ from .models import RelatedItemsList
 
 class BaseWebsiteView(TemplateView):
 
+    CONTENT_TYPES = {
+        'patient': Patient,
+        'question': FrequentlyAskedQuestion,
+        'resource': Article
+    }
+
     study_session = None
 
     show_top_navigation = True
@@ -104,6 +110,42 @@ class BaseWebsiteView(TemplateView):
             if rendered:
                 rendered_content.append(rendered)
         return rendered_content
+
+    def get_content_id(self, content_object):
+        for key, model in self.CONTENT_TYPES.items():
+            if isinstance(content_object, model):
+                return '{key}-{id}'.format(
+                    key=key,
+                    id = content_object.id
+                )
+        return None
+    
+    def get_content_from_id(self, content_id):
+        content_type, content_id = content_id.split('-')
+        if content_type in self.CONTENT_TYPES:
+            _model = self.CONTENT_TYPES[content_type]
+            try:
+                return _model.objects.get(id=content_id)
+            except _model.DoesNotExist:
+                pass
+        return None
+
+    def get_content_url(self, content_object):
+        for key, model in self.CONTENT_TYPES.items():
+            if isinstance(content_object, model):
+                if key == 'question':
+                    return reverse('question', kwargs={
+                        'question_id': content_object.id
+                    })
+                if key == 'resource':
+                    return reverse('resource-article', kwargs={
+                        'article_id': content_object.id
+                    })
+                if key == 'patient':
+                    return reverse('patient-story', kwargs={
+                        'patient_id': content_object.id
+                    })
+        return None
 
     def render_content(self, content):
         if isinstance(content, FrequentlyAskedQuestion):
@@ -613,12 +655,6 @@ class RelatedContentView(BaseWebsiteView):
 
     template_name = 'add-related-content-page.html'
 
-    CONTENT_TYPES = {
-        'patient': Patient,
-        'question': FrequentlyAskedQuestion,
-        'resource': Article
-    }
-
     def get_question(self, question_id):
         try:
             return FrequentlyAskedQuestion.objects.get(id=question_id)
@@ -686,42 +722,6 @@ class RelatedContentView(BaseWebsiteView):
                     return self.serialize_patient(content_object)
                 if key == 'resource':
                     return self.serialize_resource(content_object)
-
-    def get_content_id(self, content_object):
-        for key, model in self.CONTENT_TYPES.items():
-            if isinstance(content_object, model):
-                return '{key}-{id}'.format(
-                    key=key,
-                    id = content_object.id
-                )
-        return None
-    
-    def get_content_from_id(self, content_id):
-        content_type, content_id = content_id.split('-')
-        if content_type in self.CONTENT_TYPES:
-            _model = self.CONTENT_TYPES[content_type]
-            try:
-                return _model.objects.get(id=content_id)
-            except _model.DoesNotExist:
-                pass
-        return None
-
-    def get_content_url(self, content_object):
-        for key, model in self.CONTENT_TYPES.items():
-            if isinstance(content_object, model):
-                if key == 'question':
-                    return reverse('question', kwargs={
-                        'question_id': content_object.id
-                    })
-                if key == 'resource':
-                    return reverse('resource-article', kwargs={
-                        'article_id': content_object.id
-                    })
-                if key == 'patient':
-                    return reverse('patient-story', kwargs={
-                        'patient_id': content_object.id
-                    })
-        return None
 
     def get_context_data(self, content_type, content_id, **kwargs):
         context = super().get_context_data(**kwargs)

@@ -1,21 +1,8 @@
-<article>
-    <section id="article-{{article.id}}" content-id="resource-{{article.id}}">
-    <h1>{{article.title}}</h1>
-    {% autoescape off %}
-    {{article.content}}
-    {% endautoescape %}
-    </section>
-    {% for child_article in article.children %}
-    <section id="article-{{child_article.id}}" content-id="resource-{{article.id}}">
-        <h2>{{child_article.title}}</h2>
-        {% if child_article.description %}
-        <p>{{child_article.description}}</p>
-        {% endif %}
-        {% if child_article.content %}
-        {% autoescape off %}
-        {{child_article.content}}
-        {% endautoescape %}
-        {% endif %}
-    </section>
-    {% endfor %}
-</article>
+{% if article.parent %}
+<h2>{{article.title}}</h2>
+{% else %}
+<h1>{{article.title}}</h1>
+{% endif %}
+{% autoescape off %}
+{{article.content}}
+{% endautoescape %}

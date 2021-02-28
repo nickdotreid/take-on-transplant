@@ -13,6 +13,7 @@ from django.contrib.contenttypes.models import ContentType
 from resources.models import Article
 from faqs.models import FrequentlyAskedQuestion
 from faqs.models import Category as FAQCategory
+from highlights.models import HighlightedContent
 from patients.models import Patient
 from patients.models import PatientStory
 from patients.models import PatientStoryHighlight
@@ -499,16 +500,46 @@ class PatientStoryView(ContentPageView):
 
     def render_patient_story(self, patient_story):
         content = self.remove_links_from_content(patient_story.content)
-        return render_to_string('story-partial.html', {
+        rendered = render_to_string('story-partial.html', {
             'id': patient_story.id,
             'title': patient_story.title,
             'content': content
         })
+        try:
+            highlighted_content = HighlightedContent.objects.get(
+                session = self.study_session,
+                content_id = 'patient-story-%d' % (patient_story.id)
+            )
+            rendered = highlighted_content.content
+        except HighlightedContent.DoesNotExist:
+            pass
+
+        return '<article id="{content_id}" class="{content_type}" content-id="{content_id}">{content}</article>'.format(
+            content_id = 'patient-story-%d' % (patient_story.id),
+            content_type = 'patient-story',
+            content = rendered
+        )
     
     def render_patient_attributes(self, patient):
         return render_to_string('patient-attributes-list.html', {
             'patient': patient
         })
+
+    def render_nav_items(self, patient_stories):
+        for story in patient_stories:
+            yield {
+                'name': story.title,
+                'id': 'story-%d' % (story.id)
+            }
+
+    def render_page_contents(self, patient, patient_stories):
+        contents =[
+            '<h1 id="top">%s</h1>' % (patient.name),
+            self.render_patient_attributes(patient)
+        ]
+        
+        contents += [self.render_patient_story(story) for story in patient_stories]
+        return contents  
 
     def get_context_data(self, patient_id, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -517,19 +548,13 @@ class PatientStoryView(ContentPageView):
         except Patient.DoesNotExist:
             raise Http404('Patient not found')
 
-        patient_story_sections = patient.get_stories()
+        patient_stories = patient.get_stories()
 
-        context['nav_items'] = []
-        for story in patient_story_sections:
-            context['nav_items'].append({
-                'name': story.title,
-                'id': 'story-%d' % (story.id)
-            })
-        
+        context['nav_items'] = self.render_nav_items(patient_stories)        
         context['content_type'] = 'patient'
         context['content_id'] = patient.id
         context['page_title'] = patient.name
-        context['content_items'] = ['<h1 id="top">%s</h1>' % (patient.name), self.render_patient_attributes(patient)] + [self.render_patient_story(story) for story in patient_story_sections]
+        context['content_items'] = self.render_page_contents(patient, patient_stories)
         context['related_content'] = self.render_related_content(patient)
         return context
 
@@ -559,10 +584,23 @@ class ResourceArticleView(ContentPageView):
 
     current_navigation_item = 'resource-library'
 
-    def render_article_page(self, article):
-        return render_to_string('resource-article.html', {
+    def render_article(self, article):
+        rendered = render_to_string('resource-article.html', {
             'article': article
         })
+        try:
+            highlighted_content = HighlightedContent.objects.get(
+                session = self.study_session,
+                content_id = 'resource-%d' % (article.id)
+            )
+            rendered = highlighted_content.content
+        except HighlightedContent.DoesNotExist:
+            pass
+        return '<article id="{content_id}" class="{content_type}" content-id="{content_id}">{content}</article>'.format(
+            content_id = 'resource-%d' % (article.id),
+            content_type = 'resource-article',
+            content = rendered
+        )
 
     def get_resource_article(self, article_id):
         try:
@@ -577,23 +615,28 @@ class ResourceArticleView(ContentPageView):
                 url = reverse('resource-article', kwargs={
                     'article_id': self.article.parent.id
                 })
-                return HttpResponseRedirect(url + '#article-%d' % (self.article.id))
+                return HttpResponseRedirect(url + '#resource-%d' % (self.article.id))
         return super().dispatch(request, *args, **kwargs)
+
+    def render_nav_items(self, articles):
+        for _article in articles:
+            yield {
+                'name': _article.title,
+                'id': 'resource-%d' % (_article.id)
+            }
+    
+    def render_page_contents(self, article):
+        return [self.render_article(article)] + \
+            [self.render_article(_article) for _article in article.children]
 
     def get_context_data(self, article_id, **kwargs):
         context = super().get_context_data(**kwargs)
         article = self.article
-        context['nav_items'] = []
-        for _article in article.children:
-            context['nav_items'].append({
-                'name': _article.title,
-                'id': 'article-%d' % (_article.id)
-            })
-        
+        context['nav_items'] = self.render_nav_items(article.children)
         context['content_type'] = 'resource'
         context['content_id'] = article.id
         context['page_title'] = article.title
-        context['content_items'] = [self.render_article_page(article)]
+        context['content_items'] = self.render_page_contents(article)
         context['related_content'] = self.render_related_content(article)
 
         return context
@@ -633,9 +676,31 @@ class FrequentlyAskedQuestionView(ContentPageView):
     current_navigation_item = 'frequently-asked-questions'
 
     def render_faq_response(self, response):
-        return render_to_string('faq-response.html',{
+        rendered = render_to_string('faq-response.html',{
             'response': response
         })
+        try:
+            highlighted_content = HighlightedContent.objects.get(
+                session = self.study_session,
+                content_id = 'response-%d' % (response.id)
+            )
+            rendered = highlighted_content.content
+        except HighlightedContent.DoesNotExist:
+            pass
+        return '<article id="{content_id}" class="{content_type}" content-id="{content_id}">{content}</article>'.format(
+            content_id = 'response-%d' % (response.id),
+            content_type = 'faq-response',
+            content = rendered
+        )
+
+    def render_nav_items(self, question):
+        for response in question.responses:
+            yield {'id': 'response-%d' % (response.id), 'name':response.author.name if response.author else None } 
+
+    def render_page_contents(self, question):
+        contents = ['<h1 id="top">%s</h1>' % (question.text)]
+        contents += [self.render_faq_response(response) for response in question.responses]
+        return contents        
 
     def get_context_data(self, question_id, **kwargs):
         try:
@@ -646,8 +711,8 @@ class FrequentlyAskedQuestionView(ContentPageView):
         context['content_type'] = 'question'
         context['content_id'] = question.id
         context['page_title'] = question.text
-        context['nav_items'] = [{'id': 'response-%d' % (response.id), 'name':response.author.name if response.author else None } for response in question.responses]
-        context['content_items'] = ['<h1 id="top">%s</h1>' % (question.text)] + [self.render_faq_response(response) for response in question.responses]
+        context['nav_items'] = self.render_nav_items(question)
+        context['content_items'] = self.render_page_contents(question)
         context['related_content'] = self.render_related_content(question)
         return context
 

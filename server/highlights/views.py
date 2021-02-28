@@ -6,16 +6,16 @@ from django.http import JsonResponse
 from django.views import View
 
 from study_sessions.models import StudySession
-from website.views import BaseWebsiteView
 
 from .models import Highlight
 from .models import HighlightedContent
 
 class HighlightForm(forms.Form):
     text = forms.CharField()
+    contentId = forms.CharField()
     content = forms.CharField()
 
-class HighlightsView(BaseWebsiteView):
+class HighlightsView(View):
 
     def get(self, request):
         return HttpResponse('Hi')
@@ -36,7 +36,7 @@ class HighlightsView(BaseWebsiteView):
             'id': highlight.id
         }), content_type='application/json')
 
-class HighlightDetailsView(BaseWebsiteView):
+class HighlightDetailsView(View):
 
     def get_highlight(self, highlight_id):
         try:
@@ -57,9 +57,24 @@ class HighlightDetailsView(BaseWebsiteView):
             post_data = json.loads(request.body)
             highlight_form = HighlightForm(post_data)
             if highlight_form.is_valid():
-                print(highlight_form.cleaned_data)
-                # highlight.text = highlight_form.cleaned_data['text']
+                highlight.text = highlight_form.cleaned_data['text']
+                if len(highlight.text) > 400:
+                    highlight.text = highlight.text[:400]
                 highlight.save()
+
+                if highlight.content:
+                    highlight.content.content = highlight_form.cleaned_data['content']
+                    highlight.content.save()
+                else:
+                    highlighted_content,_ = HighlightedContent.objects.get_or_create(
+                        content_id = highlight_form.cleaned_data['contentId'],
+                        session = highlight.session
+                    )
+                    highlighted_content.content = highlight_form.cleaned_data['content']
+                    highlighted_content.save()
+                    highlight.content = highlighted_content
+                    highlight.save()
+
                 return HttpResponse(json.dumps({
                     'id': highlight.id,
                     'text': highlight.text

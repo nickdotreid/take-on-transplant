@@ -36,7 +36,6 @@ function setupActiveLinks() {
             let section = document.querySelector(link.hash);
             const topPassed = section.offsetTop <= window.scrollY;
             const bottomPassed = section.offsetTop + section.offsetHeight <= window.scrollY;
-            console.log(link.hash, topPassed, bottomPassed)
             if (topPassed && !bottomPassed) {
                 link.classList.add('active');
             } else {

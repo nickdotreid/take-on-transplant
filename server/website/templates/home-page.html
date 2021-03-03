@@ -25,8 +25,8 @@
         <p>To participate in the usability study, please choose an example patient to view a custom prototype. <strong>You are using the default website.</strong></p>
         <form action="{% url 'study-session' %}" method="POST">
             {% csrf_token %}
-            <input type="submit" name="marco" value="Marco" />
             <input type="submit" name="tamika" value="Tamika" />
+            <input type="submit" name="marco" value="Marco" />
         </form>
     </aside>
 </div>

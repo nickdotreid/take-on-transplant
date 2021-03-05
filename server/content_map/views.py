@@ -54,7 +54,11 @@ class ContentMapView(TemplateView):
         }
 
     def analyze_text(self, text):
-        measures = readability.getmeasures(text)
+        tokenized = '\n\n'.join(
+            '\n'.join(' '.join(token.value for token in sentence)
+            for sentence in paragraph)
+            for paragraph in segmenter.analyze(text))
+        measures = readability.getmeasures(tokenized, lang='en')
         return {
             'grade_level': measures['readability grades']['Kincaid'],
             'words': measures['sentence info']['words'],

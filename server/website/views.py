@@ -578,6 +578,7 @@ class ResourceLibraryView(ContentListView):
         context['tags'] = self.serialize_tags(tags)
         articles = self.filter_content_items(articles)
         context['content_list'] = [self.render_content(a) for a in articles]
+        context['articles'] = articles
         return context
 
 class ResourceArticleView(ContentPageView):

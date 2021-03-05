@@ -9,11 +9,8 @@ function debounce(fn) {
 
 export class ContentHighlighter {
 
-    #CSRF_TOKEN;
-
     constructor(csrfToken) {
-        this.#CSRF_TOKEN = csrfToken;
-
+        this.CSRF_TOKEN = csrfToken;
 
         document.addEventListener('selectionchange', debounce(() => {
             this.selectionChange()
@@ -79,7 +76,7 @@ export class ContentHighlighter {
         })
         request.open("POST", "/highlights");
         request.setRequestHeader('Content-type', 'application/json');
-        request.setRequestHeader('X-CSRFToken', this.#CSRF_TOKEN);
+        request.setRequestHeader('X-CSRFToken', this.CSRF_TOKEN);
         request.send();
     }
 
@@ -93,7 +90,7 @@ export class ContentHighlighter {
         request.responseType = 'json';
         request.open("POST", `/highlights/${highlightId}`);
         request.setRequestHeader('content-type', 'application/json');
-        request.setRequestHeader('X-CSRFToken', this.#CSRF_TOKEN);
+        request.setRequestHeader('X-CSRFToken', this.CSRF_TOKEN);
         request.send(JSON.stringify({
             'text': highlight.innerText,
             'contentId': content_container.getAttribute('content-id'),
@@ -113,7 +110,7 @@ export class ContentHighlighter {
         request.responseType = 'json';
         request.open("DELETE", `/highlights/${highlightId}`);
         request.setRequestHeader('content-type', 'application/json');
-        request.setRequestHeader('X-CSRFToken', this.#CSRF_TOKEN);
+        request.setRequestHeader('X-CSRFToken', this.CSRF_TOKEN);
         request.send(JSON.stringify({
             'content': content_container.innerHTML
         }));

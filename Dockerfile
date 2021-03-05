@@ -23,7 +23,7 @@ RUN apt-get update && \
 
 WORKDIR /take-on-transplant
 
-RUN npm install -g parcel-bundler@1.12
+RUN npm install -g parcel-bundler@1.12.3
 
 ADD ./package.json ./package.json
 ADD ./package-lock.json ./package-lock.json

@@ -78,4 +78,5 @@ class Article(models.Model):
         )
 
     def get_children(self):
-        return Article.objects.filter(parent=self, published=True).all()
+        child_articles = Article.objects.filter(parent=self, published=True).all() 
+        return list(child_articles)

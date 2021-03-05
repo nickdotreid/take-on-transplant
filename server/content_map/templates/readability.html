@@ -1,0 +1,24 @@
+<dl class="horizontal">
+    <div>
+        <dt>Grade Level</dt>
+        <dd>{{readability.grade_level|floatformat:"0"}}</dd>    
+    </div>
+    <div>
+        <dt>Paragraphs</dt>
+        <dd>{{readability.paragraphs}} paragraphs</dd>
+        <dd>{{readability.sentences_per_paragraph|floatformat:-1}} sentences per paragraph.</dd>
+    </div>
+    <div>
+        <dt>Words</dt>
+        <dd>{{readability.words}} words total.</dd>
+        <dd>{{readability.words_per_sentence|floatformat:-2}} words per sentence.</dd>
+    </div>
+</dl>
+{% if content %}
+<details>
+    <summary>Content Analyzed</summary>
+    {% autoescape off %}
+    {{content}}
+    {% endautoescape %}
+</details>
+{% endif %}

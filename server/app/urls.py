@@ -14,6 +14,7 @@ from django.forms import CharField
 from django.forms import EmailField
 from django.urls import path
 
+from content_map.views import ContentMapView
 from highlights.views import HighlightsView
 from highlights.views import HighlightDetailsView
 from website.views import PatientStoryView
@@ -69,6 +70,8 @@ urlpatterns = [
     path('admin/login/', login_view),
     path('admin/logout/', logout_view),
     path('admin/', admin.site.urls),
+    path('content-map/<content_id>', ContentMapView.as_view(), name='content-map'),
+    path('content-map', ContentMapView.as_view(), name='content-map'),
     path('login/', login_view, name='login'),
     path('logout/', logout_view, name='logout'),
     path('reset-password/<uidb64>/<token>/', PasswordResetConfirmView.as_view(), name='password_reset_confirm'),

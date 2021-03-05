@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<a class="home" href="{% url 'content-map' %}">Content Map</a>
+
+{% endblock %}
+
+{% block content %}
+{% if content_list %}
+<article class="container">
+    {% for content in content_list %}
+    <section class="{{content.type}}">
+        <h2>{{content.title}}</h2>
+        {% if content.readability %}
+        {% include 'readability.html' with readability=content.readability content=content.content %}
+        {% endif %}
+        {% for child in content.children %}
+        <h3>{{child.title}}</h3>
+        {% if child.readability %}
+        {% include 'readability.html' with readability=child.readability content=child.content %}
+        {% endif %}
+        {% endfor %}
+    </section>
+    {% endfor %}
+</article>
+{% else %}
+<article class="container">
+    <ul>
+        <li><a href="{% url 'content-map' 'stories' %}">Stories content map</a></li>
+        <li><a href="{% url 'content-map' 'resources' %}">Resource library content map</a></li>
+        <li><a href="{% url 'content-map' 'questions' %}">Frequently asked questions content map</a></li>
+    </ul>
+</article>
+{% endif %}
+{% endblock %}

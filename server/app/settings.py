@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'patients',
     'faqs',
     'study_sessions',
+    'content_map',
     'highlights',
     'website'
 ]

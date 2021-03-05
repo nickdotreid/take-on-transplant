@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic.base import TemplateView
 import readability
+import syntok.segmenter as segmenter
 
 from resources.models import Article
 from patients.models import Patient
@@ -21,13 +22,11 @@ class ContentMapView(TemplateView):
         return list(patients)
 
     def analyze_patient_story(self, patient_story):
-        soup = BeautifulSoup(patient_story.content, 'html.parser')
-        content = soup.text
         return {
             'type': 'patient-story',
             'title': patient_story.title,
-            'readability': self.analyze_text(content),
-            'content': content
+            'readability': self.analyze_html(patient_story.content),
+            'content': patient_story.content
         }
 
     def analyze_patient(self, patient):
@@ -38,13 +37,11 @@ class ContentMapView(TemplateView):
         }
 
     def analyze_resource_article_content(self, article):
-        soup = BeautifulSoup(article.content, 'html.parser')
-        content = soup.text
         return {
             'type': 'resource-article',
             'title': article.title,
-            'readability': self.analyze_text(content),
-            'content': content
+            'readability': self.analyze_html(article.content),
+            'content': article.content
         }
 
     def analyze_resource_article(self, article):
@@ -52,6 +49,7 @@ class ContentMapView(TemplateView):
             'type': 'resource-article',
             'title': article.title,
             'readability': self.analyze_text(article.description),
+            'content': '<p>'+article.description+'</p>',
             'children': [self.analyze_resource_article_content(child) for child in article.children]
         }
 
@@ -64,6 +62,10 @@ class ContentMapView(TemplateView):
             'sentences_per_paragraph': measures['sentence info']['sentences_per_paragraph'],
             'paragraphs': measures['sentence info']['paragraphs']
         }
+    
+    def analyze_html(self, html):
+        soup = BeautifulSoup(html, 'html.parser')
+        return self.analyze_text('\n\n'.join([p.text for p in soup.find_all('p')]))
 
     def get_resource_articles(self):
         articles = Article.objects.filter(

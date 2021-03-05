@@ -65,13 +65,13 @@ window.addEventListener('DOMContentLoaded', () => {
     setupActiveLinks();
     makeSortableLists();
 
-    if(document.querySelector("input[name='csrfmiddlewaretoken']")) {
-        var csrfToken = document.querySelector("input[name='csrfmiddlewaretoken']").value;
-        var content_highlighter = new ContentHighlighter(csrfToken);
-        document.querySelectorAll('.highlight[highlight-id]').forEach((element) => {
-            var highlight_id = element.getAttribute('highlight-id');
-            new Highlight(content_highlighter,highlight_id,element);
-        });
-    }
+    // if(document.querySelector("input[name='csrfmiddlewaretoken']")) {
+    //     var csrfToken = document.querySelector("input[name='csrfmiddlewaretoken']").value;
+    //     var content_highlighter = new ContentHighlighter(csrfToken);
+    //     document.querySelectorAll('.highlight[highlight-id]').forEach((element) => {
+    //         var highlight_id = element.getAttribute('highlight-id');
+    //         new Highlight(content_highlighter,highlight_id,element);
+    //     });
+    // }
 
 });

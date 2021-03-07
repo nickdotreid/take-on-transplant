@@ -66,36 +66,15 @@
 <div class="container-with-aside">
     <div class="content">
         <h1>Survey Results</h1>    
-        <p>You have advanced lung disease with markers of increased disease severity based on your low FEV1 and frequent CF exacerbations that required IV antibiotics. The use of Trikafta (elexacaftor/tezacaftor/ivacaftor) may delay the need for lung transplant, but people with advanced lung disease are likely to benefit from lung transplant at some time in the future.  It is important to continue to talk with your doctor about lung transplant. You may want to connect with patients who have been through the lung transplant journey. </p>
+        <p>You have advanced lung disease with markers of increased disease severity based on your low FEV1 and frequent CF exacerbations that required IV antibiotics. The use of Trikafta (elexacaftor/tezacaftor/ivacaftor) may delay the need for lung transplant, but people with advanced lung disease are likely to benefit from lung transplant at some time in the future.</p>
     </div>
     <aside>
-        <p>
-            We recommend beginning your Take on Transplant journey with the following stories:
-            {% for patient in patients %}
-            {% if forloop.last %} and {% endif %}
-            <a href="{% url 'patient-story' patient.id %}">{{patient.name}}{% if forloop.last %}.{% else %},{% endif %}</a>
-            {% endfor %}
-            You can also read more in the Resource Library:
-            {% for resource in resources %}
-            {% if forloop.last %} and {% endif %}
-            {% if resource.parent %}
-            <a href="{% url 'resource-article' resource.parent.id %}#article-{{resource.id}}">{{resource.title}}{% if forloop.last %}.{% else %},{% endif %}</a>
-            {% else %}
-            <a href="{% url 'resource-article' resource.id %}">{{resource.title}}{% if forloop.last %}.{% else %},{% endif %}</a>
-            {% endif %}
-            {% endfor %}
-            See frequently asked questions
-            {% for question in questions %}
-            {% if forloop.last %} and {% endif %}
-            <a href="{% url 'question' question.id %}">"{{question.text}}"{% if forloop.last %}.{% else %},{% endif %}</a>
-            {% endfor %}
-            <strong>Preview these items below.</strong>
-        </p>
-        <p>These recommendations were generated from your answers to the My CF Stage Survey, to <a href="{% url 'mycfstage' %}">change your answers, click here.</a></p>
+        <p>It is important to continue to talk with your doctor about lung transplant. You may want to connect with patients who have been through the lung transplant journey. </p>
     </aside>
-
-
 </div> 
+<div class="container callout">
+    <p>These recommendations were generated from your answers to the My CF Stage Survey, to <a href="{% url 'mycfstage' %}">change your answers, click here.</a></p>
+</div>
 {% endif %}
 
 {% if show_survey and not took_survey %}
@@ -115,6 +94,10 @@
     {{content}}
     {% endautoescape %}
     {% endfor %}
+    <nav>
+        <a href="{% url 'related-content' 'persona' 'marco' %}">Add or Remove Related Content</a>
+        <a href="{% url 'reorder-related-content' 'persona' 'marco' %}">Reorder Related Content</a>
+    </nav>
 </div>
 {% endif %}
 
@@ -140,14 +123,6 @@
     {% endif %}
     <input type="submit" name="clear" value="End Session" />
 </form>   
-{% endif %}
-
-{% if home_form and user.is_staff %}
-<form action="{% url 'home' %}" method="POST" novalidate>
-    {% csrf_token %}
-    {{home_form}}
-    <input type="submit" value="Change" />
-</form>
 {% endif %}
 
 {% endblock %}

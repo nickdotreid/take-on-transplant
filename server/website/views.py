@@ -86,6 +86,8 @@ class BaseWebsiteView(TemplateView):
                 setattr(self, flag, self.request.session[flag])
 
     def get_related_list(self, question):
+        if isinstance(question, RelatedItemsList):
+            return question
         try:
             return RelatedItemsList.objects.get(
                 name = 'question-{id}'.format(id=question.id)
@@ -132,6 +134,8 @@ class BaseWebsiteView(TemplateView):
         return None
 
     def get_content_url(self, content_object):
+        if isinstance(content_object, RelatedItemsList):
+            return reverse('home')
         for key, model in self.CONTENT_TYPES.items():
             if isinstance(content_object, model):
                 if key == 'question':
@@ -219,19 +223,8 @@ class HomePageView(BaseWebsiteView):
         })
 
         if context['show_content'] and context['took_survey']:
-            patients = Patient.objects.filter(name__in=['Amy', 'Will']).order_by('-name').all()
-            context['patients'] = patients
-
-            questions = FrequentlyAskedQuestion.objects.filter(id__in=[8,5]).all()
-            context['questions'] = questions
-
-            resources = Article.objects.filter(id__in=[10, 9]).order_by('title').all()
-            context['resources'] = resources
-            
-            contents = [p for p in patients]
-            contents += resources
-            contents += questions
-            context['contents'] = [self.render_content(c) for c in contents]
+            results_list, _ = RelatedItemsList.objects.get_or_create(name='marco')
+            context['contents'] = [self.render_content(item) for item in results_list.content_list]
         return context
 
     def post(self, request):
@@ -728,6 +721,9 @@ class RelatedContentView(BaseWebsiteView):
             raise Http404('Question does not exist')
 
     def get_content(self, content_type, content_id):
+        if content_id == 'marco':
+            items_list, _ = RelatedItemsList.objects.get_or_create(name='marco')
+            return items_list
         for key, _model in self.CONTENT_TYPES.items():
             if content_type == key:
                 try:

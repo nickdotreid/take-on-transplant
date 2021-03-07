@@ -585,7 +585,7 @@ class ResourceArticleView(ContentPageView):
 
     current_navigation_item = 'resource-library'
 
-    def render_article(self, article):
+    def render_article_page(self, article):
         rendered = render_to_string('resource-article.html', {
             'article': article
         })
@@ -627,8 +627,8 @@ class ResourceArticleView(ContentPageView):
             }
     
     def render_page_contents(self, article):
-        return [self.render_article(article)] + \
-            [self.render_article(_article) for _article in article.children]
+        return [self.render_article_page(article)] + \
+            [self.render_article_page(_article) for _article in article.children]
 
     def get_context_data(self, article_id, **kwargs):
         context = super().get_context_data(**kwargs)

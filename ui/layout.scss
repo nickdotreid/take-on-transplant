@@ -190,7 +190,34 @@ body {
     }
 }
 
-body > .container.content-gallery {
-    width: 560px;
+@media(min-width: 1000px) {
+
+    body > .container.content-gallery {
+        align-items: stretch;
+    
+        > article {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            width: 470px;
+            margin: 0.5em 0em;
+            flex: 0 1 auto;
+    
+            > * {
+                flex: 1 0 auto;
+            }
+    
+            > a:first-child,
+            > a:last-child {
+                flex-grow: 0;
+            }
+        }
+    
+        > h1, > h2, > h3,
+        > nav {
+            width: 100%;
+        }
+    }
+
 }
 

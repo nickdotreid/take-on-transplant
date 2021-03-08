@@ -714,12 +714,6 @@ class RelatedContentView(BaseWebsiteView):
 
     template_name = 'add-related-content-page.html'
 
-    def get_question(self, question_id):
-        try:
-            return FrequentlyAskedQuestion.objects.get(id=question_id)
-        except FrequentlyAskedQuestion.DoesNotExist:
-            raise Http404('Question does not exist')
-
     def get_content(self, content_type, content_id):
         if content_id == 'marco':
             items_list, _ = RelatedItemsList.objects.get_or_create(name='marco')
@@ -731,13 +725,6 @@ class RelatedContentView(BaseWebsiteView):
                 except _model.DoesNotExist:
                     raise Http404('Content not found')
         raise Http404('Unknown content type')
-
-    def get_all_questions(self, questions_to_exclude):
-        return FrequentlyAskedQuestion.objects.filter(
-            published = True
-        ).exclude(
-            id__in = [q.id for q in questions_to_exclude]
-        ).all()
 
     def serialize_question(self, question):
         return {
@@ -785,6 +772,12 @@ class RelatedContentView(BaseWebsiteView):
                 if key == 'resource':
                     return self.serialize_resource(content_object)
 
+    def get_all_published_resources(self):
+        all_resources = []
+        for article in Article.objects.filter(published = True, parent = None).all():
+            all_resources += [article] + article.children
+        return all_resources
+
     def get_context_data(self, content_type, content_id, **kwargs):
         context = super().get_context_data(**kwargs)
         self.content_object = self.get_content(content_type, content_id)
@@ -796,10 +789,8 @@ class RelatedContentView(BaseWebsiteView):
         all_patients = Patient.objects.filter(
             published = True
         ).all()
-        all_resources = Article.objects.filter(
-            published = True,
-            parent = None
-        ).all()
+        all_resources = self.get_all_published_resources()
+
         context['content_types'] = [
             {
                 'title': 'Questions',

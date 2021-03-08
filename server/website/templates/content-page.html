@@ -10,7 +10,7 @@
         {% for item in nav_items %}
         <a href="#{{item.id}}" class="{{item.content_type}}">{{item.name}}</a>
         {% endfor %}
-        {% if recommended_nav_items %}
+        {% if show_recommended_content and recommended_nav_items %}
         <span>Recommended Content</span>
         {% for item in recommended_nav_items %}
         <a href="#{{item.id}}" class="{{item.content_type}}">{{item.name}}</a>

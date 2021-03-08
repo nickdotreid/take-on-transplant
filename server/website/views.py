@@ -13,6 +13,7 @@ from django.contrib.contenttypes.models import ContentType
 from resources.models import Article
 from faqs.models import FrequentlyAskedQuestion
 from faqs.models import Category as FAQCategory
+from faqs.models import Answer
 from highlights.models import HighlightedContent
 from patients.models import Patient
 from patients.models import PatientStory
@@ -33,6 +34,7 @@ class BaseWebsiteView(TemplateView):
         'patient': Patient,
         'patient-story': PatientStory,
         'question': FrequentlyAskedQuestion,
+        'response': Answer,
         'resource': Article
     }
 
@@ -118,6 +120,8 @@ class BaseWebsiteView(TemplateView):
     def get_content_title(self, content):
         if isinstance(content, FrequentlyAskedQuestion):
             return content.text
+        if isinstance(content, Answer):
+            return content.author.name
         if isinstance(content, Patient):
             return content.name
         if isinstance(content, PatientStory):
@@ -636,13 +640,6 @@ class ResourceArticleView(ContentPageView):
                 })
                 return HttpResponseRedirect(url + '#resource-%d' % (self.article.id))
         return super().dispatch(request, *args, **kwargs)
-
-    def render_nav_items(self, articles):
-        for _article in articles:
-            yield {
-                'name': _article.title,
-                'id': 'resource-%d' % (_article.id)
-            }
     
     def render_page_contents(self, article):
         return [self.render_article_page(article)] + \
@@ -657,7 +654,7 @@ class ResourceArticleView(ContentPageView):
         context['page_title'] = article.title
         context['content_items'] = self.render_page_contents(article)
         context['related_content'] = self.render_related_content(article)
-
+        context['recommended_nav_items'] = self.render_recommended_nav_items(article)
         return context
 
 class FrequentlyAskedQuestionListView(ContentListView):
@@ -712,10 +709,6 @@ class FrequentlyAskedQuestionView(ContentPageView):
             content = rendered
         )
 
-    def render_nav_items(self, question):
-        for response in question.responses:
-            yield {'id': 'response-%d' % (response.id), 'name':response.author.name if response.author else None } 
-
     def render_page_contents(self, question):
         contents = ['<h1 id="top">%s</h1>' % (question.text)]
         contents += [self.render_faq_response(response) for response in question.responses]
@@ -730,9 +723,10 @@ class FrequentlyAskedQuestionView(ContentPageView):
         context['content_type'] = 'question'
         context['content_id'] = question.id
         context['page_title'] = question.text
-        context['nav_items'] = self.render_nav_items(question)
+        context['nav_items'] = self.render_nav_items(question.responses)
         context['content_items'] = self.render_page_contents(question)
         context['related_content'] = self.render_related_content(question)
+        context['recommended_nav_items'] = self.render_recommended_nav_items(question)
         return context
 
 class RelatedContentView(BaseWebsiteView):

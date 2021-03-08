@@ -31,6 +31,7 @@ class BaseWebsiteView(TemplateView):
 
     CONTENT_TYPES = {
         'patient': Patient,
+        'patient-story': PatientStory,
         'question': FrequentlyAskedQuestion,
         'resource': Article
     }
@@ -113,6 +114,23 @@ class BaseWebsiteView(TemplateView):
             if rendered:
                 rendered_content.append(rendered)
         return rendered_content
+
+    def get_content_title(self, content):
+        if isinstance(content, FrequentlyAskedQuestion):
+            return content.text
+        if isinstance(content, Patient):
+            return content.name
+        if isinstance(content, PatientStory):
+            return content.title
+        if isinstance(content, Article):
+            return content.title
+        return None
+
+    def get_content_type(self, content_object):
+        for key, model in self.CONTENT_TYPES.items():
+            if isinstance(content_object, model):
+                return key
+        return None       
 
     def get_content_id(self, content_object):
         for key, model in self.CONTENT_TYPES.items():
@@ -481,6 +499,19 @@ class ContentPageView(BaseWebsiteView):
             link.replace_with(link_replacement)
         return str(soup)
 
+    def render_nav_items(self, items):
+        for item in items:
+            yield {
+                'name': self.get_content_title(item),
+                'id': self.get_content_id(item),
+                'content_type': self.get_content_type(item)
+            }
+
+    def render_recommended_nav_items(self, content_object):
+        return self.render_nav_items(
+            items = self.get_related_content(content_object)
+        )
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         if 'HTTP_REFERER' in self.request.META:
@@ -518,13 +549,6 @@ class PatientStoryView(ContentPageView):
             'patient': patient
         })
 
-    def render_nav_items(self, patient_stories):
-        for story in patient_stories:
-            yield {
-                'name': story.title,
-                'id': 'story-%d' % (story.id)
-            }
-
     def render_page_contents(self, patient, patient_stories):
         contents =[
             '<h1 id="top">%s</h1>' % (patient.name),
@@ -549,6 +573,7 @@ class PatientStoryView(ContentPageView):
         context['page_title'] = patient.name
         context['content_items'] = self.render_page_contents(patient, patient_stories)
         context['related_content'] = self.render_related_content(patient)
+        context['recommended_nav_items'] = self.render_recommended_nav_items(patient)
         return context
 
 class ResourceLibraryView(ContentListView):

@@ -37,6 +37,12 @@ a.home {
     }
 }
 
+nav > * {
+    display: block;
+    padding: 0em;
+    margin: 1em 0.5em 0em;
+}
+
 nav > a {
     display: block;
     padding: 0.5em 0.25em;
@@ -53,7 +59,13 @@ nav > a {
 
 }
 
-nav.patient a,
+nav > *:first-child,
+nav > a:first-child {
+    margin-top: 0em;
+}
+
+nav > a.patient,
+nav > a.patient-story,
 nav > a.patient-stories {
 
     &:hover,
@@ -66,7 +78,7 @@ nav > a.patient-stories {
     border-bottom-color: $patient-color;
 }
 
-nav.resource a,
+nav > a.resource,
 nav > a.resource-library {
     &:hover,
     &:focus,
@@ -78,7 +90,7 @@ nav > a.resource-library {
     border-bottom-color: $resource-color;
 }
 
-nav.question a,
+nav > a.question,
 nav > a.frequently-asked-questions {
     &:hover,
     &:focus,

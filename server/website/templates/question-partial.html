@@ -1,4 +1,4 @@
-<article class="frequently-asked-question">
+<article id="question-{{question.id}}" class="frequently-asked-question">
     {% url 'question' question.id as url %}
     <a href="{{url}}">
         {{question.text}}

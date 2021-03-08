@@ -1,4 +1,4 @@
-<article class="patient-story">
+<article id="patient-{{patient.id}}" class="patient-story">
     {% url 'patient-story' patient.id as url %}
     <a href="{{url}}" class="title">{{patient.name}}</a>
     {% include 'patient-attributes-list.html' %}

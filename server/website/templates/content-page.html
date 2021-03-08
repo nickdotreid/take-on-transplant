@@ -3,15 +3,18 @@
 {% block content %}
 
 <article class="container-with-sidebar">
-    <nav class="sidebar {{content_type}}">
+    <nav class="sidebar">
         {% if page_title %}
-        <a class="title" href="#">{{page_title}}</a>
+        <a class="title {{content_type}}" href="#">{{page_title}}</a>
         {% endif %}
         {% for item in nav_items %}
-        <a href="#{{item.id}}">{{item.name}}</a>
+        <a href="#{{item.id}}" class="{{item.content_type}}">{{item.name}}</a>
         {% endfor %}
-        {% if show_recommended_content %}
-        <a href="#recommended-content">Recommended Content</a>
+        {% if recommended_nav_items %}
+        <span>Recommended Content</span>
+        {% for item in recommended_nav_items %}
+        <a href="#{{item.id}}" class="{{item.content_type}}">{{item.name}}</a>
+        {% endfor %}
         {% endif %}
     </nav>
     <div class="content">

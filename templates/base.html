@@ -26,6 +26,7 @@
             {% endif %}
             
             {% if user.is_authenticated %}
+            <a href="{% url 'content-map' %}">Content Map</a>
             {% url 'logout' as logout_url %}
             <a href="{{logout_url}}">Logout</a>
             {% else %}

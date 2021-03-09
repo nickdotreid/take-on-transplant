@@ -7,28 +7,39 @@
 
 {% block content %}
 {% if content_list %}
-<article class="container">
+<section class="container">
     {% for content in content_list %}
-    <section class="{{content.type}}">
-        <h2>{{content.title}}</h2>
+    <article class="{{content.content_type}}">
+        <h2><a href="{% url 'content-map' content.content_id %}">{{content.title}}</a></h2>
         {% if content.readability %}
         {% include 'readability.html' with readability=content.readability content=content.content %}
         {% endif %}
-        {% for child in content.children %}
-        <h3>{{child.title}}</h3>
-        {% if child.readability %}
-        {% include 'readability.html' with readability=child.readability content=child.content %}
+        {% if content.related_content %}
+        <h3>Related Content</h3>
+        <ul>
+            {% for related in content.related_content %}
+            <li class="{{related.content_type}}">
+                <a href="{% url 'content-map' related.content_id %}">
+                    {{related.title}}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+        <nav>
+            <a href="{% url 'related-content' content.content_type content.id %}">Add or Remove Related Content</a>
+            <a href="{% url 'reorder-related-content' content.content_type content.id %}">Reorder Related Content</a>
+        </nav>
         {% endif %}
-        {% endfor %}
-    </section>
+    </article>
     {% endfor %}
-</article>
+</section>
 {% else %}
 <article class="container">
     <ul>
         <li><a href="{% url 'content-map' 'stories' %}">Stories content map</a></li>
         <li><a href="{% url 'content-map' 'resources' %}">Resource library content map</a></li>
         <li><a href="{% url 'content-map' 'questions' %}">Frequently asked questions content map</a></li>
+        <li><a href="{% url 'content-map' 'marco' %}">Marco's Search Results</a></li>
     </ul>
 </article>
 {% endif %}

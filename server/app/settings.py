@@ -28,9 +28,9 @@ INSTALLED_APPS = [
     'patients',
     'faqs',
     'study_sessions',
-    'content_map',
     'highlights',
-    'website'
+    'website',
+    'content_map'
 ]
 
 MIDDLEWARE = [

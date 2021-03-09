@@ -146,6 +146,8 @@ class BaseWebsiteView(TemplateView):
         return None
     
     def get_content_from_id(self, content_id):
+        if len(content_id.split('-')) is not 2:
+            return None
         content_type, content_id = content_id.split('-')
         if content_type in self.CONTENT_TYPES:
             _model = self.CONTENT_TYPES[content_type]

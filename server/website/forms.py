@@ -64,8 +64,7 @@ class MyCFStageForm(forms.Form):
         label = "Are you using any of the following treatments?",
         choices = [
             (1, "Ivacaftor (Kalydeco)"),
-            (2, "Elexacaftor/Tezacaftor/Ivacaftor (Trikafta)"),
-            (3, "Using supplemental oxygen")
+            (2, "Elexacaftor/Tezacaftor/Ivacaftor (Trikafta)")
         ],
         required = False,
         widget = forms.CheckboxSelectMultiple

@@ -398,7 +398,7 @@ class MyCFStageSurveyView(BaseWebsiteView):
             'gender': 'male',
             'fev': 2,
             'supplemental_oxygen': 2,
-            'treatments': [2, 3],
+            'treatments': [2],
             'exacerbations': 3
         }
         context['form'] = MyCFStageForm(initial=current_session_data)

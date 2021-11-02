@@ -899,6 +899,7 @@ class AuthorDrivenView(View):
             high_agency_version = False,
             integrated_content_version = True
         )
+        request.session['survey_complete'] = False
         request.session['study_session_id'] = study_session.id
         return HttpResponseRedirect(reverse('home'))
 
@@ -910,5 +911,6 @@ class ReaderDrivenView(View):
             high_agency_version = True,
             integrated_content_version = True
         )
+        request.session['survey_complete'] = False
         request.session['study_session_id'] = study_session.id
         return HttpResponseRedirect(reverse('home'))

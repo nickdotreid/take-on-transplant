@@ -29,6 +29,8 @@ from website.views import MyCFStageSurveyView
 from website.views import ReorderRelatedContent
 from website.views import StudySessionView
 from website.views import AllContentView
+from website.views import AuthorDrivenView
+from website.views import ReaderDrivenView
 
 class EmailAuthenticationForm(AuthenticationForm):
     
@@ -91,5 +93,7 @@ urlpatterns = [
     path('mycfstage', MyCFStageSurveyView.as_view(), name='mycfstage'),
     path('study-session', StudySessionView.as_view(), name='study-session'),
     path('all-content', AllContentView.as_view(), name='all-content'),
+    path('author-driven', AuthorDrivenView.as_view(), name='author-driven'),
+    path('reader-driven', ReaderDrivenView.as_view(), name='reader-driven'),
     path('', HomePageView.as_view(), name='home'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

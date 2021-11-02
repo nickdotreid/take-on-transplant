@@ -7,6 +7,7 @@ from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.urls import reverse
 from django.views.generic.base import TemplateView
+from django.views import View
 
 from django.contrib.contenttypes.models import ContentType
 
@@ -889,3 +890,25 @@ class ReorderRelatedContent(RelatedContentView):
             related_item.save()
 
         return HttpResponseRedirect(self.get_content_url(content))
+
+class AuthorDrivenView(View):
+
+    def get(self, request):        
+        study_session = StudySession.objects.create(
+            persona = 'marco',
+            high_agency_version = False,
+            integrated_content_version = True
+        )
+        request.session['study_session_id'] = study_session.id
+        return HttpResponseRedirect(reverse('home'))
+
+class ReaderDrivenView(View):
+
+    def get(self, request):
+        study_session = StudySession.objects.create(
+            persona = 'tamika',
+            high_agency_version = True,
+            integrated_content_version = True
+        )
+        request.session['study_session_id'] = study_session.id
+        return HttpResponseRedirect(reverse('home'))
